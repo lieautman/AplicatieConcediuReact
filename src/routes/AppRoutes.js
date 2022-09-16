@@ -11,6 +11,7 @@ import ToateConcediile from 'features/afisareConcedii/ToateConcediile'
 import Angajati from 'features/angajati/Angajati'
 import Adauga_Angajat from 'features/dashboard/adauga_angajat/Adauga_Angajat'
 
+
 export default function AppRoutes() {
   return (
     <Switch>
@@ -24,7 +25,6 @@ export default function AppRoutes() {
       
       <CustomRoute isPrivate={false} exact path = '/toateConcediile' component = {ToateConcediile}/>
       <CustomRoute isPrivate={false} exact path='/forbidden' component={Forbidden} />
-     
 
       <CustomRoute isPrivate={false} exact path='/CreareConcediu' component={CreareConcediu} />
       <CustomRoute isPrivate={false} exact path='/forbidden' component={Forbidden} />
