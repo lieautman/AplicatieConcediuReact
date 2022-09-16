@@ -6,7 +6,7 @@ import CustomRoute from '../components/routing/CustomRoute'
 
 import { Forbidden, NotFound } from '@bit/totalsoft_oss.react-mui.kit.core'
 import Dashboard from 'features/dashboard/Dashboard'
-import ToateConcediile from 'features/dashboard/ToateConcediile'
+import ToateConcediile from 'features/afisareConcedii/ToateConcediile'
 import Angajati from 'features/angajati/Angajati'
 import Adauga_Angajat from 'features/dashboard/adauga_angajat/Adauga_Angajat'
 
