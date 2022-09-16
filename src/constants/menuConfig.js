@@ -8,7 +8,7 @@ import {PersonAdd} from '@material-ui/icons'
 
 
 const menuItems = [{ icon: <Dashboard />, text: 'NavBar.Dashboard', path: '/dashboard', name: 'Dashboard' },
-                    { icon: <NoteAddIcon />, text: 'CreareConcediu', path: '/CreareConcediu', name: 'CreareConcediu'},
+                    { icon: <NoteAddIcon />, text: 'NavBar.CreareConcediu', path: '/CreareConcediu', name: 'CreareConcediu'},
 {  icon: <People />, text: 'Angajati', path: '/angajati', name: 'Angajati' },{icon: <PersonAdd />,  text: 'NavBar.Adauga_Angajat', path: '/adauga_angajat', name: 'Adauga_Angajat' },
                     {icon: <DateRangeIcon/>, text:'NavBar.ToateConcediile', path: '/toateConcediile', name:'ToateConcediile'},]
 export default menuItems
