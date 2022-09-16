@@ -14,6 +14,7 @@
   "Forbidden": "Not allowed to see this page!",
   "NavBar": {
     "Dashboard": "Dashboard",
+    "Angajati":"Employees",
     "Settings": "Settings",
     "Privacy": "Privacy",
     "Security": "Security"
@@ -22,6 +23,7 @@
     "Logout": "Logout",
     "HidePassword": "Hide password",
     "ShowPassword": "Show password"
+   
   },
   "Dialog": {
     "Yes": "Yes",
@@ -51,6 +53,7 @@
       "MaxCharacters": "The length must be less than {{max}}",
       "MinCharacters": "The length must be greater than {{min}}",
       "Unique": "The value of {{selector}} must be unique"
+     
     }
   }
 }
