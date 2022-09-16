@@ -13,11 +13,13 @@
   "MyProfile": "My Profile",
   "Forbidden": "Not allowed to see this page!",
   "NavBar": {
+    "ToateConcediile": "My vacations",
     "Dashboard": "Dashboard",
     "Angajati":"Employees",
     "Settings": "Settings",
     "Privacy": "Privacy",
-    "Security": "Security"
+    "Security": "Security",
+    "CreareConcediu": "Add Vacantion"
   },
   "Tooltips": {
     "Logout": "Logout",

@@ -5,7 +5,9 @@
   "MyProfile": "Profilul meu",
   "Forbidden": "Nu aveti dreptul sa vedeti aceasta pagina!",
   "NavBar": {
+    "ToateConcediile": "Concediile mele",
     "Dashboard": "Panou central",
+    "CreareConcediu" : "Creare concediu",
     "Angajati": "Angajati",
     "Settings": "Setari",
     "Privacy": "Confidentialitate",
