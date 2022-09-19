@@ -10,6 +10,10 @@ function ProfileEditState() {
   //css
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  function modifyDataProfile(){
+    
+  }
+
   return (
     <>
     <ProfileEdit
