@@ -14,7 +14,7 @@ const CreareConcediuCSS = theme => {
 
       backgroundColor: '#1565c0',
 
-      color: 'white',
+      color: 'primary',
 
       border: '0 px',
 
@@ -24,7 +24,9 @@ const CreareConcediuCSS = theme => {
 
       marginTop: '40px',
 
-      marginLeft: '320px'
+      marginLeft: '320px',
+
+      borderRadius:'50px',
 
     }
 

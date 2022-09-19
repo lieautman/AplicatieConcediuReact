@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react'
 import { Typography, Button, FormLabel, Container } from '@material-ui/core'
 import { useToast } from '@bit/totalsoft_oss.react-mui.kit.core'
-import DatePicker from './DatePicker'
+import DatePickerIncepere from './DatePickerIncepere'
+import DatePickerIncetare from './DatePickerIncetare'
 import ComboBoxTipConcediu from './ComboBoxTipConcediu'
 import ComboBoxInlocuitor from './ComboBoxInlocuitor'
 import { makeStyles } from '@material-ui/core/styles'
@@ -13,22 +14,19 @@ function CreareConcediu(){
 
 const classes = useStyles()
 
-
-  const addToast = useToast()
-  addToast('Welcome', 'success')
   return (
     <Fragment>
 
-      <Typography>Introdu detaliile concediului</Typography>
+      
       <Container maxWidth = "sm">
-
+      <Typography>Introdu detaliile concediului:</Typography>
       {/* <Grid>Internships are amazing.</Grid> */}
       <br></br>
       <ComboBoxTipConcediu></ComboBoxTipConcediu>
       <br></br>
-      <DatePicker></DatePicker>
+      <DatePickerIncepere></DatePickerIncepere>
       <br></br>
-      <DatePicker></DatePicker>
+      <DatePickerIncetare></DatePickerIncetare>
       <br></br>
       <FormLabel>Numar zile disponibile</FormLabel>
       <br></br>
