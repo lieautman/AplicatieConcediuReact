@@ -717,3 +717,8 @@ td.rdtYear:hover {
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(54, 56, 58);
 }
+
+#ProfilePhoto1{
+  height:10rem;
+  width:10rem;
+}
