@@ -1,24 +1,25 @@
-import React, { Fragment, useReducer}from 'react'
+import React, { Fragment}from 'react'
+import PropTypes from 'prop-types'
 
-import { makeStyles } from '@material-ui/core'
-import profileStyle from './ProfileCss'
 
-import {initialState, reducer} from './ProfileStateDefine'
+import TextField from '@mui/material/TextField';
 
-//css
-const useStyles = makeStyles(profileStyle)
-
-function ProfileEdit() {
-  //css
-  const classes = useStyles()
-  const [state, dispatch] = useReducer(reducer, initialState);
-
+function ProfileEdit({stare}) {
   return (
     <Fragment>
-        <div>sal</div>
+        <TextField label="Nume" defaultValue={stare.textNume}></TextField>
+        <TextField label="Prenume" defaultValue={stare.textPrenume}></TextField>
+        <TextField label="Adresa" defaultValue={stare.textAdresaActuala}></TextField>
+        <TextField label="Email" defaultValue={stare.textEmailActual}></TextField>
+        <TextField type="number" label="Telefon" defaultValue={stare.textTelefonActual}></TextField>
+        <TextField label="Cod Numeric Personal" defaultValue={stare.textTelefonActual}></TextField>
+        <TextField label="Serie Si Numar CI" defaultValue={stare.textSerieNumarCiActual}></TextField>
+
     </Fragment>
   )
 }
-
+ProfileEdit.propTypes = {
+    stare: PropTypes.object.isRequired
+  }
 
 export default ProfileEdit
