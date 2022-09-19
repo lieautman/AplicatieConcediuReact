@@ -21,13 +21,15 @@ function Adauga_Angajat() {
         <Container className maxWidth='sm'>
           <div>
             <label className={classes.containeradaugaaangajat}>{'Adauga un angajat nou'}</label>
+            <br></br>
             <div>
               <TextField label={'Nume'}></TextField>
             </div>
+            <br></br>
             <div>
               <TextField label={'Prenume'}></TextField>
             </div>
-
+            <br></br>
             <div>
               <TextField
                 id='date'
@@ -40,19 +42,23 @@ function Adauga_Angajat() {
                 }}
               />{' '}
             </div>
+            <br></br>
             <div>
               <TextField label={'CNP'}></TextField>
             </div>
+            <br></br>
             <div>
               <TextField label={'Seria Numar CI'}></TextField>
             </div>
+            <br></br>
             <div>
               <TextField label={'Numar de telefon'}></TextField>
             </div>
+            <br></br>
             <div>
               <TextField label={'Salariu'}></TextField>
             </div>
-
+            <br></br>
             <div>
               <TextField
                 id='date'
@@ -65,6 +71,7 @@ function Adauga_Angajat() {
                 }}
               />{' '}
             </div>
+            <br></br>
             <div>
               <Autocomplete
                 disable
@@ -76,6 +83,7 @@ function Adauga_Angajat() {
                 renderInput={params => <TextField {...params} label='Lista de Mangeri' />}
               />
             </div>
+            <br></br>
             <div>
               <Autocomplete
                 disable
@@ -87,6 +95,7 @@ function Adauga_Angajat() {
                 renderInput={params => <TextField {...params} label='Lista de Echipe' />}
               />
             </div>
+            <br></br>
           </div>
         </Container>
         <div>
