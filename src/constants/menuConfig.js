@@ -1,6 +1,5 @@
 import React from 'react'
 import { Dashboard } from '@material-ui/icons'
-import NoteAddIcon from '@material-ui/icons/NoteAdd'
 import { People } from '@material-ui/icons'
 import { PersonAdd } from '@material-ui/icons'
 import DateRangeIcon from '@material-ui/icons/DateRange'
