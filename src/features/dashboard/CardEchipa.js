@@ -24,7 +24,7 @@ export default function CardEchipa(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button variant='contained' color='success'>
+          <Button variant='contained' color='primary'>
             Vizualizeaza echipa
           </Button>
         </CardActions>
