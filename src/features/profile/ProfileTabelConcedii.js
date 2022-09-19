@@ -38,7 +38,6 @@ const rows = [
     dataSfarsit: '10/17/2022',
     inlocuitor: 'Andrei Ionescu',
     motiv: '',
-    angajat: 'Ion Popescu',
     stareConcediu: 'Aprobat'
   },
   {
@@ -48,7 +47,6 @@ const rows = [
     dataSfarsit: '9/29/2022',
     inlocuitor: 'Maria Iancu',
     motiv: '',
-    angajat: 'Ion Popescu',
     stareConcediu: 'Trimis'
   },
   {
@@ -58,7 +56,6 @@ const rows = [
     dataSfarsit: '8/30/2022',
     inlocuitor: 'Andreea Bogdan',
     motiv: '',
-    angajat: 'Ion Popescu',
     stareConcediu: 'Respins'
   },
   {
@@ -68,7 +65,6 @@ const rows = [
     dataSfarsit: '8/30/2022',
     inlocuitor: 'Andreea Bogdan',
     motiv: '',
-    angajat: 'Ion Popescu',
     stareConcediu: 'Respins'
   },
   {
@@ -78,7 +74,6 @@ const rows = [
     dataSfarsit: '8/30/2022',
     inlocuitor: 'Andreea Bogdan',
     motiv: '',
-    angajat: 'Ion Popescu',
     stareConcediu: 'Respins'
   }
 ]
@@ -105,9 +100,6 @@ function ProfileTabelConcedii(props) {
               Motiv
             </StyledTableCell>
             <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
-              Angajat
-            </StyledTableCell>
-            <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
               Starea concediului
             </StyledTableCell>
           </TableRow>
@@ -122,7 +114,6 @@ function ProfileTabelConcedii(props) {
               <StyledTableCell align='center'>{row.dataSfarsit}</StyledTableCell>
               <StyledTableCell align='center'>{row.inlocuitor}</StyledTableCell>
               <StyledTableCell align='center'>{row.motiv}</StyledTableCell>
-              <StyledTableCell align='center'>{row.angajat}</StyledTableCell>
               <StyledTableCell align='center'>{row.stareConcediu}</StyledTableCell>
             </StyledTableRow>
           ))}
