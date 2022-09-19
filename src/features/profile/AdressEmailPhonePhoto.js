@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 
 
 
-function ProfilePhoto(props) {
+function AdressEmailPhonePhoto(props) {
  //const addToast = useToast()
  // addToast('Welcome', 'success')
   return (
     <div> <Person className = {props.idDat}/></div>
   )
 }
-ProfilePhoto.propTypes = {
+AdressEmailPhonePhoto.propTypes = {
   idDat: PropTypes.object.isRequired
 }
-export default ProfilePhoto
+export default AdressEmailPhonePhoto
