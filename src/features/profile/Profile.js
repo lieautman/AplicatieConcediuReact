@@ -19,7 +19,6 @@ const useStyles = makeStyles(profileStyle)
 function Profile({stare}) {
   //css
   const classes = useStyles()
-  console.log(stare.textDataNastere)
 
   return (
     <Fragment>
