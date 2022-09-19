@@ -13,15 +13,20 @@
   "MyProfile": "My Profile",
   "Forbidden": "Not allowed to see this page!",
   "NavBar": {
+    "ToateConcediile": "My vacations",
     "Dashboard": "Dashboard",
+    "Angajati":"Employees",
+    "Adauga_Angajat": "Add Employee",
     "Settings": "Settings",
     "Privacy": "Privacy",
-    "Security": "Security"
+    "Security": "Security",
+    "CreareConcediu": "Add Vacantion"
   },
   "Tooltips": {
     "Logout": "Logout",
     "HidePassword": "Hide password",
     "ShowPassword": "Show password"
+   
   },
   "Dialog": {
     "Yes": "Yes",
@@ -51,6 +56,7 @@
       "MaxCharacters": "The length must be less than {{max}}",
       "MinCharacters": "The length must be greater than {{min}}",
       "Unique": "The value of {{selector}} must be unique"
+     
     }
   }
 }
