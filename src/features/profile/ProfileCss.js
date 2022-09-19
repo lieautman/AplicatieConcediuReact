@@ -67,7 +67,7 @@ const profileStyle = theme => {
             padding: '0',
             margin: '16px',
             width: '300px',
-            marginTop: '2.2rem',
+            marginTop: '1.4rem',
         },
         pozaAdresaEmailTelefon:{
             height: '50px',
