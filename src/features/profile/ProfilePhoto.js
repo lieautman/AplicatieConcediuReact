@@ -12,6 +12,6 @@ function ProfilePhoto(props) {
   )
 }
 ProfilePhoto.propTypes = {
-  idDat: PropTypes.object.isRequired
+  idDat: PropTypes.string.isRequired
 }
 export default ProfilePhoto

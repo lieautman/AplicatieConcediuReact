@@ -1,7 +1,13 @@
 const profileStyle = theme => {
     return {
         styleContainerMare:{
-            display:'flex',
+
+            [theme.breakpoints.up('sm')]: {
+                display: 'inline',
+            },
+            [theme.breakpoints.up('sm')]: {
+                display: 'flex',
+            },
         },
         textNumePrenume:{
             color:'#C7C7C7',
@@ -84,7 +90,30 @@ const profileStyle = theme => {
             [theme.breakpoints.up('lg')]: {
                 display: 'flex',
             },
-        }
+        },
+
+
+        styleContainerConcediileMele:{
+            margin: '1rem',
+        },
+        stilTabel:{
+            height:'19rem',
+        },
+
+
+
+        butonUploadAtasament:{
+            background: '#F5F5F5',
+            border: '2px dashed #C2C2C2',
+            borderRadius: '14px',
+            display: 'flex',
+            alignItems: 'center',
+        },
+
+        stilADouaJumatateDePagina:{
+            overflow: 'scroll',
+        },
+
     }
 }
 export default profileStyle

@@ -12,6 +12,6 @@ function AdressEmailPhonePhoto(props) {
   )
 }
 AdressEmailPhonePhoto.propTypes = {
-  idDat: PropTypes.object.isRequired
+  idDat: PropTypes.string.isRequired
 }
 export default AdressEmailPhonePhoto

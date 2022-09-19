@@ -13,7 +13,7 @@ function ProfileUserDataString(props) {
   )
 }
 ProfileUserDataString.propTypes = {
-  text: PropTypes.object.isRequired,
-  idDat: PropTypes.object.isRequired,
+  text: PropTypes.string.isRequired,
+  idDat: PropTypes.string.isRequired,
 }
 export default ProfileUserDataString
