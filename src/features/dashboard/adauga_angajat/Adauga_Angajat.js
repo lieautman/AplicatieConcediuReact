@@ -16,81 +16,84 @@ function Adauga_Angajat() {
 
   return (
     <Fragment>
-      <Typography>Adauga Angajat</Typography>
-      <Container className maxWidth='sm'>
+      <div className={classes.containeradaugaaangajat}>
+        <Typography>Adauga Angajat</Typography>
+        <Container className maxWidth='sm'>
+          <div>
+            <label className={classes.containeradaugaaangajat}>{'Adauga un angajat nou'}</label>
+            <div>
+              <TextField label={'Nume'}></TextField>
+            </div>
+            <div>
+              <TextField label={'Prenume'}></TextField>
+            </div>
+
+            <div>
+              <TextField
+                id='date'
+                label='Data Nasterii'
+                type='date'
+                defaultValue='2022-09-24'
+                className={classes.textField}
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />{' '}
+            </div>
+            <div>
+              <TextField label={'CNP'}></TextField>
+            </div>
+            <div>
+              <TextField label={'Seria Numar CI'}></TextField>
+            </div>
+            <div>
+              <TextField label={'Numar de telefon'}></TextField>
+            </div>
+            <div>
+              <TextField label={'Salariu'}></TextField>
+            </div>
+
+            <div>
+              <TextField
+                id='date'
+                label='Data Angajarii'
+                type='date'
+                defaultValue='2022-09-24'
+                className={classes.textField}
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />{' '}
+            </div>
+            <div>
+              <Autocomplete
+                disable
+                portal
+                id='combo-box-manageri'
+                options={ListaManageri}
+                // getOptionLabel={option => option.title}
+
+                renderInput={params => <TextField {...params} label='Lista de Mangeri' />}
+              />
+            </div>
+            <div>
+              <Autocomplete
+                disable
+                portal
+                id='combo-box-echipe'
+                options={ListaEchipe}
+                // getOptionLabel={option => option.title}
+
+                renderInput={params => <TextField {...params} label='Lista de Echipe' />}
+              />
+            </div>
+          </div>
+        </Container>
         <div>
-          <div>
-            <TextField label={'Nume'}></TextField>
-          </div>
-          <div>
-            <TextField label={'Prenume'}></TextField>
-          </div>
-
-          <div>
-            <TextField
-              id='date'
-              label='Data Nasterii'
-              type='date'
-              defaultValue='2022-09-24'
-              className={classes.textField}
-              InputLabelProps={{
-                shrink: true
-              }}
-            />{' '}
-          </div>
-          <div>
-            <TextField label={'CNP'}></TextField>
-          </div>
-          <div>
-            <TextField label={'Seria Numar CI'}></TextField>
-          </div>
-          <div>
-            <TextField label={'Numar de telefon'}></TextField>
-          </div>
-          <div>
-            <TextField label={'Salariu'}></TextField>
-          </div>
-
-          <div>
-            <TextField
-              id='date'
-              label='Data Angajarii'
-              type='date'
-              defaultValue='2022-09-24'
-              className={classes.textField}
-              InputLabelProps={{
-                shrink: true
-              }}
-            />{' '}
-          </div>
-          <div>
-            <Autocomplete
-              disable
-              portal
-              id='combo-box-manageri'
-              options={ListaManageri}
-              // getOptionLabel={option => option.title}
-
-              renderInput={params => <TextField {...params} label='Lista de Mangeri' />}
-            />
-          </div>
-          <div>
-            <Autocomplete
-              disable
-              portal
-              id='combo-box-echipe'
-              options={ListaEchipe}
-              // getOptionLabel={option => option.title}
-
-              renderInput={params => <TextField {...params} label='Lista de Echipe' />}
-            />
-          </div>
+          <button className={classes.StyleBtn} variant='contained' size='large'>
+            Adauga
+          </button>
         </div>
-      </Container>
-      <div>
-        <button className={classes.StyleBtn} variant='contained' size='large'>
-          Adauga
-        </button>
       </div>
     </Fragment>
   )
