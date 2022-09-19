@@ -5,6 +5,7 @@ import { TextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Adauga_Angajatcss from './Adauga_Angajatcss'
 import { Autocomplete } from '@material-ui/lab'
+import { Grid } from '@material-ui/core'
 
 const useStyles = makeStyles(Adauga_Angajatcss)
 
@@ -84,13 +85,13 @@ function Adauga_Angajat() {
               renderInput={params => <TextField {...params} label='Lista de Echipe' />}
             />
           </div>
-          <div>
-            <Button className={Adauga_Angajat} variant='contained' color='primary' size='large'>
-              Adauga
-            </Button>
-          </div>
         </div>
       </Container>
+      <div>
+        <button className={classes.StyleBtn} variant='contained' size='large'>
+          Adauga
+        </button>
+      </div>
     </Fragment>
   )
 }
