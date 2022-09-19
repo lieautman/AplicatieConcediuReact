@@ -19,7 +19,7 @@ const useStyles = makeStyles(profileStyle)
 function Profile({stare}) {
   //css
   const classes = useStyles()
-
+  console.log(stare.textDataNastere)
 
   return (
     <Fragment>
@@ -86,7 +86,7 @@ function Profile({stare}) {
             <div>
               <ProfileUserDataString text={stare.textDataNastere} idDat={classes.textNumePrenume}></ProfileUserDataString>
               <ProfileUserDataString
-                text={stare.textDataAngajareActuala}
+                text={stare.textDataNastereActuala}
                 idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
               ></ProfileUserDataString>
             </div>
