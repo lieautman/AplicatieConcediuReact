@@ -1,16 +1,17 @@
-import React, { Fragment } from 'react'
-import { Typography, Grid } from '@material-ui/core'
-import { useToast } from '@bit/totalsoft_oss.react-mui.kit.core'
+import * as React from 'react'
+import TabelAngajati from './TabelAngajati'
 
-function Angajati() {
-  const addToast = useToast()
-  addToast('Welcome', 'success')
-  return (
-    <Fragment>
-      <Typography>Pagina angajati...</Typography>
-      <Grid>Internships are amazing.</Grid>
-    </Fragment>
-  )
+function createData(nume, prenume, email, manager, echipa) {
+  return { nume, prenume, email, manager, echipa }
 }
+const rows = [
+  createData('Popescu', 'Ioana', 'ioana@gmail.com', 'Popa Irina', 'IT'),
+  createData('Ionescu', 'Ana', 'ana@yahoo.ro', 'Popescu Mihai', 'Marketing'),
+  createData('Vasilescu', 'Mihai', 'mihai@gmail.com', 'Ionescu Cristina', 'Resurse Umane'),
+  createData('Enescu', 'Ion', 'ion@gmail.com', 'Soare Mihaela', 'Marketing'),
+  createData('Georgescu', 'Alina', 'alina@gmail.com', 'Enescu George', 'IT')
+]
 
-export default Angajati
+export default function Angajati() {
+  return <TabelAngajati rows={rows}></TabelAngajati>
+}

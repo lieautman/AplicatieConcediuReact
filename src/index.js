@@ -13,6 +13,7 @@ import 'moment/locale/ro'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import { AreasWrapper } from './providers/AreasProvider'
 
+
 import AuthApolloProvider from 'apollo/AuthApolloProvider'
 import AuthProvider from 'providers/TenantAuthenticationProvider'
 
