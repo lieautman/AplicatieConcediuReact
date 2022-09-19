@@ -12,6 +12,8 @@ export const initialState  = {
     textFunctiaActuala  : 'Administrator Aplicatie Concedii',
     textDataAngajare  : 'DATA ANGAJARE',
     textDataAngajareActuala  : '22.01.2011',
+    textDataNastere  : 'DATA NASTERE',
+    textDataNastereActuala  : '12.01.2001',
     textCnp  : 'COD NUMERIC PERSONAL',
     textCnpActual  : '1234567890123',
     textSerieNumarCi  : 'SERIE SI NUMAR CI',

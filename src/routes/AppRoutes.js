@@ -6,7 +6,7 @@ import { Forbidden, NotFound } from '@bit/totalsoft_oss.react-mui.kit.core'
 import Dashboard from 'features/dashboard/Dashboard'
 
 import ProfileState from 'features/profile/ProfileState'
-import ProfileEdit from 'features/profile/ProfileEdit'
+import ProfileEditState from 'features/profile/ProfileEditState'
 
 
 import CreareConcediu from 'features/creareConcediu/CreareConcediu'
@@ -24,7 +24,7 @@ export default function AppRoutes() {
       
       <CustomRoute isPrivate={false} exact path='/profile' component={ProfileState} />
       <Redirect exact from='/' to='/profile' />
-      <CustomRoute isPrivate={false} exact path='/profileEdit' component={ProfileEdit} />
+      <CustomRoute isPrivate={false} exact path='/profileEdit' component={ProfileEditState} />
       <Redirect exact from='/' to='/profileEdit' />
 
       <CustomRoute isPrivate={false} exact path='/angajati' component={Angajati} />
