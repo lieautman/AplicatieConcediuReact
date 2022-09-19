@@ -114,6 +114,16 @@ const profileStyle = theme => {
             overflow: 'scroll',
         },
 
+
+        stilEditPageDivContainer:{
+            display: 'flex',
+            flexDirection:'column',
+            alignItems: 'center',
+        },
+        stilEditPageInput:{
+            padding:'0.22rem',
+        },
+        
     }
 }
 export default profileStyle
