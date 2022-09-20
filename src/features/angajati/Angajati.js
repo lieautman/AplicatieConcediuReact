@@ -5,9 +5,10 @@ import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core'
 import stilAngajati from './StilAngajati'
 import stilButoane from './StilButoane'
+import TextField from '@mui/material/TextField'
 
 const stilAng = makeStyles(stilAngajati)
-const stilBtn= makeStyles(stilButoane)
+const stilBtn = makeStyles(stilButoane)
 
 function createData(nume, prenume, email, manager, echipa) {
   return { nume, prenume, email, manager, echipa }
@@ -20,33 +21,52 @@ const rows = [
   createData('Georgescu', 'Alina', 'alina@gmail.com', 'Enescu George', 'IT')
 ]
 
-
 export default function Angajati() {
   const stilButoanePaginare = stilAng()
-  const stilButoaneActiuni= stilBtn()
+  const stilButoaneActiuni = stilBtn()
   return (
     <div>
       <div className={stilButoanePaginare.divMarebutoane}>
-      <div>
-        <button className={stilButoaneActiuni.buton} >
-          ADAUGA UN ANGAJAT NOU
-        </button>
-      </div>
+        <div>
+          <Link to='/adauga_angajat'>
+            <button className={stilButoaneActiuni.buton}>ADAUGA UN ANGAJAT NOU</button>
+          </Link>
+        </div>
 
-      <div>
-        <button className={stilButoaneActiuni.buton}>
-          APROBA ANGAJAT
-        </button>
-      </div>
+        <div>
+          <button className={stilButoaneActiuni.buton}>APROBA ANGAJAT</button>
+        </div>
 
-      <div>
-        <button className={stilButoaneActiuni.buton}>
-          PROMOVEAZA ANGAJAT
-        </button>
+        <div>
+          <button className={stilButoaneActiuni.buton}>PROMOVEAZA ANGAJAT</button>
+        </div>
       </div>
-      </div>
-      
       <br></br>
+      <div className={stilButoanePaginare.divMareTextField}>
+        <div>
+          {' '}
+          <TextField id='filled-basic' label='Nume' variant='standard' size='small' />
+        </div>
+        <div>
+          {' '}
+          <TextField id='filled-basic' label='Prenume' variant='standard' size='small' />
+        </div>
+        <div>
+          {' '}
+          <TextField id='filled-basic' label='Email' variant='standard' size='small' />
+        </div>
+        <div>
+          {' '}
+          <TextField id='filled-basic' label='Manager' variant='standard' size='small' />
+        </div>
+        <div>
+          {' '}
+          <TextField id='filled-basic' label='Echipa' variant='standard' size='small' />
+        </div>
+      </div>
+
+      <br></br>
+
       <TabelAngajati rows={rows}></TabelAngajati>
       <div className={stilButoanePaginare.divMarebutoane}>
         <div>
