@@ -4,7 +4,7 @@ import {initialState, reducer} from './ProfileStateDefine'
 
 //state management
 function ProfileState() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state] = useReducer(reducer, initialState);
 
   return (
     <>

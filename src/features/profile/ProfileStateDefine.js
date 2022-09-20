@@ -25,4 +25,14 @@ export const initialState  = {
     textAtasamenteUpload  : 'Incarca Fisier',
     textAtasamenteUploadTypes  : 'PDF, DOC,PPT, JPG, PNG',
 }
-export function reducer(state, action) {}
+export function reducer(state, action) {
+    switch (action.inputName) {
+        case 'textNume':
+          return {textNume: action.inputValue};
+        
+        case 'textPrenume':
+            return {textPrenume: action.inputValue};
+        default:
+          throw new Error();
+      }
+}

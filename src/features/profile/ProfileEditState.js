@@ -10,14 +10,15 @@ function ProfileEditState() {
   //css
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  function modifyDataProfile(){
-    
+  function modifyDataProfile(inputName, inputValue){
+    dispatch({inputName, inputValue})
   }
 
   return (
     <>
     <ProfileEdit
       stare={state}
+      modifyDataProfile= {modifyDataProfile}
     ></ProfileEdit>
   </>
   )

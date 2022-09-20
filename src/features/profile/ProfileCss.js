@@ -119,6 +119,12 @@ const profileStyle = theme => {
             display: 'flex',
             flexDirection:'column',
             alignItems: 'center',
+            margin:'auto',
+        },
+        stilEditPageDivContainer1:{
+            display: 'flex',
+            flexDirection:'row',
+            alignItems: 'center',
         },
         stilEditPageInput:{
             padding:'0.22rem',
