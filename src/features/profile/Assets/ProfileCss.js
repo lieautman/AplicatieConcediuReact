@@ -100,18 +100,17 @@ const profileStyle = theme => {
     stilTabel: {
       height: '19rem'
     },
-    stilButonInainte: {
-      float: 'right',
+    stilButonInainte:  {
+      float:  'right',
       backgroundColor: '#05241d',
       width: '60px',
       height: '30px',
       borderRadius: '25px',
       color: 'white',
       '&:hover': {
-        backgroundColor: 'lightblue'
+        backgroundColor: '#26c6da'
       }
     },
-
     stilButonInapoi: {
       backgroundColor: '#05241d',
       width: '60px',
@@ -119,7 +118,7 @@ const profileStyle = theme => {
       borderRadius: '25px',
       color: 'white',
       '&:hover': {
-        backgroundColor: 'lightblue'
+        backgroundColor: '#26c6da'
       }
     },
     butonUploadAtasament: {
@@ -129,6 +128,10 @@ const profileStyle = theme => {
       display: 'flex',
       alignItems: 'center'
     },
+    butonUploadAtasamentButon: {
+      background: '#26c6da'
+    },
+
 
     //pag edit
     stilEditPageDivContainer1: {
@@ -159,6 +162,9 @@ const profileStyle = theme => {
       padding: '0.22rem',
       top: '35rem',
       left: '35rem'
+    },
+    button:{
+      backgroundColor:'#26c6da'
     }
   }
 }

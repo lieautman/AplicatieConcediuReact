@@ -3,6 +3,8 @@ import { styled } from '@mui/material/styles'
 import TableCell, { tableCellClasses } from '@mui/material/TableCell'
 import TableRow from '@mui/material/TableRow'
 import PropTypes from 'prop-types'
+import Checkbox from '@mui/material/Checkbox'
+import { useState } from 'react'
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
@@ -25,9 +27,25 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   }
 }))
 
-export default function DateIncarcate({ row }) {
+export default function DateIncarcate(props) {
+  const { row, key, setIdRand, esteAdmin } = props
+
   return (
     <StyledTableRow key={row.name}>
+      {esteAdmin && (
+        <StyledTableCell align='center'>
+          <Checkbox
+            style={{ color: '#26c6da' }}
+            // indeterminate={numSelected > 0 && numSelected < rowCount}
+            // checked={rowCount > 0 && numSelected === rowCount}
+            onChange={setIdRand(key)}
+            inputProps={{
+              'aria-label': 'select all desserts'
+            }}
+          />
+        </StyledTableCell>
+      )}
+
       <StyledTableCell component='th' scope='row' align='center'>
         {row.name}
       </StyledTableCell>
@@ -41,5 +59,8 @@ export default function DateIncarcate({ row }) {
 }
 
 DateIncarcate.propTypes = {
-  row: PropTypes.object.isRequired
+  row: PropTypes.object.isRequired,
+  setIdRand: PropTypes.func.isRequired,
+  key: PropTypes.number.isRequired,
+  esteAdmin: PropTypes.bool.isRequired
 }

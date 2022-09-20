@@ -1,11 +1,13 @@
 import * as React from 'react'
 import TabelAngajati from './TabelAngajati'
-import Button from '@mui/material/Button'
 import { Link } from 'react-router-dom'
-import { makeStyles } from '@material-ui/core'
+import { IconButton, makeStyles } from '@material-ui/core'
 import stilAngajati from './StilAngajati'
 import stilButoane from './StilButoane'
 import TextField from '@mui/material/TextField'
+import NavigateNext from '@material-ui/icons/NavigateNext'
+import NavigateBefore from '@material-ui/icons/NavigateBefore'
+
 
 const stilAng = makeStyles(stilAngajati)
 const stilBtn = makeStyles(stilButoane)
@@ -38,7 +40,10 @@ export default function Angajati() {
         </div>
 
         <div>
+          <Link to='/angajati/Promovare'>
           <button className={stilButoaneActiuni.buton}>PROMOVEAZA ANGAJAT</button>
+          </Link>
+
         </div>
       </div>
       <br></br>
@@ -68,12 +73,13 @@ export default function Angajati() {
       <br></br>
 
       <TabelAngajati rows={rows}></TabelAngajati>
+
       <div className={stilButoanePaginare.divMarebutoane}>
         <div>
-          <button className={stilButoanePaginare.butonInapoi}>Inapoi</button>
+          <IconButton aria-label="NavigateBefore" ><NavigateBefore/></IconButton>
         </div>
         <div className={stilButoanePaginare.divButonInainte}>
-          <button className={stilButoanePaginare.butonInainte}>Inainte</button>
+          <IconButton aria-label="NavigateNext" ><NavigateNext/></IconButton>
         </div>
       </div>
     </div>

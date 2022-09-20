@@ -3,7 +3,8 @@
 const stilAngajati = theme => {
   return {
     tabel: {
-      height: '300px'
+      height: '300px',
+     
     },
     butonInapoi:{
         backgroundColor:'#1976d2',
@@ -40,7 +41,29 @@ const stilAngajati = theme => {
       display:'flex',
       justifyContent:'space-between',
       
+    },
+    divPromovare:{
+      display:'flex',
+      justifyContent:'center',
+      
+    },
+    textManager:{
+      marginLeft:'1.5rem',
+  
+    },
+    divSelect:{
+      marginLeft:'2rem',
+     display:'flex',
+     flexDirection:'column',
+    },
+    divTabelePromovare:{
+      display:'flex',
+      justifyContent:'space-between',
+      marginTop:'50px',
+      
     }
+    
+
   }
 }
 export default stilAngajati

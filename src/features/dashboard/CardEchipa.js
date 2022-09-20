@@ -26,7 +26,7 @@ export default function CardEchipa(props) {
         </CardContent>
         <CardActions>
           <Link to={'/angajati_echipe'}>
-            <Button variant='contained' color='primary'>
+            <Button variant='contained' style={{ backgroundColor: '#26c6da' }}>
               Vizualizeaza echipa
             </Button>
           </Link>

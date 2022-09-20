@@ -96,7 +96,6 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           </div>
         </div>
         <div className={classes.stilEditPageInputButton}>
-          {' '}
           <Link to={'/profile'}>
             <Button variant='contained' color='primary' size='large' className={classes.button} startIcon={<SaveIcon />}>
               Save
