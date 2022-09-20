@@ -6,7 +6,7 @@ import { Forbidden, NotFound } from '@bit/totalsoft_oss.react-mui.kit.core'
 import Dashboard from 'features/dashboard/Dashboard'
 
 import ProfileState from 'features/profile/ProfileState'
-import ProfileEditState from 'features/profile/ProfileEditState'
+import ProfileEditState from 'features/profile/EditProfile/ProfileEditState'
 
 import CreareConcediu from 'features/creareConcediu/CreareConcediu'
 import ToateConcediile from 'features/afisareConcedii/ToateConcediile'

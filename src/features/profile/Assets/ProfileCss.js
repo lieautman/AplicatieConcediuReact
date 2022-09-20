@@ -81,6 +81,14 @@ const profileStyle = theme => {
       color: '#202020'
     },
 
+
+
+    
+    stilADouaJumatateDePagina: {
+      overflow: 'scroll',
+      overflowY: 'hidden', /* Hide vertical scrollbar */
+      overflowX: 'hidden' /* Hide horizontal scrollbar */
+    },
     styleCnpSerieNumarCi: {
       [theme.breakpoints.up('lg')]: {
         display: 'inline'
@@ -89,14 +97,27 @@ const profileStyle = theme => {
         display: 'flex'
       }
     },
-
     styleContainerConcediileMele: {
       margin: '1rem'
     },
     stilTabel: {
       height: '19rem'
     },
-
+    stilButonInainte:{
+      float:'right',
+      backgroundColor: '#1565c0',
+      width:'60px',
+      height:'30px',
+      borderRadius:'25px',
+      color:'white',
+    },
+    stilButonInapoi:{
+      backgroundColor: '#1565c0',
+      width:'60px',
+      height:'30px',
+      borderRadius:'25px',
+      color:'white',
+    },
     butonUploadAtasament: {
       background: '#F5F5F5',
       border: '2px dashed #C2C2C2',
@@ -105,10 +126,9 @@ const profileStyle = theme => {
       alignItems: 'center'
     },
 
-    stilADouaJumatateDePagina: {
-      overflow: 'scroll'
-    },
 
+
+    //pag edit
     stilEditPageDivContainer1: {
       alignItems: 'center',
       position: 'relative'
