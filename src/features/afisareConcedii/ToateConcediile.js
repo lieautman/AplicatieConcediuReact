@@ -41,7 +41,7 @@ export default function ToateConcediile() {
     <div>
       <div>
         <Link to='./AprobareConcedii'>
-          <Button variant='contained' color='primary'>
+          <Button variant='contained' style={{ backgroundColor: '#26c6da' }}>
             Aproba concedii
           </Button>
         </Link>

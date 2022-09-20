@@ -48,10 +48,10 @@ export default function AprobareConcedii() {
     <div>
       <div>
         <div align='right'>
-          <Button variant='contained' color='primary'>
+          <Button variant='contained' style={{ backgroundColor: '#26c6da' }}>
             Aproba
           </Button>
-          <Button variant='contained' color='error'>
+          <Button variant='contained' style={{ backgroundColor: '#FE4900' }}>
             Respinge
           </Button>
         </div>
