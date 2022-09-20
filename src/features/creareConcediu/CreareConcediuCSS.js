@@ -2,13 +2,10 @@ import { withTheme } from '@material-ui/core'
 
 import { findLastIndex } from 'ramda'
 
-
-
 const CreareConcediuCSS = theme => {
-
   return {
-
     StyleBtn: {
+      align: 'center',
 
       fontStyle: 'normal',
 
@@ -24,14 +21,19 @@ const CreareConcediuCSS = theme => {
 
       marginTop: '40px',
 
-      marginLeft: '320px',
+      marginLeft: '10px',
 
-      borderRadius:'50px',
+      borderRadius: '50px'
+    },
+    datePicker: { display: 'flex' },
 
-    }
+    formLabel1: { display: 'flex', marginTop: '1rem', alignContent: 'space-between' },
 
+    formLabel2: { display: 'flex', marginTop: '1rem' },
+
+    card: { display: 'flex', alignItems: 'center', flexDirection: 'column' },
+    title: { marginLeft: '70px' }
   }
-
 }
 
 export default CreareConcediuCSS
