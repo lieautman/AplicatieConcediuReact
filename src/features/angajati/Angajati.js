@@ -28,7 +28,7 @@ export default function Angajati() {
     <div>
       <div className={stilButoanePaginare.divMarebutoane}>
       <div>
-        <button className={stilButoaneActiuni.buton} onClick={AdaugaAngajat()}>
+        <button className={stilButoaneActiuni.buton} >
           ADAUGA UN ANGAJAT NOU
         </button>
       </div>
