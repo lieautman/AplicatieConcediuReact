@@ -1,7 +1,7 @@
 const stilButoane = theme =>{
     return{
 buton:{
-    backgroundColor:'#42a5f5',
+    backgroundColor:'#26c6da',
     color:'white',
     border:'none',
     height:'40px',
@@ -14,6 +14,7 @@ buton:{
 butoaneListePromovare:{
     display:'flex',
     flexDirection:'column',
+    justifyContent:'space-around',
 }
     }
 }

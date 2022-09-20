@@ -12,45 +12,45 @@ import stilButoane from './StilButoane'
 import { makeStyles } from '@material-ui/core'
 import InputLabel from '@mui/material/InputLabel'
 import TabelAngajatiDePromovat from './TabelAngajatiDePromovat'
-import IconButton from '@mui/material/IconButton';
+import IconButton from '@mui/material/IconButton'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import { useHeader } from 'providers/AreasProvider'
 import headerStyle from 'assets/jss/components/headerStyle'
 
-
-
-
+const useStyles = makeStyles(stilAngajati)
 
 export default function BasicCard() {
-
- const useStyles = makeStyles(headerStyle)
-  const stilAng = makeStyles(stilAngajati)
-  const stilPromovare = stilAng()
-  const titlu=useStyles()
-  useHeader(<Typography className={titlu.title}>{'Promovare angajat'}</Typography>)
+  //   const stilAng = makeStyles(stilAngajati)
+  //   const stilPromovare = stilAng()
+  const stilPromovare = useStyles()
+  useHeader(
+    <div variant='subtitles1' className={stilPromovare.stilTitlu}>
+      {'Promovare angajat'}
+    </div>
+  )
 
   const stilButon = makeStyles(stilButoane)
   const stilBtn = stilButon()
 
-  function createData(nume, prenume,  echipa) {
-    return { nume, prenume,  echipa }
+  function createData(nume, prenume, echipa) {
+    return { nume, prenume, echipa }
   }
   const rows = [
-    createData('Popescu', 'Ioana',  'IT'),
-    createData('Ionescu', 'Ana',  'Marketing'),
-    createData('Vasilescu', 'Mihai',  'Resurse Umane'),
-    createData('Enescu', 'Ion',  'Marketing'),
-    createData('Georgescu', 'Alina',  'IT')
+    createData('Popescu', 'Ioana', 'IT'),
+    createData('Ionescu', 'Ana', 'Marketing'),
+    createData('Vasilescu', 'Mihai', 'Resurse Umane'),
+    createData('Enescu', 'Ion', 'Marketing'),
+    createData('Georgescu', 'Alina', 'IT')
   ]
-  const rows2=[
-    createData('','',''),
-    createData('','',''),
-    createData('','',''),
-    createData('','',''),
-    createData('','',''),
-    createData('','',''),
-    createData('','',''),
+  const rows2 = [
+    createData('', '', ''),
+    createData('', '', ''),
+    createData('', '', ''),
+    createData('', '', ''),
+    createData('', '', ''),
+    createData('', '', ''),
+    createData('', '', '')
   ]
   return (
     <div>
@@ -60,7 +60,7 @@ export default function BasicCard() {
             <CardContent>
               <div className={stilPromovare.divPromovare}>
                 <div>
-                  <Avatar sx={{ bgcolor: '#42a5f5', width: 100, height: 100 }} aria-label='recipe'>
+                  <Avatar sx={{ bgcolor: '#05241d', width: 100, height: 100 }} aria-label='recipe'>
                     Poza
                   </Avatar>
                 </div>
@@ -100,12 +100,20 @@ export default function BasicCard() {
         </div>
       </div>
       <div className={stilPromovare.divTabelePromovare}>
-        <div><TabelAngajatiDePromovat rows={rows}></TabelAngajatiDePromovat></div>
-        <div className={stilBtn.butoaneListePromovare}>
-        <IconButton aria-label="KeyboardArrowRight" ><KeyboardArrowRight/></IconButton>
-        <IconButton aria-label="KeyboardArrowLeft"><KeyboardArrowLeft/></IconButton> 
+        <div>
+          <TabelAngajatiDePromovat rows={rows}></TabelAngajatiDePromovat>
         </div>
-        <div><TabelAngajatiDePromovat rows={rows2}></TabelAngajatiDePromovat></div>
+        <div className={stilBtn.butoaneListePromovare}>
+          <IconButton aria-label='KeyboardArrowRight' style={{ backgroundColor: '#26c6da', color: 'white' }}>
+            <KeyboardArrowRight />
+          </IconButton>
+          <IconButton aria-label='KeyboardArrowLeft' style={{ backgroundColor: '#26c6da', color: 'white' }}>
+            <KeyboardArrowLeft />
+          </IconButton>
+        </div>
+        <div>
+          <TabelAngajatiDePromovat rows={rows2}></TabelAngajatiDePromovat>
+        </div>
       </div>
     </div>
   )
