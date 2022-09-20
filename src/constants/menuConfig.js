@@ -9,6 +9,6 @@ const menuItems = [
   { icon: <Dashboard />, text: 'NavBar.Dashboard', path: '/dashboard', name: 'Dashboard' },
   { icon: <DateRangeIcon />, text: 'NavBar.ToateConcediile', path: '/toateConcediile', name: 'ToateConcediile' },
   { icon: <People />, text: 'NavBar.Angajati', path: '/angajati', name: 'Angajati' },
-  { icon: <ExitToAppIcon />, text: 'NavBar.Delogare', path: '/', name: 'Delogare' }
+  { icon: <ExitToAppIcon />, text: 'NavBar.Delogare', path: '/dashboard', name: 'Delogare' }
 ]
 export default menuItems
