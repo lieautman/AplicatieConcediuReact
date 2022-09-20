@@ -1,12 +1,16 @@
 import * as React from 'react'
-import TabelConcediu from './TabelConcediu'
+import TabelConcediu from 'features/afisareConcedii/TabelConcediu'
 import Button from '@mui/material/Button'
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { styled } from '@mui/material/styles'
+import { useState } from 'react'
+
+// const container = {
+//  ali
+// }
 
 const rows = [
   {
-    id: 1,
     name: 'Concediu medical',
     dataInceput: '10/16/2022',
     dataSfarsit: '10/17/2022',
@@ -15,7 +19,6 @@ const rows = [
     angajat: 'Ion Popescu'
   },
   {
-    id: 2,
     name: 'Concediu de odihna',
     dataInceput: '9/1/2022',
     dataSfarsit: '9/29/2022',
@@ -24,7 +27,6 @@ const rows = [
     angajat: 'Ion Popescu'
   },
   {
-    id: 3,
     name: 'Concediu de odihna',
     dataInceput: '8/28/2022',
     dataSfarsit: '8/30/2022',
@@ -34,20 +36,31 @@ const rows = [
   }
 ]
 
-export default function ToateConcediile() {
+export default function AprobareConcedii() {
   const [idRand, setIdRand] = useState(null)
-  const esteAdmin = false
+  const esteAdmin = true
+
   return (
     <div>
       <div>
-        <Link to='./AprobareConcedii'>
-          <Button variant='contained' color='primary'>
-            Aproba concedii
+        <Link to='/ToateConcediile'>
+          <Button variant='contained' color='warning'>
+            Inapoi
           </Button>
         </Link>
+        <div align='right'>
+          <Button variant='contained' color='primary'>
+            Aproba
+          </Button>
+          <Button variant='contained' color='error'>
+            Respinge
+          </Button>
+        </div>
       </div>
-      <br></br>
-      <TabelConcediu rows={rows} setIdRand={setIdRand} esteAdmin={esteAdmin}></TabelConcediu>
+      <div>
+        <br></br>
+        <TabelConcediu rows={rows} setIdRand={setIdRand} esteAdmin={esteAdmin}></TabelConcediu>
+      </div>
     </div>
   )
 }
