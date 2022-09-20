@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function ProfileEditButton(props) {
   return (
-    <Link to={"/profileEdit"}><Button>  <Edit className = {props.idDat}/></Button></Link>
+    <Link to={"/profileEdit"}><Button><Edit className = {props.idDat}/></Button></Link>
   )
 }
 ProfileEditButton.propTypes = {

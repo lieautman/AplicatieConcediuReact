@@ -38,17 +38,23 @@ const MenuItem = ({ menu, drawerOpen, activeRoute, isSubMenuItem, subMenuOpen, o
   const Item = isSubMenu ? ListItem : NavLink
   const itemProps = isSubMenu ? { onClick: onToggleSubMenu, button: true } : { to: path }
 
+  function buttonAction(text) {
+    if (text === 'NavBar.Delogare') {
+      //logout
+      //stergere token
+      localStorage.removeItem('token')
+      location.reload();
+    }
+  }
+
   return (
     <Tooltip disableHoverListener={!drawerOpen} title={translatedText}>
       <ListItem className={classes.menuItem}>
-        <Item {...itemProps} className={navLinkClasses}>
+        <Item {...itemProps} className={navLinkClasses} onClick={() => buttonAction(text)}>
           <ListItemIcon className={menuItemIconClasses}>{icon}</ListItemIcon>
           <ListItemText
             primary={translatedText}
-            secondary={
-              isSubMenu &&
-              (subMenuOpen ? <ArrowDropUp className={classes.caret} /> : <ArrowDropDown className={classes.caret} />)
-            }
+            secondary={isSubMenu && (subMenuOpen ? <ArrowDropUp className={classes.caret} /> : <ArrowDropDown className={classes.caret} />)}
             disableTypography={true}
             className={itemTextClasses}
           />

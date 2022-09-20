@@ -32,7 +32,7 @@ const appStyle = theme => {
       maxHeight: '100%',
       height: '100%',
       width: '100%',
-      overflowScrolling: 'touch'
+      overflowScrolling: 'touch',
     },
     mainPanelSidebarMini: {
       [theme.breakpoints.up('md')]: {

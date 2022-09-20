@@ -81,8 +81,7 @@ const sidebarStyle = theme => {
     themeBackground: {
       color: menuColor,
       '&:after': {
-        background: menuBkColor,
-        opacity: menuBkOpacity
+        background: '#05241d',//#003F31
       }
     },
     blueBackground: {
@@ -133,7 +132,7 @@ const sidebarStyle = theme => {
       marginLeft: '22px',
       marginRight: '18px',
       marginTop: '7px',
-      color: 'inherit'
+      color: 'inherit',
     },
     logoNormal: {
       ...defaultFont,
@@ -244,7 +243,7 @@ const sidebarStyle = theme => {
       transitionProperty: 'top, bottom, width',
       transitionDuration: '.2s, .2s, .35s',
       transitionTimingFunction: 'linear, linear, ease',
-      color: 'inherit'
+      color: 'inherit',
     },
     appVersion: {
       ...defaultFont,

@@ -6,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
-import RanduriAngajati from './RanduriAngajati'
+import RanduriAngajatiDePromovat from './RanduriAngajatiDePromovat'
 import TableBody from '@mui/material/TableBody'
 import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core'
@@ -26,13 +26,13 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   }
 }))
 
-export default function TabelAngajati({ rows }) {
+export default function TabelAngajatiDePromovat({ rows }) {
   const stilTabel = useStyles()
   return (
     <div>
       <TableContainer component={Paper}>
         <div className={stilTabel.tabel}>
-          <Table sx={{ minWidth: 700 }} aria-label='customized table'>
+          <Table sx={{ minWidth: 400 }} aria-label='customized table'>
             <TableHead>
               <TableRow>
                 <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
@@ -42,12 +42,6 @@ export default function TabelAngajati({ rows }) {
                   Prenume
                 </StyledTableCell>
                 <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
-                  Email
-                </StyledTableCell>
-                <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
-                  Manager
-                </StyledTableCell>
-                <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
                   Echipa
                 </StyledTableCell>
               </TableRow>
@@ -55,7 +49,7 @@ export default function TabelAngajati({ rows }) {
 
             <TableBody>
               {rows.map((row, i) => (
-                <RanduriAngajati row={row} key={i}></RanduriAngajati>
+                <RanduriAngajatiDePromovat row={row} key={i}></RanduriAngajatiDePromovat>
               ))}
             </TableBody>
           </Table>
@@ -65,6 +59,6 @@ export default function TabelAngajati({ rows }) {
     </div>
   )
 }
-TabelAngajati.propTypes = {
+TabelAngajatiDePromovat.propTypes = {
   rows: PropTypes.array.isRequired
 }

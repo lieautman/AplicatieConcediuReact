@@ -1,5 +1,16 @@
 import * as React from 'react'
 import TabelAngajati from './TabelAngajati'
+import { Link } from 'react-router-dom'
+import { IconButton, makeStyles } from '@material-ui/core'
+import stilAngajati from './StilAngajati'
+import stilButoane from './StilButoane'
+import TextField from '@mui/material/TextField'
+import NavigateNext from '@material-ui/icons/NavigateNext'
+import NavigateBefore from '@material-ui/icons/NavigateBefore'
+
+
+const stilAng = makeStyles(stilAngajati)
+const stilBtn = makeStyles(stilButoane)
 
 function createData(nume, prenume, email, manager, echipa) {
   return { nume, prenume, email, manager, echipa }
@@ -13,5 +24,64 @@ const rows = [
 ]
 
 export default function Angajati() {
-  return <TabelAngajati rows={rows}></TabelAngajati>
+  const stilButoanePaginare = stilAng()
+  const stilButoaneActiuni = stilBtn()
+  return (
+    <div>
+      <div className={stilButoanePaginare.divMarebutoane}>
+        <div>
+          <Link to='/adauga_angajat'>
+            <button className={stilButoaneActiuni.buton}>ADAUGA UN ANGAJAT NOU</button>
+          </Link>
+        </div>
+
+        <div>
+          <button className={stilButoaneActiuni.buton}>APROBA ANGAJAT</button>
+        </div>
+
+        <div>
+          <Link to='/angajati/Promovare'>
+          <button className={stilButoaneActiuni.buton}>PROMOVEAZA ANGAJAT</button>
+          </Link>
+
+        </div>
+      </div>
+      <br></br>
+      <div className={stilButoanePaginare.divMareTextField}>
+        <div>
+          {' '}
+          <TextField id='filled-basic' label='Nume' variant='standard' size='small' />
+        </div>
+        <div>
+          {' '}
+          <TextField id='filled-basic' label='Prenume' variant='standard' size='small' />
+        </div>
+        <div>
+          {' '}
+          <TextField id='filled-basic' label='Email' variant='standard' size='small' />
+        </div>
+        <div>
+          {' '}
+          <TextField id='filled-basic' label='Manager' variant='standard' size='small' />
+        </div>
+        <div>
+          {' '}
+          <TextField id='filled-basic' label='Echipa' variant='standard' size='small' />
+        </div>
+      </div>
+
+      <br></br>
+
+      <TabelAngajati rows={rows}></TabelAngajati>
+
+      <div className={stilButoanePaginare.divMarebutoane}>
+        <div>
+          <IconButton aria-label="NavigateBefore" ><NavigateBefore/></IconButton>
+        </div>
+        <div className={stilButoanePaginare.divButonInainte}>
+          <IconButton aria-label="NavigateNext" ><NavigateNext/></IconButton>
+        </div>
+      </div>
+    </div>
+  )
 }

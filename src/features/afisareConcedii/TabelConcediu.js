@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import DateIncarcate from './DateIncarcate'
 import PropTypes from 'prop-types'
+import CheckBox from '@mui/material/CheckBox'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -44,9 +45,6 @@ export default function TabelConcediu({ rows }) {
             </StyledTableCell>
             <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
               Angajat
-            </StyledTableCell>
-            <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
-              Starea concediului
             </StyledTableCell>
           </TableRow>
         </TableHead>
