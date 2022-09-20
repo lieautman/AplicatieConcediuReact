@@ -119,7 +119,7 @@ function Profile({stare}) {
           <div className={classes.styleContainerConcediileMele}>
             <ProfileUserDataString text={stare.textAtasamente} idDat={classes.textNume}></ProfileUserDataString>
             <div className={classes.butonUploadAtasament}>
-              <ProfileAddAtachment></ProfileAddAtachment>
+              <ProfileAddAtachment idDat={classes.butonUploadAtasamentButon}></ProfileAddAtachment>
               <div>
                 <ProfileUserDataString
                   text={stare.textAtasamenteUpload}
