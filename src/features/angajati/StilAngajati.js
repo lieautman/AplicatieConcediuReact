@@ -35,6 +35,11 @@ const stilAngajati = theme => {
     divMarebutoane:{
       display:'flex',
       justifyContent:'space-between',
+    },
+    divMareTextField:{
+      display:'flex',
+      justifyContent:'space-between',
+      
     }
   }
 }
