@@ -11,6 +11,10 @@ buton:{
     justifyContent:'start',
     marginLeft:'auto',
 },
+butoaneListePromovare:{
+    display:'flex',
+    flexDirection:'column',
+}
     }
 }
 export default stilButoane
