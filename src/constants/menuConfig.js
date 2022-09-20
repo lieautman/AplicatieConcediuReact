@@ -2,7 +2,7 @@ import React from 'react'
 import { Dashboard } from '@material-ui/icons'
 import { People } from '@material-ui/icons'
 import { PersonAdd } from '@material-ui/icons'
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
 import DateRangeIcon from '@material-ui/icons/DateRange'
 
 const menuItems = [
