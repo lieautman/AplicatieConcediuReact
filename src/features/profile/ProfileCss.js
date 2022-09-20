@@ -106,7 +106,9 @@ const profileStyle = theme => {
     },
 
     stilADouaJumatateDePagina: {
-      overflow: 'scroll'
+      overflow: 'scroll',
+      overflowY: 'hidden', /* Hide vertical scrollbar */
+      overflowX: 'hidden' /* Hide horizontal scrollbar */
     },
 
     stilEditPageDivContainer1: {
