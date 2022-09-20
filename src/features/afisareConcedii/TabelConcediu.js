@@ -13,7 +13,7 @@ import Checkbox from '@mui/material/Checkbox'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.primary.dark,
+    backgroundColor: '#05241d',
     color: theme.palette.common.white,
     fontSize: 16
   },

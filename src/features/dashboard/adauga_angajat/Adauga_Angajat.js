@@ -14,74 +14,78 @@ function Adauga_Angajat() {
   const classes = useStyles()
   return (
     <Fragment>
+      <label className={classes.StyleTxt}> {'Adauga un angajat nou'}</label>
+      <br></br>
       <Container className={classes.containeradaugaaangajat} maxWidth='sm'>
-        <div className={classes.containeradaugaaangajat}>
-          <Grid>
-            <Container className={classes.containeradaugaangajatleft} maxWidth='sm'>
-              <div>
-                <TextField className={classes.TextField} label={'Nume'}></TextField>
-                <br></br>
-                <TextField label={'Prenume'}></TextField>
-                <br></br>
-                <TextField
-                  id='date'
-                  label='Data Nasterii'
-                  type='date'
-                  defaultValue='yyyy-dd-mm'
-                  className={classes.textField}
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                />{' '}
-                <br></br>
-                <TextField label={'CNP'}></TextField>
-                <br></br>
-                <TextField label={'Seria Numar CI'}></TextField>
-                <br></br>
-              </div>
-            </Container>
-          </Grid>
+        <Grid>
+          <Container className={classes.containeradaugaangajatleft} maxWidth='sm'>
+            <div>
+              <TextField className={classes.TextField} label={'Nume'} variant='outlined'></TextField>
+              <br></br>
+              <TextField className={classes.TextField} label={'Prenume'} variant='outlined'></TextField>
+              <br></br>
+              <TextField
+                id='date'
+                label='Data Nasterii'
+                variant='outlined'
+                type='date'
+                defaultValue='yyyy-dd-mm'
+                className={classes.Combobox}
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />{' '}
+              <br></br>
+              <TextField className={classes.TextField} label={'CNP'} variant='outlined'></TextField>
+              <br></br>
+              <TextField className={classes.TextField} label={'Seria Numar CI'} variant='outlined'></TextField>
+              <br></br>
+            </div>
+          </Container>
+        </Grid>
 
-          <Grid>
-            <Container className={classes.containeradaugaangajatright} maxWidth='sm'>
-              <div>
-                <TextField label={'Numar de telefon'}></TextField>
-                <br></br>
-                <TextField label={'Salariu'}></TextField>
-                <br></br>
-                <TextField
-                  id='date'
-                  label='Data Angajarii'
-                  type='date'
-                  defaultValue='yyyy-dd-mm'
-                  className={classes.textField}
-                  InputLabelProps={{
-                    shrink: true
-                  }}
-                />{' '}
-                <br></br>
-                <Autocomplete
-                  disable
-                  portal
-                  id='combo-box-echipe'
-                  options={ListaEchipe}
-                  // getOptionLabel={option => option.title}
+        <Grid>
+          <Container className={classes.containeradaugaangajatright} maxWidth='sm'>
+            <div>
+              <TextField className={classes.TextField} label={'Numar de telefon'} variant='outlined'></TextField>
+              <br></br>
+              <TextField className={classes.TextField} label={'Salariu'} variant='outlined'></TextField>
+              <br></br>
+              <TextField
+                id='date'
+                label='Data Angajarii'
+                variant='outlined'
+                type='date'
+                defaultValue='yyyy-dd-mm'
+                className={classes.Combobox}
+                InputLabelProps={{
+                  shrink: true
+                }}
+              />{' '}
+              <br></br>
+              <Autocomplete
+                disable
+                portal
+                id='combo-box-echipe'
+                options={ListaEchipe}
+                className={classes.Combobox}
+                // getOptionLabel={option => option.title}
 
-                  renderInput={params => <TextField {...params} label='Lista de Echipe' />}
-                />
-                <Autocomplete
-                  disable
-                  portal
-                  id='combo-box-manageri'
-                  options={ListaManageri}
-                  // getOptionLabel={option => option.title}
+                renderInput={params => <TextField {...params} label='Echipa' variant='outlined' />}
+              />
+              <Autocomplete
+                disable
+                portal
+                id='combo-box-manageri'
+                options={ListaManageri}
+                className={classes.Combobox}
+                // getOptionLabel={option => option.title}
 
-                  renderInput={params => <TextField {...params} label='Lista de Mangeri' />}
-                />
-              </div>
-            </Container>
-          </Grid>
-        </div>
+                renderInput={params => <TextField {...params} label='Mangeri' variant='outlined' />}
+              />
+            </div>
+          </Container>
+        </Grid>
       </Container>
       <button className={classes.StyleBtn} variant='contained' size='large'>
         Adauga
