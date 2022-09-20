@@ -7,7 +7,7 @@ import stilAngajati from './StilAngajati'
 import stilButoane from './StilButoane'
 
 const stilAng = makeStyles(stilAngajati)
-const stilBtn= makeStyles(stilButoane)
+const stilBtn = makeStyles(stilButoane)
 
 function createData(nume, prenume, email, manager, echipa) {
   return { nume, prenume, email, manager, echipa }
@@ -20,32 +20,25 @@ const rows = [
   createData('Georgescu', 'Alina', 'alina@gmail.com', 'Enescu George', 'IT')
 ]
 
-
 export default function Angajati() {
   const stilButoanePaginare = stilAng()
-  const stilButoaneActiuni= stilBtn()
+  const stilButoaneActiuni = stilBtn()
   return (
     <div>
       <div className={stilButoanePaginare.divMarebutoane}>
-      <div>
-        <button className={stilButoaneActiuni.buton} onClick={AdaugaAngajat()}>
-          ADAUGA UN ANGAJAT NOU
-        </button>
+        <div>
+          <button className={stilButoaneActiuni.buton}>ADAUGA UN ANGAJAT NOU</button>
+        </div>
+
+        <div>
+          <button className={stilButoaneActiuni.buton}>APROBA ANGAJAT</button>
+        </div>
+
+        <div>
+          <button className={stilButoaneActiuni.buton}>PROMOVEAZA ANGAJAT</button>
+        </div>
       </div>
 
-      <div>
-        <button className={stilButoaneActiuni.buton}>
-          APROBA ANGAJAT
-        </button>
-      </div>
-
-      <div>
-        <button className={stilButoaneActiuni.buton}>
-          PROMOVEAZA ANGAJAT
-        </button>
-      </div>
-      </div>
-      
       <br></br>
       <TabelAngajati rows={rows}></TabelAngajati>
       <div className={stilButoanePaginare.divMarebutoane}>

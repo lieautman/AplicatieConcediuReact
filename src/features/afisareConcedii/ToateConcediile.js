@@ -10,8 +10,7 @@ const rows = [
     dataSfarsit: '10/17/2022',
     inlocuitor: 'Andrei Ionescu',
     motiv: '',
-    angajat: 'Ion Popescu',
-    stareConcediu: 'Aprobat'
+    angajat: 'Ion Popescu'
   },
   {
     name: 'Concediu de odihna',
@@ -19,8 +18,7 @@ const rows = [
     dataSfarsit: '9/29/2022',
     inlocuitor: 'Maria Iancu',
     motiv: '',
-    angajat: 'Ion Popescu',
-    stareConcediu: 'Trimis'
+    angajat: 'Ion Popescu'
   },
   {
     name: 'Concediu de odihna',
@@ -28,8 +26,7 @@ const rows = [
     dataSfarsit: '8/30/2022',
     inlocuitor: 'Andreea Bogdan',
     motiv: '',
-    angajat: 'Ion Popescu',
-    stareConcediu: 'Respins'
+    angajat: 'Ion Popescu'
   }
 ]
 

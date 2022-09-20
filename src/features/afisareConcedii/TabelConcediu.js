@@ -46,9 +46,6 @@ export default function TabelConcediu({ rows }) {
             <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
               Angajat
             </StyledTableCell>
-            <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
-              Starea concediului
-            </StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
