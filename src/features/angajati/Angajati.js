@@ -14,16 +14,16 @@ const rows = [
   createData('Georgescu', 'Alina', 'alina@gmail.com', 'Enescu George', 'IT')
 ]
 
-function AdaugaAngajat() {
-  return <Link to={'/adauga_angajat'}></Link>
-}
+
 export default function Angajati() {
   return (
     <div>
       <div>
-        <Button variant='contained' color='primary' onClick={AdaugaAngajat()}>
-          Adauga un angajat nou
-        </Button>
+        <Link to={'/adauga_angajat'}>
+          <Button variant='contained' color='primary'>
+            Adauga un angajat nou
+          </Button>
+        </Link>
       </div>
       <br></br>
       <TabelAngajati rows={rows}></TabelAngajati>
