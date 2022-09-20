@@ -20,9 +20,7 @@ const rows = [
   createData('Georgescu', 'Alina', 'alina@gmail.com', 'Enescu George', 'IT')
 ]
 
-function AdaugaAngajat() {
-  return <Link to={'/adauga_angajat'}></Link>
-}
+
 export default function Angajati() {
   const stilButoanePaginare = stilAng()
   const stilButoaneActiuni= stilBtn()
@@ -36,13 +34,13 @@ export default function Angajati() {
       </div>
 
       <div>
-        <button className={stilButoaneActiuni.buton} onClick={AdaugaAngajat()}>
+        <button className={stilButoaneActiuni.buton}>
           APROBA ANGAJAT
         </button>
       </div>
 
       <div>
-        <button className={stilButoaneActiuni.buton} onClick={AdaugaAngajat()}>
+        <button className={stilButoaneActiuni.buton}>
           PROMOVEAZA ANGAJAT
         </button>
       </div>

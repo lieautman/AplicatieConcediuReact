@@ -1,17 +1,17 @@
 import React, { Fragment } from 'react'
 
-import ProfilePhoto from './ProfilePhoto.js'
-import ProfileUserDataString from './ProfileUserDataString'
-import ProfileEditButton from './ProfileEditButton'
-import ProfileTabelConcedii from './ProfileTabelConcedii'
-import ProfileAddAtachment from './ProfileAddAtachment'
+import ProfilePhoto from './Components/ProfilePhoto.js'
+import ProfileUserDataString from './Components/ProfileUserDataString'
+import ProfileEditButton from './Components/ProfileEditButton'
+import ProfileTabelConcedii from './Components/ProfileTabelConcedii'
+import ProfileAddAtachment from './Components/ProfileAddAtachment'
 
-import AdressEmailPhonePhoto from './AdressEmailPhonePhoto.js'
+import AdressEmailPhonePhoto from './Components/AdressEmailPhonePhoto.js'
 
 import PropTypes from 'prop-types'
 
 import { makeStyles } from '@material-ui/core'
-import profileStyle from './ProfileCss'
+import profileStyle from './Assets/ProfileCss'
 
 //css
 const useStyles = makeStyles(profileStyle)
@@ -34,7 +34,7 @@ function Profile({stare}) {
             <ProfileEditButton idDat={classes.pozaEditProfilCard}></ProfileEditButton>
           </div>
           <div className={classes.containerAdresaEmailTelefonFunctieDataAngajare}>
-            <AdressEmailPhonePhoto idDat={classes.pozaAdresaEmailTelefon}></AdressEmailPhonePhoto>
+            <AdressEmailPhonePhoto idDat={classes.pozaAdresaEmailTelefon} type={"adress"}></AdressEmailPhonePhoto>
             <div>
               <ProfileUserDataString text={stare.textAdresa} idDat={classes.textNumePrenume}></ProfileUserDataString>
               <ProfileUserDataString
@@ -44,7 +44,7 @@ function Profile({stare}) {
             </div>
           </div>
           <div className={classes.containerAdresaEmailTelefonFunctieDataAngajare}>
-            <AdressEmailPhonePhoto idDat={classes.pozaAdresaEmailTelefon}></AdressEmailPhonePhoto>
+            <AdressEmailPhonePhoto idDat={classes.pozaAdresaEmailTelefon} type={"email"}></AdressEmailPhonePhoto>
             <div>
               <ProfileUserDataString text={stare.textEmail} idDat={classes.textNumePrenume}></ProfileUserDataString>
               <ProfileUserDataString
@@ -54,7 +54,7 @@ function Profile({stare}) {
             </div>
           </div>
           <div className={classes.containerAdresaEmailTelefonFunctieDataAngajare}>
-            <AdressEmailPhonePhoto idDat={classes.pozaAdresaEmailTelefon}></AdressEmailPhonePhoto>
+            <AdressEmailPhonePhoto idDat={classes.pozaAdresaEmailTelefon} type={"phone"}></AdressEmailPhonePhoto>
             <div>
               <ProfileUserDataString text={stare.textTelefon} idDat={classes.textNumePrenume}></ProfileUserDataString>
               <ProfileUserDataString
@@ -114,7 +114,7 @@ function Profile({stare}) {
           </div>
           <div className={classes.styleContainerConcediileMele}>
             <ProfileUserDataString text={stare.textTabelConcedii} idDat={classes.textNume}></ProfileUserDataString>
-            <ProfileTabelConcedii idDat={classes.stilTabel}></ProfileTabelConcedii>
+            <ProfileTabelConcedii idDat={classes.stilTabel} idDatButonInainte={classes.stilButonInainte} idDatButonInapoi={classes.stilButonInapoi}></ProfileTabelConcedii>
           </div>
           <div className={classes.styleContainerConcediileMele}>
             <ProfileUserDataString text={stare.textAtasamente} idDat={classes.textNume}></ProfileUserDataString>

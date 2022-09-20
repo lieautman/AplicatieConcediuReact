@@ -6,7 +6,9 @@ import TableCell, { tableCellClasses } from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
+import Button from '@material-ui/core/Button'
 import Paper from '@mui/material/Paper'
+
 
 import PropTypes from 'prop-types'
 
@@ -80,6 +82,7 @@ const rows = [
 
 function ProfileTabelConcedii(props) {
   return (
+    <div>
     <TableContainer className={props.idDat} component={Paper}>
       <Table aria-label='customized table'>
         <TableHead>
@@ -120,9 +123,14 @@ function ProfileTabelConcedii(props) {
         </TableBody>
       </Table>
     </TableContainer>
+    <Button className={props.idDatButonInapoi}>Inapoi</Button>
+    <Button className={props.idDatButonInainte}>Inainte</Button>
+    </div>
   )
 }
 ProfileTabelConcedii.propTypes = {
-  idDat: PropTypes.string.isRequired
+  idDat: PropTypes.string.isRequired,
+  idDatButonInainte: PropTypes.string.isRequired,
+  idDatButonInapoi: PropTypes.string.isRequired,
 }
 export default ProfileTabelConcedii
