@@ -42,7 +42,6 @@ const MenuItem = ({ menu, drawerOpen, activeRoute, isSubMenuItem, subMenuOpen, o
     if (text === 'NavBar.Delogare') {
       //logout
       //stergere token
-      console.log('logout')
       localStorage.removeItem('token')
       location.reload();
     }
