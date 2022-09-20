@@ -35,7 +35,7 @@ export default function DateIncarcate(props) {
       {esteAdmin && (
         <StyledTableCell align='center'>
           <Checkbox
-            color='primary'
+            style={{ color: '#26c6da' }}
             // indeterminate={numSelected > 0 && numSelected < rowCount}
             // checked={rowCount > 0 && numSelected === rowCount}
             onChange={setIdRand(key)}

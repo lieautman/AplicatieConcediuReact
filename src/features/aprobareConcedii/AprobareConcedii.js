@@ -4,10 +4,10 @@ import Button from '@mui/material/Button'
 import { Link } from 'react-router-dom'
 import { styled } from '@mui/material/styles'
 import { useState } from 'react'
-
-// const container = {
-//  ali
-// }
+import headerStyle from 'assets/jss/components/headerStyle'
+import { makeStyles } from '@material-ui/core'
+import { useHeader } from 'providers/AreasProvider'
+import Typography from '@mui/material/Typography'
 
 const rows = [
   {
@@ -37,22 +37,21 @@ const rows = [
 ]
 
 export default function AprobareConcedii() {
+  const useStyles = makeStyles(headerStyle)
+  const titlu = useStyles()
+  useHeader(<Typography className={titlu.title}>{'NavBar.Aprobare Concedii'}</Typography>)
+
   const [idRand, setIdRand] = useState(null)
   const esteAdmin = true
 
   return (
     <div>
       <div>
-        <Link to='/ToateConcediile'>
-          <Button variant='contained' color='warning'>
-            Inapoi
-          </Button>
-        </Link>
         <div align='right'>
-          <Button variant='contained' color='primary'>
+          <Button variant='contained' style={{ backgroundColor: '#26c6da' }}>
             Aproba
           </Button>
-          <Button variant='contained' color='error'>
+          <Button variant='contained' style={{ backgroundColor: '#FE4900' }}>
             Respinge
           </Button>
         </div>
