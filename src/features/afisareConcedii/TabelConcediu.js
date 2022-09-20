@@ -9,7 +9,7 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import DateIncarcate from './DateIncarcate'
 import PropTypes from 'prop-types'
-import CheckBox from '@mui/material/CheckBox'
+import Checkbox from '@mui/material/Checkbox'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -22,12 +22,15 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   }
 }))
 
-export default function TabelConcediu({ rows }) {
+export default function TabelConcediu(props) {
+  const { rows, setIdRand, esteAdmin } = props
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label='customized table'>
         <TableHead>
           <TableRow>
+            {esteAdmin && <StyledTableCell padding='checkbox'></StyledTableCell>}
             <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
               Tipul Concediului
             </StyledTableCell>
@@ -49,8 +52,8 @@ export default function TabelConcediu({ rows }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row, i) => (
-            <DateIncarcate row={row} key={i} />
+          {rows.map(row => (
+            <DateIncarcate row={row} key={row.id} setIdRand={setIdRand} esteAdmin={esteAdmin} />
           ))}
         </TableBody>
       </Table>
@@ -59,5 +62,7 @@ export default function TabelConcediu({ rows }) {
 }
 
 TabelConcediu.propTypes = {
-  rows: PropTypes.array.isRequired
+  setIdRand: PropTypes.func.isRequired,
+  rows: PropTypes.array.isRequired,
+  esteAdmin: PropTypes.bool.isRequired
 }
