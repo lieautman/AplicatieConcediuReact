@@ -18,7 +18,7 @@ const useStyles = makeStyles(stilAngajati)
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: '#05241d',
     color: theme.palette.common.white
   },
   [`&.${tableCellClasses.body}`]: {
