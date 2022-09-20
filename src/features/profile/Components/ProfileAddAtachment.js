@@ -1,17 +1,20 @@
 import React from 'react'
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import PropTypes from 'prop-types'
 
 
 
-function ProfileAddAtachment() {
+function ProfileAddAtachment(props) {
  //const addToast = useToast()
  // addToast('Welcome', 'success')
   return (
-    <Fab color="primary" aria-label="add">
+    <Fab className={props.idDat} color="primary" aria-label="add">
         <AddIcon />
     </Fab>
   )
 }
-
+ProfileAddAtachment.propTypes = {
+  idDat: PropTypes.string.isRequired
+}
 export default ProfileAddAtachment
