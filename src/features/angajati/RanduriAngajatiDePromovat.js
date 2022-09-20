@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import PropTypes from 'prop-types';
+import Checkbox from '@mui/material/Checkbox'
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -30,6 +31,23 @@ export default function RanduriAngajatiDePromovat({row}){
     return(
 
           <StyledTableRow key={row.name}>
+            <Checkbox
+
+color='primary'
+
+// indeterminate={numSelected > 0 && numSelected < rowCount}
+
+// checked={rowCount > 0 && numSelected === rowCount}
+
+//onChange={setIdRand(key)}
+
+inputProps={{
+
+  'aria-label': 'select all desserts'
+
+}}
+
+/>
           <StyledTableCell component="th" scope="row" align="center">
             {row.nume}
           </StyledTableCell>

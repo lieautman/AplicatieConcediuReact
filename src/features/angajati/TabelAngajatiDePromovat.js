@@ -18,7 +18,7 @@ const useStyles = makeStyles(stilAngajati)
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.primary.main,
+    backgroundColor: '#05241d',
     color: theme.palette.common.white
   },
   [`&.${tableCellClasses.body}`]: {
@@ -35,6 +35,7 @@ export default function TabelAngajatiDePromovat({ rows }) {
           <Table sx={{ minWidth: 400 }} aria-label='customized table'>
             <TableHead>
               <TableRow>
+              <StyledTableCell padding='checkbox'></StyledTableCell>
                 <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
                   Nume
                 </StyledTableCell>
