@@ -34,7 +34,7 @@ function Profile({stare}) {
             <ProfileEditButton idDat={classes.pozaEditProfilCard}></ProfileEditButton>
           </div>
           <div className={classes.containerAdresaEmailTelefonFunctieDataAngajare}>
-            <AdressEmailPhonePhoto idDat={classes.pozaAdresaEmailTelefon}></AdressEmailPhonePhoto>
+            <AdressEmailPhonePhoto idDat={classes.pozaAdresaEmailTelefon} type={"adress"}></AdressEmailPhonePhoto>
             <div>
               <ProfileUserDataString text={stare.textAdresa} idDat={classes.textNumePrenume}></ProfileUserDataString>
               <ProfileUserDataString
@@ -44,7 +44,7 @@ function Profile({stare}) {
             </div>
           </div>
           <div className={classes.containerAdresaEmailTelefonFunctieDataAngajare}>
-            <AdressEmailPhonePhoto idDat={classes.pozaAdresaEmailTelefon}></AdressEmailPhonePhoto>
+            <AdressEmailPhonePhoto idDat={classes.pozaAdresaEmailTelefon} type={"email"}></AdressEmailPhonePhoto>
             <div>
               <ProfileUserDataString text={stare.textEmail} idDat={classes.textNumePrenume}></ProfileUserDataString>
               <ProfileUserDataString
@@ -54,7 +54,7 @@ function Profile({stare}) {
             </div>
           </div>
           <div className={classes.containerAdresaEmailTelefonFunctieDataAngajare}>
-            <AdressEmailPhonePhoto idDat={classes.pozaAdresaEmailTelefon}></AdressEmailPhonePhoto>
+            <AdressEmailPhonePhoto idDat={classes.pozaAdresaEmailTelefon} type={"phone"}></AdressEmailPhonePhoto>
             <div>
               <ProfileUserDataString text={stare.textTelefon} idDat={classes.textNumePrenume}></ProfileUserDataString>
               <ProfileUserDataString
