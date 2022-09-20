@@ -8,7 +8,7 @@ import SaveIcon from '@material-ui/icons/Save'
 
 //css
 import { makeStyles } from '@material-ui/core'
-import profileStyle from './ProfileCss'
+import profileStyle from '../Assets/ProfileCss'
 const useStyles = makeStyles(profileStyle)
 
 function ProfileEdit({ stare, modifyDataProfile }) {

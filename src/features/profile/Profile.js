@@ -1,17 +1,17 @@
 import React, { Fragment } from 'react'
 
-import ProfilePhoto from './ProfilePhoto.js'
-import ProfileUserDataString from './ProfileUserDataString'
-import ProfileEditButton from './ProfileEditButton'
-import ProfileTabelConcedii from './ProfileTabelConcedii'
-import ProfileAddAtachment from './ProfileAddAtachment'
+import ProfilePhoto from './Components/ProfilePhoto.js'
+import ProfileUserDataString from './Components/ProfileUserDataString'
+import ProfileEditButton from './Components/ProfileEditButton'
+import ProfileTabelConcedii from './Components/ProfileTabelConcedii'
+import ProfileAddAtachment from './Components/ProfileAddAtachment'
 
-import AdressEmailPhonePhoto from './AdressEmailPhonePhoto.js'
+import AdressEmailPhonePhoto from './Components/AdressEmailPhonePhoto.js'
 
 import PropTypes from 'prop-types'
 
 import { makeStyles } from '@material-ui/core'
-import profileStyle from './ProfileCss'
+import profileStyle from './Assets/ProfileCss'
 
 //css
 const useStyles = makeStyles(profileStyle)

@@ -1,5 +1,5 @@
 import React, { Fragment, useReducer}from 'react'
-import {initialState, reducer} from './ProfileStateDefine'
+import {initialState, reducer} from '../ProfileStateDefine'
 
 import ProfileEdit from './ProfileEdit'
 
