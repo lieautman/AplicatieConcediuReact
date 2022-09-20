@@ -7,6 +7,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import PropTypes from 'prop-types'
 import Grid from '@mui/material/Grid'
+import { Link } from 'react-router-dom'
 
 export default function CardEchipa(props) {
   const { echipa } = props
@@ -24,9 +25,11 @@ export default function CardEchipa(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button variant='contained' color='primary'>
-            Vizualizeaza echipa
-          </Button>
+          <Link to={'/angajati_echipe'}>
+            <Button variant='contained' color='primary'>
+              Vizualizeaza echipa
+            </Button>
+          </Link>
         </CardActions>
       </Card>
     </Grid>
