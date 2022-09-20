@@ -102,8 +102,8 @@ export default function BasicCard() {
       <div className={stilPromovare.divTabelePromovare}>
         <div><TabelAngajatiDePromovat rows={rows}></TabelAngajatiDePromovat></div>
         <div className={stilBtn.butoaneListePromovare}>
-        <IconButton aria-label="KeyboardArrowRight" ><KeyboardArrowRight/></IconButton>
-        <IconButton aria-label="KeyboardArrowLeft"><KeyboardArrowLeft/></IconButton> 
+        <IconButton aria-label="KeyboardArrowRight"style={{backgroundColor:"#42a5f5",color:'white'}} ><KeyboardArrowRight/></IconButton>
+        <IconButton aria-label="KeyboardArrowLeft"style={{backgroundColor:"#42a5f5",color:'white'}}><KeyboardArrowLeft/></IconButton> 
         </div>
         <div><TabelAngajatiDePromovat rows={rows2}></TabelAngajatiDePromovat></div>
       </div>

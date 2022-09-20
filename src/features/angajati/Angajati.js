@@ -76,10 +76,10 @@ export default function Angajati() {
 
       <div className={stilButoanePaginare.divMarebutoane}>
         <div>
-          <IconButton aria-label="NavigateBefore" ><NavigateBefore/></IconButton>
+          <IconButton aria-label="NavigateBefore" style={{backgroundColor:"#42a5f5",color:'white'}}><NavigateBefore/></IconButton>
         </div>
         <div className={stilButoanePaginare.divButonInainte}>
-          <IconButton aria-label="NavigateNext" ><NavigateNext/></IconButton>
+          <IconButton aria-label="NavigateNext" style={{backgroundColor:"#42a5f5",color:'white'}}><NavigateNext/></IconButton>
         </div>
       </div>
     </div>

@@ -35,6 +35,7 @@ export default function TabelAngajati({ rows }) {
           <Table sx={{ minWidth: 700 }} aria-label='customized table'>
             <TableHead>
               <TableRow>
+              <StyledTableCell padding='checkbox'></StyledTableCell>
                 <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
                   Nume
                 </StyledTableCell>

@@ -14,6 +14,7 @@ buton:{
 butoaneListePromovare:{
     display:'flex',
     flexDirection:'column',
+    justifyContent:'space-around',
 }
     }
 }
