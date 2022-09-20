@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core'
 import stilAngajati from './StilAngajati'
 import stilButoane from './StilButoane'
+import TextField from '@mui/material/TextField'
+
 
 const stilAng = makeStyles(stilAngajati)
 const stilBtn= makeStyles(stilButoane)
@@ -28,9 +30,11 @@ export default function Angajati() {
     <div>
       <div className={stilButoanePaginare.divMarebutoane}>
       <div>
-        <button className={stilButoaneActiuni.buton} onClick={AdaugaAngajat()}>
+        <Link to ='/adauga_angajat'>
+        <button className={stilButoaneActiuni.buton} >
           ADAUGA UN ANGAJAT NOU
         </button>
+        </Link>
       </div>
 
       <div>
@@ -45,8 +49,17 @@ export default function Angajati() {
         </button>
       </div>
       </div>
-      
       <br></br>
+      <div className={stilButoanePaginare.divMareTextField}>
+      <div> <TextField id="filled-basic" label="Nume" variant="standard" size="small" /></div>
+      <div> <TextField id="filled-basic" label="Prenume" variant="standard" size="small"/></div>
+      <div> <TextField id="filled-basic" label="Email" variant="standard" size="small" /></div>
+      <div> <TextField id="filled-basic" label="Manager" variant="standard" size="small"/></div>
+      <div> <TextField id="filled-basic" label="Echipa" variant="standard" size="small"/></div>
+      </div>
+
+      <br></br>
+
       <TabelAngajati rows={rows}></TabelAngajati>
       <div className={stilButoanePaginare.divMarebutoane}>
         <div>
