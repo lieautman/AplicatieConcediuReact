@@ -7,6 +7,8 @@ import ComboBoxTipConcediu from './ComboBoxTipConcediu'
 import ComboBoxInlocuitor from './ComboBoxInlocuitor'
 import { makeStyles } from '@material-ui/core/styles'
 import CreareConcediuCSS from './CreareConcediuCSS'
+import TextField from '@material-ui/core/TextField';
+
 
 const useStyles = makeStyles(CreareConcediuCSS)
 
@@ -19,7 +21,7 @@ const classes = useStyles()
 
       
       <Container maxWidth = "sm">
-      <Typography>Introdu detaliile concediului:</Typography>
+      <Typography>Introduceti detaliile concediului:</Typography>
       {/* <Grid>Internships are amazing.</Grid> */}
       <br></br>
       <ComboBoxTipConcediu></ComboBoxTipConcediu>
@@ -31,8 +33,17 @@ const classes = useStyles()
       <FormLabel>Numar zile disponibile</FormLabel>
       <br></br>
       <br></br>
+
       <ComboBoxInlocuitor></ComboBoxInlocuitor>
       <br></br>
+      <TextField
+          id="outlined-multiline-static"
+          label="Comentarii"
+          multiline
+          rows={6}
+          defaultValue="Motiv/Comentarii"
+          variant="outlined"
+        />
       </Container>
       <Button className={classes.StyleBtn} variant='contained' color='primary' size='large'> Adauga</Button>
      
