@@ -81,12 +81,9 @@ const profileStyle = theme => {
       color: '#202020'
     },
 
-
-
-    
     stilADouaJumatateDePagina: {
       overflow: 'scroll',
-      overflowY: 'hidden', /* Hide vertical scrollbar */
+      overflowY: 'hidden' /* Hide vertical scrollbar */,
       overflowX: 'hidden' /* Hide horizontal scrollbar */
     },
     styleCnpSerieNumarCi: {
@@ -101,29 +98,29 @@ const profileStyle = theme => {
       margin: '1rem'
     },
     stilTabel: {
-      height: '19rem',
+      height: '19rem'
     },
-    stilButonInainte:{
-      float:'right',
+    stilButonInainte: {
+      float: 'right',
       backgroundColor: '#05241d',
-      width:'60px',
-      height:'30px',
-      borderRadius:'25px',
-      color:'white',
-      '&:hover':{
-        backgroundColor: 'lightblue',
-      },
+      width: '60px',
+      height: '30px',
+      borderRadius: '25px',
+      color: 'white',
+      '&:hover': {
+        backgroundColor: 'lightblue'
+      }
     },
 
-    stilButonInapoi:{
+    stilButonInapoi: {
       backgroundColor: '#05241d',
-      width:'60px',
-      height:'30px',
-      borderRadius:'25px',
-      color:'white',
-      '&:hover':{
-        backgroundColor: 'lightblue',
-      },
+      width: '60px',
+      height: '30px',
+      borderRadius: '25px',
+      color: 'white',
+      '&:hover': {
+        backgroundColor: 'lightblue'
+      }
     },
     butonUploadAtasament: {
       background: '#F5F5F5',
@@ -132,8 +129,6 @@ const profileStyle = theme => {
       display: 'flex',
       alignItems: 'center'
     },
-
-
 
     //pag edit
     stilEditPageDivContainer1: {

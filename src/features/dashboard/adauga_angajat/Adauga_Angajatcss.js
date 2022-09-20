@@ -10,15 +10,23 @@ const Adauga_Angajatcss = theme => {
       border: 'none',
       height: '50px',
       width: '150px',
-      marginTop: '40px',
-      marginLeft: '450px',
+      marginTop: '100px',
+      marginLeft: '350px',
       borderRadius: '50px',
       fontSize: '15px'
     },
     containeradaugaaangajat: {
       color: '#1565c0',
       fontWeight: 'bold',
-      fontSize: '20px'
+      fontSize: '20px',
+      display: 'flex',
+      marginLeft: '50px'
+    },
+    containeradaugaangajatleft: {
+      marginLeft: '10px'
+    },
+    containeradaugaangajatright: {
+      marginLeft: '200px'
     }
   }
 }
