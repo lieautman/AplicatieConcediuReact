@@ -100,8 +100,8 @@ const profileStyle = theme => {
     stilTabel: {
       height: '19rem'
     },
-    stilButonInainte: {
-      float: 'right',
+    stilButonInainte:  {
+      float:  'right',
       backgroundColor: '#05241d',
       width: '60px',
       height: '30px',
