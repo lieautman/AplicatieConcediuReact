@@ -114,7 +114,7 @@ function Profile({stare}) {
           </div>
           <div className={classes.styleContainerConcediileMele}>
             <ProfileUserDataString text={stare.textTabelConcedii} idDat={classes.textNume}></ProfileUserDataString>
-            <ProfileTabelConcedii idDat={classes.stilTabel}></ProfileTabelConcedii>
+            <ProfileTabelConcedii idDat={classes.stilTabel} idDatButonInainte={classes.stilButonInainte} idDatButonInapoi={classes.stilButonInapoi}></ProfileTabelConcedii>
           </div>
           <div className={classes.styleContainerConcediileMele}>
             <ProfileUserDataString text={stare.textAtasamente} idDat={classes.textNume}></ProfileUserDataString>
