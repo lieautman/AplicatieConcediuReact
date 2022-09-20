@@ -1,10 +1,11 @@
 import React from 'react'
 import { styled } from '@mui/material/styles'
+import { withStyles } from "@material-ui/core/styles";
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell, { tableCellClasses } from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
-import TableHead from '@mui/material/TableHead'
+import MuiTableHead from "@material-ui/core/TableHead";
 import TableRow from '@mui/material/TableRow'
 import Button from '@material-ui/core/Button'
 import Paper from '@mui/material/Paper'
@@ -16,7 +17,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
     backgroundColor: theme.palette.primary.dark,
     color: theme.palette.common.white,
-    fontSize: 16
+    fontSize: 16,
   },
   [`&.${tableCellClasses.body}`]: {
     fontSize: 14
@@ -80,6 +81,17 @@ const rows = [
   }
 ]
 
+const TableHead = withStyles(theme => ({
+  root: {
+    backgroundColor: '#05241d'
+  }
+}))(MuiTableHead);
+const TableHeaderCell = withStyles((theme) => ({
+  root: {
+    color: "white"
+  }
+}))(TableCell);
+
 function ProfileTabelConcedii(props) {
   return (
     <div>
@@ -87,24 +99,24 @@ function ProfileTabelConcedii(props) {
       <Table aria-label='customized table'>
         <TableHead>
           <TableRow>
-            <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
+            <TableHeaderCell align='center' style={{ fontWeight: 'bold' }}>
               Tipul Concediului
-            </StyledTableCell>
-            <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
+            </TableHeaderCell>
+            <TableHeaderCell align='center' style={{ fontWeight: 'bold' }}>
               Data de inceput
-            </StyledTableCell>
-            <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
+            </TableHeaderCell>
+            <TableHeaderCell align='center' style={{ fontWeight: 'bold' }}>
               Data de sfarsit
-            </StyledTableCell>
-            <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
+            </TableHeaderCell>
+            <TableHeaderCell align='center' style={{ fontWeight: 'bold' }}>
               Inlocuitor
-            </StyledTableCell>
-            <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
+            </TableHeaderCell>
+            <TableHeaderCell align='center' style={{ fontWeight: 'bold' }}>
               Motiv
-            </StyledTableCell>
-            <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
+            </TableHeaderCell>
+            <TableHeaderCell align='center' style={{ fontWeight: 'bold' }}>
               Starea concediului
-            </StyledTableCell>
+            </TableHeaderCell>
           </TableRow>
         </TableHead>
         <TableBody>

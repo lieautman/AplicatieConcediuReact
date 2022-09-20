@@ -101,22 +101,29 @@ const profileStyle = theme => {
       margin: '1rem'
     },
     stilTabel: {
-      height: '19rem'
+      height: '19rem',
     },
     stilButonInainte:{
       float:'right',
-      backgroundColor: '#1565c0',
+      backgroundColor: '#05241d',
       width:'60px',
       height:'30px',
       borderRadius:'25px',
       color:'white',
+      '&:hover':{
+        backgroundColor: 'lightblue',
+      },
     },
+
     stilButonInapoi:{
-      backgroundColor: '#1565c0',
+      backgroundColor: '#05241d',
       width:'60px',
       height:'30px',
       borderRadius:'25px',
       color:'white',
+      '&:hover':{
+        backgroundColor: 'lightblue',
+      },
     },
     butonUploadAtasament: {
       background: '#F5F5F5',
