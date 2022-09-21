@@ -52,7 +52,9 @@ export default function Angajati(props) {
           </Link>
         </div>
         <div>
-          <button className={stilButoaneActiuni.buton}>APROBA ANGAJAT</button>
+          <Link to='/aprobareAngajati'>
+            <button className={stilButoaneActiuni.buton}>APROBA ANGAJAT</button>
+          </Link>
         </div>
         <div>
           {/* <Link to='/angajati/Promovare'>
