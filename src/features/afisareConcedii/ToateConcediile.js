@@ -4,6 +4,10 @@ import Button from '@mui/material/Button'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
+import filtrari from './Filtrari'
+import { makeStyles } from '@material-ui/core'
+
+const useStyles = makeStyles(filtrari)
 
 const rows = [
   {
@@ -36,6 +40,7 @@ const rows = [
 ]
 
 export default function ToateConcediile() {
+  const filtrareStyle = useStyles()
   const [filteredArray, setFilteredArray] = useState(rows)
   const esteAdmin = false
   const seFiltreaza = true
@@ -90,12 +95,11 @@ export default function ToateConcediile() {
 
   return (
     <div>
-      <br></br>
-      <SearchBar onFilter={handleFilterNume} filtrareNume={'tipul de concediu'} />
-      <SearchBar onFilter={handleFilterInlocuitor} filtrareNume={'numele inlocuitorului'} />
-      <SearchBar onFilter={handleFilterAngajat} filtrareNume={'numele angajatului'} />
-      <br></br>
-      <br></br>
+      <div className={filtrareStyle.displayFiltrari}>
+        <SearchBar onFilter={handleFilterNume} filtrareNume={'tipul de concediu'} />
+        <SearchBar onFilter={handleFilterInlocuitor} filtrareNume={'numele inlocuitorului'} />
+        <SearchBar onFilter={handleFilterAngajat} filtrareNume={'numele angajatului'} />
+      </div>
       <TabelConcediu rows={rows} esteAdmin={esteAdmin} filtrare={filteredArray} seFiltreaza={seFiltreaza}></TabelConcediu>
       <div>
         <br></br>
