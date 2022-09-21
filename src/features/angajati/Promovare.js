@@ -20,7 +20,7 @@ import headerStyle from 'assets/jss/components/headerStyle'
 
 const useStyles = makeStyles(stilAngajati)
 
-export default function BasicCard() {
+export default function BasicCard(props) {
   //   const stilAng = makeStyles(stilAngajati)
   //   const stilPromovare = stilAng()
   const stilPromovare = useStyles()
