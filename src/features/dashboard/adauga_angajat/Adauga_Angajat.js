@@ -124,14 +124,14 @@ function Adauga_Angajat() {
                 onChange={event => handleChange('Manager', event.target.value)}
                 // getOptionLabel={option => option.title}
 
-                renderInput={params => <TextField {...params} label='Manger' variant='outlined' />}
+                renderInput={params => <TextField {...params} label='Manager' variant='outlined' />}
               />
             </div>
           </Container>
         </Grid>
       </Container>
       <button className={classes.StyleBtn} variant='contained' size='large'>
-        Adauga
+        ADAUGA
       </button>
     </Fragment>
   )

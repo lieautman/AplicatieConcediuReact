@@ -8,14 +8,14 @@ const Adauga_Angajatcss = theme => {
         marginLeft: '13rem'
       },
       [theme.breakpoints.up('lg')]: {
-        marginLeft: '30rem'
+        marginLeft: '32rem'
       },
       fontStyle: 'normal',
       backgroundColor: '#26c6da',
       color: ' white',
       border: 'none',
       height: '4rem',
-      width: '10rem',
+      width: '15rem',
       marginTop: '5rem',
       borderRadius: '50px',
       fontSize: '15px'
@@ -34,15 +34,15 @@ const Adauga_Angajatcss = theme => {
       flexDirection: 'row',
       margin: '0',
       padding: '0',
-      marginTop: '3rem'
+      marginTop: '2rem'
     },
     containeradaugaangajatleft: { marginLeft: '10rem' },
     containeradaugaangajatright: {
       [theme.breakpoints.down('lg')]: {
-        marginLeft: '15rem'
+        marginLeft: '10rem'
       },
       [theme.breakpoints.up('lg')]: {
-        marginLeft: '20rem'
+        marginLeft: 'rem'
       }
     },
     StyleTxt: {
@@ -52,12 +52,12 @@ const Adauga_Angajatcss = theme => {
       alignSelf: 'center'
     },
     Combobox: {
-      width: 250,
+      width: 300,
       marginTop: '1rem'
     },
     TextField: {
       marginTop: '1rem',
-      width: 250
+      width: 300
     },
     stilTitlu: {
       color: '#555555',

@@ -34,65 +34,57 @@ function CreareConcediu() {
 
   return (
     <Fragment>
-      <Card className={classes.card} variant='outlined'>
-        <CardContent>
-          <Typography className={classes.title} color='textSecondary' gutterBottom>
-            <ComboBoxTipConcediu
-              className={classes.tipConcediu}
-              onChange={event => handleChange('ComboboxTipConcediu', event.target.value)}
-            ></ComboBoxTipConcediu>
-          </Typography>
+      <Container className={classes.container} maxWidth='sm'>
+        <div style={{ marginLeft: '70px', marginTop: '1rem', marginBottom: '1rem' }}>
+          <ComboBoxTipConcediu
+            className={classes.combobox}
+            onChange={event => handleChange('ComboboxTipConcediu', event.target.value)}
+          ></ComboBoxTipConcediu>
+        </div>
+        <div className={classes.datePicker}>
+          <DatePickerIncepere onChange={event => handleChange('DatePickerIncepere', event.target.value)}></DatePickerIncepere>
+          <DatePickerIncetare onChange={event => handleChange('DatePickerIncetare', event.target.value)}></DatePickerIncetare>
+        </div>
+        <div>
+          <TextField
+            disabled
+            className={classes.TextField}
+            id='filled-disabled'
+            label='Numar de zile selectat'
+            variant='filled'
+            onChange={event => handleChange('NumarZileSelectat', event.target.value)}
+          />
 
-          <Typography className={classes.pos} color='textSecondary'>
-            <div className={classes.datePicker}>
-              <DatePickerIncepere onChange={event => handleChange('DatePickerIncepere', event.target.value)}></DatePickerIncepere>
-              <DatePickerIncetare onChange={event => handleChange('DatePickerIncetare', event.target.value)}></DatePickerIncetare>
-            </div>
-          </Typography>
-          <Typography>
-            <div className={classes.formLabel}>
-              <TextField
-                paragraph={true}
-                disabled
-                id='filled-disabled'
-                label='Numar de zile selectat'
-                variant='filled'
-                onChange={event => handleChange('NumarZileSelectat', event.target.value)}
-              />
-            </div>
-            <div className={classes.formLabel}>
-              <TextField
-                disabled
-                id='filled-disabled'
-                label='Numar zile disponibile'
-                variant='filled'
-                onChange={event => handleChange('NumarZileDisponibile', event.target.value)}
-              />
-            </div>
-          </Typography>
-          <br />
-          <div style={{ marginLeft: '70px' }}>
-            <ComboBoxInlocuitor onChange={event => handleChange('ComboboxInlocuitor', event.target.value)}></ComboBoxInlocuitor>
-          </div>
-          <br></br>
-          <div style={{ marginLeft: '120px' }}>
-            <TextField
-              id='outlined-multiline-static'
-              label='Comentarii'
-              onChange={event => handleChange('Comentarii', event.target.value)}
-              multiline
-              rows={4}
-              variant='outlined'
-            />
-          </div>
-        </CardContent>
-        <CardActions>
-          <Button className={classes.StyleBtn} align='center' variant='contained' color='primary' size='large'>
-            {' '}
-            Adauga
-          </Button>
-        </CardActions>
-      </Card>
+          <TextField
+            disabled
+            className={classes.TextField}
+            id='filled-disabled'
+            label='Numar zile disponibile'
+            variant='filled'
+            onChange={event => handleChange('NumarZileDisponibile', event.target.value)}
+          />
+        </div>
+
+        <div style={{ marginLeft: '70px', marginTop: '1rem' }}>
+          <ComboBoxInlocuitor onChange={event => handleChange('ComboboxInlocuitor', event.target.value)}></ComboBoxInlocuitor>
+        </div>
+        <br></br>
+        <div style={{ marginLeft: '120px' }}>
+          <TextField
+            id='outlined-multiline-static'
+            label='Comentarii'
+            onChange={event => handleChange('Comentarii', event.target.value)}
+            multiline
+            rows={4}
+            variant='outlined'
+          />
+        </div>
+
+        <button className={classes.StyleBtn} align='center' variant='contained' color='primary' size='large'>
+          {' '}
+          ADAUGA
+        </button>
+      </Container>
     </Fragment>
   )
 }

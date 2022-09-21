@@ -1,5 +1,3 @@
-import { AccessTimeOutlined, KeyboardReturnRounded } from '@material-ui/icons'
-
 export const initialState = {
   Nume: null,
   Prenume: null,
