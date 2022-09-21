@@ -39,16 +39,46 @@ export default function ToateConcediile() {
   const [filteredArray, setFilteredArray] = useState(rows)
   const esteAdmin = false
 
-  const handleFilter = input => {
+  const handleFilterNume = input => {
     const value = input.target.value
 
     const newArray = rows.filter(el => {
       if (value === '') {
         return el
       } else {
-        return (
-          el.name.toLowerCase().includes(value) || el.angajat.toLowerCase().includes(value) || el.inlocuitor.toLowerCase().includes(value)
-        )
+        return el.name.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
+
+  const handleFilterAngajat = input => {
+    const value = input.target.value
+
+    const newArray = rows.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.angajat.toLowerCase().includes(value) || el.inlocuitor.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
+
+  const handleFilterInlocuitor = input => {
+    const value = input.target.value
+
+    const newArray = rows.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.inlocuitor.toLowerCase().includes(value)
       }
     })
 
@@ -59,14 +89,20 @@ export default function ToateConcediile() {
 
   return (
     <div>
-      <SearchBar onFilter={handleFilter} />
       <div>
+        <br></br>
         <Link to='./AprobareConcedii'>
           <Button variant='contained' style={{ backgroundColor: '#26c6da' }}>
             Aproba concedii
           </Button>
         </Link>
       </div>
+      <br></br>
+      <SearchBar onFilter={handleFilterNume} />
+      <SearchBar onFilter={handleFilterInlocuitor} />
+      <SearchBar onFilter={handleFilterAngajat} />
+      <br></br>
+
       <br></br>
       <TabelConcediu rows={rows} esteAdmin={esteAdmin} filtrare={filteredArray}></TabelConcediu>
     </div>
