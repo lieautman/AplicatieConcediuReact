@@ -3,6 +3,7 @@ import TabelConcediu from './TabelConcediu'
 import Button from '@mui/material/Button'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import SearchBar from './SearchBar'
 
 const rows = [
   {
@@ -35,10 +36,30 @@ const rows = [
 ]
 
 export default function ToateConcediile() {
+  const [filteredArray, setFilteredArray] = useState(rows)
   const esteAdmin = false
+
+  const handleFilter = input => {
+    const value = input.target.value
+
+    const newArray = rows.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return (
+          el.name.toLowerCase().includes(value) || el.angajat.toLowerCase().includes(value) || el.inlocuitor.toLowerCase().includes(value)
+        )
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
 
   return (
     <div>
+      <SearchBar onFilter={handleFilter} />
       <div>
         <Link to='./AprobareConcedii'>
           <Button variant='contained' style={{ backgroundColor: '#26c6da' }}>
@@ -47,7 +68,7 @@ export default function ToateConcediile() {
         </Link>
       </div>
       <br></br>
-      <TabelConcediu rows={rows} esteAdmin={esteAdmin}></TabelConcediu>
+      <TabelConcediu rows={rows} esteAdmin={esteAdmin} filtrare={filteredArray}></TabelConcediu>
     </div>
   )
 }
