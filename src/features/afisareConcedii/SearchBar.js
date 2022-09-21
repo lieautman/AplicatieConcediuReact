@@ -1,0 +1,13 @@
+import { React, useState } from 'react'
+import TextField from '@mui/material/TextField'
+import { PropTypes } from 'prop-types'
+
+function SearchBar({ onFilter }) {
+  return <TextField id='outlined-basic' variant='outlined' witdh='70%' label='Cautare' onChange={onFilter} />
+}
+
+SearchBar.propTypes = {
+  onFilter: PropTypes.func
+}
+
+export default SearchBar

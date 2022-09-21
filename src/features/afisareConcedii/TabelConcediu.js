@@ -23,7 +23,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }))
 
 export default function TabelConcediu(props) {
-  const { rows, setareId, esteAdmin, idRand } = props
+  const { rows, setareId, esteAdmin, idRand, filtrare } = props
 
   return (
     <TableContainer component={Paper}>
@@ -52,7 +52,7 @@ export default function TabelConcediu(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
+          {filtrare.map(row => (
             <DateIncarcate row={row} key={row.id} setareId={setareId} esteAdmin={esteAdmin} idRand={idRand} />
           ))}
         </TableBody>
@@ -65,5 +65,6 @@ TabelConcediu.propTypes = {
   setareId: PropTypes.func,
   rows: PropTypes.array.isRequired,
   esteAdmin: PropTypes.bool.isRequired,
-  idRand: PropTypes.number
+  idRand: PropTypes.number,
+  filtrare: PropTypes.array
 }
