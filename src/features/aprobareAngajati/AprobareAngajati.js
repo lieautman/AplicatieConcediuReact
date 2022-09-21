@@ -54,7 +54,11 @@ export default function AprobareAngajati() {
   const esteAdmin = true
 
   const setareId = id => () => {
-    setIdRand(id)
+    if (id !== idRand) {
+      setIdRand(id)
+    } else {
+      setIdRand(null)
+    }
   }
 
   return (
