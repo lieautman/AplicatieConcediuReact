@@ -26,7 +26,8 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   }
 }))
 
-export default function TabelAngajati({ rows }) {
+export default function TabelAngajati(props) {
+  const { rows, setareId, idRand } = props
   const stilTabel = useStyles()
   return (
     <div>
@@ -35,7 +36,10 @@ export default function TabelAngajati({ rows }) {
           <Table sx={{ minWidth: 700 }} aria-label='customized table'>
             <TableHead>
               <TableRow>
-              <StyledTableCell padding='checkbox'></StyledTableCell>
+                <StyledTableCell padding='checkbox'></StyledTableCell>
+                <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
+                  Id
+                </StyledTableCell>
                 <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
                   Nume
                 </StyledTableCell>
@@ -56,16 +60,17 @@ export default function TabelAngajati({ rows }) {
 
             <TableBody>
               {rows.map((row, i) => (
-                <RanduriAngajati row={row} key={i}></RanduriAngajati>
+                <RanduriAngajati row={row} key={i} setareId={setareId} idRand={idRand}></RanduriAngajati>
               ))}
             </TableBody>
           </Table>
         </div>
       </TableContainer>
-
     </div>
   )
 }
 TabelAngajati.propTypes = {
-  rows: PropTypes.array.isRequired
+  rows: PropTypes.array.isRequired,
+  setareId: PropTypes.func,
+  idRand: PropTypes.number
 }

@@ -16,11 +16,8 @@ import profileStyle from './Assets/ProfileCss'
 //titlu
 import { useHeader } from 'providers/AreasProvider'
 
-
 //css
 const useStyles = makeStyles(profileStyle)
-
-
 
 function Profile({ stare }) {
   //css
@@ -31,8 +28,6 @@ function Profile({ stare }) {
       {'Profil propriu'}
     </div>
   )
-
-  
 
   return (
     <Fragment>

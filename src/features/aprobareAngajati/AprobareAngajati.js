@@ -1,5 +1,5 @@
 import * as React from 'react'
-import TabelConcediu from 'features/afisareConcedii/TabelConcediu'
+import TabelAngajati from 'features/angajati/TabelAngajati'
 import Button from '@mui/material/Button'
 import { Link } from 'react-router-dom'
 import { styled } from '@mui/material/styles'
@@ -13,42 +13,40 @@ import stilAngajati from '../angajati/StilAngajati'
 import { IconButton, makeStyles } from '@material-ui/core'
 
 const stilAng = makeStyles(stilAngajati)
+
 const rows = [
   {
     id: 1,
-    name: 'Concediu medical',
-    dataInceput: '10/16/2022',
-    dataSfarsit: '10/17/2022',
-    inlocuitor: 'Andrei Ionescu',
-    motiv: '',
-    angajat: 'Ion Popescu'
+    nume: 'Popescu',
+    prenume: 'Ioana',
+    email: 'ioana@gmail.com',
+    manager: 'Popa Irina',
+    echipa: 'IT'
   },
   {
     id: 2,
-    name: 'Concediu de odihna',
-    dataInceput: '9/1/2022',
-    dataSfarsit: '9/29/2022',
-    inlocuitor: 'Maria Iancu',
-    motiv: '',
-    angajat: 'Ion Popescu'
+    nume: 'Ionescu',
+    prenume: 'Ana',
+    email: 'ana@yahoo.ro',
+    manager: 'Popescu Mihai',
+    echipa: 'Marketing'
   },
   {
     id: 3,
-    name: 'Concediu de odihna',
-    dataInceput: '8/28/2022',
-    dataSfarsit: '8/30/2022',
-    inlocuitor: 'Andreea Bogdan',
-    motiv: '',
-    angajat: 'Ion Popescu'
+    nume: 'Enescu',
+    prenume: 'Ion',
+    email: 'ion@gmail.com',
+    manager: 'Soare Mihaela',
+    echipa: 'Resurse Umane'
   }
 ]
 
-export default function AprobareConcedii() {
+export default function AprobareAngajati() {
   const stilButoanePaginare = stilAng()
 
   useHeader(
     <div variant='subtitles1' className={stilButoanePaginare.stilTitlu}>
-      {'Aprobare concedii'}
+      {'Aprobare angajati'}
     </div>
   )
 
@@ -77,7 +75,7 @@ export default function AprobareConcedii() {
       </div>
       <div>
         <br></br>
-        <TabelConcediu rows={rows} setareId={setareId} esteAdmin={esteAdmin} idRand={idRand}></TabelConcediu>
+        <TabelAngajati rows={rows} setareId={setareId} esteAdmin={esteAdmin} idRand={idRand}></TabelAngajati>
       </div>
       <div className={stilButoanePaginare.divMarebutoane}>
         <div>
