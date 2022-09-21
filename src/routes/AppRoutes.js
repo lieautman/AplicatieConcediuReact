@@ -15,6 +15,7 @@ import Adauga_Angajat from 'features/dashboard/adauga_angajat/Adauga_Angajat'
 import AngajatiEchipe from 'features/angajati_echipe/AngajatiEchipe'
 import Promovare from 'features/angajati/Promovare'
 import AprobareConcedii from 'features/aprobareConcedii/AprobareConcedii'
+import AprobareAngajati from 'features/aprobareAngajati/AprobareAngajati'
 
 export default function AppRoutes() {
   return (
@@ -40,6 +41,7 @@ export default function AppRoutes() {
       <CustomRoute isPrivate={false} exact path='/angajati_echipe' component={AngajatiEchipe} />
       <CustomRoute isPrivate={false} exact path='/toateConcediile' component={ToateConcediile} />
       <CustomRoute isPrivate={false} exact path='/aprobareConcedii' component={AprobareConcedii} />
+      <CustomRoute isPrivate={false} exact path='/aprobareAngajati' component={AprobareAngajati} />
       <CustomRoute isPrivate={false} exact path='/CreareConcediu' component={CreareConcediu} />
 
       <CustomRoute isPrivate={false} exact path='/forbidden' component={Forbidden} />

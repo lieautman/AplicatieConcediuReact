@@ -8,7 +8,6 @@ import TextField from '@mui/material/TextField'
 import NavigateNext from '@material-ui/icons/NavigateNext'
 import NavigateBefore from '@material-ui/icons/NavigateBefore'
 
-
 const stilAng = makeStyles(stilAngajati)
 const stilBtn = makeStyles(stilButoane)
 
@@ -35,15 +34,16 @@ export default function Angajati() {
           </Link>
         </div>
 
-        <div>
-          <button className={stilButoaneActiuni.buton}>APROBA ANGAJAT</button>
-        </div>
+        <Link to='./AprobareAngajati'>
+          <div>
+            <button className={stilButoaneActiuni.buton}>APROBA ANGAJAT</button>
+          </div>
+        </Link>
 
         <div>
           <Link to='/angajati/Promovare'>
-          <button className={stilButoaneActiuni.buton}>PROMOVEAZA ANGAJAT</button>
+            <button className={stilButoaneActiuni.buton}>PROMOVEAZA ANGAJAT</button>
           </Link>
-
         </div>
       </div>
       <br></br>
@@ -76,10 +76,14 @@ export default function Angajati() {
 
       <div className={stilButoanePaginare.divMarebutoane}>
         <div>
-          <IconButton aria-label="NavigateBefore" style={{backgroundColor:"#05241d",color:'white'}}><NavigateBefore/></IconButton>
+          <IconButton aria-label='NavigateBefore' style={{ backgroundColor: '#05241d', color: 'white' }}>
+            <NavigateBefore />
+          </IconButton>
         </div>
         <div className={stilButoanePaginare.divButonInainte}>
-          <IconButton aria-label="NavigateNext" style={{backgroundColor:"#05241d",color:'white'}}><NavigateNext/></IconButton>
+          <IconButton aria-label='NavigateNext' style={{ backgroundColor: '#05241d', color: 'white' }}>
+            <NavigateNext />
+          </IconButton>
         </div>
       </div>
     </div>
