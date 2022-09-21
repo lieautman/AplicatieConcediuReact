@@ -1,5 +1,16 @@
 const profileStyle = theme => {
   return {
+    //titlu
+    stilTitlu: {
+      color: '#555555',
+      fontWeight: 'bold',
+      borderRadius: '3px',
+      textTransform: 'none',
+      fontSize: '1.1428571428571428rem',
+      fontFamily: 'Source Sans Pro',
+      lineHeight: '1.75'
+    },
+
     styleContainerMare: {
       [theme.breakpoints.down('sm')]: {
         display: 'inline'
@@ -100,8 +111,8 @@ const profileStyle = theme => {
     stilTabel: {
       height: '19rem'
     },
-    stilButonInainte:  {
-      float:  'right',
+    stilButonInainte: {
+      float: 'right',
       backgroundColor: '#05241d',
       width: '60px',
       height: '30px',
@@ -131,7 +142,6 @@ const profileStyle = theme => {
     butonUploadAtasamentButon: {
       background: '#26c6da'
     },
-
 
     //pag edit
     stilEditPageDivContainer1: {
@@ -163,8 +173,8 @@ const profileStyle = theme => {
       top: '35rem',
       left: '35rem'
     },
-    button:{
-      backgroundColor:'#26c6da'
+    button: {
+      backgroundColor: '#26c6da'
     }
   }
 }
