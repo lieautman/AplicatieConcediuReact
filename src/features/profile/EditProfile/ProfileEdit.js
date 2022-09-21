@@ -9,11 +9,20 @@ import SaveIcon from '@material-ui/icons/Save'
 //css
 import { makeStyles } from '@material-ui/core'
 import profileStyle from '../Assets/ProfileCss'
+//titlu
+import { useHeader } from 'providers/AreasProvider'
+
 const useStyles = makeStyles(profileStyle)
 
 function ProfileEdit({ stare, modifyDataProfile }) {
   //css
   const classes = useStyles()
+  //titlu
+  useHeader(
+    <div variant='subtitles1' className={classes.stilTitlu}>
+      {'Editeaza date'}
+    </div>
+  )
 
   return (
     <Fragment>
@@ -96,6 +105,13 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           </div>
         </div>
         <div className={classes.stilEditPageInputButton}>
+          <div className={classes.stilEditPageInputOverButton}>
+            <TextField
+              label='Salariu'
+              defaultValue={stare.textSalariuActual}
+              onChange={evt => modifyDataProfile('textSalariuActual', evt.target.value)}
+            ></TextField>
+          </div>
           <Link to={'/profile'}>
             <Button variant='contained' color='primary' size='large' className={classes.button} startIcon={<SaveIcon />}>
               Save

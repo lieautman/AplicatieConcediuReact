@@ -58,6 +58,15 @@ const Adauga_Angajatcss = theme => {
     TextField: {
       marginTop: '1rem',
       width: 250
+    },
+    stilTitlu: {
+      color: '#555555',
+      fontWeight: 'bold',
+      borderRadius: '3px',
+      textTransform: 'none',
+      fontSize: '1.1428571428571428rem',
+      fontFamily: 'Source Sans Pro',
+      lineHeight: '1.75'
     }
   }
 }

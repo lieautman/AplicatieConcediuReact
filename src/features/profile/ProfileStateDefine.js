@@ -14,6 +14,9 @@ export const initialState = {
   textDataAngajareActuala: '2011-01-22',
   textDataNastere: 'DATA NASTERE',
   textDataNastereActuala: '2001-01-12',
+  textSalariu:'SALARIU',
+  textSalariuActual:'5000',
+
   textCnp: 'COD NUMERIC PERSONAL',
   textCnpActual: '1234567890123',
   textSerieNumarCi: 'SERIE SI NUMAR CI',
@@ -43,6 +46,8 @@ export function reducer(state, action) {
       return { textDataAngajareActuala: action.inputValue }
     case 'textDataNastereActuala':
       return { textDataNastereActuala: action.inputValue }
+      case 'textSalariuActual':
+        return { textSalariuActual: action.inputValue }
     case 'textCnpActual':
       return { textCnpActual: action.inputValue }
     case 'textSerieNumarCiActual':

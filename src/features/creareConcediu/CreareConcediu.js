@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Typography, Button, FormLabel, Container } from '@material-ui/core'
+import { Grid, FormLabel, Container } from '@material-ui/core'
 import { useToast } from '@bit/totalsoft_oss.react-mui.kit.core'
 import DatePickerIncepere from './DatePickerIncepere'
 import DatePickerIncetare from './DatePickerIncetare'
@@ -7,42 +7,94 @@ import ComboBoxTipConcediu from './ComboBoxTipConcediu'
 import ComboBoxInlocuitor from './ComboBoxInlocuitor'
 import { makeStyles } from '@material-ui/core/styles'
 import CreareConcediuCSS from './CreareConcediuCSS'
+import { Table } from '@material-ui/core'
+import TextField from '@material-ui/core/TextField'
+import Card from '@material-ui/core/Card'
+import CardActions from '@material-ui/core/CardActions'
+import CardContent from '@material-ui/core/CardContent'
+import Button from '@material-ui/core/Button'
+import Typography from '@material-ui/core/Typography'
+import { useHeader } from 'providers/AreasProvider'
+import { useReducer } from 'react'
+import { initialState, reducer } from './CreareConcediuState'
 
 const useStyles = makeStyles(CreareConcediuCSS)
 
-function CreareConcediu(){
-
-const classes = useStyles()
+function CreareConcediu() {
+  const classes = useStyles()
+  const [localState, dispatch] = useReducer(reducer, initialState)
+  const handleChange = (propertyName, value) => {
+    dispatch({ type: 'OnPropertyChanged', propertyName, value })
+  }
+  useHeader(
+    <div variant='subtitles1' className={classes.stilTitlu}>
+      {'Adauga un concediu nou'}
+    </div>
+  )
 
   return (
     <Fragment>
+      <Card className={classes.card} variant='outlined'>
+        <CardContent>
+          <Typography className={classes.title} color='textSecondary' gutterBottom>
+            <ComboBoxTipConcediu
+              className={classes.tipConcediu}
+              onChange={event => handleChange('ComboboxTipConcediu', event.target.value)}
+            ></ComboBoxTipConcediu>
+          </Typography>
 
-      
-      <Container maxWidth = "sm">
-      <Typography>Introdu detaliile concediului:</Typography>
-      {/* <Grid>Internships are amazing.</Grid> */}
-      <br></br>
-      <ComboBoxTipConcediu></ComboBoxTipConcediu>
-      <br></br>
-      <DatePickerIncepere></DatePickerIncepere>
-      <br></br>
-      <DatePickerIncetare></DatePickerIncetare>
-      <br></br>
-      <FormLabel>Numar zile disponibile</FormLabel>
-      <br></br>
-      <br></br>
-      <ComboBoxInlocuitor></ComboBoxInlocuitor>
-      <br></br>
-      </Container>
-      <Button className={classes.StyleBtn} variant='contained' color='primary' size='large'> Adauga</Button>
-     
+          <Typography className={classes.pos} color='textSecondary'>
+            <div className={classes.datePicker}>
+              <DatePickerIncepere onChange={event => handleChange('DatePickerIncepere', event.target.value)}></DatePickerIncepere>
+              <DatePickerIncetare onChange={event => handleChange('DatePickerIncetare', event.target.value)}></DatePickerIncetare>
+            </div>
+          </Typography>
+          <Typography>
+            <div className={classes.formLabel}>
+              <TextField
+                paragraph={true}
+                disabled
+                id='filled-disabled'
+                label='Numar de zile selectat'
+                variant='filled'
+                onChange={event => handleChange('NumarZileSelectat', event.target.value)}
+              />
+            </div>
+            <div className={classes.formLabel}>
+              <TextField
+                disabled
+                id='filled-disabled'
+                label='Numar zile disponibile'
+                variant='filled'
+                onChange={event => handleChange('NumarZileDisponibile', event.target.value)}
+              />
+            </div>
+          </Typography>
+          <br />
+          <div style={{ marginLeft: '70px' }}>
+            <ComboBoxInlocuitor onChange={event => handleChange('ComboboxInlocuitor', event.target.value)}></ComboBoxInlocuitor>
+          </div>
+          <br></br>
+          <div style={{ marginLeft: '120px' }}>
+            <TextField
+              id='outlined-multiline-static'
+              label='Comentarii'
+              onChange={event => handleChange('Comentarii', event.target.value)}
+              multiline
+              rows={4}
+              variant='outlined'
+            />
+          </div>
+        </CardContent>
+        <CardActions>
+          <Button className={classes.StyleBtn} align='center' variant='contained' color='primary' size='large'>
+            {' '}
+            Adauga
+          </Button>
+        </CardActions>
+      </Card>
     </Fragment>
-    
   )
 }
 
 export default CreareConcediu
-
-
-
-

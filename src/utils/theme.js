@@ -7,7 +7,7 @@ import { theme as redTheme } from '@bit/totalsoft_oss.react-mui.themes.red-theme
 import { theme as vividOrangeTheme } from '@bit/totalsoft_oss.react-mui.themes.vivid-orange-theme'
 import { theme as lightBlueTheme } from '@bit/totalsoft_oss.react-mui.themes.light-blue-theme'
 
-import logoDefault from 'assets/img/logoDefault.PNG'
+import logoDefault from 'assets/img/logoDefault.png'
 import { createTheme } from '@material-ui/core'
 
 defaultTheme.logo=logoDefault

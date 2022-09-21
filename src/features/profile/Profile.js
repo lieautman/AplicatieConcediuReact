@@ -10,8 +10,11 @@ import AdressEmailPhonePhoto from './Components/AdressEmailPhonePhoto.js'
 
 import PropTypes from 'prop-types'
 
+//css
 import { makeStyles } from '@material-ui/core'
 import profileStyle from './Assets/ProfileCss'
+//titlu
+import { useHeader } from 'providers/AreasProvider'
 
 //css
 const useStyles = makeStyles(profileStyle)
@@ -19,6 +22,12 @@ const useStyles = makeStyles(profileStyle)
 function Profile({ stare }) {
   //css
   const classes = useStyles()
+  //titlu
+  useHeader(
+    <div variant='subtitles1' className={classes.stilTitlu}>
+      {'Profil propriu'}
+    </div>
+  )
 
   return (
     <Fragment>
@@ -86,6 +95,15 @@ function Profile({ stare }) {
               <ProfileUserDataString text={stare.textDataNastere} idDat={classes.textNumePrenume}></ProfileUserDataString>
               <ProfileUserDataString
                 text={stare.textDataNastereActuala}
+                idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
+              ></ProfileUserDataString>
+            </div>
+          </div>
+          <div className={classes.containerAdresaEmailTelefonFunctieDataAngajare}>
+            <div>
+              <ProfileUserDataString text={stare.textSalariu} idDat={classes.textNumePrenume}></ProfileUserDataString>
+              <ProfileUserDataString
+                text={stare.textSalariuActual}
                 idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
               ></ProfileUserDataString>
             </div>
