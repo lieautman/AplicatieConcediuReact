@@ -28,7 +28,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }))
 
 export default function DateIncarcate(props) {
-  const { row, setareId, esteAdmin, idRand, key } = props
+  const { row, setareId, esteAdmin, idRand } = props
 
   return (
     <StyledTableRow>
@@ -62,6 +62,5 @@ DateIncarcate.propTypes = {
   row: PropTypes.object.isRequired,
   setareId: PropTypes.func,
   esteAdmin: PropTypes.bool.isRequired,
-  idRand: PropTypes.number,
-  key: PropTypes.number
+  idRand: PropTypes.number
 }
