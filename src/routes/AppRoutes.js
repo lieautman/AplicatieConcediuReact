@@ -43,6 +43,7 @@ export default function AppRoutes() {
       <CustomRoute isPrivate={false} exact path='/CreareConcediu' component={CreareConcediu} />
 
       <CustomRoute isPrivate={false} exact path='/forbidden' component={Forbidden} />
+      <CustomRoute isPrivate={false} exact path='/logout' component={ProfileState} />
       <CustomRoute isPrivate={false} render={() => <NotFound title='PageNotFound'></NotFound>} />
     </Switch>
   )
