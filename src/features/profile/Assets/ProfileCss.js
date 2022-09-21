@@ -75,9 +75,9 @@ const profileStyle = theme => {
     containerAdresaEmailTelefonFunctieDataAngajare: {
       display: 'flex',
       padding: '0',
-      margin: '16px',
+      margin: '0px 16px 0px 16px',
       width: '300px',
-      marginTop: '1.4rem'
+      marginTop: '1rem'
     },
     pozaAdresaEmailTelefon: {
       height: '50px',
@@ -170,8 +170,16 @@ const profileStyle = theme => {
       [theme.breakpoints.down('lg')]: {},
       [theme.breakpoints.up('lg')]: { position: 'absolute' },
       padding: '0.22rem',
-      top: '35rem',
-      left: '35rem'
+      top: '30rem',
+      left: '35rem',
+
+    },
+    stilEditPageInputOverButton:{
+      padding: '0.22rem',
+      position:'relative',
+      [theme.breakpoints.down('lg')]: {},
+      [theme.breakpoints.up('lg')]: {  right:'4rem' },
+     
     },
     button: {
       backgroundColor: '#26c6da'

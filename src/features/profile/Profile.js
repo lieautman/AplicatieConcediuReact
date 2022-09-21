@@ -104,6 +104,15 @@ function Profile({ stare }) {
               ></ProfileUserDataString>
             </div>
           </div>
+          <div className={classes.containerAdresaEmailTelefonFunctieDataAngajare}>
+            <div>
+              <ProfileUserDataString text={stare.textSalariu} idDat={classes.textNumePrenume}></ProfileUserDataString>
+              <ProfileUserDataString
+                text={stare.textSalariuActual}
+                idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
+              ></ProfileUserDataString>
+            </div>
+          </div>
         </div>
         <div className={classes.stilADouaJumatateDePagina}>
           <div className={classes.styleCnpSerieNumarCi}>

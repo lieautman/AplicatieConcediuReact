@@ -105,6 +105,13 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           </div>
         </div>
         <div className={classes.stilEditPageInputButton}>
+          <div className={classes.stilEditPageInputOverButton}>
+            <TextField
+              label='Salariu'
+              defaultValue={stare.textSalariuActual}
+              onChange={evt => modifyDataProfile('textSalariuActual', evt.target.value)}
+            ></TextField>
+          </div>
           <Link to={'/profile'}>
             <Button variant='contained' color='primary' size='large' className={classes.button} startIcon={<SaveIcon />}>
               Save
