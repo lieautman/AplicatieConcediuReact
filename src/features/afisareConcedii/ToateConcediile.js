@@ -35,8 +35,8 @@ const rows = [
 ]
 
 export default function ToateConcediile() {
-  const [idRand, setIdRand] = useState(null)
   const esteAdmin = false
+
   return (
     <div>
       <div>
@@ -47,7 +47,7 @@ export default function ToateConcediile() {
         </Link>
       </div>
       <br></br>
-      <TabelConcediu rows={rows} setIdRand={setIdRand} esteAdmin={esteAdmin}></TabelConcediu>
+      <TabelConcediu rows={rows} esteAdmin={esteAdmin}></TabelConcediu>
     </div>
   )
 }

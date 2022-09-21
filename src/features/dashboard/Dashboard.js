@@ -8,7 +8,7 @@ const echipeArray = [
     id: 1,
     nume: 'Marketing',
     descriere: 'test',
-    poza: 'https://media.istockphoto.com/photos/ro/imagine-avocat-om-de-afaceri-%C8%99edin%C8%9Bei-la-birou-cu-un-client-femeie-explic%C3%A2nd-acordul-de-id1330020430?s=612x612'
+    poza: '/src/assets/img/png'
   },
   {
     id: 2,
