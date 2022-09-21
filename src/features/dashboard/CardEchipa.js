@@ -15,7 +15,7 @@ export default function CardEchipa(props) {
   return (
     <Grid item xs={4}>
       <Card sx={{ maxWidth: 310 }}>
-        <CardMedia component='img' height='140' image={echipa.poza} alt='poza ecipei' />
+        <CardMedia component='img' height='250' image={echipa.poza} alt='poza echipei' />
         <CardContent>
           <Typography gutterBottom variant='h5' component='div'>
             {echipa.nume}

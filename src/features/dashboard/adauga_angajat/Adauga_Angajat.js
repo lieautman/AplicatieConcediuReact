@@ -5,40 +5,74 @@ import { TextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Adauga_Angajatcss from './Adauga_Angajatcss'
 import { Autocomplete } from '@material-ui/lab'
+import { useHeader } from 'providers/AreasProvider'
+import { useReducer } from 'react'
+import { initialState, reducer } from './Adauga_AngajatState'
 
 const useStyles = makeStyles(Adauga_Angajatcss)
+
 const ListaEchipe = ['IT', 'HR', 'Support']
-const ListaManageri = ['Mihai', 'Maria', 'Bogan']
+const ListaManageri = ['Mihai', 'Maria', 'Bogdan']
 
 function Adauga_Angajat() {
   const classes = useStyles()
+  const [localState, dispatch] = useReducer(reducer, initialState)
+  const handleChange = (propertyName, value) => {
+    dispatch({ type: 'OnPropertyChanged', propertyName, value })
+  }
+
+  useHeader(
+    <div variant='subtitles1' className={classes.stilTitlu}>
+      {'Adauga un angajat nou'}
+    </div>
+  )
   return (
     <Fragment>
-      <label className={classes.StyleTxt}> {'Adauga un angajat nou'}</label>
       <br></br>
       <Container className={classes.containeradaugaaangajat} maxWidth='sm'>
         <Grid>
           <Container className={classes.containeradaugaangajatleft} maxWidth='sm'>
             <div>
-              <TextField className={classes.TextField} label={'Nume'} variant='outlined'></TextField>
+              <TextField
+                className={classes.TextField}
+                label={'Nume'}
+                variant='outlined'
+                onChange={event => handleChange('Nume', event.target.value)}
+              ></TextField>
               <br></br>
-              <TextField className={classes.TextField} label={'Prenume'} variant='outlined'></TextField>
+              <TextField
+                className={classes.TextField}
+                label={'Prenume'}
+                variant='outlined'
+                onChange={event => handleChange('Prenume', event.target.value)}
+              ></TextField>
               <br></br>
               <TextField
                 id='date'
-                label='Data Nasterii'
+                label='DataNasterii'
                 variant='outlined'
                 type='date'
                 defaultValue='yyyy-dd-mm'
+                onChange={event => handleChange('DataNasterii', event.target.value)}
                 className={classes.Combobox}
                 InputLabelProps={{
                   shrink: true
                 }}
               />{' '}
               <br></br>
-              <TextField className={classes.TextField} label={'CNP'} variant='outlined'></TextField>
+              <TextField
+                className={classes.TextField}
+                label={'CNP'}
+                variant='outlined'
+                onChange={event => handleChange('CNP', event.target.value)}
+              ></TextField>
               <br></br>
-              <TextField className={classes.TextField} label={'Seria Numar CI'} variant='outlined'></TextField>
+              <TextField
+                className={classes.TextField}
+                label={'SeriaNumarCI'}
+                variant='outlined'
+                onChange={event => handleChange('SeriaNumarCI', event.target.value)}
+              ></TextField>
               <br></br>
             </div>
           </Container>
@@ -47,16 +81,27 @@ function Adauga_Angajat() {
         <Grid>
           <Container className={classes.containeradaugaangajatright} maxWidth='sm'>
             <div>
-              <TextField className={classes.TextField} label={'Numar de telefon'} variant='outlined'></TextField>
+              <TextField
+                className={classes.TextField}
+                label={'Numardetelefon'}
+                variant='outlined'
+                onChange={event => handleChange('Numardetelefon', event.target.value)}
+              ></TextField>
               <br></br>
-              <TextField className={classes.TextField} label={'Salariu'} variant='outlined'></TextField>
+              <TextField
+                className={classes.TextField}
+                label={'Salariu'}
+                variant='outlined'
+                onChange={event => handleChange('Salariu', event.target.value)}
+              ></TextField>
               <br></br>
               <TextField
                 id='date'
-                label='Data Angajarii'
+                label='DataAngajarii'
                 variant='outlined'
                 type='date'
                 defaultValue='yyyy-dd-mm'
+                onChange={event => handleChange('DataAngajarii', event.target.value)}
                 className={classes.Combobox}
                 InputLabelProps={{
                   shrink: true
@@ -64,31 +109,29 @@ function Adauga_Angajat() {
               />{' '}
               <br></br>
               <Autocomplete
-                disable
-                portal
                 id='combo-box-echipe'
                 options={ListaEchipe}
                 className={classes.Combobox}
+                onChange={event => handleChange('Echipa', event.target.value)}
                 // getOptionLabel={option => option.title}
 
                 renderInput={params => <TextField {...params} label='Echipa' variant='outlined' />}
               />
               <Autocomplete
-                disable
-                portal
                 id='combo-box-manageri'
                 options={ListaManageri}
                 className={classes.Combobox}
+                onChange={event => handleChange('Manager', event.target.value)}
                 // getOptionLabel={option => option.title}
 
-                renderInput={params => <TextField {...params} label='Mangeri' variant='outlined' />}
+                renderInput={params => <TextField {...params} label='Manager' variant='outlined' />}
               />
             </div>
           </Container>
         </Grid>
       </Container>
       <button className={classes.StyleBtn} variant='contained' size='large'>
-        Adauga
+        ADAUGA
       </button>
     </Fragment>
   )

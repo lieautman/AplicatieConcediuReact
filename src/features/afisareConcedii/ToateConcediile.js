@@ -3,6 +3,7 @@ import TabelConcediu from './TabelConcediu'
 import Button from '@mui/material/Button'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import SearchBar from './SearchBar'
 
 const rows = [
   {
@@ -35,11 +36,61 @@ const rows = [
 ]
 
 export default function ToateConcediile() {
-  const [idRand, setIdRand] = useState(null)
+  const [filteredArray, setFilteredArray] = useState(rows)
   const esteAdmin = false
+
+  const handleFilterNume = input => {
+    const value = input.target.value
+
+    const newArray = rows.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.name.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
+
+  const handleFilterAngajat = input => {
+    const value = input.target.value
+
+    const newArray = rows.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.angajat.toLowerCase().includes(value) || el.inlocuitor.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
+
+  const handleFilterInlocuitor = input => {
+    const value = input.target.value
+
+    const newArray = rows.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.inlocuitor.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
+
   return (
     <div>
       <div>
+        <br></br>
         <Link to='./AprobareConcedii'>
           <Button variant='contained' style={{ backgroundColor: '#26c6da' }}>
             Aproba concedii
@@ -47,7 +98,13 @@ export default function ToateConcediile() {
         </Link>
       </div>
       <br></br>
-      <TabelConcediu rows={rows} setIdRand={setIdRand} esteAdmin={esteAdmin}></TabelConcediu>
+      <SearchBar onFilter={handleFilterNume} />
+      <SearchBar onFilter={handleFilterInlocuitor} />
+      <SearchBar onFilter={handleFilterAngajat} />
+      <br></br>
+
+      <br></br>
+      <TabelConcediu rows={rows} esteAdmin={esteAdmin} filtrare={filteredArray}></TabelConcediu>
     </div>
   )
 }

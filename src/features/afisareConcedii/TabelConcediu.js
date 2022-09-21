@@ -23,14 +23,14 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }))
 
 export default function TabelConcediu(props) {
-  const { rows, setIdRand, esteAdmin } = props
+  const { rows, setareId, esteAdmin, idRand, filtrare } = props
 
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label='customized table'>
         <TableHead>
           <TableRow>
-            {esteAdmin && <StyledTableCell padding='checkbox'></StyledTableCell>}
+            {esteAdmin && <StyledTableCell padding='checkbox' align='center'></StyledTableCell>}
             <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
               Tipul Concediului
             </StyledTableCell>
@@ -52,8 +52,8 @@ export default function TabelConcediu(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <DateIncarcate row={row} key={row.id} setIdRand={setIdRand} esteAdmin={esteAdmin} />
+          {filtrare.map(row => (
+            <DateIncarcate row={row} key={row.id} setareId={setareId} esteAdmin={esteAdmin} idRand={idRand} />
           ))}
         </TableBody>
       </Table>
@@ -62,7 +62,9 @@ export default function TabelConcediu(props) {
 }
 
 TabelConcediu.propTypes = {
-  setIdRand: PropTypes.func.isRequired,
+  setareId: PropTypes.func,
   rows: PropTypes.array.isRequired,
-  esteAdmin: PropTypes.bool.isRequired
+  esteAdmin: PropTypes.bool.isRequired,
+  idRand: PropTypes.number,
+  filtrare: PropTypes.array
 }

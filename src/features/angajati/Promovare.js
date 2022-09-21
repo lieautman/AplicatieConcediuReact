@@ -17,12 +17,17 @@ import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import { useHeader } from 'providers/AreasProvider'
 import headerStyle from 'assets/jss/components/headerStyle'
+import PropTypes from 'prop-types'
+import { useReducer } from 'react'
+import { initialState, reducer } from './PromovateStateDefine'
 
 const useStyles = makeStyles(stilAngajati)
 
-export default function BasicCard() {
+export default function BasicCard({ stare }) {
   //   const stilAng = makeStyles(stilAngajati)
   //   const stilPromovare = stilAng()
+  const [state, dispatch] = useReducer(reducer, initialState)
+
   const stilPromovare = useStyles()
   useHeader(
     <div variant='subtitles1' className={stilPromovare.stilTitlu}>
@@ -66,14 +71,14 @@ export default function BasicCard() {
                 </div>
                 <div className={stilPromovare.textManager}>
                   <Typography sx={{ fontSize: 18 }} color='text.secondary' gutterBottom>
-                    Nume si prenume
+                    {state.textNume}
+                  </Typography>
+                  <Typography sx={{ fontSize: 18 }} color='text.secondary' gutterBottom>
+                    {state.textPrenume}
                   </Typography>
                   <Typography variant='h5' component='div'></Typography>
-                  <Typography sx={{ fontSize: 16 }} color='text.secondary'>
-                    Functie
-                  </Typography>
                   <Typography sx={{ fontSize: 14 }} color='text.secondary'>
-                    Echipa
+                    {state.textEchipa}
                   </Typography>
                 </div>
               </div>
@@ -117,4 +122,7 @@ export default function BasicCard() {
       </div>
     </div>
   )
+}
+BasicCard.propTypes = {
+  stare: PropTypes.object.isRequired
 }
