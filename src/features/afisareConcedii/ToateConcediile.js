@@ -38,6 +38,7 @@ const rows = [
 export default function ToateConcediile() {
   const [filteredArray, setFilteredArray] = useState(rows)
   const esteAdmin = false
+  const seFiltreaza = true
 
   const handleFilterNume = input => {
     const value = input.target.value
@@ -62,7 +63,7 @@ export default function ToateConcediile() {
       if (value === '') {
         return el
       } else {
-        return el.angajat.toLowerCase().includes(value) || el.inlocuitor.toLowerCase().includes(value)
+        return el.angajat.toLowerCase().includes(value)
       }
     })
 
@@ -89,22 +90,23 @@ export default function ToateConcediile() {
 
   return (
     <div>
+      <br></br>
+      <SearchBar onFilter={handleFilterNume} filtrareNume={'tipul de concediu'} />
+      <SearchBar onFilter={handleFilterInlocuitor} filtrareNume={'numele inlocuitorului'} />
+      <SearchBar onFilter={handleFilterAngajat} filtrareNume={'numele angajatului'} />
+      <br></br>
+      <br></br>
+      <TabelConcediu rows={rows} esteAdmin={esteAdmin} filtrare={filteredArray} seFiltreaza={seFiltreaza}></TabelConcediu>
       <div>
         <br></br>
-        <Link to='./AprobareConcedii'>
-          <Button variant='contained' style={{ backgroundColor: '#26c6da' }}>
-            Aproba concedii
-          </Button>
-        </Link>
+        <div align='right'>
+          <Link to='./AprobareConcedii'>
+            <Button variant='contained' style={{ backgroundColor: '#26c6da' }}>
+              Aproba concedii
+            </Button>
+          </Link>
+        </div>
       </div>
-      <br></br>
-      <SearchBar onFilter={handleFilterNume} />
-      <SearchBar onFilter={handleFilterInlocuitor} />
-      <SearchBar onFilter={handleFilterAngajat} />
-      <br></br>
-
-      <br></br>
-      <TabelConcediu rows={rows} esteAdmin={esteAdmin} filtrare={filteredArray}></TabelConcediu>
     </div>
   )
 }

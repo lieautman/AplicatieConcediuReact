@@ -54,6 +54,7 @@ export default function AprobareConcedii() {
 
   const [idRand, setIdRand] = useState(null)
   const esteAdmin = true
+  const nuSeFiltreaza = true
 
   const setareId = id => () => {
     if (id !== idRand) {
@@ -77,7 +78,7 @@ export default function AprobareConcedii() {
       </div>
       <div>
         <br></br>
-        <TabelConcediu rows={rows} setareId={setareId} esteAdmin={esteAdmin} idRand={idRand}></TabelConcediu>
+        <TabelConcediu rows={rows} setareId={setareId} esteAdmin={esteAdmin} idRand={idRand} nuSeFiltreaza={nuSeFiltreaza}></TabelConcediu>
       </div>
       <div className={stilButoanePaginare.divMarebutoane}>
         <div>
