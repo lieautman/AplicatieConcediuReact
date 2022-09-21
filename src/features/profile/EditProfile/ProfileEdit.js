@@ -31,15 +31,15 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           <div className={classes.stilEditPageInput}>
             <TextField
               label='Nume'
-              defaultValue={stare.textNume}
-              onChange={evt => modifyDataProfile('textNume', evt.target.value)}
+              defaultValue={stare.Nume}
+              onChange={evt => modifyDataProfile('Nume', evt.target.value)}
             ></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
               label='Prenume'
-              defaultValue={stare.textPrenume}
-              onChange={evt => modifyDataProfile('textPrenume', evt.target.value)}
+              defaultValue={stare.Prenume}
+              onChange={evt => modifyDataProfile('Prenume', evt.target.value)}
             ></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
@@ -52,16 +52,16 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           <div className={classes.stilEditPageInput}>
             <TextField
               label='Email'
-              defaultValue={stare.textEmailActual}
-              onChange={evt => modifyDataProfile('textEmailActual', evt.target.value)}
+              defaultValue={stare.Email}
+              onChange={evt => modifyDataProfile('Email', evt.target.value)}
             ></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
               type='number'
               label='Telefon'
-              defaultValue={stare.textTelefonActual}
-              onChange={evt => modifyDataProfile('textTelefonActual', evt.target.value)}
+              defaultValue={stare.Numartelefon}
+              onChange={evt => modifyDataProfile('Numartelefon', evt.target.value)}
             ></TextField>
           </div>
         </div>
@@ -69,15 +69,15 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           <div className={classes.stilEditPageInput}>
             <TextField
               label='Functia'
-              defaultValue={stare.textFunctiaActuala}
-              onChange={evt => modifyDataProfile('textFunctiaActuala', evt.target.value)}
+              defaultValue={stare.Functia}
+              onChange={evt => modifyDataProfile('Functia', evt.target.value)}
             ></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
               type='date'
               label='Data Angajare'
-              defaultValue={stare.textDataNastereActuala}
+              defaultValue={stare.DataAngajarii}
               onChange={evt => modifyDataProfile('textDataAngajareActuala', evt.target.value)}
             ></TextField>
           </div>
@@ -85,21 +85,21 @@ function ProfileEdit({ stare, modifyDataProfile }) {
             <TextField
               type='date'
               label='Data Nastere'
-              defaultValue={stare.textDataNastereActuala}
+              defaultValue={stare.DataNasterii}
               onChange={evt => modifyDataProfile('textDataNastereActuala', evt.target.value)}
             ></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
               label='Cod Numeric Personal'
-              defaultValue={stare.textTelefonActual}
+              defaultValue={stare.Cnp}
               onChange={evt => modifyDataProfile('textCnpActual', evt.target.value)}
             ></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
               label='Serie Si Numar CI'
-              defaultValue={stare.textSerieNumarCiActual}
+              defaultValue={stare.SeriaNumarBuletin}
               onChange={evt => modifyDataProfile('textSerieNumarCiActual', evt.target.value)}
             ></TextField>
           </div>
@@ -108,7 +108,7 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           <div className={classes.stilEditPageInputOverButton}>
             <TextField
               label='Salariu'
-              defaultValue={stare.textSalariuActual}
+              defaultValue={stare.Salariu}
               onChange={evt => modifyDataProfile('textSalariuActual', evt.target.value)}
             ></TextField>
           </div>

@@ -42,8 +42,8 @@ function Profile({ stare }) {
           <div className={classes.containerProfileCard}>
             <ProfilePhoto idDat={classes.pozaProfilCard}></ProfilePhoto>
             <div className={classes.containerNumePrenumProfileCard}>
-              <ProfileUserDataString text={stare.textNume} idDat={classes.textNume}></ProfileUserDataString>
-              <ProfileUserDataString text={stare.textPrenume} idDat={classes.textPrenume}></ProfileUserDataString>
+              <ProfileUserDataString text={stare.Nume} idDat={classes.textNume}></ProfileUserDataString>
+              <ProfileUserDataString text={stare.Prenume} idDat={classes.textPrenume}></ProfileUserDataString>
             </div>
             <ProfileEditButton idDat={classes.pozaEditProfilCard}></ProfileEditButton>
           </div>
@@ -62,7 +62,7 @@ function Profile({ stare }) {
             <div>
               <ProfileUserDataString text={stare.textEmail} idDat={classes.textNumePrenume}></ProfileUserDataString>
               <ProfileUserDataString
-                text={stare.textEmailActual}
+                text={stare.Email}
                 idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
               ></ProfileUserDataString>
             </div>
@@ -72,7 +72,7 @@ function Profile({ stare }) {
             <div>
               <ProfileUserDataString text={stare.textTelefon} idDat={classes.textNumePrenume}></ProfileUserDataString>
               <ProfileUserDataString
-                text={stare.textTelefonActual}
+                text={stare.Numartelefon}
                 idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
               ></ProfileUserDataString>
             </div>
@@ -81,7 +81,7 @@ function Profile({ stare }) {
             <div>
               <ProfileUserDataString text={stare.textFunctia} idDat={classes.textNumePrenume}></ProfileUserDataString>
               <ProfileUserDataString
-                text={stare.textFunctiaActuala}
+                text={stare.Functia}
                 idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
               ></ProfileUserDataString>
             </div>
@@ -90,7 +90,7 @@ function Profile({ stare }) {
             <div>
               <ProfileUserDataString text={stare.textDataAngajare} idDat={classes.textNumePrenume}></ProfileUserDataString>
               <ProfileUserDataString
-                text={stare.textDataAngajareActuala}
+                text={stare.DataAngajarii}
                 idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
               ></ProfileUserDataString>
             </div>
@@ -99,7 +99,7 @@ function Profile({ stare }) {
             <div>
               <ProfileUserDataString text={stare.textDataNastere} idDat={classes.textNumePrenume}></ProfileUserDataString>
               <ProfileUserDataString
-                text={stare.textDataNastereActuala}
+                text={stare.DataNasterii}
                 idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
               ></ProfileUserDataString>
             </div>
@@ -108,7 +108,7 @@ function Profile({ stare }) {
             <div>
               <ProfileUserDataString text={stare.textSalariu} idDat={classes.textNumePrenume}></ProfileUserDataString>
               <ProfileUserDataString
-                text={stare.textSalariuActual}
+                text={stare.Salariu.toString()}
                 idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
               ></ProfileUserDataString>
             </div>
@@ -120,7 +120,7 @@ function Profile({ stare }) {
               <div>
                 <ProfileUserDataString text={stare.textCnp} idDat={classes.textNumePrenume}></ProfileUserDataString>
                 <ProfileUserDataString
-                  text={stare.textCnpActual}
+                  text={stare.Cnp}
                   idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
                 ></ProfileUserDataString>
               </div>
@@ -129,7 +129,7 @@ function Profile({ stare }) {
               <div>
                 <ProfileUserDataString text={stare.textSerieNumarCi} idDat={classes.textNumePrenume}></ProfileUserDataString>
                 <ProfileUserDataString
-                  text={stare.textSerieNumarCiActual}
+                  text={stare.SeriaNumarBuletin}
                   idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
                 ></ProfileUserDataString>
               </div>
