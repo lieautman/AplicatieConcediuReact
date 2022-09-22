@@ -1,13 +1,13 @@
 export const initialState = {
-  Nume: null,
-  Prenume: null,
-  DataNasterii: null,
-  CNP: null,
-  SeriaNumarCI: null,
-  Numardetelefon: null,
-  DataAngajarii: null,
-  Echipa: null,
-  Manager: null
+  nume: '',
+  prenume: '',
+  dataNasterii: new Date(),
+  cnp: '',
+  seriaNumarCI: '',
+  numardetelefon: '',
+  dataAngajarii: '',
+  echipaId: '',
+  managerId: ''
 }
 
 export function reducer(state, action) {
@@ -21,5 +21,6 @@ export function reducer(state, action) {
 
 function OnPropertyChanged(state, action) {
   const { propertyName, value } = action
+  console.log(value)
   return { ...state, [propertyName]: value }
 }
