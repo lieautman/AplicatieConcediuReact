@@ -1,11 +1,11 @@
 export const initialState = {
-  ComboboxTipConcediu: null,
-  DatePikerIncepere: null,
-  DatePickerIncetare: null,
-  ComboboxInlocuitor: null,
-  NumarZileSelectat: null,
-  NumarZileDisponibile: null,
-  Comentarii: null
+  comboboxTipConcediu: '',
+  datePikerIncepere: '',
+  datePickerIncetare: '',
+  comboboxInlocuitor: '',
+  numarZileSelectat: '',
+  numarZileDisponibile: '',
+  comentarii: ''
 }
 
 export function reducer(state, action) {
