@@ -4,11 +4,11 @@ import { initialState, reducer } from './ProfileStateDefine'
 
 //state management
 function PromovareState() {
-  const [state] = useReducer(reducer, initialState)
+  const [state, dispatch] = useReducer(reducer, initialState)
 
   return (
     <>
-      <Promovare stare={state}></Promovare>
+      <Promovare state={state} dispatch={dispatch}></Promovare>
     </>
   )
 }

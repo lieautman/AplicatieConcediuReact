@@ -27,7 +27,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }))
 
 export default function TabelAngajati(props) {
-  const { rows, setareId, idRand } = props
+  const { rows, setareId, idRand, filtrare } = props
   const stilTabel = useStyles()
   return (
     <div>
@@ -59,7 +59,7 @@ export default function TabelAngajati(props) {
             </TableHead>
 
             <TableBody>
-              {rows.map((row, i) => (
+              {filtrare.map((row, i) => (
                 <RanduriAngajati row={row} key={i} setareId={setareId} idRand={idRand}></RanduriAngajati>
               ))}
             </TableBody>
@@ -72,5 +72,6 @@ export default function TabelAngajati(props) {
 TabelAngajati.propTypes = {
   rows: PropTypes.array.isRequired,
   setareId: PropTypes.func,
-  idRand: PropTypes.number
+  idRand: PropTypes.number,
+  filtrare: PropTypes.array
 }

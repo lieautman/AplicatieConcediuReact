@@ -64,6 +64,10 @@ const stilAngajati = theme => {
       fontSize: '1.1428571428571428rem',
       fontFamily: 'Source Sans Pro',
       lineHeight: '1.75'
+    },
+    Combobox: {
+      width: 300,
+      marginTop: '1rem'
     }
   }
 }

@@ -26,7 +26,8 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
   }
 }))
 
-export default function TabelAngajatiDePromovat({ rows }) {
+export default function TabelAngajatiDePromovat(props) {
+  const { rows, setIdRand } = props
   const stilTabel = useStyles()
   return (
     <div>
@@ -35,7 +36,10 @@ export default function TabelAngajatiDePromovat({ rows }) {
           <Table sx={{ minWidth: 400 }} aria-label='customized table'>
             <TableHead>
               <TableRow>
-              <StyledTableCell padding='checkbox'></StyledTableCell>
+                <StyledTableCell padding='checkbox'></StyledTableCell>
+                <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
+                  Id
+                </StyledTableCell>
                 <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
                   Nume
                 </StyledTableCell>
@@ -49,17 +53,17 @@ export default function TabelAngajatiDePromovat({ rows }) {
             </TableHead>
 
             <TableBody>
-              {rows.map((row, i) => (
-                <RanduriAngajatiDePromovat row={row} key={i}></RanduriAngajatiDePromovat>
+              {rows.map((row, index) => (
+                <RanduriAngajatiDePromovat row={row} key={index} index={index} setIdRand={setIdRand}></RanduriAngajatiDePromovat>
               ))}
             </TableBody>
           </Table>
         </div>
       </TableContainer>
-
     </div>
   )
 }
 TabelAngajatiDePromovat.propTypes = {
-  rows: PropTypes.array.isRequired
+  rows: PropTypes.array.isRequired,
+  setIdRand: PropTypes.func
 }

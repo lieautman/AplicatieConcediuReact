@@ -14,6 +14,7 @@ const useStyles = makeStyles(Adauga_Angajatcss)
 function Adauga_Angajat() {
   const classes = useStyles()
   const [localState, dispatch] = useReducer(reducer, initialState)
+
   const handleChange = (propertyName, value) => {
     console.log(value)
     dispatch({ type: 'OnPropertyChanged', propertyName, value })

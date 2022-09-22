@@ -29,6 +29,11 @@ function Profile({ stare }) {
     </div>
   )
 
+  var DataAngajariiDisplay = stare.DataAngajarii
+  if (!stare.DataAngajarii) {
+    DataAngajariiDisplay = "Persoana nu a fost inca angajata"
+  }
+
   return (
     <Fragment>
       <div className={classes.styleContainerMare}>
@@ -56,10 +61,7 @@ function Profile({ stare }) {
             <AdressEmailPhonePhoto idDat={classes.pozaAdresaEmailTelefon} type={'email'}></AdressEmailPhonePhoto>
             <div>
               <ProfileUserDataString text={stare.textEmail} idDat={classes.textNumePrenume}></ProfileUserDataString>
-              <ProfileUserDataString
-                text={stare.Email}
-                idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
-              ></ProfileUserDataString>
+              <ProfileUserDataString text={stare.Email} idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}></ProfileUserDataString>
             </div>
           </div>
           <div className={classes.containerAdresaEmailTelefonFunctieDataAngajare}>
@@ -75,17 +77,14 @@ function Profile({ stare }) {
           <div className={classes.containerAdresaEmailTelefonFunctieDataAngajare}>
             <div>
               <ProfileUserDataString text={stare.textFunctia} idDat={classes.textNumePrenume}></ProfileUserDataString>
-              <ProfileUserDataString
-                text={stare.Functia}
-                idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
-              ></ProfileUserDataString>
+              <ProfileUserDataString text={stare.Functia} idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}></ProfileUserDataString>
             </div>
           </div>
           <div className={classes.containerAdresaEmailTelefonFunctieDataAngajare}>
             <div>
               <ProfileUserDataString text={stare.textDataAngajare} idDat={classes.textNumePrenume}></ProfileUserDataString>
               <ProfileUserDataString
-                text={stare.DataAngajarii}
+                text={DataAngajariiDisplay}
                 idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
               ></ProfileUserDataString>
             </div>
@@ -114,10 +113,7 @@ function Profile({ stare }) {
             <div className={classes.containerAdresaEmailTelefonFunctieDataAngajare}>
               <div>
                 <ProfileUserDataString text={stare.textCnp} idDat={classes.textNumePrenume}></ProfileUserDataString>
-                <ProfileUserDataString
-                  text={stare.Cnp}
-                  idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}
-                ></ProfileUserDataString>
+                <ProfileUserDataString text={stare.Cnp} idDat={classes.textAdresaEmailTelefonFunctiaDataAngajare}></ProfileUserDataString>
               </div>
             </div>
             <div className={classes.containerAdresaEmailTelefonFunctieDataAngajare}>
