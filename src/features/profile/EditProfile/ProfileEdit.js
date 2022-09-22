@@ -23,7 +23,7 @@ function ProfileEdit({ stare, modifyDataProfile }) {
       {'Editeaza date'}
     </div>
   )
-
+    console.log(stare.DataNasterii)
   return (
     <Fragment>
       <div className={classes.stilEditPageDivContainer1}>
@@ -32,6 +32,7 @@ function ProfileEdit({ stare, modifyDataProfile }) {
             <TextField
               label='Nume'
               value={stare.Nume}
+              fullWidth
               onChange={evt => modifyDataProfile('Nume', evt.target.value)}
             ></TextField>
           </div>
@@ -39,6 +40,7 @@ function ProfileEdit({ stare, modifyDataProfile }) {
             <TextField
               label='Prenume'
               value={stare.Prenume}
+              fullWidth
               onChange={evt => modifyDataProfile('Prenume', evt.target.value)}
             ></TextField>
           </div>
@@ -46,6 +48,7 @@ function ProfileEdit({ stare, modifyDataProfile }) {
             <TextField
               label='Adresa'
               value={stare.textAdresaActuala}
+              fullWidth
               onChange={evt => modifyDataProfile('textAdresaActuala', evt.target.value)}
             ></TextField>
           </div>
@@ -53,6 +56,7 @@ function ProfileEdit({ stare, modifyDataProfile }) {
             <TextField
               label='Email'
               value={stare.Email}
+              fullWidth
               onChange={evt => modifyDataProfile('Email', evt.target.value)}
             ></TextField>
           </div>
@@ -61,6 +65,7 @@ function ProfileEdit({ stare, modifyDataProfile }) {
               type='number'
               label='Telefon'
               value={stare.Numartelefon}
+              fullWidth
               onChange={evt => modifyDataProfile('Numartelefon', evt.target.value)}
             ></TextField>
           </div>
@@ -70,37 +75,44 @@ function ProfileEdit({ stare, modifyDataProfile }) {
             <TextField
               label='Functia'
               value={stare.Functia}
+              fullWidth
               onChange={evt => modifyDataProfile('Functia', evt.target.value)}
             ></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
               type='date'
-              label='Data Angajare'
-              value={stare.DataAngajarii?stare.DataAngajarii:"1999-01-01"}
-              onChange={evt => modifyDataProfile('textDataAngajareActuala', evt.target.value)}
+              label={stare.DataAngajarii?stare.DataAngajarii:"1999-01-01"}
+              defaultValue=""
+              InputLabelProps={{ shrink: true }}
+              fullWidth
+              onChange={evt => modifyDataProfile('DataAngajarii', evt.target.value)}
             ></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
               type='date'
-              label='Data Nastere'
-              value={stare.DataNasterii?stare.DataNasterii:"1999-01-01"}
-              onChange={evt => modifyDataProfile('textDataNastereActuala', evt.target.value)}
+              label={stare.DataNasterii?stare.DataNasterii:"1999-01-01"}
+              defaultValue=""
+              InputLabelProps={{ shrink: true }}
+              fullWidth
+              onChange={evt => modifyDataProfile('DataNasterii', evt.target.value)}
             ></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
               label='Cod Numeric Personal'
               value={stare.Cnp}
-              onChange={evt => modifyDataProfile('textCnpActual', evt.target.value)}
+              fullWidth
+              onChange={evt => modifyDataProfile('Cnp', evt.target.value)}
             ></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
               label='Serie Si Numar CI'
               value={stare.SeriaNumarBuletin}
-              onChange={evt => modifyDataProfile('textSerieNumarCiActual', evt.target.value)}
+              fullWidth
+              onChange={evt => modifyDataProfile('SeriaNumarBuletin', evt.target.value)}
             ></TextField>
           </div>
         </div>
@@ -109,11 +121,12 @@ function ProfileEdit({ stare, modifyDataProfile }) {
             <TextField
               label='Salariu'
               value={stare.Salariu}
-              onChange={evt => modifyDataProfile('textSalariuActual', evt.target.value)}
+              fullWidth
+              onChange={evt => modifyDataProfile('Salariu', evt.target.value)}
             ></TextField>
           </div>
           <Link to={'/profile'}>
-            <Button variant='contained' color='primary' size='large' className={classes.button} startIcon={<SaveIcon />}>
+            <Button variant='contained' color='primary' size='large' className={classes.button}  startIcon={<SaveIcon />}>
               Save
             </Button>
           </Link>
