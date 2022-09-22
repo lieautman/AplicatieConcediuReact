@@ -1,6 +1,6 @@
-import React, { useEffect, useReducer} from 'react'
+import React, { useEffect, useReducer } from 'react'
 import Profile from './Profile'
-import {initialState, reducer} from './ProfileStateDefine'
+import { initialState, reducer } from './ProfileStateDefine'
 
 //preluare date
 import { gql } from '@apollo/client'
@@ -27,26 +27,44 @@ const USER_DATA_QUERY = gql`
     }
   }
 `
+
+//preluare date din cache apollo
+import { useApolloClient } from '@apollo/client'
+
 //state management
 function ProfileState() {
-  const [state,dispatch] = useReducer(reducer, initialState);
-  
-  // useEffect(()=>{
-   // if(!loading&&data){
-   // dispatch({type:'allObject', inputValue:data.getProfileData, inputName:'allObject'})
-   //}
-  // },[])
-  useQueryWithErrorHandling(USER_DATA_QUERY, { variables: { userEmail:"a"}, onCompleted:(data)=>{ 
-    if(data!=undefined||data!=null){
-      dispatch({ inputName:'allObject', inputValue:data.getProfileData, inputType:'allObject'})
+  const [state, dispatch] = useReducer(reducer, initialState)
+
+  //preluare date din cache apollo
+  const client = useApolloClient()
+  let date = client.readQuery({
+    query: gql`
+      query userData {
+        userData {
+          id
+          isAdmin
+          isManager
+          email
+        }
+      }
+    `
+  })
+
+  //const oidc = useContext(AuthenticationContext) posibila alternativa
+
+  //query
+  useQueryWithErrorHandling(USER_DATA_QUERY, {
+    variables: { userEmail: date?date.userData.email:"admin" },
+    onCompleted: data => {
+      if (data != undefined || data != null) {
+        dispatch({ inputName: 'allObject', inputValue: data.getProfileData, inputType: 'allObject' })
+      }
     }
-  }})
+  })
 
   return (
     <>
-      <Profile
-        stare={state}
-      ></Profile>
+      <Profile stare={state}></Profile>
     </>
   )
 }
