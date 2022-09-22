@@ -18,14 +18,7 @@ export const initialState = {
     { id: '5', nume: 'Marinescu', prenume: 'Mama', echipa: 'IT' }
   ],
 
-  listaAngajatiAdaugati: [
-    {
-      id: '1',
-      nume: ' asdd',
-      prenume: ' sads',
-      echipa: 'svdfv'
-    }
-  ]
+  listaAngajatiAdaugati: []
 }
 export function reducer(state, action) {
   switch (action.inputName) {

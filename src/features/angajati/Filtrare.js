@@ -1,32 +1,33 @@
 /* eslint-disable react/react-in-jsx-scope */
-import TextField from '@mui/material/TextField'
+import SearchBar from '../afisareConcedii/SearchBar'
 import react from 'react'
 import { makeStyles } from '@material-ui/core'
-import stilAngajati from './StilAngajati'
+import filtrari from '../afisareConcedii/Filtrari'
+import { useState } from 'react'
+import PropTypes from 'prop-types'
 
-const stilAng = makeStyles(stilAngajati)
+const filtr = makeStyles(filtrari)
 
-export default function Filtrare() {
-  const stil = stilAng()
+export default function Filtrare(props) {
+  const { handleFilterNume, handleFilterPrenume, handleFilterEmail, handleFilterManager, handleFilterEchipa } = props
+  const stil = filtr()
+
   return (
     <div>
-      <div className={stil.divMareTextField}>
-        <div>
-          <TextField id='filled-basic' label='Nume' variant='standard' size='small' />
-        </div>
-        <div>
-          <TextField id='filled-basic' label='Prenume' variant='standard' size='small' />
-        </div>
-        <div>
-          <TextField id='filled-basic' label='Email' variant='standard' size='small' />
-        </div>
-        <div>
-          <TextField id='filled-basic' label='Manager' variant='standard' size='small' />
-        </div>
-        <div>
-          <TextField id='filled-basic' label='Echipa' variant='standard' size='small' />
-        </div>
+      <div className={stil.displayFiltrari}>
+        <SearchBar onFilter={handleFilterNume} filtrareNume={'nume'} />
+        <SearchBar onFilter={handleFilterPrenume} filtrareNume={'prenume'} />
+        <SearchBar onFilter={handleFilterEmail} filtrareNume={'email'} />
+        <SearchBar onFilter={handleFilterManager} filtrareNume={'manager'} />
+        <SearchBar onFilter={handleFilterEchipa} filtrareNume={'echipa'} />
       </div>
     </div>
   )
+}
+Filtrare.propTypes = {
+  handleFilterNume: PropTypes.func,
+  handleFilterPrenume: PropTypes.func,
+  handleFilterEmail: PropTypes.func,
+  handleFilterManager: PropTypes.func,
+  handleFilterEchipa: PropTypes.func
 }
