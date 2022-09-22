@@ -28,11 +28,11 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }))
 
 export default function DateIncarcate(props) {
-  const { row, setareId, esteAdmin, idRand } = props
+  const { row, setareId, concediiInAsteptareaAprobarii, idRand } = props
 
   return (
     <StyledTableRow>
-      {esteAdmin && (
+      {concediiInAsteptareaAprobarii && (
         <StyledTableCell align='center'>
           <Checkbox
             style={{ color: '#26c6da' }}
@@ -52,7 +52,7 @@ export default function DateIncarcate(props) {
       <StyledTableCell align='center'>{row.dataInceput}</StyledTableCell>
       <StyledTableCell align='center'>{row.dataSfarsit}</StyledTableCell>
       <StyledTableCell align='center'>{row.inlocuitor}</StyledTableCell>
-      <StyledTableCell align='center'>{row.motiv}</StyledTableCell>
+      <StyledTableCell align='center'>{row.comentarii}</StyledTableCell>
       <StyledTableCell align='center'>{row.angajat}</StyledTableCell>
     </StyledTableRow>
   )
@@ -61,6 +61,6 @@ export default function DateIncarcate(props) {
 DateIncarcate.propTypes = {
   row: PropTypes.object.isRequired,
   setareId: PropTypes.func,
-  esteAdmin: PropTypes.bool.isRequired,
+  concediiInAsteptareaAprobarii: PropTypes.bool.isRequired,
   idRand: PropTypes.number
 }
