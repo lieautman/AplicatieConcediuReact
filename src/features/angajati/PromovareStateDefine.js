@@ -1,23 +1,26 @@
 export const initialState = {
+  id: '',
   textNume: 'Popa',
   textPrenume: 'Adi',
   textEchipa: 'Marketing',
   Echipa: null,
   listaAngajatiDeAdaugat: [
     {
+      id: '1',
       nume: 'Popescu',
       prenume: 'Ioana',
       echipa: 'IT'
     },
-    { nume: 'Georgescu', prenume: 'Ana', echipa: 'IT' },
-    { nume: 'Ionescu', prenume: 'Maria', echipa: 'Marketing' },
-    { nume: 'Antonescu', prenume: 'Cristian', echipa: 'Resurse Umane' },
-    { nume: 'Iliescu', prenume: 'David', echipa: 'IT' },
-    { nume: 'Marinescu', prenume: 'Mama', echipa: 'IT' }
+    { id: '2', nume: 'Georgescu', prenume: 'Ana', echipa: 'IT' },
+    { id: '3', nume: 'Ionescu', prenume: 'Maria', echipa: 'Marketing' },
+    { id: '4', nume: 'Antonescu', prenume: 'Cristian', echipa: 'Resurse Umane' },
+    { id: '5', nume: 'Iliescu', prenume: 'David', echipa: 'IT' },
+    { id: '5', nume: 'Marinescu', prenume: 'Mama', echipa: 'IT' }
   ],
 
   listaAngajatiAdaugati: [
     {
+      id: '1',
       nume: ' asdd',
       prenume: ' sads',
       echipa: 'svdfv'
@@ -27,17 +30,17 @@ export const initialState = {
 export function reducer(state, action) {
   switch (action.inputName) {
     case 'textNume':
-      return { textNume: action.inputValue }
+      return { ...state, textNume: action.inputValue }
     case 'textPrenume':
-      return { textPrenume: action.inputValue }
+      return { ...state, textPrenume: action.inputValue }
     case 'textEchipa':
-      return { textEchipa: action.inputValue }
+      return { ...state, textEchipa: action.inputValue }
     case 'OnPropertyChanged':
       return OnPropertyChanged(state, action)
     case 'listaAngajatiDeAdaugat':
-      return { listaAngajatiDeAdaugat: action.inputValue }
+      return { ...state, listaAngajatiDeAdaugat: action.inputValue }
     case 'listaAngajatiAdaugati':
-      return { listaAngajatiAdaugati: action.inputValue }
+      return { ...state, listaAngajatiAdaugati: action.inputValue }
     default:
       throw new Error()
   }
