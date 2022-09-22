@@ -67,6 +67,7 @@ export default function BasicCard() {
     }
 
     listaAngajatiAdaugati = [...listaAngajatiAdaugati, angajatDeAdaugat]
+    listaAngajatiDeAdaugat.splice(angajatDeAdaugat, 1)
     console.log(listaAngajatiAdaugati)
 
     dispatch({ inputName: 'listaAngajatiAdaugati', inputValue: listaAngajatiAdaugati })
@@ -84,6 +85,7 @@ export default function BasicCard() {
       echipa: listaAngajatiAdaugati[idRand].echipa
     }
     listaAngajatiDeAdaugat = [...listaAngajatiDeAdaugat, angajatDeScos]
+    listaAngajatiAdaugati.splice(angajatDeScos, 1)
     console.log(listaAngajatiDeAdaugat)
 
     dispatch({ inputName: 'listaAngajatiAdaugati', inputValue: listaAngajatiAdaugati })

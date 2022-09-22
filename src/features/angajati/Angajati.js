@@ -33,6 +33,7 @@ export default function Angajati(props) {
   const stilButoanePaginare = stilAng()
   const stilButoaneActiuni = stilBtn()
   const history = useHistory()
+  const [filteredArray, setFilteredArray] = useState(rows)
 
   const [idRand, setIdRand] = useState(null)
 
@@ -45,6 +46,82 @@ export default function Angajati(props) {
     if (idRand) {
       history.push({ pathname: `/angajati/Promovare/${idRand}` })
     }
+  }
+
+  const handleFilterNume = input => {
+    const value = input.target.value
+
+    const newArray = rows.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.nume.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
+  const handleFilterPrenume = input => {
+    const value = input.target.value
+
+    const newArray = rows.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.prenume.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
+  const handleFilterEmail = input => {
+    const value = input.target.value
+
+    const newArray = rows.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.email.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
+  const handleFilterManager = input => {
+    const value = input.target.value
+
+    const newArray = rows.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.manager.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
+  const handleFilterEchipa = input => {
+    const value = input.target.value
+
+    const newArray = rows.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.echipa.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
   }
 
   return (
@@ -68,12 +145,18 @@ export default function Angajati(props) {
       </div>
       <br></br>
       <div className={stilButoanePaginare.divMareTextField}>
-        <Filtrare></Filtrare>
+        <Filtrare
+          handleFilterNume={handleFilterNume}
+          handleFilterPrenume={handleFilterPrenume}
+          handleFilterEmail={handleFilterEmail}
+          handleFilterManager={handleFilterManager}
+          handleFilterEchipa={handleFilterEchipa}
+        ></Filtrare>
       </div>
 
       <br></br>
 
-      <TabelAngajati rows={rows} setareId={setareId}></TabelAngajati>
+      <TabelAngajati rows={rows} setareId={setareId} filtrare={filteredArray}></TabelAngajati>
       <div className={stilButoanePaginare.divMarebutoane}>
         <div>
           <IconButton aria-label='NavigateBefore' style={{ backgroundColor: '#05241d', color: 'white' }}>
