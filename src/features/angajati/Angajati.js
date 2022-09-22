@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom'
 import { IconButton, makeStyles } from '@material-ui/core'
 import stilAngajati from './StilAngajati'
 import stilButoane from './StilButoane'
-import TextField from '@mui/material/TextField'
+import Filtrare from './Filtrare'
 import NavigateNext from '@material-ui/icons/NavigateNext'
 import NavigateBefore from '@material-ui/icons/NavigateBefore'
 import { init, reducer } from 'features/angajati/AngajatiStateDefine'
 import { useHistory } from 'react-router'
 import PropTypes from 'prop-types'
+import { Message } from '@material-ui/icons'
 
 const stilAng = makeStyles(stilAngajati)
 const stilBtn = makeStyles(stilButoane)
@@ -41,8 +42,11 @@ export default function Angajati(props) {
   }
 
   const handleClick = () => {
-    history.push({ pathname: `/angajati/Promovare/${idRand}` })
+    if (idRand) {
+      history.push({ pathname: `/angajati/Promovare/${idRand}` })
+    }
   }
+
   return (
     <div>
       <div className={stilButoanePaginare.divMarebutoane}>
@@ -64,23 +68,11 @@ export default function Angajati(props) {
       </div>
       <br></br>
       <div className={stilButoanePaginare.divMareTextField}>
-        <div>
-          <TextField id='filled-basic' label='Nume' variant='standard' size='small' />
-        </div>
-        <div>
-          <TextField id='filled-basic' label='Prenume' variant='standard' size='small' />
-        </div>
-        <div>
-          <TextField id='filled-basic' label='Email' variant='standard' size='small' />
-        </div>
-        <div>
-          <TextField id='filled-basic' label='Manager' variant='standard' size='small' />
-        </div>
-        <div>
-          <TextField id='filled-basic' label='Echipa' variant='standard' size='small' />
-        </div>
+        <Filtrare></Filtrare>
       </div>
+
       <br></br>
+
       <TabelAngajati rows={rows} setareId={setareId}></TabelAngajati>
       <div className={stilButoanePaginare.divMarebutoane}>
         <div>

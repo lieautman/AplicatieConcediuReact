@@ -37,30 +37,54 @@ export default function BasicCard() {
       {'Promovare angajat'}
     </div>
   )
-
+  //functie selectbox pt retinere info selectata
   const handleChange = (propertyName, value) => {
     dispatch({ inputName: 'OnPropertyChanged', propertyName, value })
   }
+
   const ListaEchipe = ['IT', 'Resurse Umane', 'Support', 'Markeing', 'Dezvoltare']
 
   const stilButon = makeStyles(stilButoane)
   const stilBtn = stilButon()
 
-  function createData(nume, prenume, echipa) {
-    return { nume, prenume, echipa }
+  //functie de creare string
+  function createData(id, nume, prenume, echipa) {
+    return { id, nume, prenume, echipa }
   }
 
+  const [idRand, setIdRand] = useState(null)
+
+  //functie de actiune pe buton pt adaugare angajati in lista de formare echipa
   function AdaugaElem() {
     let listaAngajatiDeAdaugat = state?.listaAngajatiDeAdaugat
     let listaAngajatiAdaugati = state?.listaAngajatiAdaugati
-    let angataDeAdaugat = {
-      nume: listaAngajatiDeAdaugat[0]?.nume,
-      prenume: listaAngajatiDeAdaugat[0]?.prenume,
-      echipa: listaAngajatiDeAdaugat[0]?.echipa
+
+    let angajatDeAdaugat = {
+      id: listaAngajatiDeAdaugat[idRand].id,
+      nume: listaAngajatiDeAdaugat[idRand].nume,
+      prenume: listaAngajatiDeAdaugat[idRand].prenume,
+      echipa: listaAngajatiDeAdaugat[idRand].echipa
     }
 
-    listaAngajatiAdaugati = [...listaAngajatiAdaugati, angataDeAdaugat]
+    listaAngajatiAdaugati = [...listaAngajatiAdaugati, angajatDeAdaugat]
     console.log(listaAngajatiAdaugati)
+
+    dispatch({ inputName: 'listaAngajatiAdaugati', inputValue: listaAngajatiAdaugati })
+    dispatch({ inputName: 'listaAngajatiDeAdaugat', inputValue: listaAngajatiDeAdaugat })
+  }
+
+  function ScoateElem() {
+    let listaAngajatiDeAdaugat = state?.listaAngajatiDeAdaugat
+    let listaAngajatiAdaugati = state?.listaAngajatiAdaugati
+
+    let angajatDeScos = {
+      id: listaAngajatiAdaugati[idRand].id,
+      nume: listaAngajatiAdaugati[idRand].nume,
+      prenume: listaAngajatiAdaugati[idRand].prenume,
+      echipa: listaAngajatiAdaugati[idRand].echipa
+    }
+    listaAngajatiDeAdaugat = [...listaAngajatiDeAdaugat, angajatDeScos]
+    console.log(listaAngajatiDeAdaugat)
 
     dispatch({ inputName: 'listaAngajatiAdaugati', inputValue: listaAngajatiAdaugati })
     dispatch({ inputName: 'listaAngajatiDeAdaugat', inputValue: listaAngajatiDeAdaugat })
@@ -70,19 +94,18 @@ export default function BasicCard() {
 
   // const arrayElemets1 = [...arrayElemets, { id: 2, name: 'test1' }]
 
-  // let a=''
-  // let i=0
-  // while i<listaAngajatiDeAdaugat.size//length{
-  // a=a+createData(state.listaAngajatiDeAdaugat[i].nume)
-  //i++
-  //}
   function ReturnList1() {
     let listBuffer = []
     if (state && state.listaAngajatiDeAdaugat) {
       for (var i = 0; i < state.listaAngajatiDeAdaugat.length; i++) {
         listBuffer = [
           ...listBuffer,
-          createData(state.listaAngajatiDeAdaugat[i].nume, state.listaAngajatiDeAdaugat[i].prenume, state.listaAngajatiDeAdaugat[i].echipa)
+          createData(
+            state.listaAngajatiDeAdaugat[i].id,
+            state.listaAngajatiDeAdaugat[i].nume,
+            state.listaAngajatiDeAdaugat[i].prenume,
+            state.listaAngajatiDeAdaugat[i].echipa
+          )
         ]
       }
     }
@@ -97,7 +120,12 @@ export default function BasicCard() {
       for (var i = 0; i < state.listaAngajatiAdaugati.length; i++) {
         listBuffer = [
           ...listBuffer,
-          createData(state.listaAngajatiAdaugati[i].nume, state.listaAngajatiAdaugati[i].prenume, state.listaAngajatiAdaugati[i].echipa)
+          createData(
+            state.listaAngajatiDeAdaugat[i].id,
+            state.listaAngajatiAdaugati[i].nume,
+            state.listaAngajatiAdaugati[i].prenume,
+            state.listaAngajatiAdaugati[i].echipa
+          )
         ]
       }
     }
@@ -150,18 +178,18 @@ export default function BasicCard() {
       </div>
       <div className={stilPromovare.divTabelePromovare}>
         <div>
-          <TabelAngajatiDePromovat rows={rowsDinStare}></TabelAngajatiDePromovat>
+          <TabelAngajatiDePromovat rows={rowsDinStare} setIdRand={setIdRand}></TabelAngajatiDePromovat>
         </div>
         <div className={stilBtn.butoaneListePromovare}>
           <IconButton aria-label='KeyboardArrowRight' onClick={AdaugaElem} style={{ backgroundColor: '#26c6da', color: 'white' }}>
             <KeyboardArrowRight />
           </IconButton>
-          <IconButton aria-label='KeyboardArrowLeft' style={{ backgroundColor: '#26c6da', color: 'white' }}>
+          <IconButton aria-label='KeyboardArrowLeft' onClick={ScoateElem} style={{ backgroundColor: '#26c6da', color: 'white' }}>
             <KeyboardArrowLeft />
           </IconButton>
         </div>
         <div>
-          <TabelAngajatiDePromovat rows={rowsDinStare2}></TabelAngajatiDePromovat>
+          <TabelAngajatiDePromovat rows={rowsDinStare2} setIdRand={setIdRand}></TabelAngajatiDePromovat>
         </div>
       </div>
     </div>
