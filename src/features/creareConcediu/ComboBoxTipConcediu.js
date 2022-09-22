@@ -5,7 +5,11 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const ComboBoxTipConcediu = () => {
   // Our sample dropdown options
-  const options = ['Concediu medical', 'Concediu de odihna', ' Concediu fara plata', 'Concediu pentru cresterea copilului']
+  const options = [
+    { id: 1, name: 'Concediu de odihna' },
+    { id: 2, name: 'Concediu fara plata' },
+    { id: 3, name: 'Concediu medical' }
+  ]
 
   // eslint-disable-next-line no-unused-vars
   const useStyles = makeStyles(theme => ({
@@ -25,6 +29,7 @@ const ComboBoxTipConcediu = () => {
       <Autocomplete
         options={options}
         style={{ width: 300 }}
+        getOptionLabel={option => option.name}
         renderInput={params => <TextField {...params} label='Selecteaza tipul concediului' variant='outlined' />}
       />
     </div>

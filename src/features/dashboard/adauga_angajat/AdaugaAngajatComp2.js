@@ -15,7 +15,11 @@ const ListaEchipe = [
   { id: 2, name: 'HR' },
   { id: 3, name: 'Support' }
 ]
-const ListaManageri = ['Mihai', 'Maria', 'Bogdan']
+const ListaManageri = [
+  { id: 1, name: 'Mihai' },
+  { id: 2, name: 'Maria' },
+  { id: 3, name: 'Bogdan' }
+]
 export function AdaugaAngajatComp2(props) {
   const classes = useStyles()
   const { handleChange } = props
@@ -59,9 +63,8 @@ export function AdaugaAngajatComp2(props) {
             options={ListaEchipe}
             key={localState.echipaId}
             className={classes.Combobox}
-            value={localState.echipaId}
-            onChange={event => handleChange('echipaId', event.target.value)}
-            /// getOptionLabel={option => option.name}
+            onChange={(event, value => handleChange('echipaId', value))}
+            getOptionLabel={option => option.name}
             renderInput={params => <TextField {...params} label='Echipa' variant='outlined' />}
           />
           <Autocomplete
@@ -69,10 +72,8 @@ export function AdaugaAngajatComp2(props) {
             key={localState}
             options={ListaManageri}
             className={classes.Combobox}
-            value={localState.managerId}
-            onChange={event => handleChange('manager', event.target.value)}
-            // getOptionLabel={option => option.title}
-
+            onChange={(event, value => handleChange('managerId', value))}
+            getOptionLabel={option => option.name}
             renderInput={params => <TextField {...params} label='Manager' variant='outlined' />}
           />
         </div>

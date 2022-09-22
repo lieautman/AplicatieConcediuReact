@@ -22,8 +22,7 @@ function CreareConcediuComp(props) {
       <div style={{ marginLeft: '70px', marginTop: '1rem', marginBottom: '1rem' }}>
         <ComboBoxTipConcediu
           className={classes.combobox}
-          value={localState.ComboBoxTipConcediu}
-          onChange={event => handleChange('comboboxTipConcediu', event.target.value)}
+          onChange={(event, value => handleChange('comboboxTipConcediu', value))}
         ></ComboBoxTipConcediu>
       </div>
       <div className={classes.datePicker}>
@@ -59,10 +58,7 @@ function CreareConcediuComp(props) {
       </div>
 
       <div style={{ marginLeft: '70px', marginTop: '1rem' }}>
-        <ComboBoxInlocuitor
-          onChange={event => handleChange('comboboxInlocuitor', event.target.value)}
-          value={localState.ComboBoxInlocuitor}
-        ></ComboBoxInlocuitor>
+        <ComboBoxInlocuitor onChange={(event, value => handleChange('comboboxInlocuitor', value))}></ComboBoxInlocuitor>
       </div>
       <br></br>
       <div style={{ marginLeft: '120px' }}>
