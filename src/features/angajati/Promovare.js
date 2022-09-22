@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { React, useState } from 'react'
 import Card from '@mui/material/Card'
 import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent'
@@ -19,11 +19,14 @@ import { useHeader } from 'providers/AreasProvider'
 import headerStyle from 'assets/jss/components/headerStyle'
 import PropTypes from 'prop-types'
 import { useReducer } from 'react'
-import { initialState, reducer } from './PromovateStateDefine'
+import { initialState, reducer } from './PromovareStateDefine'
+import { Autocomplete } from '@material-ui/lab'
+import { TextField } from '@material-ui/core'
+import { create } from 'lodash'
 
 const useStyles = makeStyles(stilAngajati)
 
-export default function BasicCard({ stare }) {
+export default function BasicCard() {
   //   const stilAng = makeStyles(stilAngajati)
   //   const stilPromovare = stilAng()
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -35,28 +38,73 @@ export default function BasicCard({ stare }) {
     </div>
   )
 
+  const handleChange = (propertyName, value) => {
+    dispatch({ inputName: 'OnPropertyChanged', propertyName, value })
+  }
+  const ListaEchipe = ['IT', 'Resurse Umane', 'Support', 'Markeing', 'Dezvoltare']
+
   const stilButon = makeStyles(stilButoane)
   const stilBtn = stilButon()
 
   function createData(nume, prenume, echipa) {
     return { nume, prenume, echipa }
   }
-  const rows = [
-    createData('Popescu', 'Ioana', 'IT'),
-    createData('Ionescu', 'Ana', 'Marketing'),
-    createData('Vasilescu', 'Mihai', 'Resurse Umane'),
-    createData('Enescu', 'Ion', 'Marketing'),
-    createData('Georgescu', 'Alina', 'IT')
-  ]
-  const rows2 = [
-    createData('', '', ''),
-    createData('', '', ''),
-    createData('', '', ''),
-    createData('', '', ''),
-    createData('', '', ''),
-    createData('', '', ''),
-    createData('', '', '')
-  ]
+
+  function AdaugaElem() {
+    let listaAngajatiDeAdaugat = state?.listaAngajatiDeAdaugat
+    let listaAngajatiAdaugati = state?.listaAngajatiAdaugati
+    let angataDeAdaugat = {
+      nume: listaAngajatiDeAdaugat[0]?.nume,
+      prenume: listaAngajatiDeAdaugat[0]?.prenume,
+      echipa: listaAngajatiDeAdaugat[0]?.echipa
+    }
+
+    listaAngajatiAdaugati = [...listaAngajatiAdaugati, angataDeAdaugat]
+    console.log(listaAngajatiAdaugati)
+
+    dispatch({ inputName: 'listaAngajatiAdaugati', inputValue: listaAngajatiAdaugati })
+    dispatch({ inputName: 'listaAngajatiDeAdaugat', inputValue: listaAngajatiDeAdaugat })
+  }
+
+  // const arrayElemets = [{ id: 1, name: 'test' }]
+
+  // const arrayElemets1 = [...arrayElemets, { id: 2, name: 'test1' }]
+
+  // let a=''
+  // let i=0
+  // while i<listaAngajatiDeAdaugat.size//length{
+  // a=a+createData(state.listaAngajatiDeAdaugat[i].nume)
+  //i++
+  //}
+  function ReturnList1() {
+    let listBuffer = []
+    if (state && state.listaAngajatiDeAdaugat) {
+      for (var i = 0; i < state.listaAngajatiDeAdaugat.length; i++) {
+        listBuffer = [
+          ...listBuffer,
+          createData(state.listaAngajatiDeAdaugat[i].nume, state.listaAngajatiDeAdaugat[i].prenume, state.listaAngajatiDeAdaugat[i].echipa)
+        ]
+      }
+    }
+    return listBuffer
+  }
+
+  let rowsDinStare = ReturnList1()
+
+  function ReturnList2() {
+    let listBuffer = []
+    if (state && state.listaAngajatiAdaugati) {
+      for (var i = 0; i < state.listaAngajatiAdaugati.length; i++) {
+        listBuffer = [
+          ...listBuffer,
+          createData(state.listaAngajatiAdaugati[i].nume, state.listaAngajatiAdaugati[i].prenume, state.listaAngajatiAdaugati[i].echipa)
+        ]
+      }
+    }
+    return listBuffer
+  }
+
+  let rowsDinStare2 = ReturnList2()
   return (
     <div>
       <div className={stilPromovare.divPromovare}>
@@ -88,28 +136,24 @@ export default function BasicCard({ stare }) {
 
         <div className={stilPromovare.divSelect}>
           <InputLabel id='demo-simple-select-autowidth-label'>Alege echipa</InputLabel>
-          <Select
-            labelId='demo-simple-select-autowidth-label'
-            id='demo-simple-select-autowidth'
-            label='Alege echipa'
-            autoWidth
-            defaultValue={10}
-          >
-            <MenuItem value={10}>Marketing</MenuItem>
-            <MenuItem value={20}>Resurse Umane</MenuItem>
-            <MenuItem value={30}>IT Suport</MenuItem>
-            <MenuItem value={40}>Dezvoltare</MenuItem>
-            <MenuItem value={50}>Servicii financiare</MenuItem>
-          </Select>
+          <Autocomplete
+            id='combo-box-echipe'
+            options={ListaEchipe}
+            className={stilPromovare.Combobox}
+            onChange={event => handleChange('Echipa', event.target.value)}
+            // getOptionLabel={option => option.title}
+
+            renderInput={params => <TextField {...params} label='Echipa' variant='outlined' />}
+          />
           <button className={stilBtn.buton}>SALVEAZA MODIFICARILE</button>
         </div>
       </div>
       <div className={stilPromovare.divTabelePromovare}>
         <div>
-          <TabelAngajatiDePromovat rows={rows}></TabelAngajatiDePromovat>
+          <TabelAngajatiDePromovat rows={rowsDinStare}></TabelAngajatiDePromovat>
         </div>
         <div className={stilBtn.butoaneListePromovare}>
-          <IconButton aria-label='KeyboardArrowRight' style={{ backgroundColor: '#26c6da', color: 'white' }}>
+          <IconButton aria-label='KeyboardArrowRight' onClick={AdaugaElem} style={{ backgroundColor: '#26c6da', color: 'white' }}>
             <KeyboardArrowRight />
           </IconButton>
           <IconButton aria-label='KeyboardArrowLeft' style={{ backgroundColor: '#26c6da', color: 'white' }}>
@@ -117,12 +161,9 @@ export default function BasicCard({ stare }) {
           </IconButton>
         </div>
         <div>
-          <TabelAngajatiDePromovat rows={rows2}></TabelAngajatiDePromovat>
+          <TabelAngajatiDePromovat rows={rowsDinStare2}></TabelAngajatiDePromovat>
         </div>
       </div>
     </div>
   )
-}
-BasicCard.propTypes = {
-  stare: PropTypes.object.isRequired
 }

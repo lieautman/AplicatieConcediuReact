@@ -17,6 +17,7 @@ const ListaManageri = ['Mihai', 'Maria', 'Bogdan']
 function Adauga_Angajat() {
   const classes = useStyles()
   const [localState, dispatch] = useReducer(reducer, initialState)
+
   const handleChange = (propertyName, value) => {
     dispatch({ type: 'OnPropertyChanged', propertyName, value })
   }
