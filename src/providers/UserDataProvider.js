@@ -8,6 +8,8 @@ const USER_DATA_QUERY = gql`
     userData {
       id
       isAdmin
+      isManager
+      email
     }
   }
 `
