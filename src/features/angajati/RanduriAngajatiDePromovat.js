@@ -38,7 +38,7 @@ export default function RanduriAngajatiDePromovat(props) {
         }}
       />
       <StyledTableCell component='th' scope='row' align='center'>
-        {row.id}
+        {index + 1}
       </StyledTableCell>
       <StyledTableCell component='th' scope='row' align='center'>
         {row.nume}

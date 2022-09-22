@@ -42,7 +42,13 @@ export default function BasicCard() {
     dispatch({ inputName: 'OnPropertyChanged', propertyName, value })
   }
 
-  const ListaEchipe = ['IT', 'Resurse Umane', 'Support', 'Markeing', 'Dezvoltare']
+  const ListaEchipe = [
+    { id: 1, nume: 'IT' },
+    { id: 1, nume: 'Resurse Umane' },
+    { id: 1, nume: 'Support' },
+    { id: 1, nume: 'Markeing' },
+    { id: 1, nume: 'Dezvoltare' }
+  ]
 
   const stilButon = makeStyles(stilButoane)
   const stilBtn = stilButon()
@@ -53,6 +59,8 @@ export default function BasicCard() {
   }
 
   const [idRand, setIdRand] = useState(null)
+
+  const test = initialState?.listaAngajatiDeAdaugat
 
   //functie de actiune pe buton pt adaugare angajati in lista de formare echipa
   function AdaugaElem() {
@@ -100,15 +108,7 @@ export default function BasicCard() {
     let listBuffer = []
     if (state && state.listaAngajatiDeAdaugat) {
       for (var i = 0; i < state.listaAngajatiDeAdaugat.length; i++) {
-        listBuffer = [
-          ...listBuffer,
-          createData(
-            state.listaAngajatiDeAdaugat[i].id,
-            state.listaAngajatiDeAdaugat[i].nume,
-            state.listaAngajatiDeAdaugat[i].prenume,
-            state.listaAngajatiDeAdaugat[i].echipa
-          )
-        ]
+        listBuffer = [...listBuffer, createData(test[i].id, test[i].nume, test[i].prenume, test[i].echipa)]
       }
     }
     return listBuffer
@@ -170,9 +170,8 @@ export default function BasicCard() {
             id='combo-box-echipe'
             options={ListaEchipe}
             className={stilPromovare.Combobox}
-            onChange={event => handleChange('Echipa', event.target.value)}
-            // getOptionLabel={option => option.title}
-
+            onChange={(event, value => handleChange('Echipa', value))}
+            getOptionLabel={option => option.nume}
             renderInput={params => <TextField {...params} label='Echipa' variant='outlined' />}
           />
           <button className={stilBtn.buton}>SALVEAZA MODIFICARILE</button>
