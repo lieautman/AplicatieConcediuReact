@@ -2,7 +2,11 @@ import React from 'react'
 import CardEchipa from './CardEchipa'
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
+import { makeStyles } from '@material-ui/core'
+import StilCarduri from './StilCarduri'
+import carduri from './StilCarduri'
 
+const useStyles = makeStyles(carduri)
 const echipeArray = [
   {
     id: 1,
@@ -37,8 +41,9 @@ const echipeArray = [
 ]
 
 export default function Dashboard() {
+  const carduriStyle = useStyles()
   return (
-    <Grid container>
+    <Grid container className={carduriStyle.displayCarduri}>
       {echipeArray.map(echipa => (
         <CardEchipa echipa={echipa} key={echipa.id}></CardEchipa>
       ))}

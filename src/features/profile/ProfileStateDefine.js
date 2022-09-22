@@ -1,26 +1,26 @@
 export const initialState = {
   textNumePrenume: 'NUME SI PRENUME',
-  textNume: 'Popa',
-  textPrenume: 'Adi',
+  Nume: 'Popa',
+  Prenume: 'Adi',
   textAdresa: 'ADRESA',
   textAdresaActuala: 'Str. Sperantei, Cartierul Fericirea, Sector 4, Bucuresti, Romania, cod postal 63700',
   textEmail: 'EMAIL',
-  textEmailActual: 'adi_pop@yahoo.com',
+  Email: 'adi_pop@yahoo.com',
   textTelefon: 'TELEFON',
-  textTelefonActual: '07123112312',
+  Numartelefon: '07123112312',
   textFunctia: 'FUNCTIA',
-  textFunctiaActuala: 'Administrator Aplicatie Concedii',
+  Functia: 'Administrator Aplicatie Concedii',
   textDataAngajare: 'DATA ANGAJARE',
-  textDataAngajareActuala: '2011-01-22',
+  DataAngajarii: '2011-01-22',
   textDataNastere: 'DATA NASTERE',
-  textDataNastereActuala: '2001-01-12',
+  DataNasterii: '2001-01-12',
   textSalariu:'SALARIU',
-  textSalariuActual:'5000',
+  Salariu:'5000',
 
   textCnp: 'COD NUMERIC PERSONAL',
-  textCnpActual: '1234567890123',
+  Cnp: '1234567890123',
   textSerieNumarCi: 'SERIE SI NUMAR CI',
-  textSerieNumarCiActual: 'RK123123',
+  SeriaNumarBuletin: 'RK123123',
 
   textTabelConcedii: 'Concediile Mele',
 
@@ -29,29 +29,11 @@ export const initialState = {
   textAtasamenteUploadTypes: 'PDF, DOC,PPT, JPG, PNG'
 }
 export function reducer(state, action) {
-  switch (action.inputName) {
-    case 'textNume':
-      return { textNume: action.inputValue }
-    case 'textPrenume':
-      return { textPrenume: action.inputValue }
-    case 'textAdresaActuala':
-      return { textAdresaActuala: action.inputValue }
-    case 'textEmailActual':
-      return { textEmailActual: action.inputValue }
-    case 'textTelefonActual':
-      return { textTelefonActual: action.inputValue }
-    case 'textFunctiaActuala':
-      return { textFunctiaActuala: action.inputValue }
-    case 'textDataAngajareActuala':
-      return { textDataAngajareActuala: action.inputValue }
-    case 'textDataNastereActuala':
-      return { textDataNastereActuala: action.inputValue }
-      case 'textSalariuActual':
-        return { textSalariuActual: action.inputValue }
-    case 'textCnpActual':
-      return { textCnpActual: action.inputValue }
-    case 'textSerieNumarCiActual':
-      return { textSerieNumarCiActual: action.inputValue }
+  switch (action.inputType) {
+    case 'allObject':
+      return { ...state, ...action.inputValue}
+    case 'field':
+      return {  ...state, [action.inputName]: action.inputValue }
     default:
       throw new Error()
   }

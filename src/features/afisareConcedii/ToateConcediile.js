@@ -4,6 +4,10 @@ import Button from '@mui/material/Button'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
+import filtrari from './Filtrari'
+import { makeStyles } from '@material-ui/core'
+
+const useStyles = makeStyles(filtrari)
 
 const rows = [
   {
@@ -36,19 +40,51 @@ const rows = [
 ]
 
 export default function ToateConcediile() {
+  const filtrareStyle = useStyles()
   const [filteredArray, setFilteredArray] = useState(rows)
   const esteAdmin = false
+  const seFiltreaza = true
 
-  const handleFilter = input => {
+  const handleFilterNume = input => {
     const value = input.target.value
 
     const newArray = rows.filter(el => {
       if (value === '') {
         return el
       } else {
-        return (
-          el.name.toLowerCase().includes(value) || el.angajat.toLowerCase().includes(value) || el.inlocuitor.toLowerCase().includes(value)
-        )
+        return el.name.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
+
+  const handleFilterAngajat = input => {
+    const value = input.target.value
+
+    const newArray = rows.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.angajat.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
+
+  const handleFilterInlocuitor = input => {
+    const value = input.target.value
+
+    const newArray = rows.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.inlocuitor.toLowerCase().includes(value)
       }
     })
 
@@ -59,16 +95,22 @@ export default function ToateConcediile() {
 
   return (
     <div>
-      <SearchBar onFilter={handleFilter} />
-      <div>
-        <Link to='./AprobareConcedii'>
-          <Button variant='contained' style={{ backgroundColor: '#26c6da' }}>
-            Aproba concedii
-          </Button>
-        </Link>
+      <div className={filtrareStyle.displayFiltrari}>
+        <SearchBar onFilter={handleFilterNume} filtrareNume={'tipul de concediu'} />
+        <SearchBar onFilter={handleFilterInlocuitor} filtrareNume={'numele inlocuitorului'} />
+        <SearchBar onFilter={handleFilterAngajat} filtrareNume={'numele angajatului'} />
       </div>
-      <br></br>
-      <TabelConcediu rows={rows} esteAdmin={esteAdmin} filtrare={filteredArray}></TabelConcediu>
+      <TabelConcediu rows={rows} esteAdmin={esteAdmin} filtrare={filteredArray} seFiltreaza={seFiltreaza}></TabelConcediu>
+      <div>
+        <br></br>
+        <div align='right'>
+          <Link to='./AprobareConcedii'>
+            <Button variant='contained' style={{ backgroundColor: '#26c6da' }}>
+              Aproba concedii
+            </Button>
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }
