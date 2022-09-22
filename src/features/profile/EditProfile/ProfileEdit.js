@@ -31,28 +31,28 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           <div className={classes.stilEditPageInput}>
             <TextField
               label='Nume'
-              defaultValue={stare.Nume}
+              value={stare.Nume}
               onChange={evt => modifyDataProfile('Nume', evt.target.value)}
             ></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
               label='Prenume'
-              defaultValue={stare.Prenume}
+              value={stare.Prenume}
               onChange={evt => modifyDataProfile('Prenume', evt.target.value)}
             ></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
               label='Adresa'
-              defaultValue={stare.textAdresaActuala}
+              value={stare.textAdresaActuala}
               onChange={evt => modifyDataProfile('textAdresaActuala', evt.target.value)}
             ></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
               label='Email'
-              defaultValue={stare.Email}
+              value={stare.Email}
               onChange={evt => modifyDataProfile('Email', evt.target.value)}
             ></TextField>
           </div>
@@ -60,7 +60,7 @@ function ProfileEdit({ stare, modifyDataProfile }) {
             <TextField
               type='number'
               label='Telefon'
-              defaultValue={stare.Numartelefon}
+              value={stare.Numartelefon}
               onChange={evt => modifyDataProfile('Numartelefon', evt.target.value)}
             ></TextField>
           </div>
@@ -69,7 +69,7 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           <div className={classes.stilEditPageInput}>
             <TextField
               label='Functia'
-              defaultValue={stare.Functia}
+              value={stare.Functia}
               onChange={evt => modifyDataProfile('Functia', evt.target.value)}
             ></TextField>
           </div>
@@ -77,7 +77,7 @@ function ProfileEdit({ stare, modifyDataProfile }) {
             <TextField
               type='date'
               label='Data Angajare'
-              defaultValue={stare.DataAngajarii}
+              value={stare.DataAngajarii?stare.DataAngajarii:"1999-01-01"}
               onChange={evt => modifyDataProfile('textDataAngajareActuala', evt.target.value)}
             ></TextField>
           </div>
@@ -85,21 +85,21 @@ function ProfileEdit({ stare, modifyDataProfile }) {
             <TextField
               type='date'
               label='Data Nastere'
-              defaultValue={stare.DataNasterii}
+              value={stare.DataNasterii?stare.DataNasterii:"1999-01-01"}
               onChange={evt => modifyDataProfile('textDataNastereActuala', evt.target.value)}
             ></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
               label='Cod Numeric Personal'
-              defaultValue={stare.Cnp}
+              value={stare.Cnp}
               onChange={evt => modifyDataProfile('textCnpActual', evt.target.value)}
             ></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
               label='Serie Si Numar CI'
-              defaultValue={stare.SeriaNumarBuletin}
+              value={stare.SeriaNumarBuletin}
               onChange={evt => modifyDataProfile('textSerieNumarCiActual', evt.target.value)}
             ></TextField>
           </div>
@@ -108,7 +108,7 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           <div className={classes.stilEditPageInputOverButton}>
             <TextField
               label='Salariu'
-              defaultValue={stare.Salariu}
+              value={stare.Salariu}
               onChange={evt => modifyDataProfile('textSalariuActual', evt.target.value)}
             ></TextField>
           </div>

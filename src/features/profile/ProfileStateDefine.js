@@ -7,13 +7,13 @@ export const initialState = {
   textEmail: 'EMAIL',
   Email: 'Email',
   textTelefon: 'TELEFON',
-  Numartelefon: 'Telefon',
+  Numartelefon: '0000000000',
   textFunctia: 'FUNCTIA',
   Functia: 'Administrator Aplicatie Concedii',
   textDataAngajare: 'DATA ANGAJARE',
-  DataAngajarii: 'Data Angajarii',
+  DataAngajarii: '2000-01-01',
   textDataNastere: 'DATA NASTERE',
-  DataNasterii: 'Data Nasterii',
+  DataNasterii: '2000-01-01',
   textSalariu:'SALARIU',
   Salariu:'Salariu',
 
@@ -30,8 +30,8 @@ export const initialState = {
 }
 export function reducer(state, action) {
   switch (action.inputType) {
-    case 'allObject':
-      return { ...state, ...action.inputValue}
+    case 'allObject': 
+      return { ...state, ...action.inputValue};
     case 'field':
       return {  ...state, [action.inputName]: action.inputValue }
     default:

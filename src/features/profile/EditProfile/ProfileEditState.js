@@ -1,7 +1,6 @@
-import React, { Fragment, useReducer}from 'react'
-import {initialState, reducer} from '../ProfileStateDefine'
-
+import React, { useReducer } from 'react'
 import ProfileEdit from './ProfileEdit'
+import { initialState, reducer } from '../ProfileStateDefine'
 
 //preluare date
 import { gql } from '@apollo/client'
@@ -29,30 +28,59 @@ const USER_DATA_QUERY = gql`
   }
 `
 
-//css
+//preluare date din cache apollo
+import { useApolloClient } from '@apollo/client'
 
+//state management
 function ProfileEditState() {
-  const [state,dispatch] = useReducer(reducer, initialState);
-  
-  useQueryWithErrorHandling(USER_DATA_QUERY, { variables: { userEmail:"a"}, onCompleted:(data)=>{ 
-    if(data!=undefined||data!=null){
-      dispatch({inputType:'allObject', inputValue:data.getProfileData, inputName:'allObject'})
-    }
-  }})
+  const [state, dispatch] = useReducer(reducer, initialState)
 
-  function modifyDataProfile(inputName1, inputValue1){
-    dispatch({ inputName:inputName1, inputValue:inputValue1 , inputType:'field'})//
+  //preluare date din cache apollo
+  const client = useApolloClient()
+  const date = client.readQuery({
+    query: gql`
+      query userData {
+        userData {
+          id
+          isAdmin
+          isManager
+          email
+        }
+      }
+    `
+  })
+
+  //const oidc = useContext(AuthenticationContext) posibila alternativa
+
+  //query
+  useQueryWithErrorHandling(USER_DATA_QUERY, {
+    variables: { userEmail: date ? date.userData.email: "admin" },
+    onCompleted: data => {
+      if (data != undefined || data != null) {
+        dispatch({ inputName: 'allObject', inputValue: data.getProfileData, inputType: 'allObject' })
+        //refacere data
+        let an = data.getProfileData.DataNasterii.substring(0, 4)
+        let luna = data.getProfileData.DataNasterii.substring(5, 7)
+        let zi = data.getProfileData.DataNasterii.substring(8, 10)
+        let dataNastereFormatata = an + '-' + luna + '-' + zi
+        dispatch({ inputName: 'DataNasterii', inputValue: dataNastereFormatata, inputType: 'field' })
+        let an1 = data.getProfileData.DataNasterii.substring(0, 4)
+        let luna1 = data.getProfileData.DataNasterii.substring(5, 7)
+        let zi1 = data.getProfileData.DataNasterii.substring(8, 10)
+        let dataAngajareFormatata = an1 + '-' + luna1 + '-' + zi1
+        dispatch({ inputName: 'DataAngajarii', inputValue: dataAngajareFormatata, inputType: 'field' })
+      }
+    }
+  })
+  function modifyDataProfile(inputName1, inputValue1) {
+    dispatch({ inputName: inputName1, inputValue: inputValue1, inputType: 'field' })
   }
-  
+
   return (
     <>
-    <ProfileEdit
-      stare={state}
-      modifyDataProfile= {modifyDataProfile}
-    ></ProfileEdit>
-  </>
+      <ProfileEdit stare={state} modifyDataProfile={modifyDataProfile}></ProfileEdit>
+    </>
   )
 }
-
 
 export default ProfileEditState
