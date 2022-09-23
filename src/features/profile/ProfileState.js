@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import Profile from './Profile'
 import { initialState, reducer } from './ProfileStateDefine'
 
@@ -63,8 +63,10 @@ function ProfileState() {
     }
   })
 
+  //useEffect(()=>{dispatch()})
+
   return (
-    <div  onMouseMove={()=>{dispatch()}}>
+    <div>
       <Profile stare={state}></Profile>
     </div>
   )

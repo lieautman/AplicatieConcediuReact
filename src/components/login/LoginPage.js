@@ -8,6 +8,7 @@ import publicMainStyle from 'assets/jss/components/publicMainStyles'
 import { initialState, reducer } from './reducers/loginReducer'
 import { useMutation } from '@apollo/client'
 import { AUTHENTICATE_USER } from './mutations'
+import { useHistory } from 'react-router'
 
 const useStyles = makeStyles(publicMainStyle)
 
@@ -20,12 +21,14 @@ const LoginPage = props => {
   const [authenticateUser] = useMutation(AUTHENTICATE_USER)
   const [error, setError] = useState(false)
   const [helperText, setHelperText] = useState('')
+  const history = useHistory()
 
   const handleChange = (propertyName, value) => {
     dispatch({ type: 'OnPropertyChanged', propertyName, value })
   }
 
   const handleCLick = async () => {
+    history.push({ pathname: `/` })
     setHelperText('')
     if (!localState.userName || !localState.password) {
       setError(true)
@@ -42,7 +45,6 @@ const LoginPage = props => {
     setError(false)
     setToken('token')
   }
-
   return (
     <Container className={classes.root}>
       <Container className={classes.loginForm} maxWidth='sm'>

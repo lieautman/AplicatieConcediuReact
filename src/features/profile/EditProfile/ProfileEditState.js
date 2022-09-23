@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import ProfileEdit from './ProfileEdit'
 import { initialState, reducer } from '../ProfileStateDefine'
 
@@ -38,7 +38,7 @@ function ProfileEditState() {
   //preluare date din cache apollo
   const client = useApolloClient()
 
-  const date = client.readQuery({
+  let date = client.readQuery({
     query: gql`
       query userData {
         userData {
@@ -50,7 +50,7 @@ function ProfileEditState() {
       }
     `
   })
-  
+
   //query
   useQueryWithErrorHandling(USER_DATA_QUERY, {
     variables: { userEmail: date?.userData?.email },
@@ -76,8 +76,9 @@ function ProfileEditState() {
     dispatch({ inputName: inputName1, inputValue: inputValue1, inputType: 'field' })
   }
 
+
   return (
-    <div onMouseMove={()=>{dispatch()}}>
+    <div>
       <ProfileEdit stare={state} modifyDataProfile={modifyDataProfile}></ProfileEdit>
     </div>
   )
