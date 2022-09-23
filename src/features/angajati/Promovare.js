@@ -14,16 +14,17 @@ import { useHeader } from 'providers/AreasProvider'
 import { useReducer } from 'react'
 import { initialState, reducer } from './PromovareStateDefine'
 import DropDownEchipa from './Autocomplete'
+import { useTranslation } from 'react-i18next'
 
 const useStyles = makeStyles(stilAngajati)
 
 export default function Promovare() {
   const [state, dispatch] = useReducer(reducer, initialState)
-
+  const { t } = useTranslation()
   const stilPromovare = useStyles()
   useHeader(
     <div variant='subtitles1' className={stilPromovare.stilTitlu}>
-      {'Promovare angajat'}
+      {t('NavBar.Promovare')}
     </div>
   )
 
