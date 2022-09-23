@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import TextField from '@mui/material/TextField'
+import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 import SaveIcon from '@material-ui/icons/Save'
@@ -23,7 +23,8 @@ function ProfileEdit({ stare, modifyDataProfile }) {
       {'Editeaza date'}
     </div>
   )
-    console.log(stare.DataNasterii)
+  const DataAngajariiStringLabel = stare.DataAngajarii?stare.DataAngajarii:"1999-01-01"
+  const DataNasteriiStringLabel = stare.DataNasterii?stare.DataNasterii:"1999-01-01"
   return (
     <Fragment>
       <div className={classes.stilEditPageDivContainer1}>
@@ -62,7 +63,6 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
-              type='number'
               label='Telefon'
               value={stare.Numartelefon}
               fullWidth
@@ -82,7 +82,7 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           <div className={classes.stilEditPageInput}>
             <TextField
               type='date'
-              label={stare.DataAngajarii?stare.DataAngajarii:"1999-01-01"}
+              label={"Data angajarii: "+DataAngajariiStringLabel.toString()}
               defaultValue=""
               InputLabelProps={{ shrink: true }}
               fullWidth
@@ -92,7 +92,7 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           <div className={classes.stilEditPageInput}>
             <TextField
               type='date'
-              label={stare.DataNasterii?stare.DataNasterii:"1999-01-01"}
+              label={"Data nasterii: "+DataNasteriiStringLabel.toString()}
               defaultValue=""
               InputLabelProps={{ shrink: true }}
               fullWidth

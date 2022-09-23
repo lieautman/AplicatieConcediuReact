@@ -54,7 +54,8 @@ function ProfileState() {
 
   //query
   useQueryWithErrorHandling(USER_DATA_QUERY, {
-    variables: { userEmail: date ? date.userData.email: "admin" },
+    variables: { userEmail:  date?.userData?.email },
+    skip: !date?.userData?.email,
     onCompleted: data => {
       if (data != undefined || data != null) {
         dispatch({ inputName: 'allObject', inputValue: data.getProfileData, inputType: 'allObject' })
@@ -63,9 +64,9 @@ function ProfileState() {
   })
 
   return (
-    <>
+    <div  onMouseMove={()=>{dispatch()}}>
       <Profile stare={state}></Profile>
-    </>
+    </div>
   )
 }
 
