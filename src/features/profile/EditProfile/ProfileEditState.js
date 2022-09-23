@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useCallback, useEffect, useReducer, useState } from 'react'
 import ProfileEdit from './ProfileEdit'
 import { initialState, reducer } from '../ProfileStateDefine'
 
@@ -30,6 +30,7 @@ const USER_DATA_QUERY = gql`
 
 //preluare date din cache apollo
 import { useApolloClient } from '@apollo/client'
+import { StyledEngineProvider } from '@mui/material'
 
 //state management
 function ProfileEditState() {
@@ -37,6 +38,7 @@ function ProfileEditState() {
 
   //preluare date din cache apollo
   const client = useApolloClient()
+
   const date = client.readQuery({
     query: gql`
       query userData {
@@ -49,12 +51,11 @@ function ProfileEditState() {
       }
     `
   })
-
-  //const oidc = useContext(AuthenticationContext) posibila alternativa
-
+  
   //query
   useQueryWithErrorHandling(USER_DATA_QUERY, {
-    variables: { userEmail: date ? date.userData.email: "admin" },
+    variables: { userEmail: date?.userData?.email },
+    skip: !date?.userData?.email,
     onCompleted: data => {
       if (data != undefined || data != null) {
         dispatch({ inputName: 'allObject', inputValue: data.getProfileData, inputType: 'allObject' })
@@ -77,9 +78,9 @@ function ProfileEditState() {
   }
 
   return (
-    <>
+    <div onMouseMove={()=>{dispatch()}}>
       <ProfileEdit stare={state} modifyDataProfile={modifyDataProfile}></ProfileEdit>
-    </>
+    </div>
   )
 }
 
