@@ -26,13 +26,13 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }))
 
 export default function RanduriAngajatiDePromovat(props) {
-  const { row, idRand, setIdRand, index } = props
+  const { row, indexSelectat, setareId, index } = props
   return (
     <StyledTableRow key={row.name}>
       <Checkbox
         color='primary'
-        checked={idRand && idRand === row.id}
-        onChange={() => setIdRand(index)}
+        checked={indexSelectat !== undefined && indexSelectat !== null ? indexSelectat === index : false}
+        onChange={setareId(index)}
         inputProps={{
           'aria-label': 'select all desserts'
         }}
@@ -51,7 +51,7 @@ export default function RanduriAngajatiDePromovat(props) {
 
 RanduriAngajatiDePromovat.propTypes = {
   row: PropTypes.object.isRequired,
-  idRand: PropTypes.number,
-  setIdRand: PropTypes.func,
-  index: PropTypes.number
+  indexSelectat: PropTypes.number,
+  index: PropTypes.number,
+  setareId: PropTypes.func
 }
