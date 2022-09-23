@@ -26,7 +26,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   }
 }))
 export default function RanduriAngajati(props) {
-  const { row, setareId, idRand } = props
+  const { row, setareId, indexSelectat } = props
   return (
     <StyledTableRow key={row.name}>
       <StyledTableCell align='center'>
@@ -34,7 +34,7 @@ export default function RanduriAngajati(props) {
           color='primary'
           // indeterminate={numSelected > 0 && numSelected < rowCount}
 
-          checked={idRand && row.id === idRand}
+          checked={indexSelectat !== undefined && indexSelectat !== null ? row.id === indexSelectat : false}
           onChange={setareId(row.id)}
           inputProps={{
             'aria-label': 'select all desserts'
@@ -59,5 +59,5 @@ export default function RanduriAngajati(props) {
 RanduriAngajati.propTypes = {
   row: PropTypes.object.isRequired,
   setareId: PropTypes.func,
-  idRand: PropTypes.number
+  indexSelectat: PropTypes.number
 }
