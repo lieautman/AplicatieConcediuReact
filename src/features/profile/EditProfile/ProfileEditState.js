@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useReducer, useState } from 'react'
+import React, { useReducer } from 'react'
 import ProfileEdit from './ProfileEdit'
 import { initialState, reducer } from '../ProfileStateDefine'
 
@@ -30,7 +30,6 @@ const USER_DATA_QUERY = gql`
 
 //preluare date din cache apollo
 import { useApolloClient } from '@apollo/client'
-import { StyledEngineProvider } from '@mui/material'
 
 //state management
 function ProfileEditState() {

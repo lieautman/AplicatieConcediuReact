@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useReducer } from 'react'
 import Profile from './Profile'
 import { initialState, reducer } from './ProfileStateDefine'
 
