@@ -61,7 +61,6 @@ export function AdaugaAngajatComp2(props) {
           <Autocomplete
             id='combo-box-echipe'
             options={ListaEchipe}
-            key={localState.echipaId}
             className={classes.Combobox}
             onChange={(event, value => handleChange('echipaId', value))}
             getOptionLabel={option => option.name}
@@ -69,7 +68,6 @@ export function AdaugaAngajatComp2(props) {
           />
           <Autocomplete
             id='combo-box-manageri'
-            key={localState}
             options={ListaManageri}
             className={classes.Combobox}
             onChange={(event, value => handleChange('managerId', value))}

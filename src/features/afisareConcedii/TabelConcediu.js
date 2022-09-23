@@ -23,14 +23,14 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }))
 
 export default function TabelConcediu(props) {
-  const { rows, setareId, esteAdmin, idRand, filtrare, seFiltreaza, nuSeFiltreaza } = props
+  const { rows, setareId, concediiInAsteptareaAprobarii, idRand, filtrare, seFiltreaza } = props
 
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label='customized table'>
         <TableHead>
           <TableRow>
-            {esteAdmin && <StyledTableCell padding='checkbox' align='center'></StyledTableCell>}
+            {concediiInAsteptareaAprobarii && <StyledTableCell padding='checkbox' align='center'></StyledTableCell>}
             <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
               Tipul Concediului
             </StyledTableCell>
@@ -52,10 +52,15 @@ export default function TabelConcediu(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {seFiltreaza &&
-            filtrare.map(row => <DateIncarcate row={row} key={row.id} setareId={setareId} esteAdmin={esteAdmin} idRand={idRand} />)}
-          {nuSeFiltreaza &&
-            rows.map(row => <DateIncarcate row={row} key={row.id} setareId={setareId} esteAdmin={esteAdmin} idRand={idRand} />)}
+          {rows.map(row => (
+            <DateIncarcate
+              row={row}
+              key={row.id}
+              setareId={setareId}
+              concediiInAsteptareaAprobarii={concediiInAsteptareaAprobarii}
+              idRand={idRand}
+            />
+          ))}
         </TableBody>
       </Table>
     </TableContainer>
@@ -65,7 +70,7 @@ export default function TabelConcediu(props) {
 TabelConcediu.propTypes = {
   setareId: PropTypes.func,
   rows: PropTypes.array.isRequired,
-  esteAdmin: PropTypes.bool.isRequired,
+  concediiInAsteptareaAprobarii: PropTypes.bool.isRequired,
   idRand: PropTypes.number,
   filtrare: PropTypes.array,
   seFiltreaza: PropTypes.bool,

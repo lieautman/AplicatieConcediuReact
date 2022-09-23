@@ -3,7 +3,7 @@ export const initialState = {
   textNume: 'Popa',
   textPrenume: 'Adi',
   textEchipa: 'Marketing',
-  Echipa: null,
+  echipa: null,
   listaAngajatiDeAdaugat: [
     {
       id: '1',

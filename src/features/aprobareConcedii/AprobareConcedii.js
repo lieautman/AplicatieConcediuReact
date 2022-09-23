@@ -11,39 +11,42 @@ import NavigateNext from '@material-ui/icons/NavigateNext'
 import NavigateBefore from '@material-ui/icons/NavigateBefore'
 import stilAngajati from '../angajati/StilAngajati'
 import { IconButton, makeStyles } from '@material-ui/core'
+import { useQueryWithErrorHandling } from 'hooks/errorHandling'
+import CONCEDII_SPRE_APROBARE_DATA_QUERY from './Queries'
 
 const stilAng = makeStyles(stilAngajati)
-const rows = [
-  {
-    id: 1,
-    name: 'Concediu medical',
-    dataInceput: '10/16/2022',
-    dataSfarsit: '10/17/2022',
-    inlocuitor: 'Andrei Ionescu',
-    motiv: '',
-    angajat: 'Ion Popescu'
-  },
-  {
-    id: 2,
-    name: 'Concediu de odihna',
-    dataInceput: '9/1/2022',
-    dataSfarsit: '9/29/2022',
-    inlocuitor: 'Maria Iancu',
-    motiv: '',
-    angajat: 'Ion Popescu'
-  },
-  {
-    id: 3,
-    name: 'Concediu de odihna',
-    dataInceput: '8/28/2022',
-    dataSfarsit: '8/30/2022',
-    inlocuitor: 'Andreea Bogdan',
-    motiv: '',
-    angajat: 'Ion Popescu'
-  }
-]
+// const rows = [
+//   {
+//     id: 1,
+//     name: 'Concediu medical',
+//     dataInceput: '10/16/2022',
+//     dataSfarsit: '10/17/2022',
+//     inlocuitor: 'Andrei Ionescu',
+//     motiv: '',
+//     angajat: 'Ion Popescu'
+//   },
+//   {
+//     id: 2,
+//     name: 'Concediu de odihna',
+//     dataInceput: '9/1/2022',
+//     dataSfarsit: '9/29/2022',
+//     inlocuitor: 'Maria Iancu',
+//     motiv: '',
+//     angajat: 'Ion Popescu'
+//   },
+//   {
+//     id: 3,
+//     name: 'Concediu de odihna',
+//     dataInceput: '8/28/2022',
+//     dataSfarsit: '8/30/2022',
+//     inlocuitor: 'Andreea Bogdan',
+//     motiv: '',
+//     angajat: 'Ion Popescu'
+//   }
+// ]
 
 export default function AprobareConcedii() {
+  const { data } = useQueryWithErrorHandling(CONCEDII_SPRE_APROBARE_DATA_QUERY)
   const stilButoanePaginare = stilAng()
 
   useHeader(
@@ -53,8 +56,8 @@ export default function AprobareConcedii() {
   )
 
   const [idRand, setIdRand] = useState(null)
-  const esteAdmin = true
-  const nuSeFiltreaza = true
+  const concediiInAsteptareaAprobarii = true
+  // const nuSeFiltreaza = true
 
   const setareId = id => () => {
     if (id !== idRand) {
@@ -78,9 +81,15 @@ export default function AprobareConcedii() {
       </div>
       <div>
         <br></br>
-        <TabelConcediu rows={rows} setareId={setareId} esteAdmin={esteAdmin} idRand={idRand} nuSeFiltreaza={nuSeFiltreaza}></TabelConcediu>
+        <TabelConcediu
+          rows={data ? data.concediiSpreAprobareData : []}
+          setareId={setareId}
+          concediiInAsteptareaAprobarii={concediiInAsteptareaAprobarii}
+          idRand={idRand}
+          // nuSeFiltreaza={nuSeFiltreaza}
+        ></TabelConcediu>
       </div>
-      <div className={stilButoanePaginare.divMarebutoane}>
+      {/* <div className={stilButoanePaginare.divMarebutoane}>
         <div>
           <IconButton aria-label='NavigateBefore' style={{ backgroundColor: '#05241d', color: 'white' }}>
             <NavigateBefore />
@@ -91,7 +100,7 @@ export default function AprobareConcedii() {
             <NavigateNext />
           </IconButton>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }
