@@ -1,9 +1,8 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import { Link } from 'react-router-dom'
 import SaveIcon from '@material-ui/icons/Save'
 
 //css
@@ -14,11 +13,10 @@ import { useHeader } from 'providers/AreasProvider'
 
 //pt update
 import { gql } from '@apollo/client'
-import { useMutation } from '@apollo/client'
 
 const useStyles = makeStyles(profileStyle)
 
-function ProfileEdit({ stare, modifyDataProfile }) {
+function ProfileEdit({ stare, modifyDataProfile, tratareUpdate }) {
   //css
   const classes = useStyles()
   //titlu
@@ -30,56 +28,11 @@ function ProfileEdit({ stare, modifyDataProfile }) {
   const DataAngajariiStringLabel = stare.DataAngajarii ? stare.DataAngajarii : '1999-01-01'
   const DataNasteriiStringLabel = stare.DataNasterii ? stare.DataNasterii : '1999-01-01'
 
-  const USER_DATA_MUTATION = gql`
-    mutation modificareDateProfil(
-      $userId: Int!
-      $userNumeUpdated: String
-      $userPrenumeUpdated: String
-      $userEmailUpdated: String
-      $userNumartelefonUpdated: String
-      $userCnpUpdated: String
-      $seriaNumarBuletinUpdated: String
-      $salariuUpdated: Float
-      $userDataNasteriiUpdated: String
-      $userDataAngajariiUpdated: String
-    ) {
-      modificareDateProfil(
-        userId: $userId
-        userNumeUpdated: $userNumeUpdated
-        userPrenumeUpdated: $userPrenumeUpdated
-        userEmailUpdated: $userEmailUpdated
-        userNumartelefonUpdated: $userNumartelefonUpdated
-        userCnpUpdated: $userCnpUpdated
-        seriaNumarBuletinUpdated: $seriaNumarBuletinUpdated
-        salariuUpdated: $salariuUpdated
-        userDataNasteriiUpdated: $userDataNasteriiUpdated
-        userDataAngajariiUpdated: $userDataAngajariiUpdated
-      )
+  function avemEroare() {
+    if (stare.isErrorOnUpdate) {
+      return <>A aparut o eroare!</>
     }
-  `
-  const tratareUpdate = useMutation(USER_DATA_MUTATION, {
-      variables: {
-        userId: 1,
-        userNumeUpdated: 'test',
-        userPrenumeUpdated: 'test',
-        userEmailUpdated: 'test@yahoo.com',
-        userDataAngajariiUpdated: '2000-10-10',
-        userNumartelefonUpdated: '0123456789',
-        userDataNasteriiUpdated: '2000-11-08',
-        userCnpUpdated: '5001108123123',
-        seriaNumarBuletinUpdated: 'rk123123',
-        salariuUpdated: 5000.1
-      },
-      onCompleted: data => {
-        console.log(data)
-        //if(data===true)
-        //history.push({ pathname: `/profile` })
-        //back to proffile
-        //else
-        //mesaj eroare
-      }
-    })
-
+  }
   return (
     <Fragment>
       <div className={classes.stilEditPageDivContainer1}>
@@ -176,7 +129,9 @@ function ProfileEdit({ stare, modifyDataProfile }) {
             ></TextField>
           </div>
           <Button
-          onClick={() => tratareUpdate}
+            onClick={() => {
+              tratareUpdate()
+            }}
             variant='contained'
             color='primary'
             size='large'
@@ -185,6 +140,7 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           >
             Save
           </Button>
+          {avemEroare()}
         </div>
       </div>
     </Fragment>
@@ -192,9 +148,9 @@ function ProfileEdit({ stare, modifyDataProfile }) {
 }
 ProfileEdit.propTypes = {
   stare: PropTypes.object.isRequired,
-  modifyDataProfile: PropTypes.func.isRequired
+  modifyDataProfile: PropTypes.func.isRequired,
+  tratareUpdate: PropTypes.func.isRequired
 }
 
 export default ProfileEdit
 //
-

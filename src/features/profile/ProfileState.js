@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useReducer } from 'react'
 import Profile from './Profile'
 import { initialState, reducer } from './ProfileStateDefine'
 
@@ -60,7 +60,8 @@ function ProfileState() {
       if (data != undefined || data != null) {
         dispatch({ inputName: 'allObject', inputValue: data.getProfileData, inputType: 'allObject' })
       }
-    }
+    },
+    fetchPolicy: "network-only"
   })
 
   //useEffect(()=>{dispatch()})
