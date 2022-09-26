@@ -15,10 +15,13 @@ import { useReducer } from 'react'
 import { initialState, reducer } from './PromovareStateDefine'
 import DropDownEchipa from './Autocomplete'
 import { useTranslation } from 'react-i18next'
+import { useQueryWithErrorHandling } from 'hooks/errorHandling'
+import ANGAJATI_DATA_QUERY from './QueryAngajati'
 
 const useStyles = makeStyles(stilAngajati)
 
 export default function Promovare() {
+  const { data } = useQueryWithErrorHandling(ANGAJATI_DATA_QUERY)
   const [state, dispatch] = useReducer(reducer, initialState)
   const { t } = useTranslation()
   const stilPromovare = useStyles()
@@ -52,38 +55,12 @@ export default function Promovare() {
 
   //functie de actiune pe buton pt adaugare angajati in lista de formare echipa
   function AdaugaElem() {
-    // let listaAngajatiDeAdaugat = state?.listaAngajatiDeAdaugat
-    // let listaAngajatiAdaugati = state?.listaAngajatiAdaugati
-
-    // let angajatDeAdaugat = {
-    //   id: listaAngajatiDeAdaugat[indexSelectat].id,
-    //   nume: listaAngajatiDeAdaugat[indexSelectat].nume,
-    //   prenume: listaAngajatiDeAdaugat[indexSelectat].prenume,
-    //   echipa: listaAngajatiDeAdaugat[indexSelectat].echipa
-    // }
-
-    // listaAngajatiAdaugati = [...listaAngajatiAdaugati, angajatDeAdaugat]
-    // listaAngajatiDeAdaugat.splice(indexSelectat, 1)
-    // console.log(listaAngajatiAdaugati)
     if (indexSelectat1 !== null && indexSelectat1 !== undefined && state.listaAngajatiDeAdaugat[indexSelectat1]) {
       dispatch({ inputName: 'modificareListe', actiune: 'Adaugare', index: indexSelectat1 })
     }
   }
 
   function ScoateElem() {
-    // let listaAngajatiDeAdaugat = state?.listaAngajatiDeAdaugat
-    // let listaAngajatiAdaugati = state?.listaAngajatiAdaugati
-
-    // let angajatDeScos = {
-    //   id: listaAngajatiAdaugati[indexSelectat].id,
-    //   nume: listaAngajatiAdaugati[indexSelectat].nume,
-    //   prenume: listaAngajatiAdaugati[indexSelectat].prenume,
-    //   echipa: listaAngajatiAdaugati[indexSelectat].echipa
-    // }
-    // listaAngajatiDeAdaugat = [...listaAngajatiDeAdaugat, angajatDeScos]
-    // listaAngajatiAdaugati.splice(indexSelectat, 1)
-    // console.log(listaAngajatiDeAdaugat)
-
     if (indexSelectat2 !== null && indexSelectat2 !== undefined && state.listaAngajatiAdaugati[indexSelectat2]) {
       dispatch({ inputName: 'modificareListe', actiune: 'Scoatere', index: indexSelectat2 })
     }
@@ -126,7 +103,7 @@ export default function Promovare() {
       <div className={stilPromovare.divTabelePromovare}>
         <div>
           <TabelAngajatiDePromovat
-            rows={state.listaAngajatiDeAdaugat}
+            rows={data ? data.angajatiData : []}
             setIdRand={setIdRand1}
             indexSelectat={indexSelectat1}
             setareId={setareId1}
