@@ -19,9 +19,6 @@ export default function HeaderTabel() {
       <TableRow>
         <StyledTableCell padding='checkbox'></StyledTableCell>
         <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
-          Id
-        </StyledTableCell>
-        <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
           Nume
         </StyledTableCell>
         <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>

@@ -10,6 +10,8 @@ import Paginare from './Paginare'
 import { makeStyles } from '@material-ui/core'
 import { useQueryWithErrorHandling } from 'hooks/errorHandling'
 import ANGAJATI_DATA_QUERY from './QueryAngajati'
+import { useApolloClient } from '@apollo/client'
+import { gql } from '@apollo/client'
 
 const stilAng = makeStyles(stilAngajati)
 const stilBtn = makeStyles(stilButoane)
@@ -33,7 +35,7 @@ export default function Angajati() {
   const stilButoanePaginare = stilAng()
   const stilButoaneActiuni = stilBtn()
   const history = useHistory()
-  // const [filteredArray, setFilteredArray] = useState(rows)
+  const [filteredArray, setFilteredArray] = useState(data?.angajatiData)
 
   const [indexSelectat, setIdRand] = useState(null)
 
@@ -42,115 +44,144 @@ export default function Angajati() {
     console.log(id)
   }
 
+  const handleFilterNume = input => {
+    const value = input.target.value
+
+    const newArray = data?.angajatiData.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.nume.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
+  const handleFilterPrenume = input => {
+    const value = input.target.value
+
+    const newArray = data?.angajatiData.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.prenume.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
+  const handleFilterEmail = input => {
+    const value = input.target.value
+
+    const newArray = data?.angajatiData.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.email.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
+  const handleFilterManager = input => {
+    const value = input.target.value
+
+    const newArray = data?.angajatiData.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.manager.toLowerCase().includes(value)
+      }
+    })
+
+    setFilteredArray(newArray)
+
+    return
+  }
+  const handleFilterEchipa = input => {
+    const value = input.target.value
+
+    const newArray = data?.angajatiData.filter(el => {
+      if (value === '') {
+        return el
+      } else {
+        return el.echipa.toLowerCase().includes(value)
+      }
+    })
+    setFilteredArray(newArray)
+
+    return
+  }
+
+  //preluare date din cache apollo
+  const client = useApolloClient()
+  let date = client.readQuery({
+    query: gql`
+      query userData {
+        userData {
+          id
+          isAdmin
+          isManager
+          email
+        }
+      }
+    `
+  })
+
   const handleClick = () => {
-    if (indexSelectat) {
+    if (indexSelectat && date?.userData?.isAdmin) {
       history.push({ pathname: `/angajati/Promovare/${indexSelectat}` })
     }
   }
 
-  // const handleFilterNume = input => {
-  //   const value = input.target.value
+  function afisareButonPromovare() {
+    if (date?.userData?.isAdmin) {
+      return (
+        <button className={stilButoaneActiuni.buton} onClick={handleClick}>
+          PROMOVEAZA ANGAJAT
+        </button>
+      )
+    }
+  }
+  function afisareButonAdaugare() {
+    if (date?.userData?.isAdmin || date?.useData?.isManager) {
+      return (
+        <Link to='/adauga_angajat'>
+          <button className={stilButoaneActiuni.buton}>ADAUGA UN ANGAJAT NOU</button>
+        </Link>
+      )
+    }
+  }
 
-  //   const newArray = rows.filter(el => {
-  //     if (value === '') {
-  //       return el
-  //     } else {
-  //       return el.nume.toLowerCase().includes(value)
-  //     }
-  //   })
-
-  //   setFilteredArray(newArray)
-
-  //   return
-  // }
-  // const handleFilterPrenume = input => {
-  //   const value = input.target.value
-
-  //   const newArray = rows.filter(el => {
-  //     if (value === '') {
-  //       return el
-  //     } else {
-  //       return el.prenume.toLowerCase().includes(value)
-  //     }
-  //   })
-
-  //   setFilteredArray(newArray)
-
-  //   return
-  // }
-  // const handleFilterEmail = input => {
-  //   const value = input.target.value
-
-  //   const newArray = rows.filter(el => {
-  //     if (value === '') {
-  //       return el
-  //     } else {
-  //       return el.email.toLowerCase().includes(value)
-  //     }
-  //   })
-
-  //   setFilteredArray(newArray)
-
-  //   return
-  // }
-  // const handleFilterManager = input => {
-  //   const value = input.target.value
-
-  //   const newArray = rows.filter(el => {
-  //     if (value === '') {
-  //       return el
-  //     } else {
-  //       return el.manager.toLowerCase().includes(value)
-  //     }
-  //   })
-
-  //   setFilteredArray(newArray)
-
-  //   return
-  // }
-  // const handleFilterEchipa = input => {
-  //   const value = input.target.value
-
-  //   const newArray = rows.filter(el => {
-  //     if (value === '') {
-  //       return el
-  //     } else {
-  //       return el.echipa.toLowerCase().includes(value)
-  //     }
-  //   })
-  //   setFilteredArray(newArray)
-
-  //   return
-  // }
   return (
     <div>
       <div className={stilButoanePaginare.divMarebutoane}>
-        <div>
-          <Link to='/adauga_angajat'>
-            <button className={stilButoaneActiuni.buton}>ADAUGA UN ANGAJAT NOU</button>
-          </Link>
-        </div>
-        <div>
-          <button className={stilButoaneActiuni.buton} onClick={handleClick}>
-            PROMOVEAZA ANGAJAT
-          </button>
-        </div>
+        <div>{afisareButonAdaugare()}</div>
+        <div>{afisareButonPromovare()}</div>
       </div>
       <br></br>
       <div className={stilButoanePaginare.divMareTextField}>
-        {/* <Filtrare
-          handleFilterNume={handleFilterNume}
-          handleFilterPrenume={handleFilterPrenume}
-          handleFilterEmail={handleFilterEmail}
-          handleFilterManager={handleFilterManager}
-          handleFilterEchipa={handleFilterEchipa}
-        ></Filtrare> */}
+        {
+          <Filtrare
+            handleFilterNume={handleFilterNume}
+            handleFilterPrenume={handleFilterPrenume}
+            handleFilterEmail={handleFilterEmail}
+            handleFilterManager={handleFilterManager}
+            handleFilterEchipa={handleFilterEchipa}
+          ></Filtrare>
+        }
       </div>
       <br></br>
       <TabelAngajati
         rows={data ? data.angajatiData : []}
         setareId={setareId}
-        // filtrare={filteredArray}
+        filtrare={filteredArray}
         indexSelectat={indexSelectat}
       ></TabelAngajati>
       <Paginare></Paginare>
