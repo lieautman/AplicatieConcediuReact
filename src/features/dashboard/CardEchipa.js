@@ -11,11 +11,10 @@ import { Link } from 'react-router-dom'
 
 export default function CardEchipa(props) {
   const { echipa } = props
-
   return (
     <Grid item xs={4}>
       <Card sx={{ maxWidth: 310 }}>
-        <CardMedia component='img' height='250' image={echipa.poza} alt='poza echipei' />
+        <CardMedia component='img' height='250' image={`data:image/*;base64,${echipa.poza}`} alt='poza echipei' />
         <CardContent>
           <Typography gutterBottom variant='h5' component='div'>
             {echipa.nume}
@@ -25,7 +24,7 @@ export default function CardEchipa(props) {
           </Typography>
         </CardContent>
         <CardActions>
-          <Link to={'/angajati_echipe'}>
+          <Link to={`/angajati_echipe/${echipa.nume}`}>
             <Button variant='contained' style={{ backgroundColor: '#26c6da' }}>
               Vizualizeaza echipa
             </Button>
