@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { styled } from '@mui/material/styles'
-import TableCell, { tableCellClasses } from '@mui/material/TableCell'
-import TableRow from '@mui/material/TableRow'
+import { styled } from '@material-ui/core/styles'
+import TableCell from '@material-ui/core/TableCell'
+import { tableCellClasses } from '@mui/material/TableCell'
+import TableRow from '@material-ui/core/TableRow'
 import PropTypes from 'prop-types'
-import Checkbox from '@mui/material/Checkbox'
+import Checkbox from '@material-ui/core/Checkbox'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -25,7 +26,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   }
 }))
 export default function RanduriAngajati(props) {
-  const { row, setareId, idRand } = props
+  const { row, setareId, indexSelectat } = props
   return (
     <StyledTableRow key={row.name}>
       <StyledTableCell align='center'>
@@ -33,7 +34,7 @@ export default function RanduriAngajati(props) {
           color='primary'
           // indeterminate={numSelected > 0 && numSelected < rowCount}
 
-          checked={idRand && row.id === idRand}
+          checked={indexSelectat !== undefined && indexSelectat !== null ? row.id === indexSelectat : false}
           onChange={setareId(row.id)}
           inputProps={{
             'aria-label': 'select all desserts'
@@ -49,7 +50,6 @@ export default function RanduriAngajati(props) {
 
       <StyledTableCell align='center'>{row.prenume}</StyledTableCell>
       <StyledTableCell align='center'>{row.email}</StyledTableCell>
-      <StyledTableCell align='center'>{row.manager}</StyledTableCell>
       <StyledTableCell align='center'>{row.echipa}</StyledTableCell>
     </StyledTableRow>
   )
@@ -58,5 +58,5 @@ export default function RanduriAngajati(props) {
 RanduriAngajati.propTypes = {
   row: PropTypes.object.isRequired,
   setareId: PropTypes.func,
-  idRand: PropTypes.number
+  indexSelectat: PropTypes.number
 }

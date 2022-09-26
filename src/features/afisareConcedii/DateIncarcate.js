@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { styled } from '@mui/material/styles'
-import TableCell, { tableCellClasses } from '@mui/material/TableCell'
-import TableRow from '@mui/material/TableRow'
+import { styled } from '@material-ui/core/styles'
+import TableCell from '@material-ui/core/TableCell'
+import { tableCellClasses } from '@mui/material/TableCell'
+import TableRow from '@material-ui/core/TableRow'
 import PropTypes from 'prop-types'
-import Checkbox from '@mui/material/Checkbox'
-import { useState } from 'react'
+import Checkbox from '@material-ui/core/Checkbox'
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
@@ -29,7 +29,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 export default function DateIncarcate(props) {
   const { row, setareId, concediiInAsteptareaAprobarii, idRand } = props
-
+  console.log(idRand)
   return (
     <StyledTableRow>
       {concediiInAsteptareaAprobarii && (
@@ -37,7 +37,7 @@ export default function DateIncarcate(props) {
           <Checkbox
             style={{ color: '#26c6da' }}
             // indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={idRand && row.id === idRand}
+            checked={idRand !== undefined && idRand !== null ? row.id === idRand : false}
             onChange={setareId(row.id)}
             inputProps={{
               'aria-label': 'select all desserts'

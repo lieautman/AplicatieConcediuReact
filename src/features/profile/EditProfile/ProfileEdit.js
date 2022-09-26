@@ -1,9 +1,8 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import PropTypes from 'prop-types'
 
-import TextField from '@mui/material/TextField'
+import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import { Link } from 'react-router-dom'
 import SaveIcon from '@material-ui/icons/Save'
 
 //css
@@ -12,9 +11,12 @@ import profileStyle from '../Assets/ProfileCss'
 //titlu
 import { useHeader } from 'providers/AreasProvider'
 
+//pt update
+import { gql } from '@apollo/client'
+
 const useStyles = makeStyles(profileStyle)
 
-function ProfileEdit({ stare, modifyDataProfile }) {
+function ProfileEdit({ stare, modifyDataProfile, tratareUpdate }) {
   //css
   const classes = useStyles()
   //titlu
@@ -23,18 +25,20 @@ function ProfileEdit({ stare, modifyDataProfile }) {
       {'Editeaza date'}
     </div>
   )
-    console.log(stare.DataNasterii)
+  const DataAngajariiStringLabel = stare.DataAngajarii ? stare.DataAngajarii : '1999-01-01'
+  const DataNasteriiStringLabel = stare.DataNasterii ? stare.DataNasterii : '1999-01-01'
+
+  function avemEroare() {
+    if (stare.isErrorOnUpdate) {
+      return <>A aparut o eroare!</>
+    }
+  }
   return (
     <Fragment>
       <div className={classes.stilEditPageDivContainer1}>
         <div className={classes.stilEditPageDivContaineLeft}>
           <div className={classes.stilEditPageInput}>
-            <TextField
-              label='Nume'
-              value={stare.Nume}
-              fullWidth
-              onChange={evt => modifyDataProfile('Nume', evt.target.value)}
-            ></TextField>
+            <TextField label='Nume' value={stare.Nume} fullWidth onChange={evt => modifyDataProfile('Nume', evt.target.value)}></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
@@ -62,7 +66,6 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
-              type='number'
               label='Telefon'
               value={stare.Numartelefon}
               fullWidth
@@ -82,8 +85,8 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           <div className={classes.stilEditPageInput}>
             <TextField
               type='date'
-              label={stare.DataAngajarii?stare.DataAngajarii:"1999-01-01"}
-              defaultValue=""
+              label={'Data angajarii: ' + DataAngajariiStringLabel.toString()}
+              defaultValue=''
               InputLabelProps={{ shrink: true }}
               fullWidth
               onChange={evt => modifyDataProfile('DataAngajarii', evt.target.value)}
@@ -92,8 +95,8 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           <div className={classes.stilEditPageInput}>
             <TextField
               type='date'
-              label={stare.DataNasterii?stare.DataNasterii:"1999-01-01"}
-              defaultValue=""
+              label={'Data nasterii: ' + DataNasteriiStringLabel.toString()}
+              defaultValue=''
               InputLabelProps={{ shrink: true }}
               fullWidth
               onChange={evt => modifyDataProfile('DataNasterii', evt.target.value)}
@@ -125,11 +128,19 @@ function ProfileEdit({ stare, modifyDataProfile }) {
               onChange={evt => modifyDataProfile('Salariu', evt.target.value)}
             ></TextField>
           </div>
-          <Link to={'/profile'}>
-            <Button variant='contained' color='primary' size='large' className={classes.button}  startIcon={<SaveIcon />}>
-              Save
-            </Button>
-          </Link>
+          <Button
+            onClick={() => {
+              tratareUpdate()
+            }}
+            variant='contained'
+            color='primary'
+            size='large'
+            className={classes.button}
+            startIcon={<SaveIcon />}
+          >
+            Save
+          </Button>
+          {avemEroare()}
         </div>
       </div>
     </Fragment>
@@ -137,7 +148,9 @@ function ProfileEdit({ stare, modifyDataProfile }) {
 }
 ProfileEdit.propTypes = {
   stare: PropTypes.object.isRequired,
-  modifyDataProfile: PropTypes.func.isRequired
+  modifyDataProfile: PropTypes.func.isRequired,
+  tratareUpdate: PropTypes.func.isRequired
 }
 
 export default ProfileEdit
+//
