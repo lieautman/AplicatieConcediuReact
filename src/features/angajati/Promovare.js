@@ -1,4 +1,4 @@
-import { React, useState } from 'react'
+import { React, useEffect, useState } from 'react'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
@@ -21,8 +21,13 @@ import ANGAJATI_DATA_QUERY from './QueryAngajati'
 const useStyles = makeStyles(stilAngajati)
 
 export default function Promovare() {
-  const { data } = useQueryWithErrorHandling(ANGAJATI_DATA_QUERY)
   const [state, dispatch] = useReducer(reducer, initialState)
+  const { data } = useQueryWithErrorHandling(ANGAJATI_DATA_QUERY)
+
+  // useEffect(()=>{
+  //   if(state)
+
+  // },[data])
   const { t } = useTranslation()
   const stilPromovare = useStyles()
   useHeader(
@@ -103,7 +108,7 @@ export default function Promovare() {
       <div className={stilPromovare.divTabelePromovare}>
         <div>
           <TabelAngajatiDePromovat
-            rows={data ? data.angajatiData : []}
+            rows={state.data ? state.data.angajatiData : []}
             setIdRand={setIdRand1}
             indexSelectat={indexSelectat1}
             setareId={setareId1}

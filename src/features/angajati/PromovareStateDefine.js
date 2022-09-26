@@ -1,8 +1,8 @@
 export const initialState = {
   id: '',
-  textNume: 'Popa',
-  textPrenume: 'Adi',
-  textEchipa: 'Marketing',
+  textNume: 'NUME',
+  textPrenume: 'PRENUME',
+  textEchipa: 'ECHIPA',
   echipa: null,
   listaAngajatiDeAdaugat: [
     {

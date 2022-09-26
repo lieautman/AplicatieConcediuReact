@@ -54,7 +54,7 @@ function ProfileState() {
 
   //query
   useQueryWithErrorHandling(USER_DATA_QUERY, {
-    variables: { userEmail:  date?.userData?.email },
+    variables: { userEmail: date?.userData?.email },
     skip: !date?.userData?.email,
     onCompleted: data => {
       if (data != undefined || data != null) {
@@ -72,7 +72,7 @@ function ProfileState() {
         dispatch({ inputName: 'DataAngajarii', inputValue: dataAngajareFormatata, inputType: 'field' })
       }
     },
-    fetchPolicy: "network-only"
+    fetchPolicy: 'network-only'
   })
 
   //useEffect(()=>{dispatch()})
