@@ -59,6 +59,17 @@ function ProfileState() {
     onCompleted: data => {
       if (data != undefined || data != null) {
         dispatch({ inputName: 'allObject', inputValue: data.getProfileData, inputType: 'allObject' })
+        //refacere data
+        let an = data.getProfileData.DataNasterii.substring(0, 4)
+        let luna = data.getProfileData.DataNasterii.substring(5, 7)
+        let zi = data.getProfileData.DataNasterii.substring(8, 10)
+        let dataNastereFormatata = an + '-' + luna + '-' + zi
+        dispatch({ inputName: 'DataNasterii', inputValue: dataNastereFormatata, inputType: 'field' })
+        let an1 = data.getProfileData.DataNasterii.substring(0, 4)
+        let luna1 = data.getProfileData.DataNasterii.substring(5, 7)
+        let zi1 = data.getProfileData.DataNasterii.substring(8, 10)
+        let dataAngajareFormatata = an1 + '-' + luna1 + '-' + zi1
+        dispatch({ inputName: 'DataAngajarii', inputValue: dataAngajareFormatata, inputType: 'field' })
       }
     },
     fetchPolicy: "network-only"
