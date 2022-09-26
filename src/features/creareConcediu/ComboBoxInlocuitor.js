@@ -5,7 +5,11 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const ComboBoxInlocuitor = () => {
   // Our sample dropdown options
-  const options = ['Popescu Ioan', 'Matei Maria', ' Dragomir Iustina', 'Ilie Mihai']
+  const options = [
+    { id: 1, name: 'Popescu Ioan' },
+    { id: 2, name: 'Dragomir Iustina' },
+    { id: 3, name: 'Calinescu Mihai' }
+  ]
 
   // eslint-disable-next-line no-unused-vars
   const useStyles = makeStyles(theme => ({
@@ -25,6 +29,7 @@ const ComboBoxInlocuitor = () => {
       <Autocomplete
         options={options}
         style={{ width: 300 }}
+        getOptionLabel={option => option.name}
         renderInput={params => <TextField {...params} label='Selecteaza un inlocuitor' variant='outlined' />}
       />
     </div>

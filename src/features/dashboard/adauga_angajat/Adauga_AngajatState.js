@@ -5,9 +5,11 @@ export const initialState = {
   cnp: '',
   seriaNumarCI: '',
   numardetelefon: '',
-  dataAngajarii: '',
-  echipaId: '',
-  managerId: ''
+  dataAngajarii: new Date(),
+  idEchipa: '',
+  managerId: '',
+  email: '',
+  parola: ''
 }
 
 export function reducer(state, action) {
