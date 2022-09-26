@@ -61,7 +61,7 @@ export default function AprobareConcedii() {
 
   const [idRand, setIdRand] = useState(null)
   const concediiInAsteptareaAprobarii = true
-  // const nuSeFiltreaza = true
+  const nuSeFiltreaza = true
 
   const setareId = id => () => {
     if (id !== idRand) {
@@ -108,6 +108,7 @@ export default function AprobareConcedii() {
           setareId={setareId}
           concediiInAsteptareaAprobarii={concediiInAsteptareaAprobarii}
           idRand={idRand}
+          nuSeFiltreaza={nuSeFiltreaza}
           // nuSeFiltreaza={nuSeFiltreaza}
         ></TabelConcediu>
       </div>

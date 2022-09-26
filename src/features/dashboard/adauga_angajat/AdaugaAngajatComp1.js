@@ -6,10 +6,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import Adauga_Angajatcss from './Adauga_Angajatcss'
 import PropTypes from 'prop-types'
 
-// import { useReducer } from 'react'
-// import { initialState, reducer } from './Adauga_AngajatState'
-// import Adauga_Angajat from './Adauga_Angajat'
-
 const useStyles = makeStyles(Adauga_Angajatcss)
 export function AdaugaAngajatComp1(props) {
   const classes = useStyles()
@@ -57,6 +53,13 @@ export function AdaugaAngajatComp1(props) {
             onChange={event => handleChange('cnp', event.target.value)}
           ></TextField>
           <br></br>
+          <TextField
+            className={classes.TextField}
+            label={'Email'}
+            variant='outlined'
+            value={localState.email}
+            onChange={event => handleChange('email', event.target.value)}
+          ></TextField>
           <TextField
             className={classes.TextField}
             label={'SeriaNumarCI'}

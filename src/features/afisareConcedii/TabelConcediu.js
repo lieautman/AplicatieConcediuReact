@@ -23,7 +23,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }))
 
 export default function TabelConcediu(props) {
-  const { rows, setareId, concediiInAsteptareaAprobarii, idRand, filtrare, seFiltreaza } = props
+  const { rows, setareId, concediiInAsteptareaAprobarii, idRand, filtrare, seFiltreaza, nuSeFiltreaza } = props
 
   return (
     <TableContainer component={Paper}>
@@ -52,15 +52,26 @@ export default function TabelConcediu(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <DateIncarcate
-              row={row}
-              key={row.id}
-              setareId={setareId}
-              concediiInAsteptareaAprobarii={concediiInAsteptareaAprobarii}
-              idRand={idRand}
-            />
-          ))}
+          {seFiltreaza &&
+            filtrare?.map(row => (
+              <DateIncarcate
+                row={row}
+                key={row.id}
+                setareId={setareId}
+                concediiInAsteptareaAprobarii={concediiInAsteptareaAprobarii}
+                idRand={idRand}
+              />
+            ))}
+          {nuSeFiltreaza &&
+            rows?.map(row => (
+              <DateIncarcate
+                row={row}
+                key={row.id}
+                setareId={setareId}
+                concediiInAsteptareaAprobarii={concediiInAsteptareaAprobarii}
+                idRand={idRand}
+              />
+            ))}
         </TableBody>
       </Table>
     </TableContainer>

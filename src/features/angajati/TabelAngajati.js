@@ -12,16 +12,16 @@ import HeaderTabel from './HeaderTabelAngajati'
 const useStyles = makeStyles(stilAngajati)
 
 export default function TabelAngajati(props) {
-  const { setareId, indexSelectat, filtrare } = props
+  const { rows, setareId, indexSelectat, filtrare } = props
   const stilTabel = useStyles()
   return (
     <div>
       <TableContainer component={Paper}>
         <div className={stilTabel.tabel}>
-          <Table sx={{ minWidth: 700 }} aria-label='customized table'>
+          <Table sx={{ minWidth: 600 }} aria-label='customized table'>
             <HeaderTabel></HeaderTabel>
             <TableBody>
-              {filtrare.map((row, i) => (
+              {filtrare?.map((row, i) => (
                 <RanduriAngajati row={row} key={i} setareId={setareId} indexSelectat={indexSelectat}></RanduriAngajati>
               ))}
             </TableBody>
@@ -34,5 +34,6 @@ export default function TabelAngajati(props) {
 TabelAngajati.propTypes = {
   setareId: PropTypes.func,
   indexSelectat: PropTypes.number,
-  filtrare: PropTypes.array
+  filtrare: PropTypes.array,
+  rows: PropTypes.array
 }

@@ -5,9 +5,8 @@ import { TextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Adauga_Angajatcss from './Adauga_Angajatcss'
 import { Autocomplete } from '@material-ui/lab'
-import { useReducer } from 'react'
-import { initialState, reducer } from './Adauga_AngajatState'
 import PropTypes from 'prop-types'
+import { useMutation } from '@apollo/client'
 
 const useStyles = makeStyles(Adauga_Angajatcss)
 const ListaEchipe = [
@@ -43,6 +42,13 @@ export function AdaugaAngajatComp2(props) {
             variant='outlined'
             value={localState.salariu}
             onChange={event => handleChange('salariu', event.target.value)}
+          ></TextField>
+          <TextField
+            className={classes.TextField}
+            label={'Parola'}
+            variant='outlined'
+            value={localState.parola}
+            onChange={event => handleChange('parola', event.target.value)}
           ></TextField>
           <br></br>
           <TextField

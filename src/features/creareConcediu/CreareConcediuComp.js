@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-
 import DatePickerIncepere from './DatePickerIncepere'
 import DatePickerIncetare from './DatePickerIncetare'
 import ComboBoxTipConcediu from './ComboBoxTipConcediu'
@@ -11,7 +10,6 @@ import Button from '@material-ui/core/Button'
 import PropTypes from 'prop-types'
 
 const useStyles = makeStyles(CreareConcediuCSS)
-
 function CreareConcediuComp(props) {
   const classes = useStyles()
   const { handleChange } = props
@@ -22,7 +20,7 @@ function CreareConcediuComp(props) {
       <div style={{ marginLeft: '70px', marginTop: '1rem', marginBottom: '1rem' }}>
         <ComboBoxTipConcediu
           className={classes.combobox}
-          onChange={(event, value => handleChange('comboboxTipConcediu', value))}
+          onChange={(event, value => handleChange('tipConcediuId', value))}
         ></ComboBoxTipConcediu>
       </div>
       <div className={classes.datePicker}>
@@ -58,7 +56,7 @@ function CreareConcediuComp(props) {
       </div>
 
       <div style={{ marginLeft: '70px', marginTop: '1rem' }}>
-        <ComboBoxInlocuitor onChange={(event, value => handleChange('comboboxInlocuitor', value))}></ComboBoxInlocuitor>
+        <ComboBoxInlocuitor onChange={(event, value => handleChange('angajatId', value))}></ComboBoxInlocuitor>
       </div>
       <br></br>
       <div style={{ marginLeft: '120px' }}>
