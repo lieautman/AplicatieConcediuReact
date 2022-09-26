@@ -1,8 +1,8 @@
 export const initialState = {
-  comboboxTipConcediu: '',
-  datePikerIncepere: '',
-  datePickerIncetare: '',
-  comboboxInlocuitor: '',
+  tipConcediuId: '',
+  datePikerIncepere: new Date(),
+  datePickerIncetare: new Date(),
+  angajatId: '',
   numarZileSelectat: '',
   numarZileDisponibile: '',
   comentarii: ''

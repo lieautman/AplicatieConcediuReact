@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import { Button, Grid } from '@material-ui/core'
+import { Button } from '@material-ui/core'
 import Container from '@material-ui/core/Container'
 import { makeStyles } from '@material-ui/core/styles'
 import Adauga_Angajatcss from './Adauga_Angajatcss'
@@ -8,6 +8,8 @@ import { useReducer } from 'react'
 import { initialState, reducer } from './Adauga_AngajatState'
 import { AdaugaAngajatComp1 } from './AdaugaAngajatComp1'
 import { AdaugaAngajatComp2 } from './AdaugaAngajatComp2'
+import { useMutation } from '@apollo/client'
+//import { POST_ADAUGAANGAJAT } from './mutation'
 
 const useStyles = makeStyles(Adauga_Angajatcss)
 
@@ -19,6 +21,11 @@ function Adauga_Angajat() {
     console.log(value)
     dispatch({ type: 'OnPropertyChanged', propertyName, value })
   }
+  // const { adaugaangajat } = useMutation(POST_ADAUGAANGAJAT)
+
+  // const handleClick = async () => {
+  //   adaugaangajat()
+  // }
 
   useHeader(
     <div variant='subtitles1' className={classes.stilTitlu}>
