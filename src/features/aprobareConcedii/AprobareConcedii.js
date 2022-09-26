@@ -49,7 +49,7 @@ const stilAng = makeStyles(stilAngajati)
 // ]
 
 export default function AprobareConcedii() {
-  const { data } = useQueryWithErrorHandling(CONCEDII_SPRE_APROBARE_DATA_QUERY)
+  const { data, refetch } = useQueryWithErrorHandling(CONCEDII_SPRE_APROBARE_DATA_QUERY)
 
   const stilButoanePaginare = stilAng()
 
@@ -71,20 +71,21 @@ export default function AprobareConcedii() {
     }
   }
 
-  const [aprobareConcediu] = useMutation(CONCEDIU_APROBAT_MUTATION)
-  const [respingereConcediu] = useMutation(CONCEDIU_RESPINS_MUTATION)
+  const [aprobareConcediu] = useMutation(CONCEDIU_APROBAT_MUTATION, { onCompleted: () => refetch() })
+  const [respingereConcediu] = useMutation(CONCEDIU_RESPINS_MUTATION, { onCompleted: () => refetch() })
 
   const handleClickAprobare = async () => {
     await aprobareConcediu({
       variables: { updateConcediuId: idRand }
     })
-    data.concediiSpreAprobareData.every(concediu => concediu.id !== idRand)
+    // refetch()
   }
 
   const handleClickRespingere = async () => {
     await respingereConcediu({
       variables: { updateStareConcediuId: idRand }
     })
+    // refetch()
   }
 
   return (
