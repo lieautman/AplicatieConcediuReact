@@ -31,31 +31,31 @@ const USER_DATA_QUERY = gql`
   }
 `
 const USER_DATA_MUTATION = gql`
-mutation modificareDateProfil(
-  $userId: Int!
-  $userNumeUpdated: String
-  $userPrenumeUpdated: String
-  $userDataAngajariiUpdated: String
-  $userEmailUpdated: String
-  $userNumartelefonUpdated: String
-  $userDataNasteriiUpdated: String
-  $userCnpUpdated: String
-  $salariuUpdated: String
-  $seriaNumarBuletinUpdated: String
-) {
-  modificareDateProfil(
-    userId: $userId
-    userNumeUpdated: $userNumeUpdated
-    userPrenumeUpdated: $userPrenumeUpdated
-    userDataAngajariiUpdated: $userDataAngajariiUpdated
-    userEmailUpdated: $userEmailUpdated
-    userNumartelefonUpdated: $userNumartelefonUpdated
-    userDataNasteriiUpdated: $userDataNasteriiUpdated
-    userCnpUpdated: $userCnpUpdated
-    salariuUpdated: $salariuUpdated
-    seriaNumarBuletinUpdated: $seriaNumarBuletinUpdated
-  )
-}
+  mutation modificareDateProfil(
+    $userId: Int!
+    $userNumeUpdated: String
+    $userPrenumeUpdated: String
+    $userDataAngajariiUpdated: String
+    $userEmailUpdated: String
+    $userNumartelefonUpdated: String
+    $userDataNasteriiUpdated: String
+    $userCnpUpdated: String
+    $salariuUpdated: String
+    $seriaNumarBuletinUpdated: String
+  ) {
+    modificareDateProfil(
+      userId: $userId
+      userNumeUpdated: $userNumeUpdated
+      userPrenumeUpdated: $userPrenumeUpdated
+      userDataAngajariiUpdated: $userDataAngajariiUpdated
+      userEmailUpdated: $userEmailUpdated
+      userNumartelefonUpdated: $userNumartelefonUpdated
+      userDataNasteriiUpdated: $userDataNasteriiUpdated
+      userCnpUpdated: $userCnpUpdated
+      salariuUpdated: $salariuUpdated
+      seriaNumarBuletinUpdated: $seriaNumarBuletinUpdated
+    )
+  }
 `
 
 function ProfileEditState() {
@@ -90,14 +90,14 @@ function ProfileEditState() {
         let zi = data.getProfileData.DataNasterii.substring(8, 10)
         let dataNastereFormatata = an + '-' + luna + '-' + zi
         dispatch({ inputName: 'DataNasterii', inputValue: dataNastereFormatata, inputType: 'field' })
-        let an1 = data.getProfileData.DataNasterii.substring(0, 4)
-        let luna1 = data.getProfileData.DataNasterii.substring(5, 7)
-        let zi1 = data.getProfileData.DataNasterii.substring(8, 10)
+        let an1 = data.getProfileData.DataAngajarii.substring(0, 4)
+        let luna1 = data.getProfileData.DataAngajarii.substring(5, 7)
+        let zi1 = data.getProfileData.DataAngajarii.substring(8, 10)
         let dataAngajareFormatata = an1 + '-' + luna1 + '-' + zi1
         dispatch({ inputName: 'DataAngajarii', inputValue: dataAngajareFormatata, inputType: 'field' })
       }
     },
-    fetchPolicy: "network-only"
+    fetchPolicy: 'network-only'
   })
 
   //modif date
@@ -113,7 +113,7 @@ function ProfileEditState() {
       userId: date?.userData?.id,
       userNumeUpdated: state.Nume,
       userPrenumeUpdated: state.Prenume,
-      userEmailUpdated:  state.Email,
+      userEmailUpdated: state.Email,
       userDataAngajariiUpdated: state.DataAngajarii,
       userNumartelefonUpdated: state.Numartelefon,
       userDataNasteriiUpdated: state.DataNasterii,
@@ -123,11 +123,10 @@ function ProfileEditState() {
     },
     skip: !date?.userData?.id,
     onCompleted: data => {
-      if(data.modificareDateProfil===true){
+      if (data.modificareDateProfil === true) {
         dispatch({ inputName: 'isErrorOnUpdate', inputValue: false, inputType: 'field' })
         history.push({ pathname: `/profile` })
-      }
-      else{
+      } else {
         dispatch({ inputName: 'isErrorOnUpdate', inputValue: true, inputType: 'field' })
       }
     }
