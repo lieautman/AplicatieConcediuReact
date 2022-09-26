@@ -37,7 +37,7 @@ export default function DateIncarcate(props) {
           <Checkbox
             style={{ color: '#26c6da' }}
             // indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={idRand && row.id === idRand}
+            checked={idRand !== undefined && idRand !== null ? row.id === idRand : false}
             onChange={setareId(row.id)}
             inputProps={{
               'aria-label': 'select all desserts'
