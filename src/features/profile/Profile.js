@@ -3,7 +3,7 @@ import React, { Fragment } from 'react'
 import ProfilePhoto from './Components/ProfilePhoto.js'
 import ProfileUserDataString from './Components/ProfileUserDataString'
 import ProfileEditButton from './Components/ProfileEditButton'
-import ProfileTabelConcedii from './Components/ProfileTabelConcedii'
+import ProfileTabelConcediiState from './ConcediiPersonale/ProfileTabelConcediiState'
 import ProfileAddAtachment from './Components/ProfileAddAtachment'
 
 import AdressEmailPhonePhoto from './Components/AdressEmailPhonePhoto.js'
@@ -128,11 +128,14 @@ function Profile({ stare }) {
           </div>
           <div className={classes.styleContainerConcediileMele}>
             <ProfileUserDataString text={stare.textTabelConcedii} idDat={classes.textNume}></ProfileUserDataString>
-            <ProfileTabelConcedii
+            <ProfileTabelConcediiState
+              emailUtilizator={stare.Email}
               idDat={classes.stilTabel}
+              idDivButoane={classes.stilDivButoane}
               idDatButonInainte={classes.stilButonInainte}
+              idPagLabel={classes.stilPagLabel}
               idDatButonInapoi={classes.stilButonInapoi}
-            ></ProfileTabelConcedii>
+            ></ProfileTabelConcediiState>
           </div>
           <div className={classes.styleContainerConcediileMele}>
             <ProfileUserDataString text={stare.textAtasamente} idDat={classes.textNume}></ProfileUserDataString>
