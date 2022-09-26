@@ -31,9 +31,6 @@ export default function HeaderTabel() {
           Email
         </StyledTableCell>
         <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
-          Manager
-        </StyledTableCell>
-        <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
           Echipa
         </StyledTableCell>
       </TableRow>

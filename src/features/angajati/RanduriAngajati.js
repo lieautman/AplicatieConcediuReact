@@ -50,7 +50,6 @@ export default function RanduriAngajati(props) {
 
       <StyledTableCell align='center'>{row.prenume}</StyledTableCell>
       <StyledTableCell align='center'>{row.email}</StyledTableCell>
-      <StyledTableCell align='center'>{row.manager}</StyledTableCell>
       <StyledTableCell align='center'>{row.echipa}</StyledTableCell>
     </StyledTableRow>
   )
