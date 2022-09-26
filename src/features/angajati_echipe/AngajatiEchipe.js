@@ -5,9 +5,9 @@ import ANGAJATI_PER_ECHIPA_DATA_QUERY from './Queries'
 import PropTypes from 'prop-types'
 import { useRouteMatch } from 'react-router-dom'
 
-function createData(nume, prenume, email, manager, echipa) {
-  return { nume, prenume, email, manager, echipa }
-}
+// function createData(nume, prenume, email, manager, echipa) {
+//   return { nume, prenume, email, manager, echipa }
+// }
 // const rows = [
 //   createData('Popescu', 'Ioana', 'ioana@gmail.com', 'Popa Irina', 'IT'),
 //   createData('Ionescu', 'Ana', 'ana@yahoo.ro', 'Popescu Mihai', 'Marketing'),
@@ -21,7 +21,7 @@ export default function AngajatiEchipe() {
   const { data } = useQueryWithErrorHandling(ANGAJATI_PER_ECHIPA_DATA_QUERY, { variables: { echipa: match.params.nume } })
   return (
     <div>
-      <TabelAngajati filtrare={data?.CardData}></TabelAngajati>
+      <TabelAngajati rows={data ? data.CardData : []}></TabelAngajati>
     </div>
   )
 }
