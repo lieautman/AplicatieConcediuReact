@@ -65,9 +65,9 @@ function ProfileState() {
         let zi = data.getProfileData.DataNasterii.substring(8, 10)
         let dataNastereFormatata = an + '-' + luna + '-' + zi
         dispatch({ inputName: 'DataNasterii', inputValue: dataNastereFormatata, inputType: 'field' })
-        let an1 = data.getProfileData.DataNasterii.substring(0, 4)
-        let luna1 = data.getProfileData.DataNasterii.substring(5, 7)
-        let zi1 = data.getProfileData.DataNasterii.substring(8, 10)
+        let an1 = data.getProfileData.DataAngajarii.substring(0, 4)
+        let luna1 = data.getProfileData.DataAngajarii.substring(5, 7)
+        let zi1 = data.getProfileData.DataAngajarii.substring(8, 10)
         let dataAngajareFormatata = an1 + '-' + luna1 + '-' + zi1
         dispatch({ inputName: 'DataAngajarii', inputValue: dataAngajareFormatata, inputType: 'field' })
       }

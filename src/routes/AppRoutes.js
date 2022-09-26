@@ -39,7 +39,7 @@ export default function AppRoutes() {
       <CustomRoute isPrivate={false} exact path='/angajati/Promovare/:id' component={Promovare} />
       <Redirect exact from='/' to='/angajati/Promovare' />
 
-      <CustomRoute isPrivate={false} exact path='/angajati_echipe' component={AngajatiEchipe} />
+      <CustomRoute isPrivate={false} exact path='/angajati_echipe/:nume' component={AngajatiEchipe} />
       <CustomRoute isPrivate={false} exact path='/toateConcediile' component={ToateConcediile} />
       <CustomRoute isPrivate={false} exact path='/aprobareConcedii' component={AprobareConcedii} />
       <CustomRoute isPrivate={false} exact path='/aprobareAngajati' component={AprobareAngajati} />

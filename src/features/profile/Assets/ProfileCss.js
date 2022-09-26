@@ -111,8 +111,17 @@ const profileStyle = theme => {
     stilTabel: {
       height: '19rem'
     },
+    stilDivButoane: {
+      display: 'flex',
+      justifyContent: "space-between"
+    },
+    stilPagLabel: {
+      width: '60px',
+      height: '30px',
+      borderRadius: '25px',
+      color: 'black',
+    },
     stilButonInainte: {
-      float: 'right',
       backgroundColor: '#05241d',
       width: '60px',
       height: '30px',
@@ -171,15 +180,13 @@ const profileStyle = theme => {
       [theme.breakpoints.up('lg')]: { position: 'absolute' },
       padding: '0.22rem',
       top: '30rem',
-      left: '35rem',
-
+      left: '35rem'
     },
-    stilEditPageInputOverButton:{
+    stilEditPageInputOverButton: {
       padding: '0.22rem',
-      position:'relative',
+      position: 'relative',
       [theme.breakpoints.down('lg')]: {},
-      [theme.breakpoints.up('lg')]: {  right:'4rem' },
-     
+      [theme.breakpoints.up('lg')]: { right: '4rem' }
     },
     button: {
       backgroundColor: '#26c6da'

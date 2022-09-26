@@ -15,6 +15,7 @@ import AppRoutes from 'routes/AppRoutes'
 
 import { ToastContainer, CheckInternetConnection } from '@bit/totalsoft_oss.react-mui.kit.core'
 import LoginPage from './login/LoginPage'
+import RegisterPage from './register/RegisterPage'
 import useToken from './login/UseToken'
 import UserDataProvider from 'providers/UserDataProvider'
 
@@ -27,6 +28,7 @@ function App(props) {
   const { location } = props
   const { i18n } = useTranslation()
   const { token, setToken } = useToken()
+  const [isInLogin, setIsInLogin] = useState(true)
 
   const [drawerOpen, setDrawerOpen] = useState(isWeb())
   window.onresize = _e => setDrawerOpen(isWeb())
@@ -60,7 +62,11 @@ function App(props) {
     })
 
   if (!token) {
-    return <LoginPage setToken={setToken} />
+    if(isInLogin){
+      return <LoginPage isInLogin={isInLogin} setIsInLogin={setIsInLogin} setToken={setToken} />
+    }
+    else
+      return <RegisterPage isInLogin={isInLogin} setIsInLogin={setIsInLogin}></RegisterPage>
   }
 
   return (

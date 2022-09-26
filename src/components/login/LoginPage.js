@@ -45,6 +45,10 @@ const LoginPage = props => {
     setError(false)
     setToken('token')
   }
+  const handleCLick2 = async () => {
+    props.setIsInLogin(false)
+  }
+
   return (
     <Container className={classes.root}>
       <Container className={classes.loginForm} maxWidth='sm'>
@@ -56,6 +60,9 @@ const LoginPage = props => {
           <Button className={classes.login} variant='contained' color='primary' size='large' onClick={handleCLick}>
             {'Login'}
           </Button>
+          <Button className={classes.login} variant='contained' color='primary' size='large' onClick={handleCLick2}>
+            {'Register'}
+          </Button>
         </div>
       </Container>
     </Container>
@@ -63,7 +70,9 @@ const LoginPage = props => {
 }
 
 LoginPage.propTypes = {
-  setToken: PropTypes.func.isRequired
+  setToken: PropTypes.func.isRequired,
+  setIsInLogin: PropTypes.func.isRequired,
+  isInLogin: PropTypes.bool.isRequired,
 }
 
 export default LoginPage
