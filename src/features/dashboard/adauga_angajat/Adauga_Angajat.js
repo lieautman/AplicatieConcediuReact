@@ -21,7 +21,7 @@ function Adauga_Angajat() {
     console.log(value)
     dispatch({ type: 'OnPropertyChanged', propertyName, value })
   }
-  const { adaugaAngajat } = useMutation(POST_ADAUGAANGAJAT)
+  const [adaugaAngajat] = useMutation(POST_ADAUGAANGAJAT)
 
   const handleClick = async () => {
     adaugaAngajat()
@@ -46,7 +46,7 @@ function Adauga_Angajat() {
           className={classes.containeradaugaangajatrigh}
         ></AdaugaAngajatComp2>
       </Container>
-      <button className={classes.StyleBtn} variant='contained' size='large'>
+      <button className={classes.StyleBtn} variant='contained' size='large' onClick={handleClick}>
         ADAUGA
       </button>
     </Fragment>
