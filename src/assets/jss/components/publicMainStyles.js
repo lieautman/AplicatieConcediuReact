@@ -2,6 +2,14 @@ import background from 'assets/img/welcome.png'
 
 const publicMainStyle = theme => {
   return {
+    divStyleRegister:{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+    filedInRegister:{
+      width:"500px",
+    },
     root: {
       background: `url(${background})`,
       minHeight: '100%',
@@ -9,14 +17,15 @@ const publicMainStyle = theme => {
       backgroundSize: 'cover',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
-      position: 'fixed'
+      position: 'fixed',
+      display: "flex",
+      alignItems:"center",
     },
     loginForm: {
       background: 'white',
       display: 'block',
       boxShadow: '0 1px 10px rgba(0,0,0,0.3)',
       position: 'relative',
-      marginTop: 'calc(50vh - 113px)'
     },
     paper: {
       marginTop: theme.spacing(2),
@@ -32,7 +41,7 @@ const publicMainStyle = theme => {
       maxHeight: '100px'
     },
     login: {
-      margin: theme.spacing(3, 0, 2),
+      margin: theme.spacing(1, 0, 1),
       textTransform: 'none'
     },
     buttonFooter: {
