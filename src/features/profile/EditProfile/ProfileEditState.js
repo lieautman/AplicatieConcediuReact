@@ -40,7 +40,7 @@ mutation modificareDateProfil(
   $userNumartelefonUpdated: String
   $userDataNasteriiUpdated: String
   $userCnpUpdated: String
-  $salariuUpdated: Float
+  $salariuUpdated: String
   $seriaNumarBuletinUpdated: String
 ) {
   modificareDateProfil(

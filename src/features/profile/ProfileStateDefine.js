@@ -15,7 +15,7 @@ export const initialState = {
   textDataNastere: 'DATA NASTERE',
   DataNasterii: '2000-01-01',
   textSalariu:'SALARIU',
-  Salariu:'Salariu',
+  Salariu: 0,
 
   textCnp: 'COD NUMERIC PERSONAL',
   Cnp: 'Cnp',
