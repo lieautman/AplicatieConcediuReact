@@ -1,9 +1,12 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useReducer } from 'react'
+import { useHistory } from 'react-router'
 import ProfileEdit from './ProfileEdit'
 import { initialState, reducer } from '../ProfileStateDefine'
-
+//preluare date din cache apollo
+import { useApolloClient } from '@apollo/client'
 //preluare date
 import { gql } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 import { useQueryWithErrorHandling } from 'hooks/errorHandling'
 const USER_DATA_QUERY = gql`
   query getProfileData($userEmail: String!) {
@@ -27,17 +30,40 @@ const USER_DATA_QUERY = gql`
     }
   }
 `
+const USER_DATA_MUTATION = gql`
+mutation modificareDateProfil(
+  $userId: Int!
+  $userNumeUpdated: String
+  $userPrenumeUpdated: String
+  $userDataAngajariiUpdated: String
+  $userEmailUpdated: String
+  $userNumartelefonUpdated: String
+  $userDataNasteriiUpdated: String
+  $userCnpUpdated: String
+  $salariuUpdated: String
+  $seriaNumarBuletinUpdated: String
+) {
+  modificareDateProfil(
+    userId: $userId
+    userNumeUpdated: $userNumeUpdated
+    userPrenumeUpdated: $userPrenumeUpdated
+    userDataAngajariiUpdated: $userDataAngajariiUpdated
+    userEmailUpdated: $userEmailUpdated
+    userNumartelefonUpdated: $userNumartelefonUpdated
+    userDataNasteriiUpdated: $userDataNasteriiUpdated
+    userCnpUpdated: $userCnpUpdated
+    salariuUpdated: $salariuUpdated
+    seriaNumarBuletinUpdated: $seriaNumarBuletinUpdated
+  )
+}
+`
 
-//preluare date din cache apollo
-import { useApolloClient } from '@apollo/client'
-
-//state management
 function ProfileEditState() {
+  //state management
   const [state, dispatch] = useReducer(reducer, initialState)
 
   //preluare date din cache apollo
   const client = useApolloClient()
-
   let date = client.readQuery({
     query: gql`
       query userData {
@@ -70,16 +96,46 @@ function ProfileEditState() {
         let dataAngajareFormatata = an1 + '-' + luna1 + '-' + zi1
         dispatch({ inputName: 'DataAngajarii', inputValue: dataAngajareFormatata, inputType: 'field' })
       }
-    }
+    },
+    fetchPolicy: "network-only"
   })
+
+  //modif date
   function modifyDataProfile(inputName1, inputValue1) {
     dispatch({ inputName: inputName1, inputValue: inputValue1, inputType: 'field' })
   }
 
+  //preluare istoric
+  const history = useHistory()
+  //update statefrom DB
+  const [tratareUpdate] = useMutation(USER_DATA_MUTATION, {
+    variables: {
+      userId: date?.userData?.id,
+      userNumeUpdated: state.Nume,
+      userPrenumeUpdated: state.Prenume,
+      userEmailUpdated:  state.Email,
+      userDataAngajariiUpdated: state.DataAngajarii,
+      userNumartelefonUpdated: state.Numartelefon,
+      userDataNasteriiUpdated: state.DataNasterii,
+      userCnpUpdated: state.Cnp,
+      seriaNumarBuletinUpdated: state.SeriaNumarBuletin,
+      salariuUpdated: state.Salariu
+    },
+    skip: !date?.userData?.id,
+    onCompleted: data => {
+      if(data.modificareDateProfil===true){
+        dispatch({ inputName: 'isErrorOnUpdate', inputValue: false, inputType: 'field' })
+        history.push({ pathname: `/profile` })
+      }
+      else{
+        dispatch({ inputName: 'isErrorOnUpdate', inputValue: true, inputType: 'field' })
+      }
+    }
+  })
 
   return (
     <div>
-      <ProfileEdit stare={state} modifyDataProfile={modifyDataProfile}></ProfileEdit>
+      <ProfileEdit stare={state} modifyDataProfile={modifyDataProfile} tratareUpdate={tratareUpdate}></ProfileEdit>
     </div>
   )
 }

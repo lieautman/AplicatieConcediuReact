@@ -15,7 +15,7 @@ export const initialState = {
   textDataNastere: 'DATA NASTERE',
   DataNasterii: '2000-01-01',
   textSalariu:'SALARIU',
-  Salariu:'Salariu',
+  Salariu: 0,
 
   textCnp: 'COD NUMERIC PERSONAL',
   Cnp: 'Cnp',
@@ -26,7 +26,9 @@ export const initialState = {
 
   textAtasamente: 'Fisiere Atasate',
   textAtasamenteUpload: 'Incarca Fisier',
-  textAtasamenteUploadTypes: 'PDF, DOC,PPT, JPG, PNG'
+  textAtasamenteUploadTypes: 'PDF, DOC,PPT, JPG, PNG',
+
+  isErrorOnUpdate: false,
 }
 export function reducer(state, action) {
   switch (action?.inputType) {

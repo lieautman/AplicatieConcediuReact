@@ -1,15 +1,15 @@
 import * as React from 'react'
-import { styled } from '@material-ui/core/styles'
-import Table from '@material-ui/core/Table'
-import TableBody from '@material-ui/core/TableBody'
-import TableCell from '@material-ui/core/TableCell'
-import { tableCellClasses } from '@mui/material/TableCell'
-import TableContainer from '@material-ui/core/TableContainer'
-import TableHead from '@material-ui/core/TableHead'
-import TableRow from '@material-ui/core/TableRow'
-import Paper from '@material-ui/core/Paper'
+import { styled } from '@mui/material/styles'
+import Table from '@mui/material/Table'
+import TableBody from '@mui/material/TableBody'
+import TableCell, { tableCellClasses } from '@mui/material/TableCell'
+import TableContainer from '@mui/material/TableContainer'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
+import Paper from '@mui/material/Paper'
 import DateIncarcate from './DateIncarcate'
 import PropTypes from 'prop-types'
+import Checkbox from '@mui/material/Checkbox'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -23,7 +23,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }))
 
 export default function TabelConcediu(props) {
-  const { rows, setareId, concediiInAsteptareaAprobarii, idRand, filtrare, seFiltreaza } = props
+  const { rows, setareId, concediiInAsteptareaAprobarii, idRand, filtrare, seFiltreaza, nuSeFiltreaza } = props
 
   return (
     <TableContainer component={Paper}>
@@ -52,15 +52,26 @@ export default function TabelConcediu(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map(row => (
-            <DateIncarcate
-              row={row}
-              key={row.id}
-              setareId={setareId}
-              concediiInAsteptareaAprobarii={concediiInAsteptareaAprobarii}
-              idRand={idRand}
-            />
-          ))}
+          {seFiltreaza &&
+            filtrare?.map(row => (
+              <DateIncarcate
+                row={row}
+                key={row.id}
+                setareId={setareId}
+                concediiInAsteptareaAprobarii={concediiInAsteptareaAprobarii}
+                idRand={idRand}
+              />
+            ))}
+          {nuSeFiltreaza &&
+            rows?.map(row => (
+              <DateIncarcate
+                row={row}
+                key={row.id}
+                setareId={setareId}
+                concediiInAsteptareaAprobarii={concediiInAsteptareaAprobarii}
+                idRand={idRand}
+              />
+            ))}
         </TableBody>
       </Table>
     </TableContainer>
