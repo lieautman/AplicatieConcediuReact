@@ -1,9 +1,10 @@
 import * as React from 'react'
-import { styled } from '@mui/material/styles'
-import TableCell, { tableCellClasses } from '@mui/material/TableCell'
-import TableRow from '@mui/material/TableRow'
+import { styled } from '@material-ui/core/styles'
+import TableCell from '@material-ui/core/TableCell'
+import { tableCellClasses } from '@mui/material/TableCell'
+import TableRow from '@material-ui/core/TableRow'
 import PropTypes from 'prop-types'
-import Checkbox from '@mui/material/Checkbox'
+import Checkbox from '@material-ui/core/Checkbox'
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -26,19 +27,19 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }))
 
 export default function RanduriAngajatiDePromovat(props) {
-  const { row, idRand, setIdRand, index } = props
+  const { row, indexSelectat, setareId, index } = props
   return (
     <StyledTableRow key={row.name}>
       <Checkbox
         color='primary'
-        checked={idRand && idRand === row.id}
-        onChange={() => setIdRand(index)}
+        checked={indexSelectat !== undefined && indexSelectat !== null ? indexSelectat === index : false}
+        onChange={setareId(index)}
         inputProps={{
           'aria-label': 'select all desserts'
         }}
       />
       <StyledTableCell component='th' scope='row' align='center'>
-        {row.id}
+        {index + 1}
       </StyledTableCell>
       <StyledTableCell component='th' scope='row' align='center'>
         {row.nume}
@@ -51,7 +52,7 @@ export default function RanduriAngajatiDePromovat(props) {
 
 RanduriAngajatiDePromovat.propTypes = {
   row: PropTypes.object.isRequired,
-  idRand: PropTypes.number,
-  setIdRand: PropTypes.func,
-  index: PropTypes.number
+  indexSelectat: PropTypes.number,
+  index: PropTypes.number,
+  setareId: PropTypes.func
 }

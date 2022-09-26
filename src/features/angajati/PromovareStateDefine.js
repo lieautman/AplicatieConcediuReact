@@ -3,7 +3,7 @@ export const initialState = {
   textNume: 'Popa',
   textPrenume: 'Adi',
   textEchipa: 'Marketing',
-  Echipa: null,
+  echipa: null,
   listaAngajatiDeAdaugat: [
     {
       id: '1',
@@ -30,8 +30,9 @@ export function reducer(state, action) {
       return { ...state, textEchipa: action.inputValue }
     case 'OnPropertyChanged':
       return OnPropertyChanged(state, action)
-    case 'listaAngajatiDeAdaugat':
-      return { ...state, listaAngajatiDeAdaugat: action.inputValue }
+    case 'modificareListe':
+      return modificareListe(state, action)
+    // return { ...state, listaAngajatiDeAdaugat: action.inputValue }
     case 'listaAngajatiAdaugati':
       return { ...state, listaAngajatiAdaugati: action.inputValue }
     default:
@@ -41,4 +42,20 @@ export function reducer(state, action) {
 function OnPropertyChanged(state, action) {
   const { propertyName, value } = action
   return { ...state, [propertyName]: value }
+}
+
+function modificareListe(state, action) {
+  const { actiune, index } = action
+  let newListaAngajatiDeAdaugat = [...state.listaAngajatiDeAdaugat],
+    newListaAngajatiAdaugati = [...state.listaAngajatiAdaugati]
+  if (actiune === 'Scoatere') {
+    const angajat = { ...state.listaAngajatiAdaugati[index] }
+    newListaAngajatiDeAdaugat = [...newListaAngajatiDeAdaugat, angajat]
+    newListaAngajatiAdaugati.splice(index, 1)
+  } else if (actiune === 'Adaugare') {
+    const angajat = { ...state.listaAngajatiDeAdaugat[index] }
+    newListaAngajatiAdaugati = [...newListaAngajatiAdaugati, angajat]
+    newListaAngajatiDeAdaugat.splice(index, 1)
+  }
+  return { ...state, listaAngajatiDeAdaugat: newListaAngajatiDeAdaugat, listaAngajatiAdaugati: newListaAngajatiAdaugati }
 }

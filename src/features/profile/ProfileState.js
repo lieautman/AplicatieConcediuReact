@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import Profile from './Profile'
 import { initialState, reducer } from './ProfileStateDefine'
 
@@ -54,7 +54,8 @@ function ProfileState() {
 
   //query
   useQueryWithErrorHandling(USER_DATA_QUERY, {
-    variables: { userEmail: date ? date.userData.email: "admin" },
+    variables: { userEmail:  date?.userData?.email },
+    skip: !date?.userData?.email,
     onCompleted: data => {
       if (data != undefined || data != null) {
         dispatch({ inputName: 'allObject', inputValue: data.getProfileData, inputType: 'allObject' })
@@ -62,10 +63,12 @@ function ProfileState() {
     }
   })
 
+  //useEffect(()=>{dispatch()})
+
   return (
-    <>
+    <div>
       <Profile stare={state}></Profile>
-    </>
+    </div>
   )
 }
 

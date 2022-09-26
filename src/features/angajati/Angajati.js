@@ -1,16 +1,13 @@
 import { React, useReducer, useState } from 'react'
 import TabelAngajati from './TabelAngajati'
 import { Link } from 'react-router-dom'
-import { IconButton, makeStyles } from '@material-ui/core'
 import stilAngajati from './StilAngajati'
 import stilButoane from './StilButoane'
 import Filtrare from './Filtrare'
-import NavigateNext from '@material-ui/icons/NavigateNext'
-import NavigateBefore from '@material-ui/icons/NavigateBefore'
-import { init, reducer } from 'features/angajati/AngajatiStateDefine'
 import { useHistory } from 'react-router'
 import PropTypes from 'prop-types'
-import { Message } from '@material-ui/icons'
+import Paginare from './Paginare'
+import { makeStyles } from '@material-ui/core'
 
 const stilAng = makeStyles(stilAngajati)
 const stilBtn = makeStyles(stilButoane)
@@ -28,14 +25,13 @@ const rows = [
   createData('5', 'Georgescu', 'Alina', 'alina@gmail.com', 'Enescu George', 'IT')
 ]
 
-export default function Angajati(props) {
-  const [state, dispatch] = useReducer(reducer, props, init)
+export default function Angajati() {
   const stilButoanePaginare = stilAng()
   const stilButoaneActiuni = stilBtn()
   const history = useHistory()
   const [filteredArray, setFilteredArray] = useState(rows)
 
-  const [idRand, setIdRand] = useState(null)
+  const [indexSelectat, setIdRand] = useState(null)
 
   const setareId = id => () => {
     setIdRand(id)
@@ -43,8 +39,8 @@ export default function Angajati(props) {
   }
 
   const handleClick = () => {
-    if (idRand) {
-      history.push({ pathname: `/angajati/Promovare/${idRand}` })
+    if (indexSelectat) {
+      history.push({ pathname: `/angajati/Promovare/${indexSelectat}` })
     }
   }
 
@@ -118,23 +114,16 @@ export default function Angajati(props) {
         return el.echipa.toLowerCase().includes(value)
       }
     })
-
     setFilteredArray(newArray)
 
     return
   }
-
   return (
     <div>
       <div className={stilButoanePaginare.divMarebutoane}>
         <div>
           <Link to='/adauga_angajat'>
             <button className={stilButoaneActiuni.buton}>ADAUGA UN ANGAJAT NOU</button>
-          </Link>
-        </div>
-        <div>
-          <Link to='/aprobareAngajati'>
-            <button className={stilButoaneActiuni.buton}>APROBA ANGAJAT</button>
           </Link>
         </div>
         <div>
@@ -153,22 +142,9 @@ export default function Angajati(props) {
           handleFilterEchipa={handleFilterEchipa}
         ></Filtrare>
       </div>
-
       <br></br>
-
-      <TabelAngajati rows={rows} setareId={setareId} filtrare={filteredArray}></TabelAngajati>
-      <div className={stilButoanePaginare.divMarebutoane}>
-        <div>
-          <IconButton aria-label='NavigateBefore' style={{ backgroundColor: '#05241d', color: 'white' }}>
-            <NavigateBefore />
-          </IconButton>
-        </div>
-        <div className={stilButoanePaginare.divButonInainte}>
-          <IconButton aria-label='NavigateNext' style={{ backgroundColor: '#05241d', color: 'white' }}>
-            <NavigateNext />
-          </IconButton>
-        </div>
-      </div>
+      <TabelAngajati rows={rows} setareId={setareId} filtrare={filteredArray} indexSelectat={indexSelectat}></TabelAngajati>
+      <Paginare></Paginare>
     </div>
   )
 }

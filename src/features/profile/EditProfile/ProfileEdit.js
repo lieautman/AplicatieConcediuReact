@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
-import TextField from '@mui/material/TextField'
+import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import { Link } from 'react-router-dom'
 import SaveIcon from '@material-ui/icons/Save'
@@ -11,6 +11,10 @@ import { makeStyles } from '@material-ui/core'
 import profileStyle from '../Assets/ProfileCss'
 //titlu
 import { useHeader } from 'providers/AreasProvider'
+
+//pt update
+import { gql } from '@apollo/client'
+import { useMutation } from '@apollo/client'
 
 const useStyles = makeStyles(profileStyle)
 
@@ -23,18 +27,65 @@ function ProfileEdit({ stare, modifyDataProfile }) {
       {'Editeaza date'}
     </div>
   )
-    console.log(stare.DataNasterii)
+  const DataAngajariiStringLabel = stare.DataAngajarii ? stare.DataAngajarii : '1999-01-01'
+  const DataNasteriiStringLabel = stare.DataNasterii ? stare.DataNasterii : '1999-01-01'
+
+  const USER_DATA_MUTATION = gql`
+    mutation modificareDateProfil(
+      $userId: Int!
+      $userNumeUpdated: String
+      $userPrenumeUpdated: String
+      $userEmailUpdated: String
+      $userNumartelefonUpdated: String
+      $userCnpUpdated: String
+      $seriaNumarBuletinUpdated: String
+      $salariuUpdated: Float
+      $userDataNasteriiUpdated: String
+      $userDataAngajariiUpdated: String
+    ) {
+      modificareDateProfil(
+        userId: $userId
+        userNumeUpdated: $userNumeUpdated
+        userPrenumeUpdated: $userPrenumeUpdated
+        userEmailUpdated: $userEmailUpdated
+        userNumartelefonUpdated: $userNumartelefonUpdated
+        userCnpUpdated: $userCnpUpdated
+        seriaNumarBuletinUpdated: $seriaNumarBuletinUpdated
+        salariuUpdated: $salariuUpdated
+        userDataNasteriiUpdated: $userDataNasteriiUpdated
+        userDataAngajariiUpdated: $userDataAngajariiUpdated
+      )
+    }
+  `
+  const tratareUpdate = useMutation(USER_DATA_MUTATION, {
+      variables: {
+        userId: 1,
+        userNumeUpdated: 'test',
+        userPrenumeUpdated: 'test',
+        userEmailUpdated: 'test@yahoo.com',
+        userDataAngajariiUpdated: '2000-10-10',
+        userNumartelefonUpdated: '0123456789',
+        userDataNasteriiUpdated: '2000-11-08',
+        userCnpUpdated: '5001108123123',
+        seriaNumarBuletinUpdated: 'rk123123',
+        salariuUpdated: 5000.1
+      },
+      onCompleted: data => {
+        console.log(data)
+        //if(data===true)
+        //history.push({ pathname: `/profile` })
+        //back to proffile
+        //else
+        //mesaj eroare
+      }
+    })
+
   return (
     <Fragment>
       <div className={classes.stilEditPageDivContainer1}>
         <div className={classes.stilEditPageDivContaineLeft}>
           <div className={classes.stilEditPageInput}>
-            <TextField
-              label='Nume'
-              value={stare.Nume}
-              fullWidth
-              onChange={evt => modifyDataProfile('Nume', evt.target.value)}
-            ></TextField>
+            <TextField label='Nume' value={stare.Nume} fullWidth onChange={evt => modifyDataProfile('Nume', evt.target.value)}></TextField>
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
@@ -62,7 +113,6 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           </div>
           <div className={classes.stilEditPageInput}>
             <TextField
-              type='number'
               label='Telefon'
               value={stare.Numartelefon}
               fullWidth
@@ -82,8 +132,8 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           <div className={classes.stilEditPageInput}>
             <TextField
               type='date'
-              label={stare.DataAngajarii?stare.DataAngajarii:"1999-01-01"}
-              defaultValue=""
+              label={'Data angajarii: ' + DataAngajariiStringLabel.toString()}
+              defaultValue=''
               InputLabelProps={{ shrink: true }}
               fullWidth
               onChange={evt => modifyDataProfile('DataAngajarii', evt.target.value)}
@@ -92,8 +142,8 @@ function ProfileEdit({ stare, modifyDataProfile }) {
           <div className={classes.stilEditPageInput}>
             <TextField
               type='date'
-              label={stare.DataNasterii?stare.DataNasterii:"1999-01-01"}
-              defaultValue=""
+              label={'Data nasterii: ' + DataNasteriiStringLabel.toString()}
+              defaultValue=''
               InputLabelProps={{ shrink: true }}
               fullWidth
               onChange={evt => modifyDataProfile('DataNasterii', evt.target.value)}
@@ -125,11 +175,16 @@ function ProfileEdit({ stare, modifyDataProfile }) {
               onChange={evt => modifyDataProfile('Salariu', evt.target.value)}
             ></TextField>
           </div>
-          <Link to={'/profile'}>
-            <Button variant='contained' color='primary' size='large' className={classes.button}  startIcon={<SaveIcon />}>
-              Save
-            </Button>
-          </Link>
+          <Button
+          onClick={() => tratareUpdate}
+            variant='contained'
+            color='primary'
+            size='large'
+            className={classes.button}
+            startIcon={<SaveIcon />}
+          >
+            Save
+          </Button>
         </div>
       </div>
     </Fragment>
@@ -141,3 +196,5 @@ ProfileEdit.propTypes = {
 }
 
 export default ProfileEdit
+//
+

@@ -29,12 +29,12 @@ export const initialState = {
   textAtasamenteUploadTypes: 'PDF, DOC,PPT, JPG, PNG'
 }
 export function reducer(state, action) {
-  switch (action.inputType) {
+  switch (action?.inputType) {
     case 'allObject': 
-      return { ...state, ...action.inputValue};
+      return { ...state, ...action?.inputValue};
     case 'field':
-      return {  ...state, [action.inputName]: action.inputValue }
+      return {  ...state, [action?.inputName]: action?.inputValue }
     default:
-      throw new Error()
+      return { ...state}
   }
 }
