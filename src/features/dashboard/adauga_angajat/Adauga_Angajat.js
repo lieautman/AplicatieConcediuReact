@@ -9,7 +9,7 @@ import { initialState, reducer } from './Adauga_AngajatState'
 import { AdaugaAngajatComp1 } from './AdaugaAngajatComp1'
 import { AdaugaAngajatComp2 } from './AdaugaAngajatComp2'
 import { useMutation } from '@apollo/client'
-//import { POST_ADAUGAANGAJAT } from './mutation'
+import { POST_ADAUGAANGAJAT } from './mutation'
 
 const useStyles = makeStyles(Adauga_Angajatcss)
 
@@ -21,11 +21,11 @@ function Adauga_Angajat() {
     console.log(value)
     dispatch({ type: 'OnPropertyChanged', propertyName, value })
   }
-  // const { adaugaangajat } = useMutation(POST_ADAUGAANGAJAT)
+  const { adaugaAngajat } = useMutation(POST_ADAUGAANGAJAT)
 
-  // const handleClick = async () => {
-  //   adaugaangajat()
-  // }
+  const handleClick = async () => {
+    adaugaAngajat()
+  }
 
   useHeader(
     <div variant='subtitles1' className={classes.stilTitlu}>
