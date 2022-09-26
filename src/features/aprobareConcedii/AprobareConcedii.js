@@ -13,6 +13,9 @@ import stilAngajati from '../angajati/StilAngajati'
 import { IconButton, makeStyles } from '@material-ui/core'
 import { useQueryWithErrorHandling } from 'hooks/errorHandling'
 import CONCEDII_SPRE_APROBARE_DATA_QUERY from './Queries'
+import CONCEDIU_APROBAT_MUTATION from './MutationAprobare'
+import CONCEDIU_RESPINS_MUTATION from './MutationRespingere'
+import { useMutation } from '@apollo/client'
 
 const stilAng = makeStyles(stilAngajati)
 // const rows = [
@@ -47,6 +50,7 @@ const stilAng = makeStyles(stilAngajati)
 
 export default function AprobareConcedii() {
   const { data } = useQueryWithErrorHandling(CONCEDII_SPRE_APROBARE_DATA_QUERY)
+
   const stilButoanePaginare = stilAng()
 
   useHeader(
@@ -67,14 +71,31 @@ export default function AprobareConcedii() {
     }
   }
 
+  const [aprobareConcediu] = useMutation(CONCEDIU_APROBAT_MUTATION)
+  const [respingereConcediu] = useMutation(CONCEDIU_RESPINS_MUTATION)
+
+  const handleClickAprobare = async () => {
+    await aprobareConcediu({
+      variables: { updateConcediuId: idRand }
+    })
+    data.concediiSpreAprobareData.every(concediu => concediu.id !== idRand)
+  }
+
+  const handleClickRespingere = async () => {
+    await respingereConcediu({
+      variables: { updateStareConcediuId: idRand }
+    })
+  }
+
   return (
     <div>
       <div>
         <div align='left'>
-          <Button variant='contained' style={{ backgroundColor: '#26c6da' }}>
+          <Button variant='contained' style={{ backgroundColor: '#26c6da' }} onClick={handleClickAprobare}>
             Aproba
           </Button>
-          <Button variant='contained' style={{ backgroundColor: '#FE4900' }}>
+
+          <Button variant='contained' style={{ backgroundColor: '#FE4900' }} onClick={handleClickRespingere}>
             Respinge
           </Button>
         </div>
