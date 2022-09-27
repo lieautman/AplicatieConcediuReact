@@ -4,20 +4,7 @@ export const initialState = {
   textPrenume: 'PRENUME',
   textEchipa: 'ECHIPA',
   echipa: null,
-  listaAngajatiDeAdaugat: [
-    {
-      id: '1',
-      nume: 'Popescu',
-      prenume: 'Ioana',
-      echipa: 'IT'
-    },
-    { id: '2', nume: 'Georgescu', prenume: 'Ana', echipa: 'IT' },
-    { id: '3', nume: 'Ionescu', prenume: 'Maria', echipa: 'Marketing' },
-    { id: '4', nume: 'Antonescu', prenume: 'Cristian', echipa: 'Resurse Umane' },
-    { id: '5', nume: 'Iliescu', prenume: 'David', echipa: 'IT' },
-    { id: '5', nume: 'Marinescu', prenume: 'Mama', echipa: 'IT' }
-  ],
-
+  listaAngajatiDeAdaugat: [],
   listaAngajatiAdaugati: []
 }
 export function reducer(state, action) {
@@ -35,6 +22,9 @@ export function reducer(state, action) {
     // return { ...state, listaAngajatiDeAdaugat: action.inputValue }
     case 'listaAngajatiAdaugati':
       return { ...state, listaAngajatiAdaugati: action.inputValue }
+    case 'listaAngDeAdaugatDinBaza':
+      return { ...state, listaAngajatiDeAdaugat: action.inputValue }
+
     default:
       throw new Error()
   }
