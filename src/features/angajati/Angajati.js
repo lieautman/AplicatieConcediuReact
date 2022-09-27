@@ -1,4 +1,4 @@
-import { React, useReducer, useState } from 'react'
+import { React, useState } from 'react'
 import TabelAngajati from './TabelAngajati'
 import { Link } from 'react-router-dom'
 import stilAngajati from './StilAngajati'
@@ -31,13 +31,14 @@ const stilBtn = makeStyles(stilButoane)
 
 export default function Angajati() {
   const { data } = useQueryWithErrorHandling(ANGAJATI_DATA_QUERY)
+  const checkin = true
 
   const stilButoanePaginare = stilAng()
   const stilButoaneActiuni = stilBtn()
   const history = useHistory()
   const [filteredArray, setFilteredArray] = useState(data?.angajatiData)
 
-  const [indexSelectat, setIdRand] = useState(null)
+  const [idRand, setIdRand] = useState(null)
 
   const setareId = id => () => {
     setIdRand(id)
@@ -135,8 +136,8 @@ export default function Angajati() {
   })
 
   const handleClick = () => {
-    if (indexSelectat && date?.userData?.isAdmin) {
-      history.push({ pathname: `/angajati/Promovare/${indexSelectat}` })
+    if (idRand && date?.userData?.isAdmin) {
+      history.push({ pathname: `/angajati/Promovare/${idRand}` })
     }
   }
 
@@ -182,7 +183,8 @@ export default function Angajati() {
         rows={data ? data.angajatiData : []}
         setareId={setareId}
         filtrare={filteredArray}
-        indexSelectat={indexSelectat}
+        idRand={idRand}
+        checkin={checkin}
       ></TabelAngajati>
       <Paginare></Paginare>
     </div>

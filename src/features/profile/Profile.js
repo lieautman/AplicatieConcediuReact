@@ -31,7 +31,7 @@ function Profile({ stare }) {
 
   var DataAngajariiDisplay = stare.DataAngajarii
   if (!stare.DataAngajarii) {
-    DataAngajariiDisplay = "Persoana nu a fost inca angajata"
+    DataAngajariiDisplay = 'Persoana nu a fost inca angajata'
   }
 
   return (
