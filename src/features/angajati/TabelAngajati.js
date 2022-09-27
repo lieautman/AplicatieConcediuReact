@@ -12,7 +12,7 @@ import HeaderTabel from './HeaderTabelAngajati'
 const useStyles = makeStyles(stilAngajati)
 
 export default function TabelAngajati(props) {
-  const { rows, setareId, idRand, filtrare, afisareEchipe } = props
+  const { rows, setareId, indexSelectat, filtrare, afisareEchipe, checkin } = props
   const stilTabel = useStyles()
   return (
     <div>
@@ -21,10 +21,12 @@ export default function TabelAngajati(props) {
           <Table sx={{ minWidth: 600 }} aria-label='customized table'>
             <HeaderTabel></HeaderTabel>
             <TableBody>
-              {afisareEchipe &&
-                rows?.map((row, i) => <RanduriAngajati row={row} key={i} setareId={setareId} indexSelectat={idRand}></RanduriAngajati>)}
+              {/* {afisareEchipe &&
+                rows?.map((row, i) => (
+                  <RanduriAngajati row={row} key={i} setareId={setareId} indexSelectat={indexSelectat} checkin={checkin}></RanduriAngajati>
+                ))} */}
               {filtrare?.map((row, i) => (
-                <RanduriAngajati row={row} key={i} setareId={setareId} indexSelectat={idRand}></RanduriAngajati>
+                <RanduriAngajati row={row} key={i} setareId={setareId} indexSelectat={indexSelectat} checkin={checkin}></RanduriAngajati>
               ))}
             </TableBody>
           </Table>
@@ -38,5 +40,6 @@ TabelAngajati.propTypes = {
   idRand: PropTypes.number,
   filtrare: PropTypes.array,
   rows: PropTypes.array,
-  afisareEchipe: PropTypes.bool
+  afisareEchipe: PropTypes.bool,
+  checkin: PropTypes.bool
 }
