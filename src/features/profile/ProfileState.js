@@ -58,7 +58,6 @@ function ProfileState() {
     skip: !date?.userData?.email,
     onCompleted: data => {
       if (data != undefined || data != null) {
-        console.log(data.getProfileData)
         dispatch({ inputName: 'allObject', inputValue: data.getProfileData, inputType: 'allObject' })
         //refacere data
         let an = data.getProfileData.DataNasterii.substring(0, 4)

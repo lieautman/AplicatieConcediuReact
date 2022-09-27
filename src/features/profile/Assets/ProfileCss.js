@@ -161,7 +161,7 @@ const profileStyle = theme => {
       [theme.breakpoints.down('lg')]: {},
       [theme.breakpoints.up('lg')]: { position: 'absolute' },
       alignItems: 'center',
-      top: '10rem',
+      top: '5rem',
       left: '10rem'
     },
     stilEditPageDivContainerRight: {
@@ -169,7 +169,7 @@ const profileStyle = theme => {
       [theme.breakpoints.up('lg')]: { position: 'absolute' },
       alignItems: 'center',
 
-      top: '10rem',
+      top: '5rem',
       right: '10rem'
     },
     stilEditPageInput: {
@@ -179,7 +179,7 @@ const profileStyle = theme => {
       [theme.breakpoints.down('lg')]: {},
       [theme.breakpoints.up('lg')]: { position: 'absolute' },
       padding: '0.22rem',
-      top: '30rem',
+      top: '25rem',
       left: '35rem'
     },
     stilEditPageInputOverButton: {
