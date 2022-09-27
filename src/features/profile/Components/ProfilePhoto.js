@@ -1,5 +1,4 @@
 import React from 'react'
-import Person from '@material-ui/icons/Person'
 import PropTypes from 'prop-types'
 
 
@@ -8,10 +7,11 @@ function ProfilePhoto(props) {
  //const addToast = useToast()
  // addToast('Welcome', 'success')
   return (
-    <div> <Person className = {props.idDat}/></div>
+    <div> <img className = {props.idDat} src={'data:image/*;base64,'+props.pozaData} alt='Poza profil'/></div>
   )
 }
 ProfilePhoto.propTypes = {
-  idDat: PropTypes.string.isRequired
+  idDat: PropTypes.string.isRequired,
+  pozaData: PropTypes.string.isRequired,
 }
 export default ProfilePhoto

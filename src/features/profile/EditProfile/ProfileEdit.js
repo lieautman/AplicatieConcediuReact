@@ -1,9 +1,10 @@
-import React, { Fragment, useState } from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
 import SaveIcon from '@material-ui/icons/Save'
+import ProfilePhoto from '../Components/ProfilePhoto'
 
 //css
 import { makeStyles } from '@material-ui/core'
@@ -121,6 +122,7 @@ function ProfileEdit({ stare, modifyDataProfile, tratareUpdate }) {
         </div>
         <div className={classes.stilEditPageInputButton}>
           <div className={classes.stilEditPageInputOverButton}>
+            <ProfilePhoto idDat={classes.pozaProfilCard} pozaData={stare.Poza}></ProfilePhoto>
             <TextField
               label='Salariu'
               value={stare.Salariu}
