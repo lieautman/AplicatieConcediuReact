@@ -31,6 +31,7 @@ const stilBtn = makeStyles(stilButoane)
 
 export default function Angajati() {
   const { data } = useQueryWithErrorHandling(ANGAJATI_DATA_QUERY)
+  const checkin = true
 
   const stilButoanePaginare = stilAng()
   const stilButoaneActiuni = stilBtn()
@@ -183,6 +184,7 @@ export default function Angajati() {
         setareId={setareId}
         filtrare={filteredArray}
         indexSelectat={indexSelectat}
+        checkin={checkin}
       ></TabelAngajati>
       <Paginare></Paginare>
     </div>
