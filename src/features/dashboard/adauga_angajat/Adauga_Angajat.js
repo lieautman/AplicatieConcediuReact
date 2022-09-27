@@ -10,7 +10,6 @@ import { AdaugaAngajatComp1 } from './AdaugaAngajatComp1'
 import { AdaugaAngajatComp2 } from './AdaugaAngajatComp2'
 import { useMutation } from '@apollo/client'
 import { POST_ADAUGAANGAJAT } from './mutation'
-import { gql } from '@apollo/client'
 
 const useStyles = makeStyles(Adauga_Angajatcss)
 
@@ -25,7 +24,7 @@ function Adauga_Angajat() {
   const [adaugaAngajat] = useMutation(POST_ADAUGAANGAJAT)
 
   const handleClick = async () => {
-    adaugaAngajat()
+    await adaugaAngajat({ variables: { input: localState } })
   }
 
   useHeader(
