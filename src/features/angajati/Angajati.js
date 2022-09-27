@@ -183,7 +183,7 @@ export default function Angajati() {
         rows={data ? data.angajatiData : []}
         setareId={setareId}
         filtrare={filteredArray}
-        indexSelectat={indexSelectat}
+        idRand={idRand}
         checkin={checkin}
       ></TabelAngajati>
       <Paginare></Paginare>

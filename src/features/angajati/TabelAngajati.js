@@ -12,7 +12,7 @@ import HeaderTabel from './HeaderTabelAngajati'
 const useStyles = makeStyles(stilAngajati)
 
 export default function TabelAngajati(props) {
-  const { rows, setareId, indexSelectat, filtrare, afisareEchipe, checkin } = props
+  const { rows, setareId, idRand, filtrare, afisareEchipe, checkin } = props
   const stilTabel = useStyles()
   return (
     <div>
@@ -26,7 +26,7 @@ export default function TabelAngajati(props) {
                   <RanduriAngajati row={row} key={i} setareId={setareId} indexSelectat={indexSelectat} checkin={checkin}></RanduriAngajati>
                 ))} */}
               {filtrare?.map((row, i) => (
-                <RanduriAngajati row={row} key={i} setareId={setareId} indexSelectat={indexSelectat} checkin={checkin}></RanduriAngajati>
+                <RanduriAngajati row={row} key={i} setareId={setareId} idRand={idRand} checkin={checkin}></RanduriAngajati>
               ))}
             </TableBody>
           </Table>
