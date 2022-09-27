@@ -1,5 +1,6 @@
 export const initialState = {
   textNumePrenume: 'NUME SI PRENUME',
+  Poza: '',
   Nume: 'Nume',
   Prenume: 'Prenume',
   textAdresa: 'ADRESA',
