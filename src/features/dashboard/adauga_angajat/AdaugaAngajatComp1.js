@@ -62,10 +62,10 @@ export function AdaugaAngajatComp1(props) {
           ></TextField>
           <TextField
             className={classes.TextField}
-            label={'SeriaNumarCI'}
+            label={'SeriaNumarBuletin'}
             variant='outlined'
             value={localState.seriaNumarCI}
-            onChange={event => handleChange('seriaNumarCI', event.target.value)}
+            onChange={event => handleChange('seriaNumarBuletin', event.target.value)}
           ></TextField>
           <br></br>
         </div>

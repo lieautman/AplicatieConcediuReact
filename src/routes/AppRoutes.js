@@ -13,7 +13,7 @@ import ToateConcediile from 'features/afisareConcedii/ToateConcediile'
 import Angajati from 'features/angajati/Angajati'
 import Adauga_Angajat from 'features/dashboard/adauga_angajat/Adauga_Angajat'
 import AngajatiEchipe from 'features/angajati_echipe/AngajatiEchipe'
-import Promovare from 'features/angajati/Promovare'
+import PromovareState from 'features/angajati/PromovareState'
 import AprobareConcedii from 'features/aprobareConcedii/AprobareConcedii'
 import AprobareAngajati from 'features/aprobareAngajati/AprobareAngajati'
 import AngajatiState from 'features/angajati/AngajatiState'
@@ -36,7 +36,7 @@ export default function AppRoutes() {
       <CustomRoute isPrivate={false} exact path='/adauga_angajat' component={Adauga_Angajat} />
       <Redirect exact from='/' to='/adauga_angajat' />
 
-      <CustomRoute isPrivate={false} exact path='/angajati/Promovare/:id' component={Promovare} />
+      <CustomRoute isPrivate={false} exact path='/angajati/Promovare/:id' component={PromovareState} />
       <Redirect exact from='/' to='/angajati/Promovare' />
 
       <CustomRoute isPrivate={false} exact path='/angajati_echipe/:nume' component={AngajatiEchipe} />

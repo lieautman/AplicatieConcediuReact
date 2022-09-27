@@ -10,6 +10,7 @@ import { AdaugaAngajatComp1 } from './AdaugaAngajatComp1'
 import { AdaugaAngajatComp2 } from './AdaugaAngajatComp2'
 import { useMutation } from '@apollo/client'
 import { POST_ADAUGAANGAJAT } from './mutation'
+import { gql } from '@apollo/client'
 
 const useStyles = makeStyles(Adauga_Angajatcss)
 

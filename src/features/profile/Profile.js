@@ -40,7 +40,7 @@ function Profile({ stare }) {
         <div>
           <ProfileUserDataString text={stare.textNumePrenume} idDat={classes.textNumePrenume}></ProfileUserDataString>
           <div className={classes.containerProfileCard}>
-            <ProfilePhoto idDat={classes.pozaProfilCard}></ProfilePhoto>
+            <ProfilePhoto idDat={classes.pozaProfilCard} pozaData={stare.Poza}></ProfilePhoto>
             <div className={classes.containerNumePrenumProfileCard}>
               <ProfileUserDataString text={stare.Nume} idDat={classes.textNume}></ProfileUserDataString>
               <ProfileUserDataString text={stare.Prenume} idDat={classes.textPrenume}></ProfileUserDataString>
