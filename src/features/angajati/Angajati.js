@@ -37,7 +37,7 @@ export default function Angajati() {
   const history = useHistory()
   const [filteredArray, setFilteredArray] = useState(data?.angajatiData)
 
-  const [indexSelectat, setIdRand] = useState(null)
+  const [idRand, setIdRand] = useState(null)
 
   const setareId = id => () => {
     setIdRand(id)
@@ -135,8 +135,8 @@ export default function Angajati() {
   })
 
   const handleClick = () => {
-    if (indexSelectat && date?.userData?.isAdmin) {
-      history.push({ pathname: `/angajati/Promovare/${indexSelectat}` })
+    if (idRand && date?.userData?.isAdmin) {
+      history.push({ pathname: `/angajati/Promovare/${idRand}` })
     }
   }
 
@@ -178,12 +178,7 @@ export default function Angajati() {
         }
       </div>
       <br></br>
-      <TabelAngajati
-        rows={data ? data.angajatiData : []}
-        setareId={setareId}
-        filtrare={filteredArray}
-        indexSelectat={indexSelectat}
-      ></TabelAngajati>
+      <TabelAngajati rows={data ? data.angajatiData : []} setareId={setareId} filtrare={filteredArray} idRand={idRand}></TabelAngajati>
       <Paginare></Paginare>
     </div>
   )

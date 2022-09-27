@@ -1,5 +1,5 @@
 export const initialState = {
-  id: '',
+  poza: '',
   textNume: 'NUME',
   textPrenume: 'PRENUME',
   textEchipa: 'ECHIPA',
@@ -9,6 +9,8 @@ export const initialState = {
 }
 export function reducer(state, action) {
   switch (action.inputName) {
+    case 'poza':
+      return { ...state, poza: action.inputValue }
     case 'textNume':
       return { ...state, textNume: action.inputValue }
     case 'textPrenume':

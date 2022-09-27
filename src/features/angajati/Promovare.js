@@ -24,6 +24,9 @@ export default function Promovare(props) {
   useQueryWithErrorHandling(ANGAJATI_DATA_QUERY, {
     onCompleted: data => {
       dispatch({ inputName: 'listaAngDeAdaugatDinBaza', inputValue: data.angajatiData })
+      dispatch({ inputName: 'textNume', inputValue: data.angajatiData.nume })
+      dispatch({ inputName: 'textPrenume', inputValue: data.angajatiData.prenume })
+      dispatch({ inputName: 'textEchipa', inputValue: data.angajatiData.echipa })
     }
   })
 
@@ -79,19 +82,19 @@ export default function Promovare(props) {
               <div className={stilPromovare.divPromovare}>
                 <div>
                   <Avatar sx={{ bgcolor: '#05241d', width: 100, height: 100 }} aria-label='recipe'>
-                    Poza
+                    {state.poza}
                   </Avatar>
                 </div>
                 <div className={stilPromovare.textManager}>
                   <Typography sx={{ fontSize: 18 }} color='text.secondary' gutterBottom>
-                    {props.state.textNume}
+                    {state.textNume}
                   </Typography>
                   <Typography sx={{ fontSize: 18 }} color='text.secondary' gutterBottom>
-                    {props.state.textPrenume}
+                    {state.textPrenume}
                   </Typography>
                   <Typography variant='h5' component='div'></Typography>
                   <Typography sx={{ fontSize: 14 }} color='text.secondary'>
-                    {props.state.textEchipa}
+                    {state.textEchipa}
                   </Typography>
                 </div>
               </div>
