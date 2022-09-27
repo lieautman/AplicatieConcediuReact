@@ -11,18 +11,22 @@ import IconButton from '@material-ui/core/IconButton'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import { useHeader } from 'providers/AreasProvider'
-import { useReducer } from 'react'
-import { initialState, reducer } from './PromovareStateDefine'
 import DropDownEchipa from './Autocomplete'
 import { useTranslation } from 'react-i18next'
 import { useQueryWithErrorHandling } from 'hooks/errorHandling'
 import ANGAJATI_DATA_QUERY from './QueryAngajati'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles(stilAngajati)
 
-export default function Promovare() {
-  const { data } = useQueryWithErrorHandling(ANGAJATI_DATA_QUERY)
-  const [state, dispatch] = useReducer(reducer, initialState)
+export default function Promovare(props) {
+  const { dispatch, state } = props
+  useQueryWithErrorHandling(ANGAJATI_DATA_QUERY, {
+    onCompleted: data => {
+      dispatch({ inputName: 'listaAngDeAdaugatDinBaza', inputValue: data.angajatiData })
+    }
+  })
+
   const { t } = useTranslation()
   const stilPromovare = useStyles()
   useHeader(
@@ -55,14 +59,14 @@ export default function Promovare() {
 
   //functie de actiune pe buton pt adaugare angajati in lista de formare echipa
   function AdaugaElem() {
-    if (indexSelectat1 !== null && indexSelectat1 !== undefined && state.listaAngajatiDeAdaugat[indexSelectat1]) {
-      dispatch({ inputName: 'modificareListe', actiune: 'Adaugare', index: indexSelectat1 })
+    if (indexSelectat1 !== null && indexSelectat1 !== undefined && props.state.listaAngajatiDeAdaugat[indexSelectat1]) {
+      props.dispatch({ inputName: 'modificareListe', actiune: 'Adaugare', index: indexSelectat1 })
     }
   }
 
   function ScoateElem() {
-    if (indexSelectat2 !== null && indexSelectat2 !== undefined && state.listaAngajatiAdaugati[indexSelectat2]) {
-      dispatch({ inputName: 'modificareListe', actiune: 'Scoatere', index: indexSelectat2 })
+    if (indexSelectat2 !== null && indexSelectat2 !== undefined && props.state.listaAngajatiAdaugati[indexSelectat2]) {
+      props.dispatch({ inputName: 'modificareListe', actiune: 'Scoatere', index: indexSelectat2 })
     }
   }
 
@@ -80,14 +84,14 @@ export default function Promovare() {
                 </div>
                 <div className={stilPromovare.textManager}>
                   <Typography sx={{ fontSize: 18 }} color='text.secondary' gutterBottom>
-                    {state.textNume}
+                    {props.state.textNume}
                   </Typography>
                   <Typography sx={{ fontSize: 18 }} color='text.secondary' gutterBottom>
-                    {state.textPrenume}
+                    {props.state.textPrenume}
                   </Typography>
                   <Typography variant='h5' component='div'></Typography>
                   <Typography sx={{ fontSize: 14 }} color='text.secondary'>
-                    {state.textEchipa}
+                    {props.state.textEchipa}
                   </Typography>
                 </div>
               </div>
@@ -103,7 +107,7 @@ export default function Promovare() {
       <div className={stilPromovare.divTabelePromovare}>
         <div>
           <TabelAngajatiDePromovat
-            rows={data ? data.angajatiData : []}
+            rows={state.listaAngajatiDeAdaugat}
             setIdRand={setIdRand1}
             indexSelectat={indexSelectat1}
             setareId={setareId1}
@@ -128,4 +132,9 @@ export default function Promovare() {
       </div>
     </div>
   )
+}
+
+Promovare.propTypes = {
+  state: PropTypes.object.isRequired,
+  dispatch: PropTypes.func.isRequired
 }

@@ -33,7 +33,7 @@ export function AdaugaAngajatComp2(props) {
             label={'Numardetelefon'}
             variant='outlined'
             value={localState.numardetelefon}
-            onChange={event => handleChange('numardetelefon', event.target.value)}
+            onChange={event => handleChange('numartelefon', event.target.value)}
           ></TextField>
           <br></br>
           <TextField
@@ -68,7 +68,7 @@ export function AdaugaAngajatComp2(props) {
             id='combo-box-echipe'
             options={ListaEchipe}
             className={classes.Combobox}
-            onChange={(event, value => handleChange('echipaId', value))}
+            onChange={(event, value => handleChange('idEchipa', value))}
             getOptionLabel={option => option.name}
             renderInput={params => <TextField {...params} label='Echipa' variant='outlined' />}
           />
