@@ -11,6 +11,7 @@ import TableRow from '@material-ui/core/TableRow'
 import Button from '@material-ui/core/Button'
 import Paper from '@material-ui/core/Paper'
 import PropTypes from 'prop-types'
+import { props } from 'ramda'
 
 //css
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -91,7 +92,20 @@ const rows = [
     stareConcediu: 'Respins'
   }
 ]
+
 function ProfileTabelConcedii(props) {
+  function handleClickInapoi(){
+    if(props.state.indexStartActual!==0){
+      props.dispatch({ inputName: 'indexStartActual', inputValue: (props.state.indexStartActual-props.state.numarElemPePag), inputType: 'field' })
+      props.dispatch({ inputName: 'indexEndActual', inputValue: (props.state.indexEndActual-props.state.numarElemPePag), inputType: 'field' })
+    }
+  }
+  function handleClickInainte(){
+    if(props.state.indexEndActual!==props.state.numarElemPePag*props.state.numarPagini){
+      props.dispatch({ inputName: 'indexStartActual', inputValue: (props.state.indexStartActual+props.state.numarElemPePag), inputType: 'field' })
+      props.dispatch({ inputName: 'indexEndActual', inputValue: (props.state.indexEndActual+props.state.numarElemPePag), inputType: 'field' })
+    }
+  }
   return (
     <div>
       <TableContainer className={props.idDat} component={Paper}>
@@ -119,15 +133,15 @@ function ProfileTabelConcedii(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map(row => (
+            {props.state?.tableData?.map(row => (
               <StyledTableRow key={row.id}>
                 <StyledTableCell component='th' scope='row' align='center'>
-                  {row.name}
+                  {row.tipConcediu}
                 </StyledTableCell>
                 <StyledTableCell align='center'>{row.dataInceput}</StyledTableCell>
                 <StyledTableCell align='center'>{row.dataSfarsit}</StyledTableCell>
-                <StyledTableCell align='center'>{row.inlocuitor}</StyledTableCell>
-                <StyledTableCell align='center'>{row.motiv}</StyledTableCell>
+                <StyledTableCell align='center'>{row.numeInlocuitor}</StyledTableCell>
+                <StyledTableCell align='center'>{row.comment}</StyledTableCell>
                 <StyledTableCell align='center'>{row.stareConcediu}</StyledTableCell>
               </StyledTableRow>
             ))}
@@ -135,9 +149,9 @@ function ProfileTabelConcedii(props) {
         </Table>
       </TableContainer>
       <div className={props.idDivButoane}>
-        <Button className={props.idDatButonInapoi}>Inapoi</Button>
-        <h5 className={props.idPagLabel}>{(props.state.indexEndActual-props.state.indexStartActual)/props.state.numarElemPePag}/{props.state.numarPagini}</h5>
-        <Button className={props.idDatButonInainte}>Inainte</Button>
+        <Button className={props.idDatButonInapoi} onClick={handleClickInapoi}>Inapoi</Button>
+        <h5 className={props.idPagLabel}>{props.state.indexEndActual/props.state.numarElemPePag}/{props.state.numarPagini}</h5>
+        <Button className={props.idDatButonInainte} onClick={handleClickInainte}>Inainte</Button>
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, {useEffect} from 'react'
 import TabelConcediu from './TabelConcediu'
 import Button from '@material-ui/core/Button'
 import { useState } from 'react'
@@ -45,10 +45,17 @@ const useStyles = makeStyles(filtrari)
 // ]
 
 export default function ToateConcediile() {
-  const { data } = useQueryWithErrorHandling(CONCEDII_DATA_QUERY)
+  const { data, loading } = useQueryWithErrorHandling(CONCEDII_DATA_QUERY)
 
   const filtrareStyle = useStyles()
-  const [filteredArray, setFilteredArray] = useState(data?.concediiData)
+  const [filteredArray, setFilteredArray] = useState([])
+
+  useEffect(()=>{
+    if(loading||!data)
+      return
+    setFilteredArray(data.concediiData)
+  },[data, loading])
+
   const concediiInAsteptareaAprobarii = false
   const seFiltreaza = true
 
