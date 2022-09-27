@@ -3,7 +3,8 @@ import TabelAngajati from 'features/angajati/TabelAngajati'
 import { useQueryWithErrorHandling } from 'hooks/errorHandling'
 import ANGAJATI_PER_ECHIPA_DATA_QUERY from './Queries'
 import PropTypes from 'prop-types'
-import { useRouteMatch } from 'react-router-dom'
+import { Link, useRouteMatch } from 'react-router-dom'
+import { Button } from '@material-ui/core'
 
 // function createData(nume, prenume, email, manager, echipa) {
 //   return { nume, prenume, email, manager, echipa }
@@ -17,11 +18,12 @@ import { useRouteMatch } from 'react-router-dom'
 // ]
 
 export default function AngajatiEchipe() {
+  const afisareEchipe = true
   const match = useRouteMatch()
   const { data } = useQueryWithErrorHandling(ANGAJATI_PER_ECHIPA_DATA_QUERY, { variables: { echipa: match.params.nume } })
   return (
     <div>
-      <TabelAngajati rows={data ? data.CardData : []}></TabelAngajati>
+      <TabelAngajati rows={data ? data.CardData : []} afisareEchipe={afisareEchipe}></TabelAngajati>
     </div>
   )
 }
