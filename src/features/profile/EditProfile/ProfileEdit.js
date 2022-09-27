@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useRef } from 'react'
 import PropTypes from 'prop-types'
 
 import TextField from '@material-ui/core/TextField'
@@ -11,9 +11,6 @@ import { makeStyles } from '@material-ui/core'
 import profileStyle from '../Assets/ProfileCss'
 //titlu
 import { useHeader } from 'providers/AreasProvider'
-
-//pt update
-import { gql } from '@apollo/client'
 
 const useStyles = makeStyles(profileStyle)
 
@@ -33,6 +30,19 @@ function ProfileEdit({ stare, modifyDataProfile, tratareUpdate }) {
     if (stare.isErrorOnUpdate) {
       return <>A aparut o eroare!</>
     }
+  }
+  const inputRef = useRef(null)
+  const handleFileChange = event => {
+    const fileObj = event.target.files && event.target.files[0]
+    if (!fileObj) {
+      return
+    }
+    var reader = new FileReader();
+    reader.readAsDataURL(fileObj)
+    reader.onload=()=>{
+      modifyDataProfile('Poza', reader.result.substring(reader.result.indexOf(',')+1,reader.result.length))
+    }
+    
   }
   return (
     <Fragment>
@@ -122,7 +132,10 @@ function ProfileEdit({ stare, modifyDataProfile, tratareUpdate }) {
         </div>
         <div className={classes.stilEditPageInputButton}>
           <div className={classes.stilEditPageInputOverButton}>
-            <ProfilePhoto idDat={classes.pozaProfilCard} pozaData={stare.Poza}></ProfilePhoto>
+            <div>
+              <input  ref={inputRef} type='file' onChange={handleFileChange} />
+              <ProfilePhoto idDat={classes.pozaProfilCard} pozaData={stare.Poza}></ProfilePhoto>
+            </div>
             <TextField
               label='Salariu'
               value={stare.Salariu}
