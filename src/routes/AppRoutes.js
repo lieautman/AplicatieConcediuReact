@@ -10,7 +10,6 @@ import ProfileEditState from 'features/profile/EditProfile/ProfileEditState'
 
 import CreareConcediu from 'features/creareConcediu/CreareConcediu'
 import ToateConcediile from 'features/afisareConcedii/ToateConcediile'
-import Angajati from 'features/angajati/Angajati'
 import Adauga_Angajat from 'features/dashboard/adauga_angajat/Adauga_Angajat'
 import AngajatiEchipe from 'features/angajati_echipe/AngajatiEchipe'
 import PromovareState from 'features/angajati/PromovareState'

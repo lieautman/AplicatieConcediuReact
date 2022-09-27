@@ -6,23 +6,15 @@ import InputLabel from '@mui/material/InputLabel'
 import { TextField } from '@material-ui/core'
 import { useReducer } from 'react'
 import { initialState, reducer } from './PromovareStateDefine'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles(stilAngajati)
 
-export default function DropDownEchipa() {
-  const ListaEchipe = [
-    { id: 1, nume: 'IT' },
-    { id: 1, nume: 'Resurse Umane' },
-    { id: 1, nume: 'Support' },
-    { id: 1, nume: 'Markeing' },
-    { id: 1, nume: 'Dezvoltare' }
-  ]
-  const [dispatch] = useReducer(reducer, initialState)
+export default function DropDownEchipa(props) {
+  const { listaEchipe, handleChange } = props
 
-  //functie pt autocomplete pt retinere info selectata
-  const handleChange = (propertyName, value) => {
-    dispatch({ inputName: 'OnPropertyChanged', propertyName, value })
-  }
+  // const [dispatch] = useReducer(reducer, initialState)
+
   const stilPromovare = useStyles()
   return (
     <div>
@@ -30,7 +22,8 @@ export default function DropDownEchipa() {
         <InputLabel id='demo-simple-select-autowidth-label'>Alege echipa</InputLabel>
         <Autocomplete
           id='combo-box-echipe'
-          options={ListaEchipe}
+          options={listaEchipe}
+          handleChange={handleChange}
           className={stilPromovare.Combobox}
           onChange={(event, value => handleChange('Echipa', value))}
           getOptionLabel={option => option.nume}
@@ -39,4 +32,8 @@ export default function DropDownEchipa() {
       </div>
     </div>
   )
+}
+DropDownEchipa.propTypes = {
+  listaEchipe: PropTypes.array,
+  handleChange: PropTypes.func
 }

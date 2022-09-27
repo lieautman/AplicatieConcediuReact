@@ -11,11 +11,12 @@ import IconButton from '@material-ui/core/IconButton'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
 import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import { useHeader } from 'providers/AreasProvider'
-import DropDownEchipa from './Autocomplete'
+import DropDownEchipa from './DropDownEchipe'
 import { useTranslation } from 'react-i18next'
 import { useQueryWithErrorHandling } from 'hooks/errorHandling'
 import ANGAJATI_DATA_QUERY from './QueryAngajati'
 import PropTypes from 'prop-types'
+import ECHIPA_DATA_QUERY from './QueryEchipe'
 
 const useStyles = makeStyles(stilAngajati)
 
@@ -24,11 +25,10 @@ export default function Promovare(props) {
   useQueryWithErrorHandling(ANGAJATI_DATA_QUERY, {
     onCompleted: data => {
       dispatch({ inputName: 'listaAngDeAdaugatDinBaza', inputValue: data.angajatiData })
-      dispatch({ inputName: 'textNume', inputValue: data.angajatiData.nume })
-      dispatch({ inputName: 'textPrenume', inputValue: data.angajatiData.prenume })
-      dispatch({ inputName: 'textEchipa', inputValue: data.angajatiData.echipa })
     }
   })
+
+  const { data: listaEchipe } = useQueryWithErrorHandling(ECHIPA_DATA_QUERY)
 
   const { t } = useTranslation()
   const stilPromovare = useStyles()
@@ -37,6 +37,10 @@ export default function Promovare(props) {
       {t('NavBar.Promovare')}
     </div>
   )
+  //functie pt autocomplete pt retinere info selectata
+  const handleChange = (propertyName, value) => {
+    dispatch({ inputName: 'OnPropertyChanged', propertyName, value })
+  }
 
   const stilButon = makeStyles(stilButoane)
   const stilBtn = stilButon()
@@ -103,7 +107,7 @@ export default function Promovare(props) {
         </div>
 
         <div className={stilPromovare.divSelect}>
-          <DropDownEchipa></DropDownEchipa>
+          <DropDownEchipa handleChange={handleChange} listaEchipe={listaEchipe?.echipaData}></DropDownEchipa>
           <button className={stilBtn.buton}>SALVEAZA MODIFICARILE</button>
         </div>
       </div>
