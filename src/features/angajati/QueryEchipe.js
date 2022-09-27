@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client'
 
 const ECHIPA_DATA_QUERY = gql`
-  query echipaData($echipa: String) {
+  query echipaData {
     echipaData {
       id
       nume
