@@ -41,6 +41,8 @@ export function AdaugaAngajatComp2(props) {
             label={'Salariu'}
             variant='outlined'
             value={localState.salariu}
+            //type='number'
+            //onChange={event => handleChange('salariu', parseFloat(event.target.value).toFixed(1))}
             onChange={event => handleChange('salariu', event.target.value)}
           ></TextField>
           <TextField
@@ -66,9 +68,10 @@ export function AdaugaAngajatComp2(props) {
           <br></br>
           <Autocomplete
             id='combo-box-echipe'
+            key={option => option.id}
             options={ListaEchipe}
             className={classes.Combobox}
-            onChange={(event, value => handleChange('idEchipa', value))}
+            onChange={(event, value) => handleChange('idEchipa', value.id)}
             getOptionLabel={option => option.name}
             renderInput={params => <TextField {...params} label='Echipa' variant='outlined' />}
           />
@@ -76,7 +79,7 @@ export function AdaugaAngajatComp2(props) {
             id='combo-box-manageri'
             options={ListaManageri}
             className={classes.Combobox}
-            onChange={(event, value => handleChange('managerId', value))}
+            onChange={(event, value) => handleChange('managerId', value.id)}
             getOptionLabel={option => option.name}
             renderInput={params => <TextField {...params} label='Manager' variant='outlined' />}
           />
