@@ -3,7 +3,6 @@ import { gql } from '@apollo/client'
 export const POST_ADAUGAANGAJAT = gql`
   mutation adaugaAngajat($input: AngajatInput) {
     adaugaAngajat(input: $input) {
-      id
       nume
       prenume
       email

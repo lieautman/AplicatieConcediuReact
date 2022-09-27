@@ -19,7 +19,7 @@ export default function HeaderTabelPromovare() {
       <TableRow>
         <StyledTableCell padding='checkbox'></StyledTableCell>
         <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
-          Id
+          Nr. Crt
         </StyledTableCell>
         <StyledTableCell align='center' style={{ fontWeight: 'bold' }}>
           Nume
