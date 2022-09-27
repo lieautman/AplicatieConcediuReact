@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, { useEffect } from 'react'
 import TabelConcediu from './TabelConcediu'
 import Button from '@material-ui/core/Button'
 import { useState } from 'react'
@@ -45,16 +45,18 @@ const useStyles = makeStyles(filtrari)
 // ]
 
 export default function ToateConcediile() {
-  const { data, loading } = useQueryWithErrorHandling(CONCEDII_DATA_QUERY)
+  const [indexStart, setIndexStart] = useState(0)
+  const [indexEnd, setIndexEnd] = useState(5)
+  const nrElemPag = 5
+  const { data, loading } = useQueryWithErrorHandling(CONCEDII_DATA_QUERY, { variables: { index1: indexStart, index2: indexEnd, nrElemPePagina: nrElemPag } })
 
   const filtrareStyle = useStyles()
   const [filteredArray, setFilteredArray] = useState([])
 
-  useEffect(()=>{
-    if(loading||!data)
-      return
-    setFilteredArray(data.concediiData)
-  },[data, loading])
+  useEffect(() => {
+    if (loading || !data) return
+    setFilteredArray(data.concediiData?.listaConcedii)
+  }, [data, loading])
 
   const concediiInAsteptareaAprobarii = false
   const seFiltreaza = true
@@ -62,7 +64,7 @@ export default function ToateConcediile() {
   const handleFilterNume = input => {
     const value = input.target.value
 
-    const newArray = data?.concediiData.filter(el => {
+    const newArray = data?.concediiData?.listaConcedii.filter(el => {
       if (value === '') {
         return el
       } else {
@@ -78,7 +80,7 @@ export default function ToateConcediile() {
   const handleFilterAngajat = input => {
     const value = input.target.value
 
-    const newArray = data?.concediiData.filter(el => {
+    const newArray = data?.concediiData?.listaConcedii.filter(el => {
       if (value === '') {
         return el
       } else {
@@ -94,7 +96,7 @@ export default function ToateConcediile() {
   const handleFilterInlocuitor = input => {
     const value = input.target.value
 
-    const newArray = data?.concediiData.filter(el => {
+    const newArray = data?.concediiData?.listaConcedii.filter(el => {
       if (value === '') {
         return el
       } else {
@@ -134,6 +136,19 @@ export default function ToateConcediile() {
     }
   }
 
+  function handleClickInapoi() {
+    if (indexStart !== 0) {
+      setIndexStart(indexStart - nrElemPag)
+      setIndexEnd(indexEnd - nrElemPag)
+    }
+  }
+  function handleClickInainte() {
+    if (indexEnd !== nrElemPag*data?.concediiData?.numarPagini) {
+      setIndexStart(indexStart + nrElemPag)
+      setIndexEnd(indexEnd + nrElemPag)
+    }
+  }
+
   return (
     <div>
       <div>
@@ -146,12 +161,17 @@ export default function ToateConcediile() {
         <SearchBar onFilter={handleFilterAngajat} filtrareNume={'numele angajatului'} />
       </div>
       <TabelConcediu
-        rows={data ? data.concediiData : []}
+        rows={data ? data.concediiData.listaConcedii : []}
         concediiInAsteptareaAprobarii={concediiInAsteptareaAprobarii}
         filtrare={filteredArray}
         seFiltreaza={seFiltreaza}
         // seFiltreaza={seFiltreaza}
       ></TabelConcediu>
+      <div>
+        <Button onClick={handleClickInapoi}>Inapoi</Button>
+        <h5>{indexEnd/nrElemPag}/{data?.concediiData?.numarPagini}</h5>
+        <Button onClick={handleClickInainte}>Inainte</Button>
+      </div>
     </div>
   )
 }

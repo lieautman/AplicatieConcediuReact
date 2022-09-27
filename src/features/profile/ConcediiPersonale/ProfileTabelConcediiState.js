@@ -25,7 +25,6 @@ const USER_TABLE_QUERY = gql`
 function ProfileTabelConcediiState(props) {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  console.log(state)
   //query
   useQueryWithErrorHandling(USER_TABLE_QUERY, {
     variables: { userEmail: props.emailUtilizator, indexStart:state.indexStartActual, indexEnd:state.indexEndActual, numarElemPePagina:state.numarElemPePag },
