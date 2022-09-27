@@ -1,4 +1,4 @@
-import { React, useReducer, useState } from 'react'
+import { React, useState } from 'react'
 import TabelAngajati from './TabelAngajati'
 import { Link } from 'react-router-dom'
 import stilAngajati from './StilAngajati'
