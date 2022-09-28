@@ -6,10 +6,12 @@ export const initialState = {
   seriaNumarBuletin: '',
   numartelefon: '',
   dataAngajarii: new Date(),
-  idEchipa: '',
-  managerId: '',
+  idEchipa: 0,
+  managerId: 0,
   email: '',
-  parola: ''
+  parola: '',
+  salariu: '',
+  esteAngajatCuActeInRegula: true
 }
 
 export function reducer(state, action) {

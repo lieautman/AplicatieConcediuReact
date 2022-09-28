@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useEffect } from 'react'
 import TabelAngajati from 'features/angajati/TabelAngajati'
 import { useQueryWithErrorHandling } from 'hooks/errorHandling'
 import ANGAJATI_PER_ECHIPA_DATA_QUERY from './Queries'
@@ -28,10 +28,16 @@ export default function AngajatiEchipe() {
   const checkin = false
 
   const match = useRouteMatch()
-  const { data } = useQueryWithErrorHandling(ANGAJATI_PER_ECHIPA_DATA_QUERY, { variables: { echipa: match.params.nume } })
+  const { data, loading } = useQueryWithErrorHandling(ANGAJATI_PER_ECHIPA_DATA_QUERY, { variables: { echipa: match.params.nume } })
 
   const filtrareStyle = useStyles()
-  const [filteredArray, setFilteredArray] = useState(data?.concediiData)
+  const [filteredArray, setFilteredArray] = useState([])
+
+  useEffect(()=>{
+    if(loading||!data)
+      return
+    setFilteredArray(data.cardData)
+  },[data, loading])
 
   const handleFilterNume = input => {
     const value = input.target.value
@@ -89,7 +95,7 @@ export default function AngajatiEchipe() {
         <SearchBar onFilter={handleFilterEmail} filtrareNume={'email'} />
       </div>
       <TabelAngajati
-        rows={data ? data?.cardData : []}
+        rows={data ? data.cardData : []}
         afisareEchipe={afisareEchipe}
         checkin={checkin}
         filtrare={filteredArray}

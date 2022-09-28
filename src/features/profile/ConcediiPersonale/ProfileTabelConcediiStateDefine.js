@@ -2,48 +2,48 @@ export const initialState = {
   //date
   tableData: [
     {
-      id: '1',
-      name: 'Concediu medicalllll',
+      id: 1,
+      tipConcediu: 'Concediu medicalllll',
       dataInceput: '10/16/2022',
       dataSfarsit: '10/17/2022',
-      inlocuitor: 'Andrei Ionescu',
-      motiv: '',
+      numeInlocuitor: 'Andrei Ionescu',
+      comment: '',
       stareConcediu: 'Aprobat'
     },
     {
-      id: '2',
-      name: 'Concediu de odihna',
+      id: 2,
+      tipConcediu: 'Concediu de odihna',
       dataInceput: '9/1/2022',
       dataSfarsit: '9/29/2022',
-      inlocuitor: 'Maria Iancu',
-      motiv: '',
+      numeInlocuitor: 'Maria Iancu',
+      comment: '',
       stareConcediu: 'Trimis'
     },
     {
-      id: '3',
-      name: 'Concediu de odihna',
+      id: 3,
+      tipConcediu: 'Concediu de odihna',
       dataInceput: '8/28/2022',
       dataSfarsit: '8/30/2022',
-      inlocuitor: 'Andreea Bogdan',
-      motiv: '',
+      numeInlocuitor: 'Andreea Bogdan',
+      comment: '',
       stareConcediu: 'Respins'
     },
     {
-      id: '4',
-      name: 'Concediu de odihna',
+      id: 4,
+      tipConcediu: 'Concediu de odihna',
       dataInceput: '8/28/2022',
       dataSfarsit: '8/30/2022',
-      inlocuitor: 'Andreea Bogdan',
-      motiv: '',
+      numeInlocuitor: 'Andreea Bogdan',
+      comment: '',
       stareConcediu: 'Respins'
     },
     {
-      id: '5',
-      name: 'Concediu de odihna',
+      id: 5,
+      tipConcediu: 'Concediu de odihna',
       dataInceput: '8/28/2022',
       dataSfarsit: '8/30/2022',
-      inlocuitor: 'Andreea Bogdan',
-      motiv: '',
+      numeInlocuitor: 'Andreea Bogdan',
+      comment: '',
       stareConcediu: 'Respins'
     }
   ],

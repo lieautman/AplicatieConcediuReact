@@ -1,15 +1,18 @@
 import { gql } from '@apollo/client'
 
 const CONCEDII_DATA_QUERY = gql`
-  query concediiData {
-    concediiData {
-      id
-      name
-      dataInceput
-      dataSfarsit
-      inlocuitor
-      comentarii
-      angajat
+  query concediiData($index1: Int, $index2: Int, $nrElemPePagina: Int) {
+    concediiData(index1: $index1, index2: $index2, nrElemPePagina: $nrElemPePagina) {
+      listaConcedii {
+        id
+        name
+        dataInceput
+        dataSfarsit
+        inlocuitor
+        comentarii
+        angajat
+      }
+      numarPagini
     }
   }
 `
