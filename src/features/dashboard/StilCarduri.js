@@ -7,7 +7,12 @@ const carduri = theme => {
       justifyContent: 'space-around',
       marginTop: '1rem',
       [theme.breakpoints.down('md')]: {
-        flexDirection: 'column'
+        flexDirection: 'column',
+        width:'1500px',
+      },
+      [theme.breakpoints.down('sm')]: {
+        flexDirection: 'column',
+        width:'900px',
       }
     }
   }

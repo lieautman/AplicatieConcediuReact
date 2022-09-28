@@ -35,10 +35,10 @@ const USER_DATA_MUTATION = gql`
 const useStyles = makeStyles(publicMainStyle)
 
 const RegisterPage = props => {
+  const classes = useStyles()
   const theme = useTheme()
   const { logo } = theme
-  
-  const classes = useStyles()
+
   let [nume, setNume] = useState()
   let [prenume, setPrenume] = useState()
   let [email, setEmail] = useState()
