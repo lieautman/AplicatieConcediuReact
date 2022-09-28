@@ -42,6 +42,7 @@ const USER_DATA_MUTATION = gql`
     $userCnpUpdated: String
     $salariuUpdated: String
     $seriaNumarBuletinUpdated: String
+    $pozaUpdated: String
   ) {
     modificareDateProfil(
       userId: $userId
@@ -54,6 +55,7 @@ const USER_DATA_MUTATION = gql`
       userCnpUpdated: $userCnpUpdated
       salariuUpdated: $salariuUpdated
       seriaNumarBuletinUpdated: $seriaNumarBuletinUpdated
+      pozaUpdated: $pozaUpdated
     )
   }
 `
@@ -119,7 +121,8 @@ function ProfileEditState() {
       userDataNasteriiUpdated: state.DataNasterii,
       userCnpUpdated: state.Cnp,
       seriaNumarBuletinUpdated: state.SeriaNumarBuletin,
-      salariuUpdated: state.Salariu
+      salariuUpdated: state.Salariu,
+      pozaUpdated: state.Poza
     },
     skip: !date?.userData?.id,
     onCompleted: data => {

@@ -1,4 +1,4 @@
-import { React, useReducer, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import TabelAngajati from './TabelAngajati'
 import { Link } from 'react-router-dom'
 import stilAngajati from './StilAngajati'
@@ -30,13 +30,19 @@ const stilBtn = makeStyles(stilButoane)
 // ]
 
 export default function Angajati() {
-  const { data } = useQueryWithErrorHandling(ANGAJATI_DATA_QUERY)
+  const { data,loading } = useQueryWithErrorHandling(ANGAJATI_DATA_QUERY)
   const checkin = true
 
   const stilButoanePaginare = stilAng()
   const stilButoaneActiuni = stilBtn()
   const history = useHistory()
-  const [filteredArray, setFilteredArray] = useState(data?.angajatiData)
+  const [filteredArray, setFilteredArray] = useState([])
+
+  useEffect(()=>{
+    if(loading||!data)
+      return
+    setFilteredArray(data.angajatiData)
+  },[data, loading])
 
   const [idRand, setIdRand] = useState(null)
 

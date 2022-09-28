@@ -12,7 +12,7 @@ import HeaderTabel from './HeaderTabelAngajati'
 const useStyles = makeStyles(stilAngajati)
 
 export default function TabelAngajati(props) {
-  const { rows, setareId, idRand, filtrare, afisareEchipe, checkin } = props
+  const { setareId, idRand, filtrare, checkin } = props
   const stilTabel = useStyles()
   return (
     <div>

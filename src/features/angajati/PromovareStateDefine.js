@@ -3,7 +3,7 @@ export const initialState = {
   textNume: 'NUME',
   textPrenume: 'PRENUME',
   textEchipa: 'ECHIPA',
-  echipa: null,
+  echipa: [],
   listaAngajatiDeAdaugat: [],
   listaAngajatiAdaugati: []
 }
@@ -26,7 +26,8 @@ export function reducer(state, action) {
       return { ...state, listaAngajatiAdaugati: action.inputValue }
     case 'listaAngDeAdaugatDinBaza':
       return { ...state, listaAngajatiDeAdaugat: action.inputValue }
-
+    case 'echipa':
+      return { ...state, echipa: action.inputValue }
     default:
       throw new Error()
   }
