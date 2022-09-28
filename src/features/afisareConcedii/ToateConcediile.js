@@ -5,6 +5,8 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import SearchBar from './SearchBar'
 import filtrari from './Filtrari'
+import butoane from './Butoane'
+import culoare from './CuloareButoane'
 import { makeStyles } from '@material-ui/core'
 import PropTypes from 'prop-types'
 import { useQueryWithErrorHandling } from 'hooks/errorHandling'
@@ -13,6 +15,8 @@ import { useApolloClient } from '@apollo/client'
 import { gql } from '@apollo/client'
 
 const useStyles = makeStyles(filtrari)
+const useStylesB = makeStyles(butoane)
+const useStylesCB = makeStyles(culoare)
 
 // const rows = [
 //   {
@@ -48,8 +52,12 @@ export default function ToateConcediile() {
   const [indexStart, setIndexStart] = useState(0)
   const [indexEnd, setIndexEnd] = useState(5)
   const nrElemPag = 5
-  const { data, loading } = useQueryWithErrorHandling(CONCEDII_DATA_QUERY, { variables: { index1: indexStart, index2: indexEnd, nrElemPePagina: nrElemPag } })
+  const { data, loading } = useQueryWithErrorHandling(CONCEDII_DATA_QUERY, {
+    variables: { index1: indexStart, index2: indexEnd, nrElemPePagina: nrElemPag }
+  })
 
+  const culoareStyle = useStylesCB()
+  const butoaneStyle = useStylesB()
   const filtrareStyle = useStyles()
   const [filteredArray, setFilteredArray] = useState([])
 
@@ -143,7 +151,7 @@ export default function ToateConcediile() {
     }
   }
   function handleClickInainte() {
-    if (indexEnd !== nrElemPag*data?.concediiData?.numarPagini) {
+    if (indexEnd !== nrElemPag * data?.concediiData?.numarPagini) {
       setIndexStart(indexStart + nrElemPag)
       setIndexEnd(indexEnd + nrElemPag)
     }
@@ -167,10 +175,16 @@ export default function ToateConcediile() {
         seFiltreaza={seFiltreaza}
         // seFiltreaza={seFiltreaza}
       ></TabelConcediu>
-      <div>
-        <Button onClick={handleClickInapoi}>Inapoi</Button>
-        <h5>{indexEnd/nrElemPag}/{data?.concediiData?.numarPagini}</h5>
-        <Button onClick={handleClickInainte}>Inainte</Button>
+      <div className={butoaneStyle.stilButoane}>
+        <Button onClick={handleClickInapoi} className={culoareStyle.culoareButoane}>
+          Inapoi
+        </Button>
+        <h5>
+          {indexEnd / nrElemPag}/{data?.concediiData?.numarPagini}
+        </h5>
+        <Button onClick={handleClickInainte} className={culoareStyle.culoareButoane}>
+          Inainte
+        </Button>
       </div>
     </div>
   )
