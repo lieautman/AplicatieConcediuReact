@@ -31,19 +31,17 @@ const stilBtn = makeStyles(stilButoane)
 // ]
 
 export default function Angajati() {
-  const { data,loading } = useQueryWithErrorHandling(ANGAJATI_DATA_QUERY)
+  const { data, loading } = useQueryWithErrorHandling(ANGAJATI_DATA_QUERY)
   const checkin = true
-
   const stilButoanePaginare = stilAng()
   const stilButoaneActiuni = stilBtn()
   const history = useHistory()
   const [filteredArray, setFilteredArray] = useState([])
 
-  useEffect(()=>{
-    if(loading||!data)
-      return
+  useEffect(() => {
+    if (loading || !data) return
     setFilteredArray(data.angajatiData)
-  },[data, loading])
+  }, [data, loading])
 
   const [idRand, setIdRand] = useState(null)
 
