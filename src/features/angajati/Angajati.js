@@ -12,6 +12,7 @@ import { useQueryWithErrorHandling } from 'hooks/errorHandling'
 import ANGAJATI_DATA_QUERY from './QueryAngajati'
 import { useApolloClient } from '@apollo/client'
 import { gql } from '@apollo/client'
+import Promovare from './Promovare'
 
 const stilAng = makeStyles(stilAngajati)
 const stilBtn = makeStyles(stilButoane)
