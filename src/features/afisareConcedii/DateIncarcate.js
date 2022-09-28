@@ -29,7 +29,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 export default function DateIncarcate(props) {
   const { row, setareId, concediiInAsteptareaAprobarii, idRand } = props
-  console.log(idRand)
   return (
     <StyledTableRow>
       {concediiInAsteptareaAprobarii && (

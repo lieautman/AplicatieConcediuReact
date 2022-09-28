@@ -12,6 +12,7 @@ import profileStyle from '../Assets/ProfileCss'
 //titlu
 import { useHeader } from 'providers/AreasProvider'
 
+
 const useStyles = makeStyles(profileStyle)
 
 function ProfileEdit({ stare, modifyDataProfile, tratareUpdate }) {
@@ -23,14 +24,11 @@ function ProfileEdit({ stare, modifyDataProfile, tratareUpdate }) {
       {'Editeaza date'}
     </div>
   )
+
+
   const DataAngajariiStringLabel = stare.DataAngajarii ? stare.DataAngajarii : '1999-01-01'
   const DataNasteriiStringLabel = stare.DataNasterii ? stare.DataNasterii : '1999-01-01'
 
-  function avemEroare() {
-    if (stare.isErrorOnUpdate) {
-      return <>A aparut o eroare!</>
-    }
-  }
   const inputRef = useRef(null)
   const handleFileChange = event => {
     const fileObj = event.target.files && event.target.files[0]
@@ -155,7 +153,6 @@ function ProfileEdit({ stare, modifyDataProfile, tratareUpdate }) {
           >
             Save
           </Button>
-          {avemEroare()}
         </div>
       </div>
     </Fragment>
