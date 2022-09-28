@@ -7,6 +7,7 @@ import { TextField } from '@material-ui/core'
 import publicMainStyle from 'assets/jss/components/publicMainStyles'
 import { useMutation } from '@apollo/client'
 import { gql } from '@apollo/client'
+import registerPageStyle from './RegisterPageCss'
 
 const USER_DATA_MUTATION = gql`
   mutation registerUser(
@@ -31,10 +32,11 @@ const USER_DATA_MUTATION = gql`
     )
   }
 `
-
+const useStyles1 = makeStyles(registerPageStyle)
 const useStyles = makeStyles(publicMainStyle)
 
 const RegisterPage = props => {
+  const classes1 = useStyles1()
   const classes = useStyles()
   const theme = useTheme()
   const { logo } = theme
@@ -49,10 +51,8 @@ const RegisterPage = props => {
   let [parola, setParola] = useState()
   let [parola2, setParola2] = useState()
 
-
   let [eroare, setEroare] = useState('')
 
-  
   const [handleCLick1] = useMutation(USER_DATA_MUTATION, {
     variables: {
       userNume: nume,
@@ -62,20 +62,24 @@ const RegisterPage = props => {
       userCnp: cnp,
       userSeriaNumarBuletin: serieNumarCi,
       userDataNasterii: dataNastere,
-      userParola: parola,
+      userParola: parola
     },
     onCompleted: data => {
-      if(data.registerUser==='Inregistrare efectuata!'){
+      if (data.registerUser === 'Inregistrare efectuata!') {
         setEroare('Inregistrare efectuata!')
         props.setIsInLogin(true)
-      }
-      else{
+      } else {
         setEroare('A aparut o eroare!')
       }
     }
   })
   const handleCLick2 = async () => {
     props.setIsInLogin(true)
+  }
+
+  function afisareEroare() {
+    if(eroare!=='')
+      return <div className={classes1.hStyle}><h5>{eroare}</h5></div>
   }
 
   return (
@@ -92,8 +96,12 @@ const RegisterPage = props => {
             onChange={event => setSerieNumarCi(event.target.value)}
           ></TextField>
           <TextField
+            type='date'
             label={'Data Nastere'}
             className={classes.filedInRegister}
+            defaultValue=''
+            InputLabelProps={{ shrink: true }}
+            fullWidth
             onChange={event => setDataNastere(event.target.value)}
           ></TextField>
           <TextField
@@ -108,7 +116,7 @@ const RegisterPage = props => {
             onChange={event => setParola2(event.target.value)}
           ></TextField>
           <TextField label={'Email'} className={classes.filedInRegister} onChange={event => setEmail(event.target.value)}></TextField>
-          <h5>{eroare}</h5>
+          {afisareEroare()}
           <Button className={classes.login} variant='contained' color='primary' size='large' onClick={handleCLick1}>
             {'Inregistrare'}
           </Button>

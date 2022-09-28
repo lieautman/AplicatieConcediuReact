@@ -13,13 +13,13 @@ export default function CardEchipa(props) {
   const { echipa } = props
   return (
     <Grid item xs={4}>
-      <Card sx={{ maxWidth: 310 }}>
+      <Card>
         <CardMedia component='img' height='250' image={`data:image/*;base64,${echipa.poza}`} alt='poza echipei' />
         <CardContent>
           <Typography gutterBottom variant='h5' component='div'>
             {echipa.nume}
           </Typography>
-          <Typography variant='body2' color='text.secondary'>
+          <Typography variant='body2'>
             {echipa.descriere}
           </Typography>
         </CardContent>

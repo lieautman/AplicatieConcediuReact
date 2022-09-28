@@ -8,6 +8,9 @@ import { useApolloClient } from '@apollo/client'
 import { gql } from '@apollo/client'
 import { useMutation } from '@apollo/client'
 import { useQueryWithErrorHandling } from 'hooks/errorHandling'
+//eroare toast
+import { useToast } from '@bit/totalsoft_oss.react-mui.kit.core'
+
 const USER_DATA_QUERY = gql`
   query getProfileData($userEmail: String!) {
     getProfileData(userEmail: $userEmail) {
@@ -63,6 +66,8 @@ const USER_DATA_MUTATION = gql`
 function ProfileEditState() {
   //state management
   const [state, dispatch] = useReducer(reducer, initialState)
+  //eroare toast
+  const addToast = useToast()
 
   //preluare date din cache apollo
   const client = useApolloClient()
@@ -130,7 +135,7 @@ function ProfileEditState() {
         dispatch({ inputName: 'isErrorOnUpdate', inputValue: false, inputType: 'field' })
         history.push({ pathname: `/profile` })
       } else {
-        dispatch({ inputName: 'isErrorOnUpdate', inputValue: true, inputType: 'field' })
+        addToast('A aparut o eroare!', 'error')
       }
     }
   })

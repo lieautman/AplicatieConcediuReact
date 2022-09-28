@@ -29,7 +29,6 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 
 export default function DateIncarcate(props) {
   const { row, setareId, concediiInAsteptareaAprobarii, idRand } = props
-  console.log(idRand)
   return (
     <StyledTableRow>
       {concediiInAsteptareaAprobarii && (
@@ -49,8 +48,8 @@ export default function DateIncarcate(props) {
       <StyledTableCell component='th' scope='row' align='center'>
         {row.name}
       </StyledTableCell>
-      <StyledTableCell align='center'>{row.dataInceput}</StyledTableCell>
-      <StyledTableCell align='center'>{row.dataSfarsit}</StyledTableCell>
+      <StyledTableCell align='center'>{row.dataInceput.substring(0, 10)}</StyledTableCell>
+      <StyledTableCell align='center'>{row.dataSfarsit.substring(0, 10)}</StyledTableCell>
       <StyledTableCell align='center'>{row.inlocuitor}</StyledTableCell>
       <StyledTableCell align='center'>{row.comentarii}</StyledTableCell>
       <StyledTableCell align='center'>{row.angajat}</StyledTableCell>
