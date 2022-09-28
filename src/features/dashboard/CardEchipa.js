@@ -19,7 +19,7 @@ export default function CardEchipa(props) {
           <Typography gutterBottom variant='h5' component='div'>
             {echipa.nume}
           </Typography>
-          <Typography variant='body2' color='text.secondary'>
+          <Typography variant='body2'>
             {echipa.descriere}
           </Typography>
         </CardContent>

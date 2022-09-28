@@ -35,10 +35,10 @@ const USER_DATA_MUTATION = gql`
 const useStyles = makeStyles(publicMainStyle)
 
 const RegisterPage = props => {
-  const classes = useStyles()
   const theme = useTheme()
   const { logo } = theme
-
+  
+  const classes = useStyles()
   let [nume, setNume] = useState()
   let [prenume, setPrenume] = useState()
   let [email, setEmail] = useState()
@@ -49,10 +49,8 @@ const RegisterPage = props => {
   let [parola, setParola] = useState()
   let [parola2, setParola2] = useState()
 
-
   let [eroare, setEroare] = useState('')
 
-  
   const [handleCLick1] = useMutation(USER_DATA_MUTATION, {
     variables: {
       userNume: nume,
@@ -62,18 +60,19 @@ const RegisterPage = props => {
       userCnp: cnp,
       userSeriaNumarBuletin: serieNumarCi,
       userDataNasterii: dataNastere,
-      userParola: parola,
+      userParola: parola
     },
     onCompleted: data => {
-      if(data.registerUser==='Inregistrare efectuata!'){
+      if (data.registerUser === 'Inregistrare efectuata!') {
         setEroare('Inregistrare efectuata!')
         props.setIsInLogin(true)
-      }
-      else{
+      } else {
         setEroare('A aparut o eroare!')
       }
     }
   })
+  
+
   const handleCLick2 = async () => {
     props.setIsInLogin(true)
   }
@@ -92,8 +91,12 @@ const RegisterPage = props => {
             onChange={event => setSerieNumarCi(event.target.value)}
           ></TextField>
           <TextField
+            type='date'
             label={'Data Nastere'}
             className={classes.filedInRegister}
+            defaultValue=''
+            InputLabelProps={{ shrink: true }}
+            fullWidth
             onChange={event => setDataNastere(event.target.value)}
           ></TextField>
           <TextField
