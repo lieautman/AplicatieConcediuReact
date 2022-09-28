@@ -12,6 +12,7 @@ import { useMutation } from '@apollo/client'
 import { POST_ADAUGAANGAJAT } from './mutation'
 import ECHIPA_DATA_QUERY from 'features/angajati/QueryEchipe'
 import { useQueryWithErrorHandling } from 'hooks/errorHandling'
+import MANAGERI_QUERY from './querymanageri'
 
 const useStyles = makeStyles(Adauga_Angajatcss)
 
@@ -26,6 +27,7 @@ function Adauga_Angajat() {
   const [adaugaAngajat] = useMutation(POST_ADAUGAANGAJAT)
 
   const { data: listaEchipe } = useQueryWithErrorHandling(ECHIPA_DATA_QUERY)
+  const { data: listaManageri } = useQueryWithErrorHandling(MANAGERI_QUERY)
 
   const handleClick = async () => {
     await adaugaAngajat({ variables: { input: localState } })
@@ -48,6 +50,7 @@ function Adauga_Angajat() {
           handleChange={handleChange}
           localState={localState}
           listaEchipe={listaEchipe?.echipaData}
+          listaManageri={listaManageri?.manageriData}
           className={classes.containeradaugaangajatrigh}
         ></AdaugaAngajatComp2>
       </Container>
