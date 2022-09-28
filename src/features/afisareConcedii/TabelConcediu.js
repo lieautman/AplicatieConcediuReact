@@ -27,7 +27,7 @@ export default function TabelConcediu(props) {
 
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label='customized table'>
+      <Table sx={{ minWidth: 600 }} aria-label='customized table'>
         <TableHead>
           <TableRow>
             {concediiInAsteptareaAprobarii && <StyledTableCell padding='checkbox' align='center'></StyledTableCell>}

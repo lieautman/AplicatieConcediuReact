@@ -89,7 +89,7 @@ export default function AngajatiEchipe() {
         <SearchBar onFilter={handleFilterEmail} filtrareNume={'email'} />
       </div>
       <TabelAngajati
-        rows={data ? data?.cardData : []}
+        rows={data ? data.cardData : []}
         afisareEchipe={afisareEchipe}
         checkin={checkin}
         filtrare={filteredArray}
