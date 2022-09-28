@@ -94,16 +94,32 @@ const rows = [
 ]
 
 function ProfileTabelConcedii(props) {
-  function handleClickInapoi(){
-    if(props.state.indexStartActual!==0){
-      props.dispatch({ inputName: 'indexStartActual', inputValue: (props.state.indexStartActual-props.state.numarElemPePag), inputType: 'field' })
-      props.dispatch({ inputName: 'indexEndActual', inputValue: (props.state.indexEndActual-props.state.numarElemPePag), inputType: 'field' })
+  function handleClickInapoi() {
+    if (props.state.indexStartActual !== 0) {
+      props.dispatch({
+        inputName: 'indexStartActual',
+        inputValue: props.state.indexStartActual - props.state.numarElemPePag,
+        inputType: 'field'
+      })
+      props.dispatch({
+        inputName: 'indexEndActual',
+        inputValue: props.state.indexEndActual - props.state.numarElemPePag,
+        inputType: 'field'
+      })
     }
   }
-  function handleClickInainte(){
-    if(props.state.indexEndActual!==props.state.numarElemPePag*props.state.numarPagini){
-      props.dispatch({ inputName: 'indexStartActual', inputValue: (props.state.indexStartActual+props.state.numarElemPePag), inputType: 'field' })
-      props.dispatch({ inputName: 'indexEndActual', inputValue: (props.state.indexEndActual+props.state.numarElemPePag), inputType: 'field' })
+  function handleClickInainte() {
+    if (props.state.indexEndActual !== props.state.numarElemPePag * props.state.numarPagini) {
+      props.dispatch({
+        inputName: 'indexStartActual',
+        inputValue: props.state.indexStartActual + props.state.numarElemPePag,
+        inputType: 'field'
+      })
+      props.dispatch({
+        inputName: 'indexEndActual',
+        inputValue: props.state.indexEndActual + props.state.numarElemPePag,
+        inputType: 'field'
+      })
     }
   }
   return (
@@ -115,10 +131,10 @@ function ProfileTabelConcedii(props) {
               <TableHeaderCell align='center' style={{ fontWeight: 'bold' }}>
                 Tipul Concediului
               </TableHeaderCell>
-              <TableHeaderCell align='center' style={{ fontWeight: 'bold' }}>
+              <TableHeaderCell align='center' style={{ fontWeight: 'bold' }} width='500px'>
                 Data de inceput
               </TableHeaderCell>
-              <TableHeaderCell align='center' style={{ fontWeight: 'bold' }}>
+              <TableHeaderCell align='center' style={{ fontWeight: 'bold' }} width='500px'>
                 Data de sfarsit
               </TableHeaderCell>
               <TableHeaderCell align='center' style={{ fontWeight: 'bold' }}>
@@ -138,8 +154,8 @@ function ProfileTabelConcedii(props) {
                 <StyledTableCell component='th' scope='row' align='center'>
                   {row.tipConcediu}
                 </StyledTableCell>
-                <StyledTableCell align='center'>{row.dataInceput}</StyledTableCell>
-                <StyledTableCell align='center'>{row.dataSfarsit}</StyledTableCell>
+                <StyledTableCell align='center'>{row.dataInceput.substring(0, 10)}</StyledTableCell>
+                <StyledTableCell align='center'>{row.dataSfarsit.substring(0, 10)}</StyledTableCell>
                 <StyledTableCell align='center'>{row.numeInlocuitor}</StyledTableCell>
                 <StyledTableCell align='center'>{row.comment}</StyledTableCell>
                 <StyledTableCell align='center'>{row.stareConcediu}</StyledTableCell>
@@ -149,9 +165,15 @@ function ProfileTabelConcedii(props) {
         </Table>
       </TableContainer>
       <div className={props.idDivButoane}>
-        <Button className={props.idDatButonInapoi} onClick={handleClickInapoi}>Inapoi</Button>
-        <h5 className={props.idPagLabel}>{props.state.indexEndActual/props.state.numarElemPePag}/{props.state.numarPagini}</h5>
-        <Button className={props.idDatButonInainte} onClick={handleClickInainte}>Inainte</Button>
+        <Button className={props.idDatButonInapoi} onClick={handleClickInapoi}>
+          Inapoi
+        </Button>
+        <h5 className={props.idPagLabel}>
+          {props.state.indexEndActual / props.state.numarElemPePag}/{props.state.numarPagini}
+        </h5>
+        <Button className={props.idDatButonInainte} onClick={handleClickInainte}>
+          Inainte
+        </Button>
       </div>
     </div>
   )
@@ -164,6 +186,6 @@ ProfileTabelConcedii.propTypes = {
   idPagLabel: PropTypes.string.isRequired,
   idDatButonInapoi: PropTypes.string.isRequired,
   state: PropTypes.object.isRequired,
-  dispatch: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired
 }
 export default ProfileTabelConcedii
