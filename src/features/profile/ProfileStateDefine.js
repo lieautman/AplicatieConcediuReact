@@ -28,8 +28,6 @@ export const initialState = {
   textAtasamente: 'Fisiere Atasate',
   textAtasamenteUpload: 'Incarca Fisier',
   textAtasamenteUploadTypes: 'PDF, DOC,PPT, JPG, PNG',
-
-  isErrorOnUpdate: false,
 }
 export function reducer(state, action) {
   switch (action?.inputType) {
