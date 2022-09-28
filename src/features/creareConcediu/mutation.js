@@ -10,6 +10,7 @@ export const POST_ADAUGACONCEDIU = gql`
       angajatId: Int
       numarZileDisponibile: Int
       numarZileSelectat: Int
+      inlocuitorId: Int
     }
   }
 `

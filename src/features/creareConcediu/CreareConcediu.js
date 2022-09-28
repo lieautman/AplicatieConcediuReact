@@ -12,7 +12,7 @@ import { useMutation } from '@apollo/client'
 
 const useStyles = makeStyles(CreareConcediuCSS)
 
-function CreareConcediu(props) {
+function CreareConcediu() {
   const classes = useStyles()
   const [localState, dispatch] = useReducer(reducer, initialState)
   const handleChange = (propertyName, value) => {

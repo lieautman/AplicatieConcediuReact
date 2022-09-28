@@ -5,7 +5,8 @@ export const initialState = {
   angajatId: '',
   numarZileSelectat: '',
   numarZileDisponibile: '',
-  comentarii: ''
+  comentarii: '',
+  inlocuitorId: ''
 }
 
 export function reducer(state, action) {
