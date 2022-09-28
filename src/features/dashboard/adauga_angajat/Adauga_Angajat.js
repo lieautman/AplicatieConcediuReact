@@ -10,6 +10,8 @@ import { AdaugaAngajatComp1 } from './AdaugaAngajatComp1'
 import { AdaugaAngajatComp2 } from './AdaugaAngajatComp2'
 import { useMutation } from '@apollo/client'
 import { POST_ADAUGAANGAJAT } from './mutation'
+import ECHIPA_DATA_QUERY from 'features/angajati/QueryEchipe'
+import { useQueryWithErrorHandling } from 'hooks/errorHandling'
 
 const useStyles = makeStyles(Adauga_Angajatcss)
 
@@ -22,6 +24,8 @@ function Adauga_Angajat() {
     dispatch({ type: 'OnPropertyChanged', propertyName, value })
   }
   const [adaugaAngajat] = useMutation(POST_ADAUGAANGAJAT)
+
+  const { data: listaEchipe } = useQueryWithErrorHandling(ECHIPA_DATA_QUERY)
 
   const handleClick = async () => {
     await adaugaAngajat({ variables: { input: localState } })
@@ -43,6 +47,7 @@ function Adauga_Angajat() {
         <AdaugaAngajatComp2
           handleChange={handleChange}
           localState={localState}
+          listaEchipe={listaEchipe?.echipaData}
           className={classes.containeradaugaangajatrigh}
         ></AdaugaAngajatComp2>
       </Container>
