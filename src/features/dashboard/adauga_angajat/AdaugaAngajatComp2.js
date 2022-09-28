@@ -9,20 +9,13 @@ import PropTypes from 'prop-types'
 import { useMutation } from '@apollo/client'
 
 const useStyles = makeStyles(Adauga_Angajatcss)
-const ListaEchipe = [
-  { id: 1, name: 'IT' },
-  { id: 2, name: 'HR' },
-  { id: 3, name: 'Support' }
-]
-const ListaManageri = [
-  { id: 1, name: 'Mihai' },
-  { id: 2, name: 'Maria' },
-  { id: 3, name: 'Bogdan' }
-]
+
 export function AdaugaAngajatComp2(props) {
   const classes = useStyles()
   const { handleChange } = props
   const { localState } = props
+  const { listaEchipe } = props
+  const { listaManageri } = props
 
   return (
     <Grid>
@@ -69,18 +62,18 @@ export function AdaugaAngajatComp2(props) {
           <Autocomplete
             id='combo-box-echipe'
             key={option => option.id}
-            options={ListaEchipe}
+            options={listaEchipe}
             className={classes.Combobox}
             onChange={(event, value) => handleChange('idEchipa', value.id)}
-            getOptionLabel={option => option.name}
+            getOptionLabel={option => option.nume}
             renderInput={params => <TextField {...params} label='Echipa' variant='outlined' />}
           />
           <Autocomplete
             id='combo-box-manageri'
-            options={ListaManageri}
+            options={listaManageri}
             className={classes.Combobox}
             onChange={(event, value) => handleChange('managerId', value.id)}
-            getOptionLabel={option => option.name}
+            getOptionLabel={option => option.manageri}
             renderInput={params => <TextField {...params} label='Manager' variant='outlined' />}
           />
         </div>
@@ -90,5 +83,7 @@ export function AdaugaAngajatComp2(props) {
 }
 AdaugaAngajatComp2.propTypes = {
   handleChange: PropTypes.func,
-  localState: PropTypes.object
+  localState: PropTypes.object,
+  listaEchipe: PropTypes.array,
+  listaManageri: PropTypes.array
 }

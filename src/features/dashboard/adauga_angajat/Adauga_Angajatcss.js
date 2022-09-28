@@ -5,10 +5,13 @@ const Adauga_Angajatcss = theme => {
   return {
     StyleBtn: {
       [theme.breakpoints.down('lg')]: {
-        marginLeft: '13rem'
+        marginLeft: '12rem'
       },
       [theme.breakpoints.up('lg')]: {
-        marginLeft: '32rem'
+        marginLeft: '30rem'
+      },
+      [theme.breakpoints.down('sm')]: {
+        marginLeft: '7rem'
       },
       fontStyle: 'normal',
       backgroundColor: '#26c6da',
@@ -32,18 +35,24 @@ const Adauga_Angajatcss = theme => {
       },
       alignItems: 'center',
       flexDirection: 'row',
-      margin: '0',
-      padding: '0',
       marginTop: '2rem'
     },
-    containeradaugaangajatleft: { marginLeft: '10rem' },
+    containeradaugaangajatleft: {
+      [theme.breakpoints.down('sm')]: {
+        marginLeft: '5rem'
+      },
+      marginLeft: '10rem'
+    },
     containeradaugaangajatright: {
       [theme.breakpoints.down('lg')]: {
         marginLeft: '10rem'
       },
       [theme.breakpoints.up('lg')]: {
-        marginLeft: 'rem'
-      }
+        marginLeft: '0rem'
+      },
+      [theme.breakpoints.down('sm')]: {
+        marginLeft: '5rem'
+      },
     },
     StyleTxt: {
       color: ' #05241d',

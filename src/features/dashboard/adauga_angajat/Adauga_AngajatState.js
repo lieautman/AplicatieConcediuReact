@@ -25,6 +25,5 @@ export function reducer(state, action) {
 
 function OnPropertyChanged(state, action) {
   const { propertyName, value } = action
-  console.log(value)
   return { ...state, [propertyName]: value }
 }
