@@ -67,11 +67,11 @@ function modificareListe(state, action) {
         angajatMirror.IdEchipa = 3
         break
       }
-      case 'Financial Services': {
+      case 'Servicii financiare': {
         angajatMirror.IdEchipa = 4
         break
       }
-      case 'IT Support': {
+      case 'Suport IT': {
         angajatMirror.IdEchipa = 5
         break
       }
