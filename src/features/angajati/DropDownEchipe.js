@@ -25,7 +25,7 @@ export default function DropDownEchipa(props) {
           options={listaEchipe}
           handleChange={handleChange}
           className={stilPromovare.Combobox}
-          onChange={(event, value => handleChange('Echipa', value))}
+          onChange={(event, value) => handleChange('Echipa', value)}
           getOptionLabel={option => option.nume}
           renderInput={params => <TextField {...params} label='Echipa' variant='outlined' />}
         />

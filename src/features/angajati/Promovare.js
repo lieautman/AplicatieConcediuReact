@@ -14,7 +14,7 @@ import { useHeader } from 'providers/AreasProvider'
 import DropDownEchipa from './DropDownEchipe'
 import { useTranslation } from 'react-i18next'
 import { useQueryWithErrorHandling } from 'hooks/errorHandling'
-import ANGAJATI_DATA_QUERY from './QueryAngajati'
+import { ANGAJATI_DE_FORMAT_ECHIPA } from './QueryAngajati'
 import PropTypes from 'prop-types'
 import ECHIPA_DATA_QUERY from './QueryEchipe'
 import { Link, useRouteMatch } from 'react-router-dom'
@@ -22,26 +22,27 @@ import ID_ANGAJATI_DATA_QUERY from './QueryIdAngajatSelectat'
 import { UPDATE_MANAGER_ECHIPA } from './MutationPromovare'
 import { useMutation } from '@apollo/client'
 import { useHistory } from 'react-router'
+import { useToast } from '@bit/totalsoft_oss.react-mui.kit.core'
 
 const useStyles = makeStyles(stilAngajati)
 
 export default function Promovare(props) {
   const { dispatch, state } = props
   const history = useHistory()
+  const match = useRouteMatch()
 
-  useQueryWithErrorHandling(ANGAJATI_DATA_QUERY, {
+  useQueryWithErrorHandling(ANGAJATI_DE_FORMAT_ECHIPA, {
+    variables: { id: parseInt(match.params.id) },
     onCompleted: data => {
-      dispatch({ inputName: 'listaAngDeAdaugatDinBaza', inputValue: data.angajatiData })
+      dispatch({ inputName: 'listaAngDeAdaugatDinBaza', inputValue: data.angajatiDeFormatEchipaData })
     }
   })
   //id ang din path
-  const match = useRouteMatch()
+
   const { data } = useQueryWithErrorHandling(ID_ANGAJATI_DATA_QUERY, { variables: { idAngajatSelectat: parseInt(match.params.id) } })
   const { data: listaEchipe } = useQueryWithErrorHandling(ECHIPA_DATA_QUERY)
   const [updateManagerEchipa] = useMutation(UPDATE_MANAGER_ECHIPA, {
-    onCompleted: data => {
-      console.log(data)
-    }
+    onCompleted: data => {}
   })
 
   const { t } = useTranslation()
@@ -90,14 +91,53 @@ export default function Promovare(props) {
       props.dispatch({ inputName: 'modificareListe', actiune: 'Scoatere', index: indexSelectat2 })
     }
   }
+  const addToast = useToast()
   const handleClick = async () => {
+    let echipaManager = 1
+    switch (state.Echipa) {
+      case 'Marketing': {
+        echipaManager = 1
+        break
+      }
+      case 'Resurse Umane': {
+        echipaManager = 2
+        break
+      }
+      case 'Dezvoltare': {
+        echipaManager = 3
+        break
+      }
+      case 'Financial Services': {
+        echipaManager = 4
+        break
+      }
+      case 'IT Support': {
+        echipaManager = 5
+        break
+      }
+      default:
+        echipaManager = 1
+    }
+    let inputValue = {
+      nume: data?.angajatIdData.nume,
+      prenume: data?.angajatIdData.prenume,
+      email: data?.angajatIdData.email,
+      cnp: '',
+      ManagerId: null,
+      IdEchipa: echipaManager
+    }
+
+    let listaBuffer = [...state.listaAngajatiAdaugatiMirror, inputValue]
     const update = await updateManagerEchipa({
       variables: {
-        input: state.listaAngajatiAdaugatiMirror
+        input: listaBuffer
       }
     })
-    if (update) {
+    if (update?.data.updateManagerIdEchipaId === 'Angajat promovat') {
       history.push({ pathname: `/angajati` })
+      addToast('Angajat promovat cu succes', 'success')
+    } else {
+      addToast('Nu s-a putut promova angajatul', 'error')
     }
   }
 
@@ -105,13 +145,13 @@ export default function Promovare(props) {
     <div>
       <div className={stilPromovare.divPromovare}>
         <div>
-          <Card sx={{ width: 320, height: 140 }}>
+          <Card sx={{ width: 450, height: 140 }}>
             <CardContent>
-              <div className={stilPromovare.divPromovare}>
+              <div className={stilPromovare.divInfoCard}>
                 <div>
                   <img
                     src={'data:image/*;base64,' + data?.angajatIdData.poza}
-                    sx={{ bgcolor: '#05241d', width: 100, height: 100 }}
+                    className={stilPromovare.pozaAngajat}
                     aria-label='recipe'
                   ></img>
                 </div>

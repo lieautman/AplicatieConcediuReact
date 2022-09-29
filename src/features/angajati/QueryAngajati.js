@@ -11,4 +11,16 @@ const ANGAJATI_DATA_QUERY = gql`
     }
   }
 `
-export default ANGAJATI_DATA_QUERY
+const ANGAJATI_DE_FORMAT_ECHIPA = gql`
+  query AngajatiDeFormatEchipaData($id: Int) {
+    angajatiDeFormatEchipaData(id: $id) {
+      id
+      nume
+      prenume
+      email
+      echipa
+    }
+  }
+`
+export { ANGAJATI_DATA_QUERY }
+export { ANGAJATI_DE_FORMAT_ECHIPA }

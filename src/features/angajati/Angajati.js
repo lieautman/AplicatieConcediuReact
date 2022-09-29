@@ -6,13 +6,11 @@ import stilButoane from './StilButoane'
 import Filtrare from './Filtrare'
 import { useHistory } from 'react-router'
 import PropTypes from 'prop-types'
-import Paginare from './Paginare'
 import { makeStyles } from '@material-ui/core'
 import { useQueryWithErrorHandling } from 'hooks/errorHandling'
-import ANGAJATI_DATA_QUERY from './QueryAngajati'
+import { ANGAJATI_DATA_QUERY } from './QueryAngajati'
 import { useApolloClient } from '@apollo/client'
 import { gql } from '@apollo/client'
-import Promovare from './Promovare'
 
 const stilAng = makeStyles(stilAngajati)
 const stilBtn = makeStyles(stilButoane)
@@ -191,7 +189,6 @@ export default function Angajati() {
         idRand={idRand}
         checkin={checkin}
       ></TabelAngajati>
-      <Paginare></Paginare>
     </div>
   )
 }
