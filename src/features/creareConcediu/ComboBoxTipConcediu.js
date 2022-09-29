@@ -4,8 +4,10 @@ import Autocomplete from '@material-ui/lab/Autocomplete'
 import { makeStyles } from '@material-ui/core/styles'
 import { useQueryWithErrorHandling } from 'hooks/errorHandling'
 import TIP_CONCEDIU_DATA_QUERY from './QueryTipConcediu'
+import PropTypes from 'prop-types'
 
-const ComboBoxTipConcediu = () => {
+const ComboBoxTipConcediu = props => {
+  const { handleChange } = props
   const { data } = useQueryWithErrorHandling(TIP_CONCEDIU_DATA_QUERY)
   // Our sample dropdown options
   // const options = [
@@ -33,6 +35,7 @@ const ComboBoxTipConcediu = () => {
         options={data?.tipConcediuData || []}
         style={{ width: 380 }}
         getOptionLabel={data => data?.nume}
+        onChange={(event, value) => handleChange('tipConcediuId', value.id)}
         renderInput={params => <TextField {...params} label='Selecteaza tipul concediului' variant='outlined' />}
       />
     </div>
@@ -40,3 +43,7 @@ const ComboBoxTipConcediu = () => {
 }
 
 export default ComboBoxTipConcediu
+
+ComboBoxTipConcediu.propTypes = {
+  handleChange: PropTypes.func
+}

@@ -22,12 +22,13 @@ function CreareConcediu() {
   const handleClick = async () => {
     await adaugaConcediu({ variables: { input: localState } })
   }
+
   useHeader(
     <div variant='subtitles1' className={classes.stilTitlu}>
       {'Adauga un concediu nou'}
     </div>
   )
-
+  console.log(localState)
   return (
     <Fragment>
       <Container className={classes.container} maxWidth='sm'>
