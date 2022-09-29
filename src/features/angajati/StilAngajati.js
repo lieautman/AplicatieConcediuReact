@@ -41,10 +41,10 @@ const stilAngajati = theme => {
     },
     divPromovare: {
       display: 'flex',
-      justifyContent: 'center'
+      justifyContent: 'space-between'
     },
     textManager: {
-      marginLeft: '1.5rem'
+      marginLeft: '20px'
     },
     divSelect: {
       marginLeft: '2rem',
@@ -66,8 +66,19 @@ const stilAngajati = theme => {
       lineHeight: '1.75'
     },
     Combobox: {
-      width: 300,
+      width: 500,
       marginTop: '1rem'
+    },
+    pozaAngajat: {
+      width: '100px',
+      height: '100px',
+      borderRadius: '25px',
+      border: '2px black',
+      borderStyle: 'solid'
+    },
+    divInfoCard: {
+      display: 'flex',
+      justifyContent: 'flex-start'
     }
   }
 }

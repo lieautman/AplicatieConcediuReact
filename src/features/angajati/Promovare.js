@@ -124,7 +124,7 @@ export default function Promovare(props) {
       email: data?.angajatIdData.email,
       cnp: '',
       ManagerId: null,
-      echipa: echipaManager
+      IdEchipa: echipaManager
     }
 
     let listaBuffer = [...state.listaAngajatiAdaugatiMirror, inputValue]
@@ -145,13 +145,13 @@ export default function Promovare(props) {
     <div>
       <div className={stilPromovare.divPromovare}>
         <div>
-          <Card sx={{ width: 400, height: 140 }}>
+          <Card sx={{ width: 450, height: 140 }}>
             <CardContent>
-              <div className={stilPromovare.divPromovare}>
+              <div className={stilPromovare.divInfoCard}>
                 <div>
                   <img
                     src={'data:image/*;base64,' + data?.angajatIdData.poza}
-                    sx={{ bgcolor: '#05241d', width: 100, height: 100 }}
+                    className={stilPromovare.pozaAngajat}
                     aria-label='recipe'
                   ></img>
                 </div>

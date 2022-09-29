@@ -53,30 +53,30 @@ function modificareListe(state, action) {
     const angajat = { ...state.listaAngajatiDeAdaugat[index] }
     newListaAngajatiAdaugati = [...newListaAngajatiAdaugati, angajat]
     newListaAngajatiDeAdaugat.splice(index, 1)
-    let angajatMirror = { nume: '', prenume: '', email: '', cnp: '', ManagerId: 0, echipa: 0 }
+    let angajatMirror = { nume: '', prenume: '', email: '', cnp: '', ManagerId: 0, IdEchipa: 0 }
     switch (state.Echipa) {
       case 'Marketing': {
-        angajatMirror.echipa = 1
+        angajatMirror.IdEchipa = 1
         break
       }
       case 'Resurse Umane': {
-        angajatMirror.echipa = 2
+        angajatMirror.IdEchipa = 2
         break
       }
       case 'Dezvoltare': {
-        angajatMirror.echipa = 3
+        angajatMirror.IdEchipa = 3
         break
       }
       case 'Financial Services': {
-        angajatMirror.echipa = 4
+        angajatMirror.IdEchipa = 4
         break
       }
       case 'IT Support': {
-        angajatMirror.echipa = 5
+        angajatMirror.IdEchipa = 5
         break
       }
       default:
-        angajatMirror.echipa = 1
+        angajatMirror.IdEchipa = 1
     }
     angajatMirror.nume = angajat.nume
     angajatMirror.prenume = angajat.prenume

@@ -131,11 +131,11 @@ function ProfileEditState() {
     },
     skip: !date?.userData?.id,
     onCompleted: data => {
-      if (data.modificareDateProfil === true) {
+      if (data.modificareDateProfil === 'Inregistrare efectuata!') {
         dispatch({ inputName: 'isErrorOnUpdate', inputValue: false, inputType: 'field' })
         history.push({ pathname: `/profile` })
       } else {
-        addToast('A aparut o eroare!', 'error')
+        addToast(data?.modificareDateProfil, 'error')
       }
     }
   })
