@@ -59,7 +59,7 @@ function CreareConcediuComp(props) {
         <ComboBoxInlocuitor onChange={(event, value) => handleChange('angajatId', value)}></ComboBoxInlocuitor>
       </div>
       <br></br>
-      <div style={{ marginLeft: '120px' }}>
+      <div style={{ marginLeft: '150px' }}>
         <TextField
           id='outlined-multiline-static'
           label='Comentarii'

@@ -5,7 +5,8 @@ export const initialState = {
   textEchipa: 'ECHIPA',
   echipa: [],
   listaAngajatiDeAdaugat: [],
-  listaAngajatiAdaugati: []
+  listaAngajatiAdaugati: [],
+  listaAngajatiAdaugatiMirror: []
 }
 export function reducer(state, action) {
   switch (action.inputName) {
@@ -40,15 +41,54 @@ function OnPropertyChanged(state, action) {
 function modificareListe(state, action) {
   const { actiune, index } = action
   let newListaAngajatiDeAdaugat = [...state.listaAngajatiDeAdaugat],
-    newListaAngajatiAdaugati = [...state.listaAngajatiAdaugati]
+    newListaAngajatiAdaugati = [...state.listaAngajatiAdaugati],
+    newListaAngajatiAdaugatiMirror = [...state.listaAngajatiAdaugatiMirror]
   if (actiune === 'Scoatere') {
     const angajat = { ...state.listaAngajatiAdaugati[index] }
     newListaAngajatiDeAdaugat = [...newListaAngajatiDeAdaugat, angajat]
     newListaAngajatiAdaugati.splice(index, 1)
+    newListaAngajatiAdaugatiMirror.splice(index, 1)
   } else if (actiune === 'Adaugare') {
     const angajat = { ...state.listaAngajatiDeAdaugat[index] }
     newListaAngajatiAdaugati = [...newListaAngajatiAdaugati, angajat]
     newListaAngajatiDeAdaugat.splice(index, 1)
+    let angajatMirror = { nume: '', prenume: '', email: '', cnp: '', ManagerId: 0, echipa: 0 }
+    switch (angajat.echipa) {
+      case 'Marketing': {
+        angajatMirror.echipa = 1
+        break
+      }
+      case 'Resurse Umane': {
+        angajatMirror.echipa = 2
+        break
+      }
+      case 'Dezvoltare': {
+        angajatMirror.echipa = 3
+        break
+      }
+      case 'Financial Services': {
+        angajatMirror.echipa = 4
+        break
+      }
+      case 'IT Support': {
+        angajatMirror.echipa = 5
+        break
+      }
+      default:
+        angajatMirror.echipa = 1
+    }
+    angajatMirror.nume = angajat.nume
+    angajatMirror.prenume = angajat.prenume
+    angajatMirror.email = angajat.email
+    angajatMirror.ManagerId = action.inputValue
+    angajatMirror.cnp = ''
+
+    newListaAngajatiAdaugatiMirror = [...newListaAngajatiAdaugatiMirror, angajatMirror]
   }
-  return { ...state, listaAngajatiDeAdaugat: newListaAngajatiDeAdaugat, listaAngajatiAdaugati: newListaAngajatiAdaugati }
+  return {
+    ...state,
+    listaAngajatiDeAdaugat: newListaAngajatiDeAdaugat,
+    listaAngajatiAdaugati: newListaAngajatiAdaugati,
+    listaAngajatiAdaugatiMirror: newListaAngajatiAdaugatiMirror
+  }
 }

@@ -5,7 +5,7 @@ import Typography from '@mui/material/Typography'
 import Avatar from '@mui/material/Avatar'
 import stilAngajati from './StilAngajati'
 import stilButoane from './StilButoane'
-import { makeStyles } from '@material-ui/core'
+import { Button, makeStyles } from '@material-ui/core'
 import TabelAngajatiDePromovat from './TabelAngajatiDePromovat'
 import IconButton from '@material-ui/core/IconButton'
 import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
@@ -17,13 +17,18 @@ import { useQueryWithErrorHandling } from 'hooks/errorHandling'
 import ANGAJATI_DATA_QUERY from './QueryAngajati'
 import PropTypes from 'prop-types'
 import ECHIPA_DATA_QUERY from './QueryEchipe'
-import { useRouteMatch } from 'react-router-dom'
+import { Link, useRouteMatch } from 'react-router-dom'
 import ID_ANGAJATI_DATA_QUERY from './QueryIdAngajatSelectat'
+import { UPDATE_MANAGER_ECHIPA } from './MutationPromovare'
+import { useMutation } from '@apollo/client'
+import { useHistory } from 'react-router'
 
 const useStyles = makeStyles(stilAngajati)
 
 export default function Promovare(props) {
   const { dispatch, state } = props
+  const history = useHistory()
+
   useQueryWithErrorHandling(ANGAJATI_DATA_QUERY, {
     onCompleted: data => {
       dispatch({ inputName: 'listaAngDeAdaugatDinBaza', inputValue: data.angajatiData })
@@ -32,8 +37,12 @@ export default function Promovare(props) {
   //id ang din path
   const match = useRouteMatch()
   const { data } = useQueryWithErrorHandling(ID_ANGAJATI_DATA_QUERY, { variables: { idAngajatSelectat: parseInt(match.params.id) } })
-  console.log(data?.angajatIdData)
   const { data: listaEchipe } = useQueryWithErrorHandling(ECHIPA_DATA_QUERY)
+  const [updateManagerEchipa] = useMutation(UPDATE_MANAGER_ECHIPA, {
+    onCompleted: data => {
+      console.log(data)
+    }
+  })
 
   const { t } = useTranslation()
   const stilPromovare = useStyles()
@@ -72,13 +81,23 @@ export default function Promovare(props) {
   //functie de actiune pe buton pt adaugare angajati in lista de formare echipa
   function AdaugaElem() {
     if (indexSelectat1 !== null && indexSelectat1 !== undefined && props.state.listaAngajatiDeAdaugat[indexSelectat1]) {
-      props.dispatch({ inputName: 'modificareListe', actiune: 'Adaugare', index: indexSelectat1 })
+      props.dispatch({ inputName: 'modificareListe', actiune: 'Adaugare', index: indexSelectat1, inputValue: parseInt(match.params.id) })
     }
   }
 
   function ScoateElem() {
     if (indexSelectat2 !== null && indexSelectat2 !== undefined && props.state.listaAngajatiAdaugati[indexSelectat2]) {
       props.dispatch({ inputName: 'modificareListe', actiune: 'Scoatere', index: indexSelectat2 })
+    }
+  }
+  const handleClick = async () => {
+    const update = await updateManagerEchipa({
+      variables: {
+        input: state.listaAngajatiAdaugatiMirror
+      }
+    })
+    if (update) {
+      history.push({ pathname: `/angajati` })
     }
   }
 
@@ -115,7 +134,16 @@ export default function Promovare(props) {
 
         <div className={stilPromovare.divSelect}>
           <DropDownEchipa handleChange={handleChange} listaEchipe={listaEchipe?.echipaData}></DropDownEchipa>
-          <button className={stilBtn.buton}>SALVEAZA MODIFICARILE</button>
+          <Button
+            // onClick={() => {
+            //   console.log(state.listaAngajatiAdaugatiMirror)
+            //   updateManagerEchipa()
+            // }}
+            onClick={handleClick}
+            className={stilBtn.buton}
+          >
+            SALVEAZA MODIFICARILE
+          </Button>
         </div>
       </div>
       <div className={stilPromovare.divTabelePromovare}>

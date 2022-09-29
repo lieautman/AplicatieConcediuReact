@@ -27,7 +27,7 @@ const ComboBoxInlocuitor = () => {
     <div>
       <Autocomplete
         options={data?.inlocuitoriData}
-        style={{ width: 300 }}
+        style={{ width: 380 }}
         getOptionLabel={data => data?.nume}
         renderInput={params => <TextField {...params} label='Selecteaza un inlocuitor' variant='outlined' />}
       />

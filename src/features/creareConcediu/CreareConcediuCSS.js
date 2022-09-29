@@ -13,6 +13,7 @@ const CreareConcediuCSS = theme => {
       height: '50px',
       width: '150px',
       marginTop: '30px',
+      marginLeft: '150px',
 
       borderRadius: '50px',
       [theme.breakpoints.down('lg')]: {
@@ -22,7 +23,7 @@ const CreareConcediuCSS = theme => {
         marginLeft: '9rem'
       }
     },
-    datePicker: { display: 'flex', marginTop: '1 rem' },
+    datePicker: { display: 'flex', marginTop: '1 rem', marginLeft: '50px' },
 
     title: { marginLeft: '70px' },
     container: {
@@ -38,7 +39,7 @@ const CreareConcediuCSS = theme => {
       flexDirection: 'row',
 
       width: 200,
-      marginLeft: '120px'
+      marginLeft: '150px'
     },
     stilTitlu: {
       color: '#555555',

@@ -2,14 +2,17 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import { makeStyles } from '@material-ui/core/styles'
+import { useQueryWithErrorHandling } from 'hooks/errorHandling'
+import TIP_CONCEDIU_DATA_QUERY from './QueryTipConcediu'
 
 const ComboBoxTipConcediu = () => {
+  const { data } = useQueryWithErrorHandling(TIP_CONCEDIU_DATA_QUERY)
   // Our sample dropdown options
-  const options = [
-    { id: 1, name: 'Concediu de odihna' },
-    { id: 2, name: 'Concediu fara plata' },
-    { id: 3, name: 'Concediu medical' }
-  ]
+  // const options = [
+  //   { id: 1, name: 'Concediu de odihna' },
+  //   { id: 2, name: 'Concediu fara plata' },
+  //   { id: 3, name: 'Concediu medical' }
+  // ]
 
   // eslint-disable-next-line no-unused-vars
   const useStyles = makeStyles(theme => ({
@@ -27,10 +30,9 @@ const ComboBoxTipConcediu = () => {
   return (
     <div>
       <Autocomplete
-        options={options}
-        key={option => option.id}
-        style={{ width: 300 }}
-        getOptionLabel={option => option.name}
+        options={data?.tipConcediuData}
+        style={{ width: 380 }}
+        getOptionLabel={data => data?.nume}
         renderInput={params => <TextField {...params} label='Selecteaza tipul concediului' variant='outlined' />}
       />
     </div>

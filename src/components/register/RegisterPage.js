@@ -7,6 +7,7 @@ import { TextField } from '@material-ui/core'
 import publicMainStyle from 'assets/jss/components/publicMainStyles'
 import { useMutation } from '@apollo/client'
 import { gql } from '@apollo/client'
+import registerPageStyle from './RegisterPageCss'
 
 const USER_DATA_MUTATION = gql`
   mutation registerUser(
@@ -31,14 +32,15 @@ const USER_DATA_MUTATION = gql`
     )
   }
 `
-
+const useStyles1 = makeStyles(registerPageStyle)
 const useStyles = makeStyles(publicMainStyle)
 
 const RegisterPage = props => {
+  const classes1 = useStyles1()
+  const classes = useStyles()
   const theme = useTheme()
   const { logo } = theme
-  
-  const classes = useStyles()
+
   let [nume, setNume] = useState()
   let [prenume, setPrenume] = useState()
   let [email, setEmail] = useState()
@@ -71,10 +73,13 @@ const RegisterPage = props => {
       }
     }
   })
-  
-
   const handleCLick2 = async () => {
     props.setIsInLogin(true)
+  }
+
+  function afisareEroare() {
+    if(eroare!=='')
+      return <div className={classes1.hStyle}><h5>{eroare}</h5></div>
   }
 
   return (
@@ -111,7 +116,7 @@ const RegisterPage = props => {
             onChange={event => setParola2(event.target.value)}
           ></TextField>
           <TextField label={'Email'} className={classes.filedInRegister} onChange={event => setEmail(event.target.value)}></TextField>
-          <h5>{eroare}</h5>
+          {afisareEroare()}
           <Button className={classes.login} variant='contained' color='primary' size='large' onClick={handleCLick1}>
             {'Inregistrare'}
           </Button>
