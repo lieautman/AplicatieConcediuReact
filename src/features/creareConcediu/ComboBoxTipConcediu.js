@@ -30,7 +30,7 @@ const ComboBoxTipConcediu = () => {
   return (
     <div>
       <Autocomplete
-        options={data?.tipConcediuData}
+        options={data?.tipConcediuData || []}
         style={{ width: 380 }}
         getOptionLabel={data => data?.nume}
         renderInput={params => <TextField {...params} label='Selecteaza tipul concediului' variant='outlined' />}
