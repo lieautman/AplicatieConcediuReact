@@ -19,6 +19,7 @@ const USER_DATA_MUTATION = gql`
     $userDataNasterii: String
     $userSeriaNumarBuletin: String
     $userParola: String
+    $userParola2: String
   ) {
     registerUser(
       userNume: $userNume
@@ -29,6 +30,7 @@ const USER_DATA_MUTATION = gql`
       userDataNasterii: $userDataNasterii
       userSeriaNumarBuletin: $userSeriaNumarBuletin
       userParola: $userParola
+      userParola2: $userParola2
     )
   }
 `
@@ -62,7 +64,8 @@ const RegisterPage = props => {
       userCnp: cnp,
       userSeriaNumarBuletin: serieNumarCi,
       userDataNasterii: dataNastere,
-      userParola: parola
+      userParola: parola,
+      userParola2: parola2
     },
     onCompleted: data => {
       if (data.registerUser === 'Inregistrare efectuata!') {
@@ -109,8 +112,9 @@ const RegisterPage = props => {
             className={classes.filedInRegister}
             onChange={event => setNumarTelfon(event.target.value)}
           ></TextField>
-          <TextField label={'Parola'} className={classes.filedInRegister} onChange={event => setParola(event.target.value)}></TextField>
+          <TextField type='password' label={'Parola'} className={classes.filedInRegister} onChange={event => setParola(event.target.value)}></TextField>
           <TextField
+            type='password'
             label={'Confirmare parola'}
             className={classes.filedInRegister}
             onChange={event => setParola2(event.target.value)}

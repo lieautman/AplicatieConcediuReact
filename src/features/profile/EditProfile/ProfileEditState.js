@@ -131,7 +131,7 @@ function ProfileEditState() {
     },
     skip: !date?.userData?.id,
     onCompleted: data => {
-      if (data.modificareDateProfil !=='Eroare de server!') {
+      if (data.modificareDateProfil === 'Inregistrare efectuata!') {
         dispatch({ inputName: 'isErrorOnUpdate', inputValue: false, inputType: 'field' })
         history.push({ pathname: `/profile` })
       } else {
