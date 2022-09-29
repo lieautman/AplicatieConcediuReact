@@ -2,14 +2,13 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import { makeStyles } from '@material-ui/core/styles'
+import INLOCUITOR_QUERY from './QueryInlocuitor'
+import { useQueryWithErrorHandling } from 'hooks/errorHandling'
 
 const ComboBoxInlocuitor = () => {
   // Our sample dropdown options
-  const options = [
-    { id: 1, name: 'Popescu Ioan' },
-    { id: 2, name: 'Dragomir Iustina' },
-    { id: 3, name: 'Calinescu Mihai' }
-  ]
+
+  const { data } = useQueryWithErrorHandling(INLOCUITOR_QUERY)
 
   // eslint-disable-next-line no-unused-vars
   const useStyles = makeStyles(theme => ({
@@ -27,9 +26,9 @@ const ComboBoxInlocuitor = () => {
   return (
     <div>
       <Autocomplete
-        options={options}
+        options={data?.inlocuitoriData}
         style={{ width: 300 }}
-        getOptionLabel={option => option.name}
+        getOptionLabel={data => data?.nume}
         renderInput={params => <TextField {...params} label='Selecteaza un inlocuitor' variant='outlined' />}
       />
     </div>

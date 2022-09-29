@@ -28,6 +28,7 @@ const ComboBoxTipConcediu = () => {
     <div>
       <Autocomplete
         options={options}
+        key={option => option.id}
         style={{ width: 300 }}
         getOptionLabel={option => option.name}
         renderInput={params => <TextField {...params} label='Selecteaza tipul concediului' variant='outlined' />}
