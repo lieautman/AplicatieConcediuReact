@@ -1,12 +1,13 @@
 export const initialState = {
-  tipConcediuId: '',
+  tipConcediuId: 0,
   dataInceput: new Date(),
   dataSfarsit: new Date(),
-  angajatId: '',
-  numarZileSelectat: '',
-  numarZileDisponibile: '',
+  inlocuitorId: 1,
   comentarii: '',
-  inlocuitorId: ''
+  stareConcediuId: 3,
+  angajatId: 1,
+  numarZileSelectat: '',
+  numarZileDisponibile: ''
 }
 
 export function reducer(state, action) {

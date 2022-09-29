@@ -9,6 +9,7 @@ import { useReducer } from 'react'
 import { initialState, reducer } from './CreareConcediuState'
 import { POST_ADAUGACONCEDIU } from './mutation'
 import { useMutation } from '@apollo/client'
+import { gql, useApolloClient } from '@apollo/client'
 
 const useStyles = makeStyles(CreareConcediuCSS)
 
@@ -18,9 +19,34 @@ function CreareConcediu() {
   const handleChange = (propertyName, value) => {
     dispatch({ type: 'OnPropertyChanged', propertyName, value })
   }
+  const client = useApolloClient()
+  const date = client.readQuery({
+    query: gql`
+      query userData {
+        userData {
+          id
+          isAdmin
+          isManager
+          email
+        }
+      }
+    `
+  })
   const [adaugaConcediu] = useMutation(POST_ADAUGACONCEDIU)
   const handleClick = async () => {
-    await adaugaConcediu({ variables: { input: localState } })
+    await adaugaConcediu({
+      variables: {
+        input: {
+          angajatId: date?.userData?.id,
+          tipConcediuId: localState.tipConcediuId,
+          dataInceput: localState.dataInceput.toISOString().split('T')[0],
+          dataSfarsit: localState.dataSfarsit.toISOString().split('T')[0],
+          inlocuitorId: localState.inlocuitorId,
+          comentarii: localState.comentarii,
+          stareConcediuId: localState.stareConcediuId
+        }
+      }
+    })
   }
 
   useHeader(

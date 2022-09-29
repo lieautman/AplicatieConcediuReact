@@ -70,7 +70,7 @@ function CreareConcediuComp(props) {
           disabled
           className={classes.TextField}
           id='filled-disabled'
-          label='Numar zile disponibile'
+          // label='Numar zile disponibile'
           value={nrZileDisp}
           variant='filled'
           onChange={(event, value) => handleChange('numarZileDisponibile', event.target.value)}
