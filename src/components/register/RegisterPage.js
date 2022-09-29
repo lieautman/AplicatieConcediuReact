@@ -69,7 +69,7 @@ const RegisterPage = props => {
         setEroare('Inregistrare efectuata!')
         props.setIsInLogin(true)
       } else {
-        setEroare('A aparut o eroare!')
+        setEroare(data.registerUser)
       }
     }
   })
