@@ -107,11 +107,11 @@ export default function Promovare(props) {
         echipaManager = 3
         break
       }
-      case 'Financial Services': {
+      case 'Servicii financiare': {
         echipaManager = 4
         break
       }
-      case 'IT Support': {
+      case 'Suport IT': {
         echipaManager = 5
         break
       }
