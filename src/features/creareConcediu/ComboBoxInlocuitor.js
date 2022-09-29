@@ -48,7 +48,7 @@ const ComboBoxInlocuitor = props => {
       <Autocomplete
         options={data?.inlocuitoriData || []}
         style={{ width: 380 }}
-        onChange={(event, value) => handleChange('angajatId', value.id)}
+        onChange={(event, value) => handleChange('inlocuitorId', value.id)}
         getOptionLabel={data => data?.inlocuitor}
         renderInput={params => <TextField {...params} label='Selecteaza un inlocuitor' variant='outlined' />}
       />

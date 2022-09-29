@@ -10,10 +10,12 @@ import { initialState, reducer } from './CreareConcediuState'
 import { POST_ADAUGACONCEDIU } from './mutation'
 import { useMutation } from '@apollo/client'
 import { gql, useApolloClient } from '@apollo/client'
+import { useToast } from '@bit/totalsoft_oss.react-mui.kit.core'
 
 const useStyles = makeStyles(CreareConcediuCSS)
 
 function CreareConcediu() {
+  const addToast = useToast()
   const classes = useStyles()
   const [localState, dispatch] = useReducer(reducer, initialState)
   const handleChange = (propertyName, value) => {
@@ -44,6 +46,13 @@ function CreareConcediu() {
           inlocuitorId: localState.inlocuitorId,
           comentarii: localState.comentarii,
           stareConcediuId: localState.stareConcediuId
+        }
+      },
+      onCompleted: data => {
+        if (data.adaugaConcediu === 'Inregistrare efectuata!') {
+          addToast(data?.adaugaConcediu, 'success')
+        } else {
+          addToast(data?.adaugaConcediu, 'error')
         }
       }
     })

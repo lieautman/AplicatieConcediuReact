@@ -2,7 +2,7 @@ export const initialState = {
   tipConcediuId: 0,
   dataInceput: new Date(),
   dataSfarsit: new Date(),
-  inlocuitorId: 1,
+  inlocuitorId: 0,
   comentarii: '',
   stareConcediuId: 3,
   angajatId: 1,
