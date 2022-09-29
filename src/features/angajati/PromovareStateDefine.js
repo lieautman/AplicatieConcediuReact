@@ -6,7 +6,8 @@ export const initialState = {
   echipa: [],
   listaAngajatiDeAdaugat: [],
   listaAngajatiAdaugati: [],
-  listaAngajatiAdaugatiMirror: []
+  listaAngajatiAdaugatiMirror: [],
+  Echipa: 'Marketing'
 }
 export function reducer(state, action) {
   switch (action.inputName) {
@@ -35,7 +36,7 @@ export function reducer(state, action) {
 }
 function OnPropertyChanged(state, action) {
   const { propertyName, value } = action
-  return { ...state, [propertyName]: value }
+  return { ...state, [propertyName]: value.nume }
 }
 
 function modificareListe(state, action) {
@@ -53,7 +54,7 @@ function modificareListe(state, action) {
     newListaAngajatiAdaugati = [...newListaAngajatiAdaugati, angajat]
     newListaAngajatiDeAdaugat.splice(index, 1)
     let angajatMirror = { nume: '', prenume: '', email: '', cnp: '', ManagerId: 0, echipa: 0 }
-    switch (angajat.echipa) {
+    switch (state.Echipa) {
       case 'Marketing': {
         angajatMirror.echipa = 1
         break
