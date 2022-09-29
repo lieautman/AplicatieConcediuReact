@@ -1,7 +1,7 @@
 export const initialState = {
   tipConcediuId: '',
-  datePikerIncepere: new Date(),
-  datePickerIncetare: new Date(),
+  dataInceput: new Date(),
+  dataSfarsit: new Date(),
   angajatId: '',
   numarZileSelectat: '',
   numarZileDisponibile: '',

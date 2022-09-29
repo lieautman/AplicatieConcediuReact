@@ -56,7 +56,7 @@ function CreareConcediuComp(props) {
       </div>
 
       <div style={{ marginLeft: '70px', marginTop: '1rem' }}>
-        <ComboBoxInlocuitor onChange={(event, value) => handleChange('angajatId', value)}></ComboBoxInlocuitor>
+        <ComboBoxInlocuitor handleChange={handleChange} localState={localState}></ComboBoxInlocuitor>
       </div>
       <br></br>
       <div style={{ marginLeft: '150px' }}>
